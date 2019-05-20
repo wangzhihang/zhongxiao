@@ -1,0 +1,79 @@
+<ion-view view-title="BSS选号">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="directory-list">
+			<ul>
+				<li ng-click="BSSOrder()" ng-show="appFuncListShow['000005']">
+					<div class="txt-info item01">
+						<span class="ico icon-liantongxuanhao" style="color:#d41616;"></span>
+						<p><em>代理商选号</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li ng-click="BSSNewOrder()" ng-show="appFuncListShow['000023']">
+					<div class="txt-info item02">
+						<span class="ico icon-banlixinzhuang-" style="color:#d41616;"></span>
+						<p><em>BSS新装</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li ng-click="bssSemiManufactures('000005')" ng-show="appFuncListShow['000005']">
+					<div class="txt-info item01">
+						<span class="ico icon-liantongxuanhao" style="color:#d41616;"></span>
+						<p><em>代理商选号(半成卡)</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li ng-click="bssSemiManufactures('000023')" ng-show="appFuncListShow['000023']">
+					<div class="txt-info item02">
+						<span class="ico icon-banlixinzhuang-" style="color:#d41616;"></span>
+						<p><em>BSS新装(半成卡)</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+
+				<li ng-click="bssDealerreturn()"  ng-show="appFuncListShow['000006']">
+					<div class="txt-info item03">
+						<span class="ico icon-dingdan" style="color:#d41616;"></span>
+						<p><em>预登陆返单</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li ui-sref="dianpu-bss-order_queryOrderInfo">
+					<div class="txt-info item03">
+						<span class="ico icon-fapiaoshenlingzhuangtaichaxun" style="color:#d41616;"></span>
+						<p><em>号码状态查询</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<!-- <li >
+					
+					<div class="txt-info item03">
+						<span class="ico icon-gouqia" style="color:#d41616;"></span>
+						<p><em>四川BSS开卡</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>  -->
+<!-- 				<li ui-sref="dianpu-bss-write-card">
+					<div class="txt-info item04">
+						<span class="ico icon-read-card" style="color:#d41616;"></span>
+						<p><em>BSS补卡</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li ui-sref="bss-payfee">
+					<div class="txt-info item05">
+						<span class="ico icon-jiaofei" style="color:#d41616;"></span>
+						<p><em>BSS补缴费</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li> -->
+			</ul>
+		</div>
+	</ion-content>
+</ion-view>

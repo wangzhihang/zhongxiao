@@ -1,0 +1,64 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<!-- 头部 -->
+		<div class="btn-wrap bgWhite f-15 pl-15 pr-15">
+			<span style="line-height: 25px;" ng-repeat="item in ReveiveOrders" ng-click="gohomeOrderDetial($index)">
+				<span class="f-bolder">{{item.productName}}</span>
+				<img ng-src="{{item.imgTag}}"  style="width: 14px;margin-top: -6px;"/>
+				<span ng-hide="ReveiveOrdersLength==item.sort">——</span>
+			</span>
+		</div>
+		<!-- 画地图 -->
+		<div id="myMapContainer1"  ng-class="{'myMapLittleContainer':getNearbyOrderBtn==false}" class="mb-10 txtCenter myMapContainer bd"></div>
+		<div id="panel"></div>
+	</ion-content>
+	
+	<!-- 底部 -->
+	<div class="carItem" style="height: 35vh;bottom: 0;background: transparent;" >
+		<!-- <div class="carBody" ng-click="$event.stopPropagation();" style="top: 0;background: transparent;">
+			<div class="carTop clear bd-b pt-10 pb-10 pl-10 pr-10 txt000 bgWhite" ng-show="showBottomPop" style="border-top-left-radius: 12px;border-top-right-radius: 12px;">
+				<p class="f-bolder f-16">
+					<span>终点：停车位置</span>
+					<span class="pl-10 pr-10 pt-5 pb-5 fr" ng-click="closeBottomPop()"><i class="icon-guanbi" style="color: #CBCBC3"></i></span>
+				</p>
+				<p>
+					<span class="f-bolder">起点：</span>
+					<span class="txtPrimary">我的位置</span>
+				</p>
+			</div>
+			<div class="carInfo pt-20 pb-20 pl-10 pr-10 flexWrap bgWhite" style="height: 18vh;" ng-show="showBottomPop">
+				<div class="flex" style="margin: auto;">
+					<p class="f-bolder f-15">23分钟</p>
+					<p>12公里;二环北路西段</p>
+					<p>最快路线</p>
+				</div>
+				<span class="pl-10 pr-10 pt-15 pb-15 txtfff f-18" style="background-color: #4CD964;border-radius: 5px;margin: auto;">出发</span>
+			</div>
+		</div> -->
+		<div class="flexWrap bd-t fixed txtCenter pt-5 pb-5 txt666 bgWhite bd-t" style="bottom:0px;width:100vw;">
+			<div class="flex" ng-class="{'txtPrimary':tag.current == 1}" ng-click="switchTrafficType('1')">
+				<p><span class="icon-gerenzhongxinzhuanhuan"></span></p>
+				<p>驾车</p>
+			</div>
+			<div class="flex" ng-class="{'txtPrimary':tag.current == 2}" ng-click="switchTrafficType('2')">
+				<p><span class="icon-gerenzhongxinzhuanhuan"></span></p>
+				<p>骑行</p>
+			</div>
+			<div class="flex" ng-class="{'txtPrimary':tag.current == 3}" ng-click="switchTrafficType('3')">
+				<p><span class="icon-gerenzhongxinzhuanhuan"></span></p>
+				<p>公交</p>
+			</div>
+			<div class="flex" ng-class="{'txtPrimary':tag.current == 4}" ng-click="switchTrafficType('4')">
+				<p><span class="icon-gerenzhongxinzhuanhuan"></span></p>
+				<p>步行</p>
+			</div>
+		</div>
+	</div>
+</ion-view>

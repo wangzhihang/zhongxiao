@@ -1,0 +1,115 @@
+<ion-view view-title="{{title}}" >
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+	<div style="padding-bottom: 15%;">
+		<div class="mt-10 mb-10 pl-10 f-10 txt999  ml-5" style="border-left:3px solid #1E82D2">线下订单</div>
+		<div class="directory-list">
+			<ul>
+				<li >
+					<div class="txt-info item01" ui-sref="numberOrderList">
+						<span class="ico icon-dingdanguanli1" style="color:#F51A83;"></span>
+						<p><em>号码订单</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li>
+					<div class="txt-info item02" ui-sref="kdOrderList">
+						<span class="ico icon-gongzuopiaoqingkuang-chulizhong-" style="color:#FFA600;"></span>
+						<p><em>宽带订单</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li>
+					<div class="txt-info item03" ui-sref="fixPhone">
+						<span class="ico icon-guhuakuandai" style="color:#65B5FE;"></span>
+						<p><em>固话订单</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li>
+					<div class="txt-info item03" ui-sref="telFareOrderList">
+						<span class="ico icon-chongzhidingdan" style="color:#44b549;"></span>
+						<p><em>充值订单</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+			</ul>	
+		</div>	
+		<div class="mt-10 mb-10 pl-10 f-10 txt999  ml-5" style="border-left:3px solid #1E82D2">线上订单</div>
+		<div class="directory-list">	
+			<ul>
+				<li>
+					<div class="txt-info item02" ui-sref="dianpu-guide-network-flow-order">
+						<span class="ico icon-dingdan4" style="color:#45c45d;"></span>
+						<p><em>引流订单</em></p>
+						<p><small>号码订单</small></p>
+					</div>
+				</li>
+				<!-- <li>
+					<div class="txt-info item02" ui-sref="dianpu-synergy-network-order">
+						<span class="ico icon-fandanguanli" style="color:#45c45d;"></span>
+						<p><em>异业订单</em></p>
+						<p><small>号码订单</small></p>
+					</div>
+				</li> -->
+				<!-- <li>
+					<div class="txt-info item02" ng-click="otherAccept()">
+						<span class="ico icon-qrcode" style="color:#45c45d;"></span>
+						<p><em>异业受理</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li> -->
+				<li>
+					<div class="txt-info item02" ng-click="lanOrderList()">
+						<span class="ico icon-kuandaidingdan" style="color:#45c45d;"></span>
+						<p><em>宽带订单</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				
+				<li>
+					<div class="txt-info item02" ui-sref="dianpu-microshop-lan-order-search-hz">
+						<span class="ico icon-kuandaidingdan" style="color:#45c45d;"></span>
+						<p><em>实名后置订单</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li>
+					<div class="txt-info item02" ui-sref="dianpu-microshop-work-order-list">
+						<span class="ico icon-fandanguanli" style="color:#45c45d;"></span>
+						<p><em>工单池订单</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+
+
+		<!-- <div class="mt-10 mb-10 pl-10 f-10 txt999  ml-5" style="border-left:3px solid #1E82D2">商城订单</div>
+		<div class="directory-list">	
+			<ul>
+				<li>
+					<div class="txt-info item02"  ng-click="marketOrderList()">
+						<span class="ico icon-haomadingdan" style="color:#45c45d;"></span>
+						<p><em>商城订单</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				
+			</ul>	
+		</div> -->
+
+
+</div>
+
+
+	</ion-content>
+
+</ion-view>

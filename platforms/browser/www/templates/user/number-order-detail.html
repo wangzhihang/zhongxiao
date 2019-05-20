@@ -1,0 +1,183 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="cen padding" ng-class='{"hide":loading}'>
+            <ion-spinner icon="ios-small"></ion-spinner>
+        </div>
+        <div class="number-order-list bgWhite number-order-list1">
+            <!-- <div class="top-hd-title1">
+				<h2 class="top-hd-title txt333 f-16">订单信息</h2>
+				<span class="wanchengStatus detailBtn {{status | statusColor:'color'}}"><span>{{status | statusColor:'name'}}</span></span>
+			</div> -->
+            <ul>
+                <li class="orderUserInfo">
+                    <dl class="rel">
+                        <dd>
+                            <span class="f-bolder f-15">产品信息</span>
+                            <span class="orderTimer abs f-10 {{status | statusColor:'color'}}">{{status | statusColor:'name'}}</span>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="orderDetailInfo1">
+                    <dl class="f-14">
+                        <dd class="number-order-num number-order-num1">
+                            <div class="num-order-money mt-10">
+                                <span class="order-detail-num grap-detail-num" style="font-size:1.8rem">{{orderDetail.number}}</span>
+                                <span></span>
+                                <span class="order-detail-num f-14 abs">
+									<em class="txt999">联通收费</em>
+									<em style="color:#e36426" class="grap-detail-num">{{(orderDetail.unicommFee ? orderDetail.unicommFee : orderDetail.amount)  | currency : '￥'}}</em>
+								</span>
+                            </div>
+                        </dd>
+                        <dd class="order-detail-name bd-b">
+                            <div class="txt999 f-15 num-order-name num-order-name1">{{orderDetail.productName}}</div>
+                        </dd>
+                        <!-- <dd style="margin-top:-1rem;" ng-show="numberActive">
+							<div class="bgApricot order-name-detail txt666">2017年2月4G(本地)套餐69元档福卡特惠存60元送120元12个月[社会渠道]</div>
+						</dd> -->
+                        <dd class="flexWrap" ng-if="orderDetail.status=='000003'">
+                            <span class="detailLeftTopList">SIM卡号</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.simNumber}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">首次预存</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.amount | currency : '￥'}}</span>
+                        </dd>
+                        <dd class="flexWrap" ng-hide='orderDetail.activityName=="" || orderDetail.activityName==null'>
+                            <span class="detailLeftTopList">活动</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.activityName}}</span>
+                        </dd>
+                        <dd class="flexWrap" ng-hide='orderDetail.additionalProduct==null'>
+                            <span class="detailLeftTopList">附加产品</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.additionalProduct}}</span>
+                        </dd>
+                        <dd class="flexWrap" ng-hide='orderDetail.effectiveTime==null'>
+                            <span class="detailLeftTopList">生效时间</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.effectiveTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">订购时间</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </dd>
+                        <dd class="flexWrap" ng-if="status=='000003'">
+                            <span class="detailLeftTopList">完成时间</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.finishDate | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="liNo"></li>
+               <!--  <li class="order-detail-btn">
+					<dl style="text-align:center;">
+						<dd>
+							<div><span>补写卡</span></div>
+							<div><span>补照片</span></div>
+							<div><span>补缴费</span></div>
+							<div ng-click="supplySignature()"><span>获取补签名链接</span></div>
+						</dd>
+					</dl>
+				</li> -->
+
+                <li class="orderUserInfo">
+                    <dl>
+                        <dd>
+                            <span class="f-bolder f-15">用户信息</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">客户姓名</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.customer | hideCode:'1,2'}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">联系方式</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.contactNumber}}</span>
+                        </dd>
+                        <dd class="errorInfoDetail flexWrap">
+                            <span class="detailLeftTopList">客户地址</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.address}}</span>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="liNo"></li>
+                <!-- <li>
+					<dl>
+						<dt>报错信息</dt>
+						<dd class="flexWrap">
+							<span class="orderTimerTitle">时间</span>
+							<span class="orderTimer abs">{{failedOrderList.updateTime | hideCode:'1,2'}}</span>
+						</dd>
+						<dd class="rel">
+							<span class="orderTimerTitle">节点</span>
+							<span class="orderTimer abs">{{failedOrderList.node}}</span>
+						</dd>
+						<dd class="rel errorInfoDetail flexWrap">
+							<span class="orderTimerTitle">错误信息</span>
+							<div class="f-14 txt999">{{failedOrderList.failedReason}}</div>
+						</dd>
+					</dl>
+				</li>
+				<li class="liNo"></li> -->
+            </ul>
+            <div class="img-wrap">
+                <div class="col-img"><img ng-style='imgProp' ng-src="{{idCardHeadUrl}}" /></div>
+                <div class="col-img" ng-click="changePic()"><img ng-style='imgProp' ng-src="{{customerImgUrl}}" /></div>
+                <div class="col-img">
+                    <img ng-style='imgProp' ng-src="{{signUrl}}" ng-hide="showBtn"/>
+                    <div class="rel" style="height: 100%;" ng-show="showBtn">
+                        <div class="reSignBtn bgPrimary txtfff pt-10 pb-10 f-15 border-radiu-5 abs" style="left: 5%;top: 25%;width: 25vw;" ng-click="supplySignature()">补签名</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="number-order-list">
+			<h2 class="top-hd-title">订单编号：{{orderDetail.orderCode}}</h2>
+			<ul>
+				<li>
+					<dl>
+						<dt>号码信息</dt>
+						<dd>订购号码：{{orderDetail.number | telFormat}}</dd>
+						<dd>所选套餐：{{orderDetail.productName}}</dd>
+					</dl>
+				</li>
+				<li>
+					<dl>
+						<dt>用户信息</dt>
+						<dd>客户姓名：{{orderDetail.customer | hideCode:'1,2'}}</dd>
+						<dd>联系方式：{{orderDetail.contactNumber}}</dd>
+					</dl>
+				</li>
+				<li>
+					<dl>
+						<dt>订单信息</dt>
+						<dd>订单金额：<em>{{orderDetail.amount | currency : '￥'}}</em></dd>
+						<dd>订购时间：{{orderDetail.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</dd>
+						<dd>完成时间：{{orderDetail.updateTime | date:"yyyy-MM-dd HH:mm:ss"}}</dd>
+					</dl>
+				</li>
+			</ul>
+			<div class="img-wrap">
+			 			<div class="col-img"><img ng-src="{{idCardHeadUrl}}"/></div>
+			 			<div class="col-img"><img ng-src="{{customerImgUrl}}"/></div>
+			 		</div>
+		</div> -->
+        <div class="btn-wrap" ng-show="hasElectronicWorksheets">
+            <button class="btn btn-white" ng-click="viewElectronicWorksheets()"><i class="icon-dingdan"></i>查看电子工单</button>
+        </div>
+        <div ng-show="isShowMapContainer">
+            <div id="numberMapContainer" class="mb-10 bgWhite txtCenter mapContainer bd"></div>
+            <!-- <span class="abs mapConExplain">客户开卡地址</span> -->
+        </div>
+    </ion-content>
+    <div class="bigPic flexWrap" ng-show="isShowBigPic">
+        <img ng-src="{{customerImgUrl}}" ng-style="bigPic">
+        <div class="abs" style="top:1.5rem;right:1.5rem" ng-click="closeBigPic()">
+            <span><i class="icon-guanbi1 f-30" style="color:black;"></i></span>
+        </div>
+    </div>
+</ion-view>

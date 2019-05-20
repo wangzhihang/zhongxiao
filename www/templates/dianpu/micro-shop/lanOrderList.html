@@ -1,0 +1,136 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ng-click="toggleSearchPanel()">重置</div>
+    </ion-nav-buttons>
+    <div class="bar bar-subheader" style="top: 38px;">
+        <div class="hdSwitchPanelKd">
+            <ul class="flexWrap text-center">
+                <li class="flex pt-5 pl-5 pb-5 pr-5">
+                    <button class="hmBtn" ng-class="{ 'blueBtn' : tag.current1 == 1 }" ng-click="actions.setCurrent1(1)" style="border-color:rgba(234,234,2310,1);">日期范围</button>
+                </li>
+                <li class="flex pt-5 pl-5 pb-5 pr-5">
+                    <button class="hmBtn" ng-class="{ 'blueBtn' : tag.current1 == 2 }" ng-click="actions.setCurrent1(2)" style="border-color:rgba(234,234,237,1);">手机号码</button>
+                </li>
+                <li class="flex pt-5 pl-5 pb-5 pr-5">
+                    <button class="hmBtn" ng-class="{ 'blueBtn' : tag.current1 == 3 }" ng-click="actions.setCurrent1(3)" style="border-color:rgba(234,234,237,1);">客户姓名</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="bar bar-subheader"  style="top: 100px;">
+        <div class="wrap" style="width:100%;">
+            <ul class="bgWhite flexWrap" style="height:100%;">
+                <li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag1.current == 1 }" ng-click="actions1.setCurrent(1)">全部</li>
+                <li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag1.current == 2 }" ng-click="actions1.setCurrent(2)">待开卡</li>
+                <!-- 	<li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag1.current == 3 }" ng-click="actions1.setCurrent(3)">订单完成</li>
+			 	<li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag1.current == 4 }" ng-click="actions1.setCurrent(4)">订单失败</li>
+ -->
+
+                <li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag1.current == 3 }" ng-click="actions1.setCurrent(3)">待实名</li>
+                <li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag1.current == 4 }" ng-click="actions1.setCurrent(4)">订单完成</li>
+
+
+            </ul>
+        </div>
+    </div>
+
+    <ion-content class="has-subheader" style='top: 144px;'>
+        <div class="number-order">
+            <ul>
+                <li ng-repeat="row in newOrderList" ng-click="wxOrderDetail('{{row.orderCode}}')">
+                    <div>
+                        <div class="hm-order-num">
+                            <div class="number-order-num-top" style="padding:.5rem 0;">
+                                <span class="txt666 hm-order-name" style="font-size:1.3rem;">{{row.location}} {{row.contactAddress}}</span>
+                            </div>
+                        </div>
+                        <div class="rel txt999 bd-b f-14" style="padding-bottom:.5rem;">
+                            <a href="tel:{{row.contactNumber}}" class="block" ng-click="$event.stopPropagation();">
+                                <span class="txt666">{{row.customer}}</span>
+                                <span class="haomaColor">{{row.contactNumber}}</span>
+                                <span class="abs f-12 pl-5 pr-5" style="right:0;background:#1e82d2;color:#fff;">联系客户</span>
+                            </a>
+                        </div>
+                        <div class="txt999 pt-5 f-14" style="padding-bottom:.5rem;">
+                            <span>{{row.timeStatus}}</span>
+                            <span ng-hide="row.status == '000101'">{{row.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                            <span ng-show="row.status == '000101'">{{row.finishDate | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                            <span style="right:1rem;" class="produceProgress f-13 abs {{row.color}}">{{row.wxOrderState}}</span>
+                            <!-- <span class="produceProgress abs" style="right:1.4rem;">{{row.status | code2status : 'yy_kd'}}</span> -->
+                        </div>
+                        <!-- <div class="orderInfo" ng-if="row.btn == 0">
+							<span class="itemInfo" ng-click="giveUp($index);$event.stopPropagation();">放弃订单</span>
+							<span class="itemInfo active" ng-click="manage($index)">办理</span>
+						</div>
+						<div  class="orderInfo" ng-if="row.btn == 1">
+							<span class="itemInfo active" ng-click="manage($index)">收费</span>
+						</div>
+						<div  class="orderInfo" ng-if="row.btn == 2">
+							<span class="itemInfo active" ng-click="manage($index)">取消</span>
+						</div> -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- <div class="number-order">
+			<ul>
+				<li ng-repeat="row in newOrderList">
+					<div ng-click="wxOrderDetail('{{row.orderCode}}')">
+						<div class="number-order-num">
+							<div>
+								<span class="txt333">{{row.orderCode}}</span>
+								<span></span>
+								<span class="number-money"><em>{{row.amount | currency : '￥'}}</em></span>
+							</div>
+							<div class="num-order-name">
+								<span  class="txt666">{{row.orgName}}</span>
+							</div>
+						</div>
+						<div class="num-order-time-btn">
+							<span class="txt999 num-order-time">{{row.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+							<span class="produceProgress" ng-class="{'waitColor':row.waitColor,'successColor':row.successColor,'failureColor':row.failureColor,'dealColor':row.dealColor}">{{row.wxOrderState}}</span>
+						</div>
+						<div class="orderInfo" ng-show="{{row.btnIsHide}}" ng-class="{'ng-hide':!row.btnIsHide}">
+							<span class="itemInfo" ng-click="giveUp($index)">放弃订单</span>
+							<span class="itemInfo active" ng-click="manage($index)">办理</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div> -->
+
+        <!-- <div class="number-order-list"  style="margin-top:4rem">
+			<ul>
+				<li ng-repeat="row in newOrderList">
+					<dl>
+						<dt   ng-click="wxOrderDetail('{{row.orderCode}}')">
+							<span class="fl">客户姓名：{{row.customer}}</span>
+							<a class="fr" ng-class="{'waitColor':row.waitColor,'successColor':row.successColor,'failureColor':row.failureColor,'dealColor':row.dealColor}">{{row.wxOrderState}}</a>
+						</dt>
+						<dd  ng-click="wxOrderDetail('{{row.orderCode}}')">联系电话：{{row.contactNumber | telFormat}}</dd>
+						<dd  ng-click="wxOrderDetail('{{row.orderCode}}')">联系地址：{{row.contactAddress}}</dd>
+						<dd  ng-click="wxOrderDetail('{{row.orderCode}}')">订购时间：<em>{{row.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</em></dd>
+						<dd class="orderInfo"  ng-show="row.btnIsHide"  ng-class="{'ng-hide':!row.btnIsHide}">
+							<span class="itemInfo" ng-click="giveUp($index)">放弃订单</span>
+							<span class="itemInfo active" ng-click="manage($index)">办理</span>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+		</div> -->
+        <div class="cen padding" ng-class='{"hide":loading}'>
+            <ion-spinner icon="ios-small"></ion-spinner>
+        </div>
+        <div class="cen padding" ng-click="loadMoreData($index)" ng-hide="readMore">
+            <button ng-bind-template="{{infoState}}" class="loadingMore"></button>
+        </div>
+        <div class="noMore" ng-hide="noMoreTips">
+            <span>已经到底了</span>
+        </div>
+    </ion-content>
+    <div class="mask" style="display:block;z-index:0;background:rgba(0,0,0,.25)" ng-show="mask" ng-click="cancelDateSearch()"></div>
+</ion-view>

@@ -1,0 +1,76 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<div class="bar bar-subheader" style="height:15vw;">
+		<div class="cooperateTop bgWhite" style="width:100%;height:12vw;line-height:12vw;">
+			<div class="user-img">
+				<img ng-src="{{avatar}}" id="userPic" alt="logo"/>
+			</div>
+			<div class="user-info">
+				<span>{{shopName}}</span>
+			</div>
+			<div class="user-code" ng-click="cooperateCodeShow()">
+				<span><i class="icon-qrcode" style="color:#000;"></i></span>
+			</div>
+		</div>
+		<div class="cooperateCodeBg" ng-click="close()" ng-show="cooperateCodeIsShow" style="width:100%;height:93.5vh;top:8vh;">
+			<div class="myCode cooperateCode" ng-click="$event.stopPropagation()">
+				<div class="myCodeInfo cooperateCodeInfo">
+					<div class="myCodeBody cooperateCodeBody">
+						<div id="qrbox"></div>
+					</div>					
+				</div>
+			</div>
+			<div class="shareInfoFoot" style="height:8vh;line-height:8vh;">
+				<div  class="shareInfoFootTxt pl-20">
+					点击分享选号页面
+				</div>
+				<div class="shareInfoFootBtn">
+					<button ng-click="share();$event.stopPropagation();" style="padding:1rem 2.5rem;">分享</button>
+				</div>	
+				<!-- <div class="myCodeFootBtn">
+						<button ng-click="share();$event.preventDefault()">分享</button>
+					</div> -->	
+			</div>
+		</div>
+	</div>
+
+	<ion-content class="has-subheader" style="top:95px;">
+		<ion-refresher pulling-text="下拉刷新" pulling-icon="icon-jiazaixia" refreshing-icon="" refreshing-text="正在获取服务器信息..." on-refresh="doRefresh()"></ion-refresher>
+		<section class="number-order">
+			<div class="coop-menu-list">
+				 <ion-list show-delete="false" ng-style="myObj">
+					<ion-item ng-repeat="item in orderList" ng-hide="item.status=='000003'" class="rel">
+						<div>
+							<div class="cooperateNum">
+								<span style="font-weight: bold;">{{item.number}}</span>
+								<span class="ml-5 txt666 f-14">{{item.customer}}</span>
+								<p class="txt999" style="height:21px;">{{item.productName}}</p>
+								<!-- <p class="txt999" style="height:21px;">{{item.updateTime | date:"yyyy-MM-dd HH:mm:ss"}}</p> -->
+							</div>
+							<div class="abs" style="right:1rem;top:2.5rem;">
+								<span class="cooperateBtn" ng-click="manage($index)">办理</span>
+							</div>
+						</div>
+						<ion-option-button class="button-calm" ng-click="deleteList($index)">
+				            删除
+				        </ion-option-button>
+					</ion-item>
+				</ion-list>
+			</div>
+		</section>	
+		<div class="cen padding" ng-class='{"hide":loading}'>
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+		<div class="cen padding" ng-click="loadMoreData($index)" ng-hide="readMore">
+			<button ng-bind-template="{{infoState}}" class="loadingMore"></button>
+		</div>
+		<div class="noMore" ng-hide="noMoreTips">
+			<span>已经到底了</span>
+		</div>
+	</ion-content>
+</ion-view>

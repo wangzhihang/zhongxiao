@@ -1,0 +1,388 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+        <p class="rel" ng-show="ifShowNav" style="z-index: 9999" ;>
+            <!-- 9 -->
+            <input type="text" placeholder="想要什么搜一搜" style="width:66vw;border-radius:0.3rem;text-align: center;border: 1px solid #eaeaea;" class="pl-10 pr-10" ui-sref="market-search">
+            <!--     ng-model="keyword" ng-click="toSearch()"-->
+            <span class="vertical text-999 pl-15 abs pt-10 pb-10" ui-sref="market-search" style="left:0;"><i class="icon-sousuoic txt999" style="font-size: 2rem"></i></span>
+            <!--  -->
+        </p>
+        <!-- 商城首页 -->
+
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+
+
+
+
+    <!-- 底部 -->
+    <div class="carItem" ng-show="ifShowCar" ng-click="closeCar()">
+        <div class="carBody" ng-click="$event.stopPropagation();">
+            <div class="carTop clear">
+                <span class="fl">已选商品({{allOrderNum}})</span>
+                <span class="fr" ng-click="emptyCar()"><i class="icon-shanchu2"></i>清空</span>
+            </div>
+            <div class="carInfo">
+                <ul>
+                    <li class="pt-10 pb-10 pl-10 pr-10 clear bd-b" ng-repeat="item in carList  track by $index" ng-hide="item.orderNum==0">
+                        <span class="fl">{{item.productName}}</span>
+                        <span class="fr">
+							<span class="f-14 txtBigOrange">{{item.soldPrice | currency:" ￥"}}</span>
+                        <i class="icon-jian f-20 txtBlue" ng-click="carUpOrder($index)"></i>
+                        <i>{{item.orderNum}}</i>
+                        <i class="icon-zengjiaanniu f-20 txtBlue" ng-click="carDownOrder($index)"></i>
+                        </span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="indexAddBags" ng-show="shoppongCarBtn">
+        <div class="fl pl-15 indexCar">
+            <!-- <i class="icon-gouwuche f-30 txt999 " ng-class="{'txtblue':choseColor}" ng-click="openCar()" style="
+				padding:0.8vw; background-color: #323232;border-radius:7vw;
+				box-shadow: 0rem -0.1rem 0rem 0.3rem #626262;
+				"></i> -->
+            <i class="icon-gouwuche f-30 txt999 " ng-class="{'txtblue':choseColor}" ui-sref='market-shopping-card' style="
+				padding:0.8vw; background-color: #323232;border-radius:7vw;
+				box-shadow: 0rem -0.1rem 0rem 0.3rem #626262;
+				"></i>
+            <span class="txtfff f-10 indexGoodsNum ">{{allOrderNum}}</span>
+            <span class="txtfff f-18 indexZ">￥{{allPrice |  number:2}}</span>
+        </div>
+        <div class="fr indexPay" ng-class="{'bgBlue':choseColor}" ng-click="toOrd()">
+            <!--  ui-sref="market-ord" -->
+            <span class="txtfff f-16 indexZ  indexToPay">去结算</span>
+        </div>
+    </div>
+
+
+    <div class="bgWhite  bar bar-subheader" ng-show="ifShowNav" style="z-index: 9999;">
+        <ul class="indexnav" style="width:100%">
+            <li class="flex"> <span ng-class="{ 'markethChosed' : tag.current == 1 }" ng-click="actions.setCurrent(1);" class=" indexnavHeight txtCenter txt000 f-16">商品</span></li>
+            <li class="flex"> <span ng-class="{ 'markethChosed' : tag.current == 2 }" ng-click="actions.setCurrent(2);" class=" indexnavHeight txtCenter txt000 f-16">评价</span></li>
+            <li class="flex"> <span ng-class="{ 'markethChosed' : tag.current == 3 }" ng-click="actions.setCurrent(3);" class=" indexnavHeight txtCenter txt000 f-16">商家</span></li>
+        </ul>
+    </div>
+
+    <div ng-show="ifShowNav" class="bgGray" style="position:fixed;top:88px;left:0;z-index:99;width:22%;height:90vh">
+        <ul class="fl indexGoodsTypes bgGray" style="width:100%">
+            <li ng-class="{ 'goodsTypeChosed' : tag.indexType == 1 }" ng-click="actions.goodsTypes(1);"><span class="txt000 f-14">全部</span></li>
+            <li ng-class="{ 'goodsTypeChosed' : tag.indexType == 2 }" ng-click="actions.goodsTypes(2);"><span class="txt000 f-14">手机配件</span></li>
+            <li ng-class="{ 'goodsTypeChosed' : tag.indexType == 3 }" ng-click="actions.goodsTypes(3);"><span class="txt000 f-14 ">水果</span></li>
+            <li ng-class="{ 'goodsTypeChosed' : tag.indexType == 4 }" ng-click="actions.goodsTypes(4);"><span class="txt000 f-14  ">手机</span></li>
+        </ul>
+
+    </div>
+
+    <!--商品详情简述-->
+    <div style="position: fixed; width: 100vw;height:100vh;z-index:999;
+			background: rgba(0,0,0,.5);" ng-show="isNoShowFloor" ng-click="noShowTheGood()">
+        <div class="bgWhite indexTheGoods" ng-click="$event.stopPropagation();intoGoodsInfo()" style="z-index: 9999;position: absolute!important;left: 50%;top: 45%;width: 82vw;height: 70vh;	transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);">
+
+
+            <!-- <i class="icon-fenxiang2" style="z-index: 9999;font-size:2rem;background: #999;border-radius: 50%;color: #fff;position: absolute;right: 13%;top:12%;padding:1% 0.1%;"></i> -->
+            <div style="height: 72%">
+                <img src="{{proLists.imgMain}}" style="height: 100%" />
+            </div>
+
+            <div class=" ">
+                <p class="txt000 f-14 ml-10 omitRow">{{proLists.productName}} {{proLists.keyword}}</p>
+                <p class="txt999 f-12 ml-10">月售{{proLists.sales}}<span class="txt999 f-12 pl-10">好评率{{proLists.goodAssessRate *100}}%</span></p>
+                <span class="txtBigOrange f-12  ml-10 pl-3 pr-3" style="border:0.1rem solid #fb7951;border-radius: 0.3rem;">店铺特推</span>
+                <div class="pb-10" style="height:6.6vh;">
+                    <span class="txtBigOrange f-14 fl  ml-10"><span class="f-18 " style="font-weight: 700;">{{proLists.soldPrice | currency:" ￥"}}</span></span>
+                    <span class="txtfff bgBlue fr mr-10 pl-10 pr-10 f-14" style="border-radius: 1rem;" ng-click="$event.stopPropagation();addCar()">加入购物车</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- 优惠信息弹出框 -->
+    <div style="position: fixed; width: 100vw;height:100vh;z-index:999;bottom: 0rem;
+			background: rgba(0,0,0,.5);" ng-show="discountDiv" ng-click="colsediscountDiv()">
+
+        <div class="bgWhite clear" ng-click="$event.stopPropagation()" style="z-index: 9999;position: absolute!important;bottom: 0%;width: 100vw;height: 42vh;">
+            <p class="pt-10 pb-10"><span class="f-16" style="text-align: center;display: block;">优惠活动</span>
+                <!--  -->
+            </p><i class="icon-guanbi1 fr" style="font-size:2rem;position: fixed;top:60%;
+			left:90%;" ng-click="colsediscountDiv()"></i>
+            <ul>
+                <li ng-repeat="item in activeBos" class="pl-15 pr-15 pb-5">
+                    <span class="activeStyle txtfff pl-3 pr-3">减</span><span class="pl-10">{{item.activeName}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <ion-content on-scroll="onScroll()" scroll="true">
+        <!---完整页面-->
+        <div>
+            <div class="indexTop pt-10 pb-10">
+                <div class="row ">
+                    <div class="marketLogo  col-25 pl-10">
+                        <img src="../../img/logo1_03.png" />
+                    </div>
+                    <div class="marketNames pl-10">
+                        <p class="txtfff f-20 ">号码之家</p>
+                        <p class="txtfff f-14 ">店铺地址<span class="txtfff f-12 pl-5">沣惠南路旺座国际E座901</span></p>
+                        <p class="txtfff f-14 marketNotice">公告：中国联通试点资费新政</p>
+                    </div>
+                </div>
+
+                <div class="indexTopInfo pt-10">
+                    <div class="indexTopIofoL pl-15"><span class="txtfff f-12 topInfoSpecial pl-3 pr-3">惠</span><span class="txtfff f-14">【惊喜】超值特惠</span></div>
+                    <div class="indexTopIofoR pr-15" ng-click="isShowDiscount()"><span class="txtfff f-14">特价优惠</span></div>
+                </div>
+            </div>
+
+
+            <!--<div class="bgWhite indexmainL">
+		<ul class="lisList pt-10 pb-10">
+			<li><span class="txt000 f-16" ng-class="{ 'markethChosed' : tag.current == 1 }" ng-click="actions.setCurrent(1);">商品</span></li>
+			<li><span class="txt000 f-16" ng-class="{ 'markethChosed' : tag.current == 2 }" ng-click="actions.setCurrent(2);">评价</span></li>
+			<li><span class="txt000 f-16" ng-class="{ 'markethChosed' : tag.current == 3 }" ng-click="actions.setCurrent(3);">商家</span></li>
+		</ul>
+	</div>-->
+
+
+
+            <!--商品-->
+            <div id="indexMain">
+                <div class="bgWhite  lisList ">
+                    <ul class="indexnav " style="width:100%">
+                        <li class="flex"> <span ng-class="{ 'markethChosed' : tag.current == 1 }" ng-click="actions.setCurrent(1);" class=" indexnavHeight txtCenter txt000 f-16">商品</span></li>
+                        <li class="flex" ng-click="indexEval()"> <span ng-class="{ 'markethChosed' : tag.current == 2 }" ng-click="actions.setCurrent(2);" class=" indexnavHeight txtCenter txt000 f-16">评价</span></li>
+                        <li class="flex"> <span ng-class="{ 'markethChosed' : tag.current == 3 }" ng-click="actions.setCurrent(3);" class=" indexnavHeight txtCenter txt000 f-16">商家</span></li>
+                    </ul>
+                </div>
+
+
+
+                <div class="bgWhite indexMain clear " ng-show="tag.current==1" style="border-top: 0.1rem solid #D9D9D9">
+                    <div class="fl indexGoodsTypes bgGray" style="height:70vh" ng-hide="ifShowNav">
+                        <ul style="width:100%">
+                            <li ng-class="{ 'goodsTypeChosed' : tag.indexType == 1 }" ng-click="actions.goodsTypes(1);"><span class="txt000 f-14">全部</span></li>
+                            <li ng-class="{ 'goodsTypeChosed' : tag.indexType == 2 }" ng-click="actions.goodsTypes(2);"><span class="txt000 f-14">手机配件</span></li>
+                            <li ng-class="{ 'goodsTypeChosed' : tag.indexType == 3 }" ng-click="actions.goodsTypes(3);"><span class="txt000 f-14 ">水果</span></li>
+                            <li ng-class="{ 'goodsTypeChosed' : tag.indexType == 4 }" ng-click="actions.goodsTypes(4);"><span class="txt000 f-14 ">手机</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="fr indexGoodsInfo">
+                        <ul>
+                            <li ng-click="theGoods($index)" ng-repeat="item in productList track by $index">
+                                <div class="row goodsNames pt-10 pb-10" ng-click="detaInfo($index)">
+                                    <div class="col-25">
+                                        <img src="{{item.imgMain}}" />
+                                    </div>
+                                    <div class="pl-10 goodsNamesWords ">
+                                        <p class="txt000 f-14 omitRow">{{item.productName}} {{item.keyword}}</p>
+                                        <span class="txt999 f-12">月售{{item.sales}}<span class="txt999 f-12 pl-10">好评率{{item.goodAssessRate *100}}%</span></span>
+                                        <div class="indexGoodsPrice pt-10">
+                                            <p class="txtBigOrange f-16 f-bolder">{{item.soldPrice | currency:" ￥"}}</p>
+                                            <span class="f-16 pr-5 " ng-click="$event.stopPropagation();">
+											<i class="icon-jian f-20 txtBlue" ng-click="dowmOrder($index)" ng-hide="item.orderNum==0"></i>
+											<i ng-hide="item.orderNum==0">{{item.orderNum}}</i>
+											<i class="icon-zengjiaanniu f-20 txtBlue" ng-click="upOrder($index)"></i>
+										</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+                <!--评价-->
+                <div class="bgWhite" ng-show="tag.current==2">
+                    <div class="row" style="border-top: 0.1rem solid #e4eaee;">
+                        <div class="col-33" style="text-align: center;padding-top: 5vw;">
+                            <p class="f-30 txtRed">{{totalScore}}.0</p>
+                            <p class="f-14">综合评分</p>
+                        </div>
+                        <div class="col">
+                            <ul>
+                                <li>
+                                    <span>服务态度</span>
+                                    <i class="icon-shoucang star"></i><i class="icon-shoucang star"></i><i class="icon-shoucang star"></i><i class="icon-shoucang star"></i><i class="icon-shoucang star"></i>
+                                    <span class="txtRed">{{serviceScore}}.0</span>
+                                </li>
+                                <li>
+                                    <span>商品评分</span>
+                                    <i class="icon-shoucang star"></i><i class="icon-shoucang star"></i><i class="icon-shoucang star"></i><i class="icon-shoucang star"></i><i class="icon-shoucang star"></i>
+                                    <span class="txtRed">{{productScore}}.0</span>
+                                </li>
+                                <li>
+                                    <span>物流服务</span>
+                                    <i class="icon-shoucang star"></i><i class="icon-shoucang star"></i><i class="icon-shoucang star"></i><i class="icon-shoucang star"></i><i class="icon-shoucang star"></i>
+                                    <span class="txtRed">{{logisScore}}.0</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row evalTypes bgWhite mt-5 pl-15 pr-15">
+                        <ul style="display: flex;justify-content: space-around;align-items: center;">
+                            <li class="col-25 typeseval">
+                                <span class="evalTypes_1 txtfff f-14 flex" ng-class="{'assessTypeChosed' : tag.assessType == 1 }" ng-click="actions.assessType(1);">全部({{allAssess}})</span>
+                            </li>
+                            <li class="col-25  typeseval">
+                                <span class="evalTypes_2 txt666 f-14 flex" ng-class="{'assessTypeChosed' : tag.assessType == 2 }" ng-click="actions.assessType(2);">满意({{goodAssess}})</span>
+                            </li>
+                            <li class="col-25 typeseval">
+                                <span class="evalTypes_3 f-14 flex" ng-class="{ 'assessTypeChosed' :tag.assessType == 3 }" ng-click="actions.assessType(3);">不满意({{badAssess}})</span>
+                            </li>
+                            <li class="col-25  typeseval">
+                                <span class="evalTypes_4 f-14 flex" ng-class="{'assessTypeChosed' : tag.assessType == 4 }" ng-click="actions.assessType(4);">有图({{imgAssess}})</span>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    <div class="mb-5  bgWhite " ng-repeat="item in evalList" style="border-bottom: 1px solid #eaeaea;">
+                        <div class="row bgWhite clear pt-10">
+                            <div class="col-10 fl userNames ml-15">
+                                <img src="../../img/logo1_03.png" />
+                            </div>
+                            <div class="col pl-5">
+                                <p class="f-16 ">{{item.userName}}</p>
+                            </div>
+                            <div class="col-25 fr">
+                                <span class="f-12 txt999 " style="padding-left: 1vw;">{{item.createTime  | date:"yyyy-MM-dd"}}</span>
+                            </div>
+                        </div>
+
+
+                        <div class="evalInfo bgWhite clear">
+                            <div>
+                                <p class="f-14 pb-10" style="padding-left: 17vw;padding-right: 4.8vw;">
+                                    {{item.content}}
+                                </p>
+                            </div>
+                            <div style="padding-left: 17vw;padding-right: 4.8vw;" class="evalimg">
+                                {{item.img}}
+                            </div>
+                            <div class=" fr pr-15  bgWhite claer">
+                                <button ng-disabled="item.oksupport" ng-click="addSupport($index)" style="border:none;background-color: #fff;">
+						<i class="icon-zancheng pr-5" style="font-size: 2rem" ></i><span ng-style="supportColor">{{item.praiseNum}}</span>
+					</button>
+                                <span class="pl-10">
+						<i class="icon-message pr-5" style="font-size: 1.8rem" ng-click="leaveMassage($index)"></i><span>{{item.replyNum}}</span>
+                                </span>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                        <div style="position: relative;border:1px solid #ddd;" class="" ng-show="item.applyMas">
+                            <div>
+                                <ul ng-repeat="k in applyList">
+                                    <li style="border-bottom:1px dashed #ddd;background-color: #f5f5f5;">
+                                        <div class="row  clear pt-10">
+                                            <!-- bgWhite -->
+                                            <div class="col-10 fl  ml-15">
+                                                <img src="../../img/logo1_03.png" style="height: 80%;width: 72%;" />
+                                            </div>
+                                            <div class="col pl-5">
+                                                <p class="f-16 ">{{k.userName}}</p>
+                                            </div>
+                                            <div class="col-25 fr">
+                                                <span class="f-12 txt999 " style="padding-left: 1vw;">{{k.createTime  | date:"yyyy-MM-dd"}}</span>
+                                            </div>
+                                        </div>
+                                        <div style="padding-left: 18%;padding-right: 6%;">
+                                            <span style="font-size: 13px;">{{k.content}}</span>
+                                        </div>
+                                        <!--  <span>{{k.content}}</span>
+							<span>{{k.updateTime  | date:"yyyy-MM-dd"}}</span> -->
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                            <div style="display: flex;justify-content: space-between;align-items: center;">
+                                <div style="height: 10vw;width:80vw;background-color:#f5f5f5;">
+                                    <textarea style="height:100%;width:100%;background-color:#fff;align-items: center;" ng-model="
+						item.evalContent">
+						</textarea>
+                                </div>
+                                <div style="height: 10vw;width:20vw;background-color:#fff;text-align: center;line-height: 10vw;font-size: 15px;border-left: 1px solid #ddd;" ng-click="submitReply($index)">
+                                    <span style="padding: 0.2rem;border:1px solid #fff;">发布</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div ng-show="evalList.length==0" style="font-size: 18px;text-align: center;color: #999;line-height: 100px;">
+                        <p>暂时没有相关评价</p>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+                <!--商家-->
+                <div class="businessInfo" ng-show="tag.current==3">
+                    <ul class="bgWhite mt-5">
+                        <li class="ml-15"><span class="f-16 wightWords txt000">商家信息</span></li>
+                        <li class="indexLine pl-15"><span class="f-14 pt-10 pb-10">号码之家</span></li>
+                        <li class="indexLine ml-15 mr-15"><span class="f-14  ">地址：西安市雁塔区唐延路1号旺座国际E座901室</span></li>
+                        <li class="indexLine ml-15 mr-15"><span class="f-14">电话：029-86262222</span></li>
+                    </ul>
+
+                    <ul class="bgWhite mt-5">
+                        <li class="ml-15" style="{border-bottom: 0.1rem solid #EFEFED;"><span class="f-16 wightWords txt000">活动与属性</span></li>
+                        <li>
+                            <ul>
+                                <li ng-repeat="item in activeBos" class="pl-15 pr-15 pb-5  bgWhite ">
+                                    <p class="activeStyle txtfff pl-3 pr-3">减</p><span class="pl-10">{{item.activeName}}</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+    </ion-content>
+    <!-- 	底部 -->
+    <!--  购物车  -->
+    <!-- <div class="indexAddBags">
+		<div class="fl pl-15 indexCar">
+			<i class="icon-gouwuche" style="font-size: 3rem; color:#767877;
+				padding:0.2rem; background-color: #323232;border-radius:3rem;
+				box-shadow: 0rem -0.1rem 0rem 0.3rem #626262;
+				"></i><span  class="txtfff f-10 indexGoodsNum ">1</span>
+			<span class="txtfff f-18 indexZ">￥49.90</span>
+		</div>
+		<div class="fr indexPay">
+			<span class="txtfff f-16 indexZ  indexToPay">去结算</span>
+		</div>
+	</div>-->
+</ion-view>

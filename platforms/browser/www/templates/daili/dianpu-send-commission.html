@@ -1,0 +1,28 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref='index_dl'><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content class="has-tabs">
+		<div class="bgWhite bd-b rel pt-10 pb-10 pl-10 pr-10" ng-hide="showScanCard" ng-repeat="item in dianpuList">
+			<label class="inlinebk" style="width: 8vw;">
+				<input type="checkbox" name="withdrawsList" ng-model="item.aaa" class="hide"/>
+				<span class="vertical f-18">
+					<i ng-class="item.aaa == true ? 'icon-xuanzedui txtSuccess' : 'icon-xuanze txt999'"></i>
+				</span>
+			</label>
+			<div class="inlinebk" style="width: 55vw;">
+				<span>{{item.shopName}}</span>
+			</div>
+			<div class="inlinebk abs" style="right: 2vw;top: 1vh;">
+  				<input type="text" placeholder="输入佣金" ng-model="item.money" class="inlinebk" size="8rem">
+				<input type="text" value="元" class="inlinebk bgWhite" size="2rem" disabled="true">
+			</div>
+		</div>
+	</ion-content>
+	<div class="btn-wrap fixed bottom-fixed-btn" style="bottom: 0;width:100vw;">
+		<button class="btn btn-primary" ng-click="sendCommision()">确定派发</button>
+	</div>
+</ion-view>

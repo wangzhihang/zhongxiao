@@ -1,0 +1,263 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="icon-fanhui"></i></div>
+	</ion-nav-buttons><br />
+	<ion-nav-buttons side="right">
+		<div ng-click=""><i class="icon-more"></i></div>
+	</ion-nav-buttons><br />
+	
+		<div class="ordKind bgWhite ">
+			<ul id="fenye_ul">
+				<li ><span class="txt000 f-14" ng-class="{ 'markethChosed' : tag.current == 1 }" ng-click="actions.setCurrent(1);">全部</span></li>
+				<li><span  class="txt000 f-14" ng-class="{ 'markethChosed' : tag.current == 2 }" ng-click="actions.setCurrent(2);">待付款</span></li>
+				<li><span  class="txt000 f-14"  ng-class="{ 'markethChosed' : tag.current == 3 }" ng-click="actions.setCurrent(3);">待发货</span></li>
+				<li><span  class="txt000 f-14"  ng-class="{ 'markethChosed' : tag.current == 4 }" ng-click="actions.setCurrent(4);">待收货</span></li>
+				<li><span  class="txt000 f-14"  ng-class="{ 'markethChosed' : tag.current == 5 }" ng-click="actions.setCurrent(5);">待评价</span></li>
+			</ul>
+		</div>
+	
+		<div class="carItem" ng-show='ifShowCar'  ng-click="closeCar()">
+			<div class="carBody" ng-click="$event.stopPropagation();" style="height: 45vh;">
+				<div class="carTop clear txtCenter">
+					<span class="fl icon-guanbi1" ng-click="closeCar()"></span>
+					<span>确认付款</span>
+				</div>
+				<div class="carInfo">
+					<div class="txtCenter f-24 f-bolder pt-15 pb-15">￥{{actualAmount | number:2}}</div>
+					<ul>
+						<li class="pt-10 pb-10 pl-10 pr-10 clear bd-b">
+							<span class="fl">订单信息</span>
+							<span class="fr">
+								<i>{{businessName}}</i>
+							</span>
+						</li>
+						<li class="pt-10 pb-10 pl-10 pr-10 clear bd-b" ng-click="chosePayType()">
+							<span class="fl">付款方式</span>
+							<span class="fr">
+								<i>{{payType}}</i>
+								<span class="icon-fanhui-copy"></span>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="indexAddBags">
+				<div class="fr indexPay bgBlue"  ng-click="toOrd()">
+					<span class="txtfff f-16 indexZ  indexToPay">去结算</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="carItem" ng-show='showPayType' style="bottom:0;" ng-click="closePayType()">
+			<div class="carBody" ng-click="$event.stopPropagation();" style="height: 45vh;">
+				<div class="carTop clear txtCenter">
+					<span class="fl icon-guanbi1" ng-click="closePayType()"></span>
+					<span>选择付款方式</span>
+				</div>
+				<div class="carInfo">
+					<ul>
+						<li class="pt-10 pb-10 pl-10 pr-10 clear bd-b" ng-click="payOrdType(1)">
+							<span class="fl">微信</span>
+							<span class="fr">
+								<i ng-class="{'icon-zhengque':tag.current == 1}" style="color: #1E81D1;"></i>
+							</span>
+						</li>
+						<li class="pt-10 pb-10 pl-10 pr-10 clear bd-b" ng-click="payOrdType(2)">
+							<span class="fl">沃支付</span>
+							<span class="fr">
+								<i ng-class="{'icon-zhengque':tag.current == 2}" style="color: #1E81D1;"></i>
+							</span>
+						</li>
+						<li class="pt-10 pb-10 pl-10 pr-10 clear" ng-click="payOrdType(3)">
+							<span class="fl">花呗分期</span>
+							<span class="fr">
+								<i ng-class="{'icon-zhengque':tag.current == 3}" style="color: #1E81D1;"></i>
+							</span>
+						</li>
+						<li class="pt-10 pb-10 pl-10 pr-10 clear bd-b" ng-show='showHuabeiPre' ng-click="choseHuabeiStag();">
+							<!-- <span class="fl">当前可用额度￥131.20</span> -->
+							<span class="fr">
+								<span class="txtRed">选择期数</span>
+								<i class="icon-fanhui-copy" style="color: #999;"></i>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="carItem" ng-show='HuabeiStag' style="bottom:0;" ng-click="closehuabeiPre()">
+			<div class="carBody" style="height: 45vh;">
+				<div class="carTop clear txtCenter">
+					<span class="fl icon-guanbi1" ng-click="closehuabeiPre()"></span>
+					<span>花呗分期详情</span>
+				</div>
+				<div class="carInfo" style="height: 32vh;"  ng-click="$event.stopPropagation();">
+					<div class="flexWrap pt-10 pb-10 pl-10 pr-10 bd-b" style="align-items: center;">
+						<div class="flex">
+							<p>号码之家</p>
+						</div>
+						<div class="flex">
+							<div class="flexWrap txtRight" style="flex-direction:column;">
+								<p class="flex">
+									<span>分期金额</span>
+									<span class="txtRed">{{actualAmount | currency : '￥'}}+{{platformBill | currency : '￥'}}</span>
+									<span class="txt999">(平台手续费)</span>
+								</p>
+								<p class="flex f-12">
+									<span>花呗利息</span>
+									<span>{{allServiceCharge  | currency : '￥'}}</span>
+								</p>
+								<p class="flex f-12">
+									<span>还款总额</span>
+									<span>{{total | currency : '￥'}}</span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<ul>
+						<li class="flexWrap pt-10 pb-10 pl-10 pr-10 bd-b" style="align-items: center;" >
+							<div class="flex">
+								<div class="flexWrap" style="flex-direction: column;">
+									<span class="flex">{{boa.eachToal | currency : '￥'}}*{{boa.qishu}}期</span>
+									<span class="flex txt999">手续费{{boa.serviceCharge | currency : '￥'}}/期</span>
+								</div>
+							</div>
+							<div class="flex txtRight">
+								<label class="inlinebk" style="width: 12vw;" ng-click="switchPer(1)">
+									<input type="radio" name="withdrawsList" ng-model="tag1.current1" class="hide"/>
+									<span class="vertical pl-10 pr-10 f-18">
+										<i ng-class="tag1.current1 == true ? 'icon-xuanzedui txtSuccess' : 'icon-xuanze txt999'"></i>
+									</span>
+								</label>
+							</div>
+						</li>
+						<li class="flexWrap pt-10 pb-10 pl-10 pr-10 bd-b" style="align-items: center;" ng-click="$event.stopPropagation();">
+							<div class="flex">
+								<div class="flexWrap" style="flex-direction: column;">
+									<span class="flex">{{bob.eachToal | currency : '￥'}}*{{bob.qishu}}期</span>
+									<span class="flex txt999">手续费{{bob.serviceCharge | currency : '￥'}}/期</span>
+								</div>
+							</div>
+							<div class="flex txtRight">
+								<label class="inlinebk" style="width: 12vw;" ng-click="switchPer(2)">
+									<input type="radio" name="withdrawsList" ng-model="tag1.current2" class="hide"/>
+									<span class="vertical pl-10 pr-10 f-18">
+										<i ng-class="tag1.current2 == true ? 'icon-xuanzedui txtSuccess' : 'icon-xuanze txt999'"></i>
+									</span>
+								</label>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="indexAddBags">
+				<div class="fr indexPay bgBlue" ng-click="huabeiPurche()">
+					<span class="txtfff f-16 indexZ  indexToPay">确认</span>
+				</div>
+			</div>
+		</div>
+    <ion-content>
+		<div style="margin-top:7.6vh;">
+			<div  class="mb-5">
+				<div class=" myordList " > 
+					
+					<div>
+						<ul>
+							<li ng-repeat="item in orderList" class="mt-5">
+								<div ng-show="delOrder">
+								<div class="bgWhite clear businessName pt-10 pb-10 pl-15 pr-15">
+									<div class="ordword fl">
+										<img src="../../img/logo1_03.png" />
+										<span class="pl-5 f-14">号码之家</span>
+									</div>
+									<!-- <div class="fr"  ng-click="delOrdBtn($index)" > 
+										<i class="icon-shanchu2" style="font-size: 2rem;"></i>
+									</div> -->
+								</div>
+					
+
+								<ul>
+									<li ng-repeat="e in item.orderItemList" >		
+										<div class="myordGoodsInfo  pl-15 pr-15 pt-5 pb-5">
+											<div class="row ">
+										<div class="col-25">
+											<img src="{{e.imgMain}}" />
+										</div>
+										<div class="pl-15 pt-15">
+											<p class="txt000 f-14">{{e.productName}}{{e.keywords}}</p>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class=" pl-15 pr-15 bgWhite clear" style="border-bottom: 0.1rem solid #EFEFED;"> 
+								<span class="fr pt-10 pb-10 ">共{{item.nums}}件商品&nbsp&nbsp&nbsp实付款&nbsp:&nbsp<span class="f-18" style="font-weight: 600;">￥{{item.amountPayable | number:2}}</span>
+								<!-- <span class="f-12" style="font-weight: 100;">00</span></span> -->
+						</div>
+					
+					
+					<div class=" pl-15 pr-15 bgWhite  pt-10 pb-10 " style="border-bottom: 0.1rem solid #EFEFED;" ng-show="item.status=='000001' || item.status=='000012'"> <!-- 待付款 -->
+						<span class="pl-10 pr-10 mr-10 ordListBtn pt-3 pb-3" style="margin-left: 34%;"   ng-click="checkOrd($index)">查看订单</span>
+						<span class="pl-10 pr-10 ordListBtn pt-3 pb-3 " style="border-color: #4cd964; color: #4cd964;" ng-click="toPay($index)">付款</span>
+					</div>
+
+					<div class=" pl-15 pr-15 bgWhite  pt-10 pb-10 " style="border-bottom: 0.1rem solid #EFEFED;"  ng-show="item.status=='000002' || item.status=='000018' || item.status=='000006'"> <!-- 待发货 -->
+						<span class="pl-10 pr-10 mr-10 ordListBtn pt-3 pb-3" style="margin-left: 34%;"    ng-click="checkOrd($index)">查看订单</span> 
+						<span class="pl-10 pr-10 ordListBtn pt-3 pb-3 " style="border-color: #4cd964; color: #4cd964;" ng-click="remind($index)">提醒发货</span>
+					</div>
+
+
+					<div class=" pl-15 pr-15 bgWhite  pt-10 pb-10 " style="border-bottom: 0.1rem solid #EFEFED;"  ng-show="item.status=='000003' || item.status=='000007'"> <!-- 待收货 -->
+						<span class="pl-10 pr-10 mr-10 ordListBtn pt-3 pb-3" style="margin-left: 34%;"  ng-click="checkOrd($index)" >查看订单</span>
+						<span class="pl-10 pr-10 ordListBtn  pt-3 pb-3" style="border-color: #4cd964; color: #4cd964;" ng-click="isGetOk($index)">确认收货</span>
+					</div>
+
+					<div class=" pl-15 pr-15 bgWhite  pt-10 pb-10 " style="border-bottom: 0.1rem solid #EFEFED;"   ng-show="item.status=='000004'"> <!-- 待评价-->
+						<span class="pl-10 pr-10 mr-10 ordListBtn pt-3 pb-3" style="margin-left: 34%;"  ng-click="checkOrd($index)">查看订单</span>
+						<span class="pl-10 pr-10 ordListBtn  pt-3 pb-3" style="border-color: #4cd964; color: #4cd964;"  ng-click="evalNow($index)">立即评价</span><!-- ui-sref="market-eval" -->
+					</div>
+
+					<div class=" pl-15 pr-15 bgWhite  pt-10 pb-10 " style="border-bottom: 0.1rem solid #EFEFED;" ng-show="item.status=='000005'"> <!-- 已完成  -->
+						<span class="pl-10 pr-10 mr-10 ordListBtn pt-3 pb-3" style="margin-left: 34%;"  ng-click="checkOrd($index)">查看订单</span>
+						<span class="pl-10 pr-10 ordListBtn  pt-3 pb-3" style="border-color: #4cd964; color: #4cd964;" ng-click="applyServ($index)">申请售后</span>
+					</div>
+					</div>
+							</li>
+						</ul>
+					</div>
+					
+
+				</div>
+
+			</div>
+
+
+		<!-- 缓冲圈 -->
+		<!--<div class="loadingWrap" ng-if="loading" style="margin-top: 6rem;">
+            	<ion-spinner icon="ios"></ion-spinner>
+    		</div>-->
+
+		<!--空订单  无状态码-->
+		<div class="nullOrd mt-25" ng-hide="orderNull" style="text-align: center;">
+				<div class="nullOrdPic">
+					<img src="../../img/shopNoOrder.png" />
+				</div>
+				<div class="nullOrdWord">
+					<span class="txt999 f-14">您还没有相关订单</span>
+				</div>
+		</div> 
+	
+		<div class="cen padding" ng-class='{"hide":loading}'>
+            <ion-spinner icon="ios-small"></ion-spinner>
+        </div>
+        <div class="cen padding" ng-click="loadMoreData($index)" ng-hide="readMore">
+            <button ng-bind-template="{{infoState}}" class="loadingMore"></button>
+        </div>
+        <div class="noMore" ng-hide="noMoreTips">
+            <span>已经到底了</span>
+        </div>
+	</ion-content>
+</ion-view>
+
+
+		

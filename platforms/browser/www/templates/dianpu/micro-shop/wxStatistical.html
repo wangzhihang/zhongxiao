@@ -1,0 +1,59 @@
+<ion-view hide-nav-bar="true" hide-tabs="true">
+	<ion-content>
+		<section class="userPanel">
+			<h1 ng-click="$ionicGoBack()">
+				<span><i class="icon-fanhui"></i></span>
+				<span class="logoIco"><img src="img/logo.png" alt="dianpu"/></span>
+				<em>{{shopName}}</em>
+			</h1>
+			<div>
+				<div id="container" style="height:20rem;"></div>
+			</div>
+			<a class="rtTopBtn" ui-sref="daili-shop-set"><i class="icon-xitongpeizhiguanli"></i></a>
+		</section>
+		<!-- <div class="dataInfo pt-15 pb-15">
+			<ul class="flexWrap">
+				<li class="flex text-center">
+					<p class="f-16 txtWarn"><strong>{{shopBalance | currency : ''}}</strong></p>
+					<p class="f-14 txt999"><em>店铺余额（元）</em></p>
+				</li>
+				<li class="flex text-center">
+					<p class="f-16"><strong>{{numOrderCntToday}}</strong></p>
+					<p class="f-14 txt999"><em>当日号码订单</em></p>
+				</li>
+				<li class="flex text-center">
+					<p class="f-16"><strong>{{lanOrderCntToday}}</strong></p>
+					<p class="f-14 txt999"><em>当日宽带订单</em></p>
+				</li>
+			</ul>
+		</div>
+		<div class="bgWhite hdTitle bd-t bd-b txt999 pl-10 pr-10 f-14">
+			<i class="icon-shangcidenglushijian txtWarn mr-5"></i>上次登录时间<time class="ml-5">{{loginTime | date:"yyyy-MM-dd HH:mm:ss"}}</time>
+		</div>
+		
+		<div class="txtInfoList mt-10">
+			<div class="rowItem">
+				<div class="label text-right">负责人</div>
+				<div class="labelForm">{{realName}}</div>
+			</div>
+			<div class="rowItem">
+				<div class="label text-right">联系方式</div>
+				<div class="labelForm">{{shopTel | telFormat}}</div>
+			</div>
+			<div class="rowItem">
+				<div class="label text-right">店铺工号</div>
+				<div class="labelForm">{{cuserName}}</div>
+			</div>
+			<div class="rowItem">
+				<div class="label text-right">店铺地址</div>
+				<div class="labelForm">{{address}}</div>
+			</div>
+		</div> -->
+	</ion-content>
+	<div class="loadingPage" ng-if="hideLoadingPage">
+		<div class="loadingAction text-center">
+			<ion-spinner icon="spiral" class="spinner-light"></ion-spinner>
+			<p class="txt999">页面载入中...</p>
+		</div>
+	</div>
+</ion-view>

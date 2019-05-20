@@ -1,0 +1,65 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<!-- <ion-nav-buttons side="right">
+		<div ui-sref="user-set" style="font-size:2rem;padding:.1rem 1rem;">
+			<i class="icon-xitongpeizhiguanli"></i>
+		</div>
+	</ion-nav-buttons> -->
+	
+	<ion-content>
+		<div class="dataInfoPrimary pt-15 pb-15 rel">
+			<div class="inlineBlock saleamanPic">
+				<img src="{{headImgUrl}}" ng-show="headImg">
+				<img src="img/logo1_03.png" ng-hide="headImg">
+			</div>
+			<span class="inlineBlock ml-10 f-16 txtfff">{{realName}}</span>	
+			<span class="inlineBlock txtfff abs f-10 reSetPasswordBtn" ng-click="resertPassword()">重置密码</span>
+		</div>
+		<div class="bgWhite pt-15 pb-15 saleamanCnt">
+			<ul class="flexWrap">
+				<li class="flex text-center bd-r" ng-click="orderJump()">
+					<p class="f-16"><strong>{{numOrderCntThisMon}}</strong></p>
+					<p class="f-12 txt999"><em>号码订单</em></p>
+				</li>
+				<li class="flex text-center bd-r" ui-sref="kd-order-list">
+					<p class="f-16"><strong>{{lanOrderCntThisMon}}</strong></p>
+					<p class="f-12 txt999"><em>宽带订单</em></p>
+				</li>
+				<li class="flex text-center" ng-click="shopJump()">
+					<p class="f-16"><strong>{{shopCnt}}</strong></p>
+					<p class="f-12 txt999"><em>店铺</em></p>
+				</li>
+			</ul>
+		</div>
+		<div class="bgWhite hdTitle bd-t bd-b txt999 pl-15 pr-10 f-14 salesmanTitle">
+			<i class="icon-shangcidenglushijian txtWarn mr-5"></i>上次登录时间<time class="ml-5">{{lastLoginTime}}</time>
+		</div>
+		<div class="loadingWrap" ng-if="loading">
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+		<section class="mt-5">
+			<div class="bgWhite pl-10 pr-10 mb-5 tapStyle" ng-repeat="item in shopList | orderBy : '-numOrderCntThisMon'"  ng-click="shopDetail({{item.ownerId}})">
+				<div class="complexHdTitle bd-b pt-10 pb-10 omit">
+					<i class="icon-M mr-5 vertical abs" style="color:#fdcc30;"></i>
+					<div style="padding-left:2rem;">
+						<p class="omit">{{item.shopName}}</p>
+						<p class="txt999 f-10"><small>上次登录：{{item.loginTime | date:"yyyy-MM-dd HH:mm:ss"}}</small><p>
+					</div>
+				</div>
+				<div class="pt-10 pb-10" style="padding-left:2rem;">
+					<div class="flex rel">
+						<span class="txt666">{{item.realName}}</span>
+						<span class="txt999"><span>{{item.shopTel | telFormat}}</span></span>
+						<span class="txtLabel abs vertical" ng-class="{'txtLabelDefault':item.numOrderCntThisMon == 0,'orderNumColor':item.numOrderCntThisMon!==0}" ng-click="orderJump();;$event.stopPropagation();" style="right:0">{{item.numOrderCntThisMon}}单</span>
+					</div>
+					<!-- <div class="abs vertical">
+						
+					</div> -->
+				</div>
+			</div>
+			<div class="noMore"><span class="txt">没有更多</span></div>
+		</section>
+	</ion-content>
+</ion-view>

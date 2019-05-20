@@ -1,0 +1,56 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ng-click="all()">{{txtState}}({{total}})</div>
+	</ion-nav-buttons>
+	<ion-content>
+		<!-- <div class="flexWrap cashDateList">
+			<div class="dateList">
+				<input type="date" value="{{startTime}}" ng-model='startTime' ng-change="setStartDate(startTime)">
+			</div>
+			<div class="dateList">
+				<input type="date" value="{{endTime}}" ng-model='endTime' ng-change="setEndDate(endTime)">
+			</div>
+		</div> -->
+
+		<div style="padding-bottom:5rem">
+			<ul>
+				<li class="wrap pt-10 pb-10 bd-b mb-10 tapStyle" ng-repeat="item in withdraws" ng-click="choose($index)">
+					<label class="block">
+						<div>
+							<span class="block rel">
+								<input type="checkbox" name="withdrawsList" ng-model="item.aaa" class="hide"/>
+								<span class="vertical abs pl-15 pr-15 f-18" style="left:0;">
+									<i ng-class="item.aaa == true ? 'icon-xuanzedui txtSuccess' : 'icon-xuanze txt999'"></i>
+								</span>
+								<span class="block" style="margin-left:4.5rem;">
+									<em class="block f-16">{{item.typeName}}</em>
+									<time class="block txt999">{{item.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</time>
+								</span>
+								<span class="txtLabel bgYellow txtfff vertical abs" style="right:0;">未结算</span>
+							</span>
+						</div>
+						<hr class="mt-10 mb-10"/>
+						<div>
+							<p class="flexWrap f-12 txt999" style="margin-left:4.5rem;">
+								<span class="block flex text-left">收入：<em class="txtWarn">{{item.inflowFee | currency : '￥'}}</em></span>
+								<span class="block flex text-center">支出：<em>{{item.outflowFee | currency : '￥'}}</em></span>
+								<span class="block flex text-right">结算：<em class="txtSuccess">{{item.withdrawedFee | currency : '￥'}}</em></span>
+							</p>
+						</div>
+					</label>
+				</li>
+			</ul>
+		</div>
+		<div class="loadingWrap" ng-if="loading">
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+		
+	</ion-content>
+	<div class="fixBtm bd-t" >
+		<span>合计：<em class="txtWarn">{{sum | currency : '￥'}}</em></span>
+		<button class="vertical abs bgPrimary block txtfff pl-15 pr-15" style="right:0;border:none;"  ng-click="settlement()">结算（{{checkedTotal}}）</button>
+	</div>
+</ion-view>

@@ -1,0 +1,63 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+
+		<div class="info-list">
+			<ul>
+				<li>
+					<div class="info-label">
+						<span>纳入号码：</span>
+					</div>
+					<div class="info-cont">
+						<input type="tel"  ng-keyup="telChange()" ng-model="input.number" placeholder="输入所需纳入的号码" class="txt-box"/>
+					</div>
+				</li>
+				<!-- <li ng-hide="divShow.type">
+					<div class="info-label">
+						<span>电信类型：</span>
+					</div>
+					<div class="info-cont">
+						<select class="select" ng-model="input.type" ng-options="item.name for item in typeli"></select>
+						<button class="rt-btn">
+							<i class="icon-xiala2"></i>
+						</button>
+					</div>
+				</li> -->
+				<li ng-hide="divShow.card">
+					<div class="info-label">
+						<span>证件号码：</span>
+					</div>
+					<div class="info-cont">
+						<input type="text" ng-model="input.pspt_id" placeholder="请输入身份证号码" class="txt-box"/>
+					</div>
+				</li>
+				<li ng-hide="divShow.package">
+					<div class="info-label">
+						<span>号码套餐：</span>
+					</div>
+					<div class="info-cont">
+						<input type="text" ng-model="input.package" class="txt-box" readonly="readonly" />
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		
+		<div class="getIdDeviceType" ng-hide="divShow.btn">
+			<ul>
+				<li ng-show="editPackageShow"><button class="device" ng-click="editPackageNo()" ng-disabled="resState">纳入</button></li>
+				<!-- <li ng-show="editPackageShow" ng-if="editPackageIf"><button class="device" ng-click="editPackageOk()" ng-disabled="resState">修改套餐</button></li> -->
+				<li ng-show="nextShow" ng-show="edit"><button class="device" ng-click="getCustId()" ng-disabled="resState">下一步</button></li>
+			</ul>
+		</div>
+		
+		<div class="cen padding" ng-hide="loading">
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+	</ion-content>
+</ion-view>

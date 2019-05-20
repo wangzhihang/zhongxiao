@@ -1,0 +1,41 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+<ion-nav-buttons side="left">
+	<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+</ion-nav-buttons>
+
+<ion-content>
+
+	<div class="userInfoForm">
+		<ul>
+			<li class="selectArea">
+				<label>提供方式</label>
+				<select  ng-model="input.psptTypeCode" ng-options="fB.name for fB in psptTypeCodeList" class="input-text"></select>
+			</li>
+			<li>
+				<label>证件编码：</label>
+				<input type="text" class="input-text" ng-model="input.psptId" placeholder=""/>
+			</li>
+		</ul>
+	</div>
+	<div class="btn-wrap">
+		<button class="btn btn-primary" ng-click="order()" ng-disabled="resState">确定</button>
+	</div>
+	<div class="cen padding" ng-show="resState">
+		<ion-spinner icon="ios-small"></ion-spinner>
+	</div>
+	<!--搜索历史-->
+		<div class="search-show-list" ng-show="isNull">
+			<h2>搜索历史：<a class="fr calm" ng-click="editHistory()">{{editHistoryText}}</a></h2>	
+			<ul class="item-val">
+				<li ng-repeat="row in historyList track by $index" ng-click="queryHistory('{{row}}')">
+					<span class="icon-sousuo1" style="color:#999"></span>
+					{{row}}
+					<span class="rt-btn fr icon-shanchu" ng-show="delList"></span>
+				</li>
+			</ul>
+			<div class="padding cen" ng-click="clearHistory()">
+				<a style="color:#999;">清除搜索记录</a>
+			</div>
+		</div>
+</ion-content></ion-view>

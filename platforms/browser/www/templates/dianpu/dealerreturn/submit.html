@@ -1,0 +1,46 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+
+<ion-nav-buttons side="left">
+	<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
+	<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+</ion-nav-buttons>
+<ion-content>
+
+
+<div class="userInfoForm" ng-class='{"hide":divDisplay[0]}'>
+	<ul>
+		<li>
+			<label>用户姓名：</label>
+			<input type="text" class="input-text" ng-model="simInput.name"/>
+		</li>
+		<li>
+			<label>身份证号码：</label>
+			<input type="text" class="input-text" ng-model="simInput.cardId"/>
+		</li>
+		<li>
+			<label>手机号码：</label>
+			<input type="text" class="input-text" ng-model="simInput.number"/>
+		</li>
+		<li>
+			<label>手机套餐：</label>
+			<input type="text" class="input-text" ng-model="simInput.productName" />
+		</li>
+	</ul>
+</div>
+
+
+<div ng-class='{"hide":divDisplay[1]}'>
+	<div class="btn-wrap">
+		<button class="btn btn-primary" ng-click="order()" ng-class='{"active":btn_type}'>{{bin_text}}</button>
+	</div>
+</div>
+
+
+
+<div class="cen" ng-class='{"hide":divDisplay[2]}'><ion-spinner icon="ios-small"></ion-spinner><br />订单生成中</div>
+
+
+</ion-content></ion-view>

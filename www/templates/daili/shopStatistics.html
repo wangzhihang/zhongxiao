@@ -1,0 +1,69 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index_dl"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="flexWrap bgWhite pt-10 pb-10 pl-10">
+			<strong class="flex f-15">店面统计</strong>
+			<p class="flex txtRight pr-10">
+				<span>指标自定义</span>
+				<span class="icon-fanhui-copy txt999"></span>
+			</p>
+		</div>
+		<div class="bgWhite flexWrap rel">
+			<aside class="fixTitle inlinebk pl-10 pr-10 txtCenter">
+				<ul class="filterBar">
+					<li class="itemRow pt-10 pb-10">店面名称</li>
+					<li class="itemRow pt-10 pb-10">2G高新网络</li>
+					<li class="itemRow pt-10 pb-10">2G高新网络高新网络</li>
+					<li class="itemRow pt-10 pb-10">2G高新网络高新网络</li>
+				</ul>	
+			</aside>
+			<ion-scroll zooming="true" direction="x" scrollbar-x="false" class="main inlinebk flexFix">
+					<div class="infoCont">
+						<div class="tableInfo shopTableInfo" style="width: 270vw;">
+							<div class="tr flexWrap">
+								<div class="td flex txtCenter" ng-repeat="item in lanmuList">{{item}}</div>
+							</div>
+							<div class="tr flexWrap">
+								<div class="td flex txtCenter">10</div>
+								<div class="td flex txtCenter">10%</div>
+								<div class="td flex txtCenter">12</div>
+								<div class="td flex txtCenter">号码之家</div>
+								<div class="td flex txtCenter">5%</div>
+								<div class="td flex txtCenter">200</div>
+								<div class="td flex txtCenter">20%</div>
+								<div class="td flex txtCenter">200</div>
+								<div class="td flex txtCenter">60%</div>
+							</div>
+							<div class="tr flexWrap">
+								<div class="td flex txtCenter">10</div>
+								<div class="td flex txtCenter">10%</div>
+								<div class="td flex txtCenter">12</div>
+								<div class="td flex txtCenter">号码之家</div>
+								<div class="td flex txtCenter">5%</div>
+								<div class="td flex txtCenter">200</div>
+								<div class="td flex txtCenter">20%</div>
+								<div class="td flex txtCenter">200</div>
+								<div class="td flex txtCenter">60%</div>
+							</div>
+							<div class="tr flexWrap">
+								<div class="td flex txtCenter">10</div>
+								<div class="td flex txtCenter">10%</div>
+								<div class="td flex txtCenter">12</div>
+								<div class="td flex txtCenter">号码之家</div>
+								<div class="td flex txtCenter">5%</div>
+								<div class="td flex txtCenter">200</div>
+								<div class="td flex txtCenter">20%</div>
+								<div class="td flex txtCenter">200</div>
+								<div class="td flex txtCenter">60%</div>
+							</div>
+						</div>
+					</div>
+				</ion-scroll>
+		</div>
+	</ion-content>
+</ion-view>

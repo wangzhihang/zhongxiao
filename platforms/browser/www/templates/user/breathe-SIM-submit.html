@@ -1,0 +1,57 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref='index'><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class='bgWhite'>
+            <ul>
+                <li class='pt-15 pb-15 bd-b flexWrap'>
+                    <div class="width-23 txtCenter" style='margin:auto;'>
+                        <span>SIM卡号：</span>
+                    </div>
+                    <div class='flexFix'>
+                        <div class="flexWrap txtLeft pl-0 pr-0 rel">
+                            <input type="text" maxlength='19' ng-model="data.sim" class="textBox width-70 bd" style="background: #F8F9FA;min-height: 30px;" ng-change='searchSim()' />
+                            <ul class='abs width-70 bgWhite txt000 txtCenter' style="top:30px;z-index:100;" ng-show='showSimInfo'>
+                                <li style="padding:.5rem 0;" ng-repeat='item in simCardList' ng-click='choseSim("{{item}}")'>{{item}}</li>
+                            </ul>
+                            <div class='flexFix txtCenter txtBigOrange' style='margin:auto;' ng-click='clientQr()'>扫码</div>
+                        </div>
+                    </div>
+                </li>
+                <li class='pt-15 pb-15 bd-b flexWrap'>
+                    <div class="width-23 txtCenter" style='margin:auto;'>
+                        <span>办理号码：</span>
+                    </div>
+                    <div class='flexFix'>
+                        <div class="flexWrap txtLeft pl-0 rel">
+                            <input type="tel" maxlength='11' ng-model="data.mainNumber" class="textBox width-90 bd" style="background: #F8F9FA;min-height: 30px;" />
+                            <!-- <div class="width-70 abs bgWhite txt000 txtCenter" style="top:20px;z-index:100;" ng-show='showMainSimInfo'>
+                                <p style="padding:.5rem 0;">1521111111111111111111</p>
+                                <p style="padding:.5rem 0;">1521111111111111111111</p>
+                                <p style="padding:.5rem 0;">1521111111111111111111</p>
+                                <p style="padding:.5rem 0;">1521111111111111111111</p>
+                            </div> -->
+                        </div>
+                    </div>
+                </li>
+                <!-- <li class='pt-15 pb-15 flexWrap bd-b'>
+                    <div class="width-23 txtCenter" style='margin:auto;'>
+                        <span>副卡号码：</span>
+                    </div>
+                    <div class="txtLeft pl-0 flexFix">
+                        <input type="tel" maxlength='11' ng-model="data.minorNumber" class="textBox width-90 bd mt-0" style="background: #F8F9FA;min-height: 30px;" />
+                    </div>
+                </li> -->
+            </ul>
+        </div>
+
+    </ion-content>
+    <div class="btn-wrap fixed" style="bottom: 0;width:100vw;">
+        <button class="btn btn-primary" ng-click="submit()">提交开卡信息</button>
+    </div>
+</ion-view>

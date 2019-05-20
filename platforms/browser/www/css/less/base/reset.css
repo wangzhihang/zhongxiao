@@ -1,0 +1,334 @@
+@charset "utf-8";
+
+/*** General::Reset ***/
+
+html {
+    -webkit-text-size-adjust: 100%;
+    font-size: 62.5%;
+}
+
+@media only screen and (min-width: 481px) {
+    html {
+        font-size: 94%!important;
+    }
+}
+
+@media only screen and (min-width: 561px) {
+    html {
+        font-size: 109%!important;
+    }
+}
+
+@media only screen and (min-width: 641px) {
+    html {
+        font-size: 125%!important;
+    }
+}
+
+*::-webkit-scrollbar {
+    width: 0;
+}
+
+* {
+    word-wrap: break-word;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: inherit;
+    font: inherit;
+    outline: none;
+}
+
+a,
+button,
+input[type="button"] {
+    cursor: pointer;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="text"] {
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+i,
+em,
+del,
+address,
+cite {
+    font-style: normal;
+}
+
+ol,
+ul {
+    list-style-type: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+}
+
+img {
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+a,
+area {
+    text-decoration: none;
+    outline: none;
+    color: inherit;
+}
+
+a:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+input::-webkit-input-placeholder,
+input::-moz-placeholder {
+    color: inherit;
+    line-height: 1;
+}
+
+
+/*article,aside,dialog,footer,header,section,footer,nav,menu,figure,figcaption{display:block;}*/
+
+input[type="radio"],
+input[type="checkbox"] {
+    vertical-align: middle;
+    margin-top: -2px;
+    margin-bottom: 1px;
+}
+
+mark {
+    background: none;
+}
+
+
+/* Preset */
+
+body {
+    font-size: 14px/150%;
+    font: 1.4rem/150% "microsoft yahei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, tahoma, arial, Verdana, sans-serif, "\5B8B\4F53";
+    background: #f5f4f9;
+    overflow: auto;
+    color: #333;
+}
+
+
+/*设置覆盖ionic默认背景色*/
+
+.pane,
+.view {
+    background-color: #f5f4f9!important;
+}
+
+.spinner svg {
+    width: 40px!important;
+    height: 40px!important;
+}
+
+
+/*重置弹出背景透明色*/
+
+.popup-container .popup {
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 5px;
+}
+
+.popup-container .popup .popup-body {
+    color: #666;
+}
+
+.bar.bar-header {
+    padding-left: 0!important;
+}
+
+
+/*重置::套餐选择页面原始UI样式*/
+
+.package-detail .cc {
+    margin-bottom: 10px;
+}
+
+.package-detail .cc dd {
+    display: none;
+}
+
+.package-detail .show dd {
+    display: block;
+}
+
+.package-detail .show dt i {
+    color: #42abef;
+}
+
+.package-detail .item {
+    border: none;
+    font-size: 14px;
+    padding: 0;
+    color: #999;
+}
+
+.package-detail .ion-checkmark:before {
+    content: "\e625";
+    font-family: 'iconfont';
+    visibility: visible;
+    color: gray;
+    font-size: 16px;
+}
+
+.package-detail .item-radio input:checked+.radio-content .radio-icon:before {
+    content: "\e626";
+    color: #42abef;
+}
+
+.package-detail .item-radio .radio-icon {
+    left: -14px;
+    top: -5px;
+    padding: 3px 14px;
+}
+
+.package-detail .item-complex .item-content,
+.item-radio .item-content {
+    padding: 10px 0 10px 30px;
+}
+
+.package-detail .item,
+.item h1,
+.item h2,
+.item h3,
+.item h4,
+.item h5,
+.item h6,
+.item p,
+.item-content,
+.item-content h1,
+.item-content h2,
+.item-content h3,
+.item-content h4,
+.item-content h5,
+.item-content h6,
+.item-content p {
+    white-space: normal;
+}
+
+.package-detail .item-radio input:checked+.radio-content .item-content {
+    background: none;
+}
+
+.package-detail .checkbox input:before,
+.checkbox-icon:before {
+    border-radius: 0;
+}
+
+.package-detail .checkbox input:after,
+.checkbox-icon:after {
+    width: 10px;
+}
+
+.package-detail .item-checkbox {
+    padding: 10px 0 10px 30px;
+    margin-left: .5rem;
+}
+
+.package-detail .item-checkbox .checkbox {
+    left: -2px;
+}
+
+.package-detail .checkbox input,
+.checkbox-icon {
+    width: 0;
+    height: 0;
+    margin-top: 4px;
+}
+
+.package-detail .checkbox input,
+.checkbox-icon:before {
+    content: "\e699";
+    font-family: 'iconfont';
+}
+
+.package-detail .checkbox input,
+.checkbox-icon:after {
+    position: static;
+    top: 0;
+    left: 0;
+    display: initial;
+    width: 0;
+    height: 0;
+    border: none;
+    border-top: 0;
+    border-right: 0;
+    content: ' ';
+}
+
+.package-detail .checkbox input:before,
+.checkbox-icon:before {
+    border: none;
+}
+
+.package-detail .checkbox input:checked:before,
+.checkbox input:checked+.checkbox-icon:before {
+    content: "\e612";
+    font-family: 'iconfont';
+    color: #66acea;
+    background: none;
+    border: none;
+}
+
+.bar.bar-header {
+    background: #fff;
+    color: #000;
+    padding-left: 15px;
+    border-bottom: 1px solid #eaeaed;
+}
+
+.filterDisplay {
+    display: none;
+}
+
+.item-list small.filterHide {
+    display: none;
+}
+
+.item-list small.filterShow {
+    display: block;
+}
+
+
+/* 顶部按钮 */
+
+.bar .title+.buttons {
+    right: 10px;
+}
+
+.bar .buttons-right span,
+.bar .buttons-left span {
+    line-height: 38px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.bar .buttons-right span div {
+    padding-right: 0px;
+}
+
+.scroll .btn-wrap .hide {
+    display: none;
+}

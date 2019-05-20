@@ -1,0 +1,16 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<div class="autograph-hd">
+		<h1>签名</h1>
+	</div>
+	<div class="autograph">
+		<div class="signature"></div>
+	</div>
+	<div class="autograph-btm">
+		<div class="btn-area">
+			<button><div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div></button>
+			<button id="clearBtn" ng-click="clearCanvas()">重新输入</button>
+			<button id="saveBtn" ng-click="saveSignature()" ng-disabled="resState">保存签名</button>
+		</div>
+	</div>	
+	<style>ion-nav-bar{display:none;}</style>
+</ion-view>

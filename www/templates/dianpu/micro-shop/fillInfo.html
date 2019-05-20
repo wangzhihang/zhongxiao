@@ -1,0 +1,69 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-content >
+        <section class="fill-wrapper">
+            <div class="fill">
+                <h2>已选择
+                    <span class="bychoseCard txtBlue">"{{productName}}"</span>
+                </h2>
+                <h2>请选择提供身份证件姓名</h2>
+                <ul class="fill-list">
+                    <li>
+                        <div class="p-title">姓名</div>
+                        <div class="p-content">
+                        <input class="certName" type="text" title="姓名" ng-model=" formInfo.userName" placeholder="请输入身份证姓名"/></div>
+                    </li>
+                    <li >
+                        <div class="p-title">联系电话</div>
+                        <div class="p-content">
+                            <input class="mobilePhone" type="tel" title="联系电话" ng-model="formInfo.telNum"  placeholder="请输入联系电话" maxlength=11/>
+                        </div>
+                  </li>
+                </ul>
+
+                <h2>请填写收货地址</h2>
+                <ul class="fill-list">
+                    <li ng-click="choseArea()">
+                        <div class="p-title">所在地区</div>
+                        <div class="p-content">
+                        <input class="certArea txt999" type="text" title="所在地区" ng-model=" formInfo.area" placeholder="请选择区域"/></div>
+                    </li>
+                   
+                    <li>
+                        <div class="p-title"></div>
+                        <div class="">
+                            <input class="" type="text" title="详细地址" ng-model="formInfo.telDetail"  placeholder="街道/镇+村/小区/写字楼+门牌号(选填)" maxlength=11 style="width:95%"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+        <section class="apply" style="margin-top:3rem">
+      
+            <div class="btn-box">
+                <a id="submit" class="btn f-18" ng-click="confirm()">立即提交</a>
+            </div>
+            <div class="f-12 txt999 mt-10 " style="width:90%;margin:auto;">本次活动为阶段性活动，发布数量有限，请保持联系号码畅通。</div>
+            <div class="f-12 txt999" style="width:90%;margin:auto;">我们可能随时与您联系，联系电话无人接听或恶意下单情况，将不予发货。</div>
+        </section>
+  </ion-content>
+  <!-- 区域 -->
+    <div class="allCity" ng-show="isNoShowArea" ng-click="closeCity()">
+        <div class="sidebar location slip">
+            <ul class="first-list province" style="width:25%" ng-click="$event.stopPropagation();">
+                <li ng-repeat="item in provinceList" ng-class="{'selected':tag.current1=='{{item.id}}'} " ng-click="actions.setCurrent1($index);" >{{item.name}}</li>
+            </ul>   
+            <ul class="other-list city" style="width:40%"  ng-click="$event.stopPropagation();">
+                <li ng-repeat="item in cityList" ng-class="{'selected':tag.current=='{{item.id}}'} " ng-click="actions.setCurrent($index)">{{item.name}}</li>
+            </ul>
+            <ul class="other-list city" style="width:35%"  ng-click="$event.stopPropagation();">
+                <li ng-repeat="item in countyList" ng-class="{'selected':tag.current2=='{{item.id}}'} " ng-click="actions.setCurrent2($index)">{{item.name}}</li>
+            </ul>
+        </div>
+    </div>
+</ion-view>

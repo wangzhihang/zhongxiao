@@ -1,0 +1,38 @@
+<ion-view view-title="{{title}}">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ng-click="saveUserInfo()">{{editShop}}</div>
+	</ion-nav-buttons>
+	<ion-content>
+		
+		<div class="info-list mt-0">
+			<ul>
+				<li>
+					<div class="info-label width-23 txtRight pl-0">
+						<span>店铺名称：</span>
+					</div>
+					<div class="info-cont txtLeft pl-0">
+						<input type="text" ng-show="editVal" ng-model="data.shopName" class="textBox width-100 txt999" id="inputName" />
+						<span ng-show="showData">{{data.shopName}}</span>
+						<!-- <span class="icon-fanhui abs transformX"></span> -->
+					</div>
+				</li>
+				<li class="flexWrap">
+					<div class="txt333 width-23 txtRight pl-0">
+						<span>店铺地址：</span>
+					</div>
+					<div class="flexFix txt999 txtLeft pl-0">
+						<input type="text" ng-show="editVal" ng-model="data.address" class="textBox width-100 txt999"/>
+						<span ng-show="showData">{{data.address}}</span>
+						<!-- <span class="icon-fanhui abs transformX"></span> -->
+					</div>
+				</li>
+			</ul>
+		</div>
+
+	</ion-content>
+
+</ion-view>

@@ -1,0 +1,111 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="formList">
+			<ul>
+				<li class="flexWrap bgWhite pt-10 pb-10 bd-b rel">
+					<div class="width-25 txtRight">代理商名称：</div>
+					<div class="flexFix">
+						<input type="text" class="textBox pl-10" ng-model="data.userName" ng-blur="userName()" placeholder=" 请输入代理商名称" maxlength="11"/>
+						<span class="vertical abs txtBestRed" style="right:10;">{{userNameErrorTips}}</span>
+					</div>
+				</li>
+				<li class="flexWrap bgWhite pt-10 pb-10 bd-b rel">
+					<div class="width-25 txtRight">代理商税号：</div>
+					<div class="flexFix">
+						<input type="text" class="textBox" ng-model="data.taxNumber" ng-blur="taxNumber()" placeholder="与上传的营业执照相同" minlength="16"/>
+						<span class="vertical abs txtBestRed" style="right:10;">{{taxNumberErrorTips}}</span>
+					</div>
+				</li>
+				<li class="flexWrap bgWhite pt-10 pb-10 bd-b rel">
+					<div class="width-25 txtRight">联系电话：</div>
+					<div class="flexFix">
+						<input type="text" class="textBox" placeholder="请输入联系电话" ng-model="data.tel" ng-blur="tel()" maxlength="11"/>
+						<span class="vertical abs txtBestRed" style="right:10;">{{telErrorTips}}</span>
+					</div>
+				</li>
+				<li class="flexWrap bgWhite pt-10 pb-10 bd-b rel">
+					<div class="width-25 txtRight">支付宝账号：</div>
+					<div class="flexFix">
+						<input type="text" class="textBox" placeholder="请输入支付宝账号" ng-model="data.alipayAccount" ng-blur="alipayAccount()"/>
+						<span class="vertical abs txtBestRed" style="right:10;">{{alipayAccountErrorTips}}</span>
+					</div>
+				</li>
+				<li class="flexWrap bgWhite pt-10 pb-10 bd-b rel">
+					<div class="width-25 txtRight">支付宝实名：</div>
+					<div class="flexFix">
+						<input type="text" class="textBox" placeholder="请输入支付宝真实名称" ng-model="data.alipayName" ng-blur="alipayName()"/>
+						<span class="vertical abs txtBestRed" style="right:10;">{{alipayNameErrorTips}}</span>
+					</div>
+				</li>
+				<li class="flexWrap bgWhite pt-10 pb-10 bd-b rel">
+					<div class="width-25 txtRight">门店名称：</div>
+					<div class="flexFix">
+						<input type="tel" class="textBox" placeholder="请输入门店名称" ng-model="data.dianpuName" ng-blur="dianpuName()"/>
+						<span class="vertical abs txtBestRed" style="right:10;">{{dianpuNameErrorTips}}</span>
+					</div>
+				</li>
+				<li class="flexWrap bgWhite pt-10 pb-10 bd-b rel">
+					<div class="width-25 txtRight">门店所属地址：</div>
+					<div class="flexFix" ng-click="choseCity()">
+						<span class="txt999"  style="right:10;top: 20%;">{{arearValue}}</span>
+					</div>
+				</li>
+				<li class="flexWrap bgWhite pt-10 pb-10 bd-b rel">
+					<div class="width-25 txtRight">门店所属县：</div>
+					<div class="flexFix">
+						<input type="text" class="textBox" placeholder="请输入门店所属县" ng-model="data.dianpuCounty" ng-blur="dianpuCounty()"/>
+						<span class="vertical abs txtBestRed" style="right:10;">{{dianpuCountyErrorTips}}</span>
+					</div>
+				</li>
+				<li class="flexWrap bgWhite pt-10 pb-10 bd-b rel">
+					<div class="width-25 txtRight">门店详细地址：</div>
+					<div class="flexFix">
+						<input type="tel" class="textBox" placeholder="请输入详细地址（不少于6位）" ng-model="data.detailAdd" ng-change="detailAdd()"/>
+						<span class="vertical abs txtBestRed" style="right:10;">{{detailAddErrorTips}}</span>
+					</div>
+				</li>
+				<li class="flexWrap bgWhite pt-10 pb-10 bd-b rel">
+					<div class="width-25 txtRight">上传营业执照：</div>
+					<div class="flexFix">
+						<input type="file" capture="camera" accept="image/*" ng-src={{files[0]}} onchange='angular.element(this).scope().businessAvatar(this)'/>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<!-- <div class="compare">
+			<ul class="uploadPic width-50">
+				<li class="rel" ng-click="CameraBusinessLicense()" ng-show="showBusinessPhoto">
+					<img src="img/yyzz.png"/>
+					<p class="abs txt999 f-14">点击上传营业执照</p>
+				</li>
+				<li class="rel" ng-click="CameraBusinessLicense()" ng-hide="showBusinessPhoto">
+					<img ng-src="{{businessAvatar}}"/>
+					<p class="abs txt999 f-14">重新上传营业执照</p>
+				</li>
+			</ul>
+		</div> -->
+
+		<div class="btn-wrap">
+			<ion-spinner icon="ios-small" class="spinner-light" ng-if="loading"></ion-spinner>
+			<button class="btn btn-primary" ng-click="submitForm()"  ng-disabled="resState">{{stateTxt}}</button>
+		</div>
+	</ion-content>
+	<div class="allCity" ng-show="isNoShowArea" ng-click="closeCity()">
+		<div class="sidebar location slip">
+			<ul class="first-list province" style="width:50%" ng-click="$event.stopPropagation();">
+				<li ng-repeat="item in provinceList" ng-class="{'selected':tag.current1=='{{item.cateCode}}'} " ng-click="actions.setCurrent1('{{item}}');" >{{item.cateName}}</li>
+			</ul>	
+			<ul class="other-list city" style="width:50%"  ng-click="$event.stopPropagation();">
+				<li ng-repeat="item in cityList" ng-class="{'selected':tag.current=='{{item.cateCode}}'} " ng-click="actions.setCurrent('{{item}}')">{{item.cateName}}</li>
+			</ul>
+		</div>
+	</div>
+</ion-view>

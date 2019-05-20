@@ -1,0 +1,30 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="compare">
+			<ul class="uploadPic">
+				<li class="rel" ng-click="CameraDoor()" ng-hide="showPhoto">
+					<img src="img/mtz.png"/>
+					<p class="abs txt999 f-14">点击上传门头照</p>
+				</li>
+				<li class="rel" ng-show="showPhoto">
+					<img ng-src="{{avatar}}"/>
+					<p class="abs txt999 f-14">重新上传门头照</p>
+				</li>
+				<li class="rel" ng-click="CameraBusinessLicense()"  ng-hide="showBusinessPhoto">
+					<img src="img/yyzz.png"/>
+					<p class="abs txt999 f-14">点击上传营业执照</p>
+				</li>
+				<li class="rel" ng-show="showBusinessPhoto">
+					<img ng-src="{{businessAvatar}}"/>
+					<p class="abs txt999 f-14">重新上传营业执照</p>
+				</li>
+			</ul>
+		</div>
+		<div class="btn-wrap">
+			<button class="btn btn-primary" ng-click="uploadPic()">上传照片</button>
+		</div>
+	</ion-content>
+</ion-view>

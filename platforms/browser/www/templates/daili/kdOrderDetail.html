@@ -1,0 +1,322 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index_dl"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	
+	<ion-content>
+		<div class="cen padding" ng-class='{"hide":loading}'>
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+		<!-- <div class="complexHdTitle bd-b mb-10 pl-15 pr-15 pt-15 pb-15 bgWhite">
+			<p>订单编号：{{orderCode}}</p>
+			<p class="txt999" style="margin-top:-.25rem;">
+				<small>订单状态：{{status}}</small>
+			</p>
+		</div>
+		
+		<div class="wrap mb-10 bd-b">
+			<div class="hdTitle bd-b">联系人信息</div>
+			<ul class="txtInfoList">
+				<li class="rowItem">
+					<div class="label text-right">联系人：</div>
+					<div class="labelForm">{{customer}} </div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">联系方式：</div>
+					<div class="labelForm">{{contractNumber | telFormat}}</div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">装机地址：</div>
+					<div class="labelForm">{{address}}</div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">订单总金额：</div>
+					<div class="labelForm"><strong class="txtWarn">{{amount | currency : '￥'}}</strong></div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">下单时间：</div>
+					<div class="labelForm">{{createTime | date:"yyyy-MM-dd HH:mm:ss"}}</div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">备注信息：</div>
+					<div class="labelForm">{{comment}}</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="wrap mb-10 bd-b">
+			<div class="hdTitle bd-b">宽带信息</div>
+			<ul class="txtInfoList">
+				<li class="rowItem">
+					<div class="label text-right">宽带套餐：</div>
+					<div class="labelForm">{{detailedProductName}}</div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">宽带号码：</div>
+					<div class="labelForm">{{lanNumber | telFormat}}</div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">宽带金额：</div>
+					<div class="labelForm">{{lanAmount | currency : '￥'}}</div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">套餐活动：</div>
+					<div class="labelForm">{{lanActivityName}}</div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">活动价格：</div>
+					<div class="labelForm">{{lanActivityPrice | currency : '￥'}}</div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">光猫价格：</div>
+					<div class="labelForm">{{ftthAmount | currency : '￥'}}</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="wrap mb-10 bd-b">
+			<div class="hdTitle bd-b">号码信息</div>
+			<ul class="txtInfoList" ng-repeat="item in lanNumberList">
+				<li class="rowItem">
+					<div class="label text-right">手机号码：</div>
+					<div class="labelForm">{{item.number | telFormat}}</div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">号码套餐：</div>
+					<div class="labelForm">{{item.activityName}}</div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">预存金额：</div>
+					<div class="labelForm">{{item.numAmount | currency : '￥'}}</div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">号码类型：</div>
+					<div class="labelForm">{{item.isNewNumber}}</div>
+				</li>
+				<li class="pt-5" style="background:rgba(245,245,245,1)"></li>
+			</ul>
+		</div>
+		
+		<div class="wrap mb-10 bd-b">
+			<div class="hdTitle bd-b">TV信息</div>
+			<ul class="txtInfoList" ng-repeat="item in tvList">
+				<li class="rowItem">
+					<div class="label text-right">IPTV账号：</div>
+					<div class="labelForm">{{item.account}}</div>
+				</li>
+				<li class="rowItem">
+					<div class="label text-right">MAC地址：</div>
+					<div class="labelForm">{{item.macAddress}}</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="wrap mb-10 bd-b">
+			<div class="hdTitle bd-b">人脸比对照片</div>
+			<ul class="flexWrap col-2 text-center">
+				<li class="flex col-item pl-5 pr-5 pt-5 pb-5 bd-r">
+					<img ng-src="{{idCardHeadUrl}}" style="width:auto;max-width:100%;height:10rem;"/>
+				</li>
+				<li class="flex col-item pl-5 pr-5 pt-5 pb-5">
+					<img ng-src="{{customerImageUrl}}" style="width:auto;max-width:100%;height:10rem;"/>
+				</li>
+			</ul>
+		</div>
+		<div class="wrapTransparent mt-10 mb-10">
+			<button class="btnWhite" ng-click="viewElectronicWorksheets()">查看电子工单</button>
+		</div> -->
+		<div class="wrap bd-t">
+			<div class="pt-15 pb-10">
+				<span class="f-15 txt000">产品信息</span>
+				<span class="fr produceProgress f-13 {{status | statusColor:'color'}}" style="right:0;border-radius:3px;">{{status | statusColor:'name'}}</span>
+			</div>
+			<div class="pt-10 pb-10 bd-t">
+				<div>
+					<span class="txtBigOrange f-18">{{mainProductName}}</span>
+					<!-- <span class="txt999 pl-5">BSS</span> -->
+					<!-- <span class="fr txt999">首次预存 <span class="f-18 txtBigOrange">{{amount | currency : '￥'}}</span></span> -->
+				</div>
+				<div class="txt999 pt-5 pb-10" ng-show="isNoShowAllNum">
+					<span class="pr-10" ng-show="isNoShowNumber"><span>{{number  | cut:true:11:' '}}</span> ( 号码 )</span>
+					<span ng-show="isNoShowLanNumber">{{lanNumber}} ( 宽带号码 )</span>
+					<!-- {{mainProductName}} -->
+				</div>
+				<div class="pb-10 bgApricot pt-10" ng-if="activityNameDd">
+					<!-- <p class="pt-5 pb-5 pl-10 pr-10 txt666 bgRemind">{{comment}}</p> -->
+					<p class="mb-5 f-10" ng-show="activityNameDiv">
+						<span class="txtfff" style="background:#1E82D2;padding:0 .2rem;">号</span>
+						<span>{{activityName}}</span>
+					</p>
+					<p class="mb-0 f-10" ng-show="lanActivityNameDiv">
+						<span class="txtfff" style="background:#2A8623;padding:0 .2rem;">宽</span>
+						<span>{{lanActivityName}}</span>
+					</p>
+				</div>
+			</div>
+			<div class="bd-t" ng-show="macAddressDiv">
+				<div class="pt-10 pb-10 flexWrap">
+					<span class="kkDetailLeftTopList">机顶盒串码</span>
+					<span class="flexFix pl-20 txt999">{{macAddress}}</span>
+				</div>
+			</div>
+			<div class="bd-t" ng-show="createTimeDiv">
+				<div class="pt-10 pb-10 flexWrap">
+					<span class="kkDetailLeftTopList">交易时间</span>
+					<time class="flexFix pl-20 txt999">{{createTime | date:"yyyy-MM-dd HH:mm:ss"}}</time>
+				</div>
+			</div>
+			<!-- <div class="bd-t ">
+				<div class="pt-10 pb-10">
+					<span class="txt666 f-16">完成时间</span>
+					<time class="fr txt999">{{updateTime | date:"yyyy-MM-dd HH:mm:ss"}}</time>
+				</div>
+			</div> -->
+		</div>
+		<!-- <div class="pt-20 pl-10 pb-20 pr-10">
+			<ul class="flexWrap pl-5 pr-5">
+				<li class="flex text-center"><span class="bgBlue pt-5 pl-5 pb-5 pr-5 txtfff bdRadius">补写卡</span></li>
+				<li class="flex text-center"><span class="bgBlue pt-5 pl-5 pb-5 pr-5 txtfff bdRadius">补照片</span></li>
+				<li class="flex text-center"><span class="bgBlue pt-5 pl-5 pb-5 pr-5 txtfff bdRadius">补缴费</span></li>
+				<li class="flex text-center" ng-click="supplySignature()"><span class="bgBlue pt-5 pl-5 pb-5 pr-5 txtfff bdRadius">获取补签名链接</span></li>
+			</ul>
+		</div> -->
+		
+		<div class="ml-5 mr-5 mt-5 wrap" ng-show="lanNumInfoShow">
+			<div class="txt000 pt-15 pb-10 f-15 bd-b">号码信息</div>
+			<div class="ml-5 mr-5 mb-5 pb-10 wrap" ng-repeat="row in noticLanNumberList">
+				<div class="flexWrap pt-10 pb-10">
+					<span class="kkDetailLeftTopList">办理号码</span>
+					<span class="flexFix pl-20 txt999">{{row.number}}</span>
+				</div>
+				<div class="bd-t flexWrap pt-10 pb-10">
+					<span class="kkDetailLeftTopList">参加活动</span>
+					<span class="flexFix pl-20 txt999">{{row.contractName}}</span>
+				</div>
+				<div class="bd-t flexWrap pt-10 pb-10">
+					<span class="kkDetailLeftTopList">预存话费</span>
+					<span class="flexFix pl-20 txt999">{{row.numAmount | currency : '￥'}}</span>
+				</div>
+				<!-- <div style="height:.3rem;background:#F5F5F5;"></div> -->
+			</div>
+		</div>
+		<div class="ml-5 mr-5 mt-5 wrap">
+			<div class="txt000 pt-15 pb-10 f-15">
+				<span class="kkDetailLeftTopList">宽带总费用</span>
+				<span class="flexFix pl-20 f-bolder" style="color:#FF3A3A;">{{amount | currency : '￥'}}</span>
+			</div>
+			<div class="flexWrap pt-10 pb-10"  ng-show="numAmountDiv">
+				<span class="kkDetailLeftTopList">号码预存费用</span>
+				<span class="flexFix pl-20 txt999">{{numAmount | currency : '￥'}}</span>
+			</div>
+			<div class="bd-t flexWrap pt-10 pb-10" ng-show="activityAmountDiv">
+				<span class="kkDetailLeftTopList">号码活动费用</span>
+				<span class="flexFix pl-20 txt999">{{activityAmount | currency : '￥'}}</span>
+			</div>
+			<div class="bd-t flexWrap pt-10 pb-10">
+				<span class="kkDetailLeftTopList">宽带预存费用</span>
+				<span class="flexFix pl-20 txt999">{{lanAmount | currency : '￥'}}</span>
+			</div>
+			<div class="bd-t flexWrap pt-10 pb-10" ng-show="lanActivityPriceDiv">
+				<span class="kkDetailLeftTopList">宽带活动费用</span>
+				<span class="flexFix pl-20 txt999">{{lanActivityPrice | currency : '￥'}}</span>
+			</div>
+			<div class="bd-t flexWrap pt-10 pb-10" ng-show="tvAmountDiv">
+				<span class="kkDetailLeftTopList">机顶盒费用</span>
+				<span class="flexFix pl-20 txt999">{{tvAmount | currency : '￥'}}</span>
+			</div>
+			<div class="bd-t flexWrap pt-10 pb-10" ng-show="ftthAmountDiv">
+				<span class="kkDetailLeftTopList">光猫费用</span>
+				<span class="flexFix pl-20 txt999">{{ftthAmount | currency : '￥'}}</span>
+			</div>
+		</div>
+		<div class="ml-5 mr-5 mt-5 wrap">
+			<div class="txt000 pt-15 pb-10 f-15 bd-b">用户信息</div>
+			<div class="flexWrap pt-10 pb-10">
+				<span class="kkDetailLeftTopList">客户姓名</span>
+				<span class="flexFix pl-20 txt999">{{customer}}</span>
+			</div>
+			<div class="bd-t flexWrap pt-10 pb-10">
+				<span class="kkDetailLeftTopList">联系方式</span>
+				<span class="flexFix pl-20 txt999">{{contractNumber}}</span>
+			</div>
+			<div class="bd-t flexWrap pt-10 pb-10">
+				<span class="kkDetailLeftTopList">装机地址</span>
+				<span class="flexFix pl-20 txt999">{{address}}</span>
+			</div>
+		</div>
+		<div class="ml-5 mr-5 mt-5 wrap bd-b pb-10" ng-show='showUserInfos'>
+			<div ng-show='showShopInfo'>
+				<div class="txt000 pt-15 pb-15 f-15 txt666 ">店铺信息</div>
+				<div class="flexWrap pt-10 pb-10">
+					<span class="kkDetailLeftTopList">店铺名称</span>
+					<div class="flexFix pl-20 txt999">
+						<p class="txt666">{{shopName}}</p>
+						<p>
+							<span class="txt999 pr-20">{{cRealName}}</span>
+							<span style="color:#74A9DF;">电话 {{cTel}}</span>
+						</p>
+						<p class="txt999">工号 {{cUserName}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="bd-t flexWrap pt-10 pb-10" ng-repeat="item in deveUserList" ng-show='showSalemanInfo'>
+				<span class="kkDetailLeftTopList">业务员{{$index+1}}</span>
+				<div class="flexFix pl-20 txt999">
+					<p class="txt666">{{item.realName}}</p>
+					<p class="txt999">{{item.userName}}</p>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="ml-5 mr-5 mt-5 wrap bd-b pb-10">
+			<div class="txt000 pt-15 pb-15 f-16">报错信息</div>
+			<div class="pb-15">
+				<span style="padding-left:2.8rem">时间</span>
+				<span class="fr txt999">2017-08-08 19:03:54</span>
+			</div>
+			<div class="bd-t pt-15 pb-15">
+				<span  style="padding-left:2.8rem">节点</span>
+				<span class="fr txt999">CBSS开卡-联通开户</span>
+			</div>
+			<div class="bd-t pt-15 pb-15 flexWrap">
+				<span style="width:25%">错误信息</span>
+				<p class="txt999 text-left" style="width:75%">"联通开户失败，失败原因：未将对象引用设置到对象的实例。 在 tms.unicomm.UnicommCustomer.crea</p>
+			</div>
+		</div> -->
+		<div class="ml-5 mr-5 mt-5 wrap bd-b pb-10">
+			<ul class="flexWrap col-3 text-center">
+				<li class="flex col-item pl-5 pr-5 pt-5 pb-5 bd-r">
+					<img ng-style='imgProp' ng-src="{{idCardHeadUrl}}" style="width:auto;max-width:100%;height:10rem;"/>
+				</li>
+				<li class="flex col-item pl-5 pr-5 pt-5 pb-5 bd-r"  ng-click="changePic()">
+					<img ng-style='imgProp' ng-src="{{customerImgUrl}}" style="width:auto;max-width:100%;height:10rem;"/>
+				</li>
+				<li class="flex col-item pl-5 pr-5 pt-5 pb-5">
+					<img ng-style='imgProp' ng-src="{{signUrl}}" style="width:auto;max-width:100%;height:10rem;" ng-hide="showBtn"/>
+					<div class="rel" style="height: 100%;" ng-show="showBtn">
+                        <div class="reSignBtn bgPrimary txtfff pt-10 pb-10 f-15 border-radiu-5 abs" style="left: 5%;top: 25%;width: 25vw;" ng-click="supplySignature()">补签名</div>
+                    </div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="wrapTransparent mt-15 mb-15 mr-15 ml-15" ng-show="hasElectronicWorksheets">
+
+			<button class="btnWhite" ng-click="viewElectronicWorksheets()"><i class="icon-dingdan2" style="vertical-align: text-bottom;"></i>查看电子工单</button>
+		</div>
+	</ion-content>
+	<!-- <div class="loadingPage" ng-if="hideLoadingPage">
+		<div class="loadingAction text-center">
+			<ion-spinner icon="spiral" class="spinner-light"></ion-spinner>
+			<p class="txt999">页面载入中...</p>
+		</div>
+	</div> -->
+	<div class="bigPic flexWrap" ng-show="isShowBigPic">
+		<img ng-src="{{customerImgUrl}}" ng-style="bigPic">
+		<div class="abs" style="top:1.5rem;right:1.5rem" ng-click="closeBigPic()">
+			<span><i class="icon-guanbi1 f-30" style="color:black;"></i></span>
+		</div>
+	</div>	
+</ion-view>

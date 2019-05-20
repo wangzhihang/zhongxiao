@@ -1,0 +1,19 @@
+<ion-view view-title="{{title}}"  hide-tabs="true">
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <!-- <div ui-sref="news-list"><i class="icon-xiaoxitongzhi1" style="font-size:16px;"></i></div> -->
+    </ion-nav-buttons>
+   
+    <ion-content class="bgWhite" style='top: 50px;'>
+      
+        <div class="pr-10 pb-10 pl-10 pt-10">
+            <p class="txt000 f-bolder pb-10 f-16 txt333 txtCenter">{{getData.title}}</p>
+            <hr>
+           
+           <div ng_bind_html="getData.content" class="txt000 pt-10 f-16 newsContent txt666"></div>
+         
+        </div>
+    </ion-content>
+</ion-view>

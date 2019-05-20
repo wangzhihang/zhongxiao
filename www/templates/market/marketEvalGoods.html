@@ -1,0 +1,52 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons><br />
+	<ion-nav-buttons side="right">
+		<div ng-click="">完成</div>
+	</ion-nav-buttons><br />
+	<ion-content>
+		
+
+
+
+		<div>
+	        <div class="row  bgWhite pt-10 pb-10 pl-10 pr-10">
+    	  		<div class="col-25 evalGoogsImg">
+        			<img src="{{thisImg}}"/>
+      		    </div>
+      			<div class="col pl-5">
+      				<p class="f-14 pt-10 pl-5">评分</p>
+      				<span style="display: inline-block;"><span class="starScore" ng-repeat="item in starScore" ng-click="starLeval($index)">
+    					<i class="icon-pingjia starEval" ng-class="{'txtBigOrange':item.status}" ></i>
+    				</span></span>
+    			</div>
+			</div>
+
+			<div class="evalText pl-10 pr-10 pt-10 pb-10">
+				<textarea ng-model="input.evalContent"></textarea>
+			</div>
+			
+			<div class="bgWhite pt-10">
+				<div class="addEvalImg ml-10" style="display: flex;">
+					<div style="margin: auto;" ng-click="photograph()">
+					<p class="icon-zhaopian mt-10" style="color: #999;font-size: 3rem;"></p>
+					<p class="mt-10">照片/视频</p>	
+					<p class="f-8 txt999">(仅限一个文件)</p>
+					</div>			
+				</div>
+			</div>
+			
+			<div class="bgWhite pl-10 pt-10 pb-10" >
+				<p class="f-14" ng-click="wxClick()"><i  ng-class="{'icon-xuanzedui txtRed':ww,'icon-xuanze ':!ww} " style="font-size: 2rem"></i>匿名评价</p>
+			</div>
+		</div>
+
+
+	</ion-content>
+		
+		<div style="width:100%;height: 5.2rem;background-color: #dedede;position: fixed;bottom:0%; z-index: 999;">
+			<input type="button" value="提交评价"  class="addressAddBtn txtfff" ng-click="evalIsOk()"/><!--  ui-sref="market-evalok -->
+		</div>
+	
+</ion-view>

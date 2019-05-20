@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+
+
+
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+		<script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('service-worker.js')
+					.then(() => console.log('service worker installed'))
+					.catch(err => console.log('Error', err));
+			}
+		</script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/less/market/market.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="lib/layer_mobile/need/layer.css">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+		<link href="css/ionic.app.css" rel="stylesheet">
+		-->
+
+    <script src="js/jquery/global-fun.js"></script>
+    <script src="js/jquery/localStorage.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/jquery/jquery.js"></script>
+    <script src="js/jquery/signature.js"></script>
+    <script src="js/jquery/qrcode.min.js"></script>
+    <script src='js/jquery/jqueryQrcode/jquery.qrcode.js'></script>
+    <script src='js/jquery/jqueryQrcode/utf.js'></script>
+    <script src="js/jquery/patternLock.min.js"></script>
+    <script src="js/jquery/alertInfo.js"></script>
+    <script src="js/jquery/swiper.min.js"></script>
+    <script src="js/jquery/city.js"></script>
+    <script src="js/jquery/html2canvas.js"></script>
+    <script src="js/jquery/gVerify.js"></script>
+    <script src="js/jquery/cropper.js"></script>
+    <script src="js/jquery/cutImg.js"></script>
+    <script src="js/jquery/changeNum2Chinese.js"></script>
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    <script src="lib/ngCordova/ng-cordova.js"></script>
+
+    <script src="lib/layer_mobile/layer.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/dianpu/global.js"></script>
+    <script src="js/dianpu/state.js"></script>
+
+    <script src="js/kuandai/global.js"></script>
+    <script src="js/kuandai/state.js"></script>
+
+
+    <script src="js/jike/global.js"></script>
+    <script src="js/jike/state.js"></script>
+
+
+    <script src="js/controllers/userState.js"></script>
+
+
+    <script src="app.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/dianpu/controllers.js"></script>
+    <script src="js/kuandai/controllers.js"></script>
+    <script src="js/jike/controllers.js"></script>
+    <script src="js/services.js"></script>
+
+    <script src="js/daili/controllers.js"></script>
+    <script src="js/daili/global.js"></script>
+    <script src="js/daili/state.js"></script>
+
+    <script src="js/unicomm/controllers.js"></script>
+    <script src="js/unicomm/global.js"></script>
+    <script src="js/unicomm/state.js"></script>
+
+    <script src="js/jquery/jbase64.js"></script>
+    <script src="js/jquery/highcharts.js"></script>
+    <script src="js/jquery/highcharts-ng.js"></script>
+
+    <script src="https://webapi.amap.com/js/marker.js"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.2&key=bd97cca0f9a934302ee9f982699bc126"></script>
+
+</head>
+
+<body ng-app="starter" class="platform-android platform-cordova platform-webview platform-browser platform-cordova platform-webview">
+    <ion-nav-bar align-title="center"></ion-nav-bar>
+    <ion-nav-view></ion-nav-view>
+    <ion-tabs class="{{$root.hideTabs}}" ng-show="isShowTabs">
+        <ion-tab title="首页" icon-on="icon-shouye f-20" icon-off="icon-shouye f-20" href="#/index"></ion-tab>
+
+        <ion-tab title="服务" icon-on="icon-faxian f-20" icon-off="icon-faxian f-20" ui-sref="bussniess-type"></ion-tab>
+        <ion-tab title="订单" icon-on="icon-dingdanguanli1 f-20" icon-off="icon-dingdanguanli1 f-20" ui-sref="orderManagements"></ion-tab>
+        <ion-tab title="控制台" icon-on="icon-qiehuan f-20" icon-off="icon-qiehuan f-20" ui-sref="index_dl" hidden="{{isShowsetTab}}"></ion-tab>
+        <ion-tab title="我的" icon-on="icon-gerenzhongxin f-20" icon-off="icon-gerenzhongxin f-20" ui-sref="userCenter"></ion-tab>
+
+    </ion-tabs>
+</body>
+
+</html>

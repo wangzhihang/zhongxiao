@@ -1,0 +1,206 @@
+<ion-view view-title="{{title}}">
+    <ion-nav-buttons side="right" ng-show="ifShowNewsIcon">
+        <div ng-click="newInform()" class="txtRight">
+            <img src="img/news_04.png" style="width:57%;vertical-align: middle;">
+            <!-- ng-if="ifShowNewOpen" -->
+
+
+            <!-- <img src="img/news_02.png" style="width:57%;vertical-align: middle;padding-top:8px;"  ng-if="!ifShowNewOpen"> -->
+        </div>
+    </ion-nav-buttons>
+
+    <ion-content class="has-tabs">
+        <ion-refresher pulling-text="下拉刷新" pulling-icon="icon-jiazaixia" refreshing-icon="" refreshing-text="正在获取服务器信息..." on-refresh="doRefresh()"></ion-refresher>
+
+
+
+
+        <div class="navFixed">
+            <!-- 新消息展示 -->
+            <div class="bgWhite pt-10 pb-10 pl-15 pr-15 clear" ng-show="hasNews">
+                <p class="f-14 txt333" style="font-weight: 600;">{{noticeListTitle}}</p>
+                <p class="f-14  txt666 mt-10 pt-10" style="border-top: 1px solid #eaeaea;line-height: 1.8;" ng-bind-html="noticeListContent"></p>
+
+
+                <p class="f-14 mt-5 pt-3 pb-3 pl-5 pr-5 fr txtRed" style="border: 1px solid #d51617 ;display: inline-block; border-radius: 10px;" ng-click="lookedNews()">我知道了</p>
+            </div>
+
+
+
+
+
+
+            <div class="fun-menu-small bgPrimary"><img src="img/banner_002.png" style="width:auto;max-width: 100%;height: auto;"></div>
+            <div class="newOrderListWrap">
+                <div class="newOrderList">
+                    <div class="loading" ng-hide="loadingInfo">
+                        <ion-spinner icon="dots" class="spinner-balanced"></ion-spinner>
+                        <p>数据加载中</p>
+                    </div>
+                    <ul ng-class='{"animate":showAnimate}'>
+                        <li>
+                            <p>
+                                <span class="icon-haomadingdan"></span>
+                                <span>{{newOrderFact.orderType}}：<em>{{newOrderFact.showInfo}}</em></span>
+                                <span>{{newOrderFact.status}}</span>
+                            </p>
+                            <p>
+                                <span class="icon-haomaguishudichaxun"></span>
+                                <span>{{newOrderFact.city}}</span>
+                                <span><time>{{newOrderFact.updateTime | date:"yyyy-MM-dd HH:mm:ss"}}</time></span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box bgWhite">
+                <div>
+                    <div class="flexWrap" delegate-handle="netArea">
+                        <!-- <div class="littleBox col-25" ng-click="dianpuBssList()" ng-show="appFuncListShow['000203']">
+					<div class="spiritPic dianpu_BSS_list"></div>
+					<p>BSS</p>
+				</div> -->
+                        <div class="littleBox col-25" ng-click="cbssPhoneGiveFee_huabei()">
+                            <div class="spiritPic user-huabei-per" style="color:#FD9D21;"></div>
+                            <p>花呗分期</p>
+                        </div>
+                        <div class="littleBox col-25" ng-click="cbssPhoneGiveFee_huabei_old()">
+                            <div class="spiritPic user-huabei-per" style="color:#FD9D21;"></div>
+                            <p>老用户花呗</p>
+                        </div>
+                        <div class="littleBox btnBg col-25" ng-click="dianpuCbssList()" ng-show="appFuncListShow['000204']">
+                            <div class="spiritPic dianpu_CBSS_list"></div>
+                            <p>CBSS</p>
+                        </div>
+                        <!--  <div class="littleBox btnBg col-25" ui-sref='dianpu-cbss-write-simCard' ng-show="appFuncListShow['000204']">
+                            <div class="spiritPic dianpu_CBSS_list"></div>
+                            <p>CBSS</p>
+                        </div> -->
+                        <div class="littleBox btnBg col-25" ng-click="dianpuKdList()" ng-show="appFuncListShow['000205']">
+                            <div class="spiritPic dianpu_KD_list"></div>
+                            <p>宽带</p>
+                        </div>
+                        <!-- <div class="littleBox btnBg col-25" ui-sref='kuandai-handle-kuandai' ng-show="appFuncListShow['000205']">
+                            <div class="spiritPic dianpu_KD_list"></div>
+                            <p>宽带</p>
+                        </div>-->
+                        <!-- ui-sref="shangwu-zuoji-list" -->
+                        <div class="littleBox btnBg col-25" ui-sref="shangwu-zuoji-list" ng-show="appFuncListShow['000025']">
+                            <div class="spiritPic business_ZUOji_list"></div>
+                            <p>商务座机</p>
+                        </div>
+                        <!-- ui-sref="dianpu-jike-list"  -->
+                        <div class="littleBox btnBg col-25" ui-sref="dianpu-jike-bssList" ng-show="appFuncListShow['000206']">
+                            <div class="spiritPic dianpu_BSSJIKE_list"></div>
+                            <p>集客BSS</p>
+                        </div>
+                        <!-- ui-sref="dianpu-jike-list"  -->
+                        <div class="littleBox btnBg col-25" ui-sref="dianpu-jike-cbssList" ng-show="appFuncListShow['000206']">
+                            <div class="spiritPic dianpu_CBSSJIKE_list"></div>
+                            <p>集客CBSS</p>
+                        </div>
+                        <div class="littleBox btnBg col-25" ng-click="dianpuInterDrainage()" ng-show="appFuncListShow['000114']">
+                            <div class="spiritPic dianpu_inter_drainage"></div>
+                            <p>互联网引流</p>
+                        </div>
+                        <div class="littleBox btnBg col-25" ng-click="dianpuShopDrainage()" ng-show="appFuncListShow['000115']">
+                            <div class="spiritPic dianpu_shop_drainage"></div>
+                            <p>商城引流</p>
+                        </div>
+                        <!-- <div class="littleBox btnBg col-25"   ng-click="dianoCustom()" ng-show="appFuncListShow['000116']">
+					<div class="spiritPic dianpu_customer_maintain"></div>
+					<p>客户维系</p>
+				</div> -->
+
+
+                        <div class="littleBox btnBg col-25" ui-sref="dianpu-cbss_queryUserList-mode">
+                            <div class="spiritPic type_tool_checkIdentity"></div>
+                            <p>身份核验</p>
+                        </div>
+
+                        <div class="littleBox btnBg col-25" ui-sref="gadget-cbss-reset-card">
+                            <div class="spiritPic type_tool_reWasteCard"></div>
+                            <p>废卡重置</p>
+                        </div>
+
+                        <!-- <div class="littleBox btnBg col-25" ui-sref="gadget"  ng-show="appFuncListShow['000101']">
+					<div class="spiritPic dianpu_tools"></div>
+					<p>小工具</p> 
+				</div> -->
+                        <div class="littleBox btnBg col-25" ui-sref="dianpu-cbss-order_queryOrderInfo">
+                            <div class="spiritPic type_number_status"></div>
+                            <p>号码状态查询</p>
+                        </div>
+                        <div class="littleBox btnBg col-25" ng-click="xiehaoruwang()">
+                            <div class=" spiritPic type_xiehaoruwang"></div>
+                            <p>携号转网</p>
+                        </div>
+
+                        <!-- <div class="littleBox btnBg col-25 " ui-sref="market-index " ng-show="appFuncListShow[ '000101'] ">
+                            <div class="spiritPic dianpu_tools "></div>
+                            <p>商城</p>
+                        </div>
+                        <div class="littleBox btnBg col-25 " ui-sref="user-huabei-charge ">
+                            <div class="spiritPic user-huabei-per "></div>
+                            <p>花呗分期</p>
+                        </div> -->
+
+                        <div class="littleBox btnBg col-25 " ng-click="dianpuToMore() ">
+                            <div class="spiritPic dianpu_more "></div>
+                            <p>更多</p>
+                        </div>
+
+
+
+                        <!-- <div class="littleBox btnBg col-25 " ui-sref='visit-reserve-gohome-dealCard'>
+                            <div class="spiritPic dianpu_tools "></div>
+                            <p>上门办理</p>
+                        </div> -->
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 流量专区 -->
+        <div class="mt-5 bgWhite pl-10 pr-10 pt-5 pb-10 ">
+            <!-- <div style="text-align: center; " class="pt-10 "><img src="img/liuliangLogo.png "/ style="width:30px;height:30px;padding:0.4rem; "><span style="color:#ec7fc8 " class="f-16 ">套餐专区</soan></div> -->
+
+            <!-- <div style="text-align: center; ">
+			<img src="img/taocanLogo.png "  style="width:65%; "/>
+		</div> -->
+
+            <div>
+                <ul style="width: 100%; display: flex; justify-content: space-between;align-items: center;padding-top:2vw; ">
+                    <li ng-click='hotCombo99()'>
+                        <img src="img/buss_005.png " style="width: 46.5vw; " />
+                    </li>
+                    <li ng-click='hotComboInfo({"name":"CBSS副卡","icon":"icon-fuqia","icon-color":"#d82a2a","fun":"cbsszFuka"})'>
+                        <img src="img/buss_006.png " style="width: 46.5vw; " />
+                    </li>
+                </ul>
+                <!-- <ul style="width: 100%; display: flex; justify-content: space-between;align-items: center; ">
+                    <li ui-sref="dianpu-qrgoV2-package({qrgoType:1}) ">
+                        <img src="img/buss_003.png " style="width: 46.5vw; " />
+                    </li>
+                    <li ui-sref="dianpu-qrgoV2-package({qrgoType:2}) ">
+                        <img src="img/buss_008.png " style="width: 46.5vw; " />
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+
+
+        <ion-infinite-scroll ng-if="hasmore " on-infinite="loadMore() " icon="ion-loading-c " distance="1% " immediate-check="false "></ion-infinite-scroll>
+
+
+        <div class="loadingWrap " ng-if="loading ">
+            <ion-spinner icon="ios "></ion-spinner>
+        </div>
+        <div class="noMore " ng-if="noMore " style="margin-bottom: 5rem; "><span class="txt ">没有更多</span></div>
+
+
+    </ion-content>
+</ion-view>

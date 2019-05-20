@@ -1,0 +1,97 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index_dl"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="cen padding" ng-class='{"hide":loading}'>
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+		<div class="wrap bd-t">
+			<div class="pt-15 pb-10">
+				<span class="f-18 txt000">订单信息</span>
+				<span class="fr {{status | statusColor:'color'}}" style="right:0;border-radius:3px;padding:0 3px">已完成</span>
+			</div>
+			<div class="pt-10 pb-10 bd-t">
+				<div>
+					<span class="txtBigOrange f-18">18829341517</span>
+					<span class="txt999 pl-5">BSS</span>
+					<span class="fr txt999">首次预存 <span class="f-18 txtBigOrange">￥200</span></span>
+				</div>
+				<div class="txt999 pt-5 pb-10">
+					畅爽全国冰激凌套餐98元档
+				</div>
+				<div class="pb-10"  ng-show="isNoShowActivityName">
+					<p class="pt-5 pb-5 pl-10 pr-10 txt666 bgRemind">remark信息</p>
+				</div>
+			</div>
+			<div class="bd-t">
+				<div class="pt-10 pb-10">
+					<span class="txt666 f-16">订购时间</span>
+					<time class="fr txt999">2017-10-10 09:10:12</time>
+				</div>
+			</div>
+			<div class="bd-t ">
+				<div class="pt-10 pb-10">
+					<span class="txt666 f-16">完成时间</span>
+					<time class="fr txt999">2017-10-10 09:10:12</time>
+				</div>
+			</div>
+		</div>
+		<div class="ml-5 mr-5 mt-5 wrap bd-b pb-10">
+			<div class="txt000 pt-15 pb-15 f-15txt666 ">用户信息</div>
+			<div class="pb-15">
+				<span class="txt666 f-16">客户姓名</span>
+				<span class="fr txt999">王芝航</span>
+			</div>
+			<div class="bd-t pt-15 pb-15">
+				<span class="txt666 f-16">联系方式</span>
+				<span class="fr txt999">18829341517</span>
+			</div>
+		</div>
+		<div class="ml-5 mr-5 mt-5 wrap bd-b pb-10">
+			<div class="txt000 pt-15 pb-15 f-15txt666 ">店铺信息</div>
+			<div class="pb-15">
+				<span class="txt666 f-16 inlinebk" style="width:25%;vertical-align:top;">店铺名称</span>
+				<div class="inlinebk text-right" style="width:73%;">
+					<p class="txt666">西安小寨创客专营店</p>
+					<p>
+						<span class="txt999 pr-20">李丽敏</span>
+						<span style="color:#74A9DF;">18829341514</span>
+					</p>
+					<p class="txt999">c工号</p>
+				</div>
+			</div>
+			<div class="bd-t pt-15 pb-15">
+				<span class="txt666 f-16 inlinebk" style="width:25%;vertical-align:top;">业务员</span>
+				<div class="inlinebk text-right" style="width:73%;">
+					<p class="txt666">王贺</p>
+					<p class="txt999">b工号</p>
+				</div>
+			</div>
+		</div>
+		<div class="ml-5 mr-5 mt-5 wrap bd-b pb-10">
+			<ul class="flexWrap col-3 text-center">
+				<li class="flex col-item pl-5 pr-5 pt-5 pb-5 bd-r">
+					<img ng-src="{{orderDetail.idCardHeadUrl}}" style="width:auto;max-width:100%;height:10rem;"/>
+				</li>
+				<li class="flex col-item pl-5 pr-5 pt-5 pb-5 bd-r" ng-click="changePic()">
+					<img ng-src="{{orderDetail.customerImageUrl}}" style="width:auto;max-width:100%;height:10rem;"/>
+				</li>
+				<li class="flex col-item pl-5 pr-5 pt-5 pb-5">
+					<img ng-src="{{orderDetail.signUrl}}" style="width:auto;max-width:100%;height:10rem;"/>
+				</li>
+			</ul>
+		</div>
+
+		<div class="wrapTransparent mt-15 mb-15 mr-15 ml-15" ng-show="hasElectronicWorksheets">
+
+			<button class="btnWhite" ng-click="viewElectronicWorksheets()"><i class="icon-dingdan2" style="vertical-align: text-bottom;"></i>查看电子工单</button>
+		</div>
+		<div ng-show="isShowMapContainer">
+			<div id="mapContainer" class="mb-10 bgWhite txtCenter mapContainer bd"></div>
+		</div>
+	</ion-content>
+</ion-view>

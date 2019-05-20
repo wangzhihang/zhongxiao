@@ -1,0 +1,109 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+
+	<div class="popup-container popup-showing active chosePop" ng-show='showContentBlueTooth' ng-click="closeContentBlueTooth()">
+		<div class="popup" ng-click="$event.stopPropagation();" style="border-radius: 10px;width:70vw;">
+			<div class="bgPrimary txtCenter pt-15 pb-15 popTitle f-16 rel">选择蓝牙设备
+				<span class="width-20 abs inlineBlock icon-guanbi" style="right: 0" ng-click="closeContentBlueTooth()"></span>
+			</div>
+			<div class="loadingWrap" ng-show="loading" style="height: 35vh;">
+				<ion-spinner icon="ios"></ion-spinner>
+			</div>
+			<ul class="rel width-80" ng-hide="loading" style="margin:0 auto;height: 35vh;overflow-y: auto;" >
+				<li class="pt-10 pb-10 txtLeft txt000 bd-b f-16" ng-repeat="item in bleadderDatas" ng-click="switchDevice($index)">
+					<p class="rel" ng-class="{'txtPrimary':item.name==myDevice}" >{{item.name}}
+						<i class="radio-icon ion-checkmark f-14 abs" style="right: 0px;color: #1E82D2;" ng-show="item.name==myDevice"></i>
+					</p>
+				</li>
+			</ul>
+			<div class="popup-buttons abs" style="width: 100%;bottom: 0;"><button class="button ng-binding button-calm border-radiu-25" ng-click="reSearch()">重新搜索</button></div>
+		</div>
+	</div>
+
+	<ion-content >
+		<div ng-hide="modeDiv ">
+			<div class="pl-10 pb-10 pt-10 pr-10">
+				<div class="flexWrap">
+					<p class="flex">
+						<span class='f-15'>我的设备</span>
+						<span class="pl-15">{{myDevice}}</span>
+					</p>
+					<span class="flex txtRight f-14 txtPrimary" ng-click="contentBlueTooth()">
+						<i class="goingStatus">选择设备</i>
+					</span>
+				</div>
+			</div>
+			<div class="pl-10 pt-10 pb-10 pr-10 f-15 rel bgWhite bd-b">证件信息
+				<span class="abs f-12 txtPrimary goingStatus" style="right: 15px;" ng-show="identifyInfo" ng-click="againRead()">重新读取</span>
+			</div>
+			<div class="bgWhite pl-10 pb-10 pt-10 pr-10" ng-hide="identifyInfo">
+				<div class="readIdentifyBox txtCenter" ng-click="readIdentity()">
+					<img src="img/readIdty.png" alt="开始读证">
+				</div>
+			</div>
+			<div class="bgWhite pl-10 pr-10 f-13" ng-show="identifyInfo">
+				<div class="flexWrap">
+					<ul class="width-74">
+						<li class="flexWrap pt-20 pb-20">
+							<span class="width-35">姓名</span>
+							<span class="width-65">{{authentication.name}}</span>
+						</li>
+						<li class="flexWrap pt-20 pb-20 bd-t">
+							<span class="width-35">身份证</span>
+							<div class="width-65">{{authentication.cardId}}</div>
+						</li>
+					</ul>
+					<div class="width-25 pl-10 pr-10 pt-20 pb-20">
+						<img ng-src="data:image/jpeg;base64,{{authentication.idHeadImg}}" alt="身份证头像" style="width: 100%;height: 100%;">
+					</div>
+				</div>
+				<ul class="info-list bt-0 mb-0 bd-t">
+					<li class="flexWrap pt-20 pb-20 pl-0 pr-0" style="min-width: 4.8rem;">
+						<span class="width-25">证件地址</span>
+						<div class="width-75">
+							<span ng-hide="editVal">{{authentication.address}}</span>
+						</div><!-- <span class="width-10 txtCenter" ng-click="editvalAdd()"><i class="icon-beizhu f-17" style="color: #FDBD01"></i></span> -->
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div ng-show="modeDiv">
+
+			<div class="userInfoForm">
+				<ul>
+					<li>
+						<label>名称：</label>
+						<input type="tel" class="input-text" ng-model="data.name"  placeholder=""/>
+					</li>
+					<li>
+						<label>身份证号码：</label>
+						<input type="tel" class="input-text" ng-model="data.cardId"/>
+					</li>
+				</ul>
+			</div>
+			<div class="btn-wrap">
+				<button class="btn btn-primary" ng-click="writeQuer()">查询</button>
+			</div>
+		</div>
+		<div class="pl-10 pr-10">
+			<p class="pt-15 pb-15 f-16"  ng-class="{{className}}">{{openNum}}</p>	
+		</div>
+		<ul ng-show="ifShowRecord">
+			<li class="mb-5 bgWhite" ng-repeat="item in openRecord">
+				<p class="pl-10 pr-10 pt-15 pb-15 clear bd-b">
+					<span class="fl txt999">{{item.inDate}}</span>
+					<span class="fr txt999">账号余额:<i class="pl-5">{{item.feeLeft}}元</i> </span>
+				</p>
+				<p class="pl-10 pr-10 pt-15 pb-15 clear">
+					<span class="fl">{{item.serialNumber}}</span>
+					<span class="fr">{{item.productName}}</span>
+				</p>
+			</li>
+		</ul>
+	</ion-content>
+</ion-view>

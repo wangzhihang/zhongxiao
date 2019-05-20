@@ -1,0 +1,56 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+	<!-- <ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons> -->
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>	
+	<ion-content>
+		<div class="txtCenter pt-10 pb-10 txt999 bgWhite">
+			<p><em class="txtRed">请确认原人原件</em></p>
+		</div>
+		<div class="checkIdentyInfo mt-10 mb-10 bd bgWhite">
+			<img src="data:image/jpeg;base64,{{data.photo.i01}}">
+		</div>
+		<div class="info-list">
+			<ul>
+				<li>
+					<div class="info-label">
+						<span>姓名</span>
+					</div>
+					<div class="info-cont txtLeft">
+						<!-- <input type="text" ng-show="editName" ng-model="data.list.name" class="textBox"/> -->
+						<span>{{data.list.name}}</span>
+						<!-- <button class="rt-btn rt-btn1" ng-click="changeInfo()"><i class="icon-beizhu"></i></button> -->
+					</div>
+				</li>
+				<li>
+					<div class="info-label">
+						<span>证件号码</span>
+					</div>
+					<div class="info-cont txtLeft">
+						<span>{{data.list.cardId}}</span>
+					</div>
+				</li>
+				<li>
+					<div class="info-label">
+						<span>证件地址</span>
+					</div>
+					<div class="info-cont txtLeft">
+						<span>{{data.list.address}}</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</ion-content>
+	<div class="monthBtn" style="height:9vh;">
+        <ul class="bgPrimary flexWrap f-16 txtCenter" style="width:100%">
+           <li class="col-50 bd-r" ui-sref='pho-identy-front'>
+	    		<span class="txtfff">重新拍摄</span>
+           </li>
+           <li class="col-50" ui-sref='pho-identy-oth'>
+    		<span class="txtfff">确定</span>
+           </li>
+        </ul>
+    </div>
+</ion-view>

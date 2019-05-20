@@ -1,0 +1,32 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		
+		<div class="info-list">
+			<ul>
+				<li>
+					<div class="info-label">
+						<span>输入手机号：</span>
+					</div>
+					<div class="info-cont">
+						<input type="tel" placeholder="请输入办理的手机号码..." ng-model="data.tel" ng-keyup="telChange()" class="txt-box"/>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="btn-wrap">
+			<button class="btn btn-primary" ng-disabled="resState" ng-click="cancelCard()">立即返销</button>
+		</div>
+		
+		<div class="cen padding" ng-show="loading">
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+		
+	</ion-content>
+</ion-view>

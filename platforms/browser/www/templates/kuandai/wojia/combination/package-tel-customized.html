@@ -1,0 +1,30 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content  class="package-detail">
+		<div class="comboAttrVal">
+			<div class="cen padding" ng-class='{"hide":loading[0]}'>
+				<ion-spinner icon="ios-small"></ion-spinner>
+			</div>
+
+			<div ng-repeat="item in packageList">
+				<h2>{{item.name}}</h2>
+				<dl class="cc">
+					<dt ng-repeat="row in item.list">
+						<ion-radio  ng-value="row.list"
+									ng-model="select.elementMap">
+									{{row.name}}
+						</ion-radio>
+					</dt>
+				</dl>
+			</div>
+		</div>
+		<div class="btn-wrap">
+			<button class="btn btn-primary" ng-disabled="resState" ng-click="order()">下一步</button>
+		</div>		
+	</ion-content>
+</ion-view>

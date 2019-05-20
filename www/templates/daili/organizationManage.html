@@ -1,0 +1,129 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ng-click="popPanel()"><i class="icon-shaixuan1" style="font-size:16px;"></i></div>
+
+	</ion-nav-buttons>
+
+
+		<div  class="bgWhite fixed bottomBtn" style="z-index: 999999;" ng-show="showAddBtn">
+			<ul class="flexWrap">
+				<li class="flex bd-r bgPrimary txtfff f-16" ng-click="orgAddSaleman()" ng-show="numberA" style="border-right: 1px solid #fff!important;">
+					<span>添加业务员</span>
+				</li>
+				
+				<li class="flex bd-r bgPrimary txtfff  f-16" ng-click="orgAddShop()"  ng-show="numberB">
+					<span>添加店铺</span>
+				</li>
+			</ul>
+		</div>
+
+
+
+	<ion-content>
+		<div class="dataInfo pt-15 pb-15 pl-10 pr-10 rel txt000 mb-5">
+			<ul class="flexWrap">
+				<li class="flex text-center" ng-click="getTotalNumData()">
+					<p class="f-14"><em>号码订单</em></p>
+					<p class="f-16"><strong class="ng-binding">{{statsInfo.numOrderCntTotal}}</strong></p>
+				</li>
+				<li class="flex text-center" ng-click="getTotalLanData()">
+					<p class="f-14"><em>宽带订单</em></p>
+					<p class="f-16"><strong class="ng-binding">{{statsInfo.lanOrderCntTotal}}</strong></p>
+				</li>
+				<li class="flex text-center">
+					<p class="f-14"><em>下级数</em></p>
+					<p class="f-16"><strong class="ng-binding">{{statsLength}}</strong></p>
+				</li>
+			</ul>
+		</div>
+		<div class="bgWhite mb-5" ng-repeat="item in statsList">
+			<div class="pt-10 pb-10 ml-10 mr-10 bd-b" ng-click="getTotalData('{{item.deptCode}}')">
+				<strong class="f-15">{{item.deptName}}</strong>
+				<span class="abs txt999" style="right:1rem;">
+					<i class="icon-go"></i>
+				</span>
+			</div>
+			<div class="flexWrap ml-10 mr-10 pt-10 pb-10 txt999">
+				<!-- <small class="flex inlinebk text-left">子机构(20)</small> -->
+				<small class="flex inlinebk text-center" ng-click="checkSigleOrgNumOrder('{{item.deptCode}}')">号码订单({{item.numOrderCntTotal}})</small>
+				<small class="flex inlinebk text-center" ng-click="checkSigleOrgLanOrder('{{item.deptCode}}')">宽带订单（{{item.lanOrderCntTotal}}）</small>
+			</div>
+		</div>
+	</ion-content>
+
+	<div class="popPanel" ng-show='showPopPanel' ng-click="closePop()" style='background-color: #444444'>
+		<div class="width-90 bgWhite popCont">
+			<div class="listLayout flexWrap txtCenter">
+				<!-- <ul class="bd-r" style="flex: 1;">
+					<li class="pt-10 pb-10 txtRed" ng-click="getSecondDeptName();$event.stopPropagation();">{{rootDeptName}}</li>
+				</ul> -->
+				<ul style="flex: 1;" ng-class="{'bd-r':secBdRight}">
+					<li class="pt-10 pb-10" ng-class="{txtRed:$index==secByChosed}" ng-repeat="item in deptNameList" ng-click="getThirdDeptName('{{item.id}}',$index,'{{item.name}}','{{item.id}}');$event.stopPropagation();">{{item.name}}</li>
+				</ul>
+				<ul class="bd-r" style="flex: 1;">
+					<li class="pt-10 pb-10" ng-class="{txtRed:$index==thirdByChosed}"  ng-repeat="item in thirdDeptNameList" ng-click="startQuery('{{item.id}}','{{item.name}}','{{item.orgCode}}',$index);$event.stopPropagation();">{{item.name}}</li>
+				</ul>
+			</div>
+			<div class="panelFooter flexWrap">
+				<div class="flex bgPrimary txtfff" ng-click="closePop()" style='border-right:1px solid #fff!important;'>取消</div>
+				<div class="flex bgPrimary txtfff" ng-click="confirm();$event.stopPropagation();">确认</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="opcityPop" ng-show="addChose" style='background-color: #444444'>
+		<div class="txtCenter" style="border-bottom:1px #28282bde solid;" ng-click="orgAddSaleman()">添加业务员</div>
+		<div class="txtCenter" ng-click="orgAddShop()">添加店铺</div>
+	</div> -->
+	<style>
+		.opcityPop{
+			position: fixed;
+			width: 25vw;
+			right: 2vw;
+			top: 44px;
+			background: #000000bd;
+			color: #ffffff;
+			z-index: 1000;
+		}
+		.opcityPop div{
+			padding: .5rem 0;
+		}
+		.popPanel{
+			position: fixed;
+			left:0;
+			right:0;
+			top:44px;
+			height:auto;
+			height: 100vh;
+			overflow: auto;
+			display:flex;
+			flex-direction: column;
+			background: #00000066;
+		}
+		.popCont{
+			position: fixed;
+			height: 100%;
+			right: 0;
+		}
+		.popCont ul{
+			height: 100vh;
+		}
+		.popPanel .listLayout{flex:1;}
+		.popPanel .panelFooter{
+			height: 4rem;
+			border-top:1px #d2d2d2 solid;
+			font-size:1.5rem;
+			position: fixed;
+		    width: 100%;
+		    bottom: 0;
+		}
+		.popPanel .panelFooter div{
+			padding: 1rem 0;
+			display:block;
+			text-align:center;
+			height: 100%;
+		}
+	</style>
+</ion-view>

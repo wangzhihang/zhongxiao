@@ -1,0 +1,40 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <i class="icon-shouyehui" style="font-size:16px;"></i>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="pt-15 pl-10 pb-15 pr-10 txtfff" style="background: linear-gradient(to right, #5D5BE7 , #5488FE);">
+            <p>账户余额：</p>
+            <p class="pt-20 pb-30 txtCenter rel">
+                <strong ng-bind-template="{{balance | currency : ''}}" style="font-size:3rem;">￥0.00</strong>
+                <span class="aboutAccountFlow abs icon-tiwen" style="top:16px;left:53vw;"></span>
+                <span class='abs bd border-radiu-5 f-12' style='padding: .1rem .5rem;right:10px;bottom: 10px;' ui-sref='user-balance-withdrawal'>提现</span>
+            </p>
+        </div>
+        <div class="bgWhite mt-5 pl-15 pr-10">
+            <ul>
+                <li class="pt-15 pb-15 flexWrap bd-b" ui-sref="transactionRecord">
+                    <em class="flexFix">收益明细</em>
+                    <span class="txt999 icon-fanhui-copy"></span>
+                </li>
+                <li class="pt-15 pb-15 flexWrap bd-b" ui-sref='withdraws-cash-log'>
+                    <em class="flexFix">提现记录</em>
+                    <span class="txt999 icon-fanhui-copy"></span>
+                </li>
+                <li class="pt-15 pb-15 flexWrap bd-b" ui-sref='zxdianpu-info'>
+                    <em class="flexFix">店铺信息</em>
+                    <span class="txt999 icon-fanhui-copy"></span>
+                </li>
+                <li class="pt-15 pb-15 flexWrap bd-b" ng-click="order()">
+                    <em class="flexFix">充值</em>
+                    <span class="txt999 icon-fanhui-copy"></span>
+                </li>
+
+            </ul>
+        </div>
+    </ion-content>
+</ion-view>

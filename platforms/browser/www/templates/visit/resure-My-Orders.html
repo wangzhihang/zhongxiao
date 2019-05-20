@@ -1,0 +1,68 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <!-- 删除原因 -->
+    <div class="popup-container popup-showing active chosePop" ng-show='showReSureOpenCardInfo' ng-click="closeReSureOpenCardInfo()">
+        <div class="popup" ng-click="$event.stopPropagation();" style="width: 85vw;border-radius: 10px;height: 55vh;">
+            <div class="bgWhite">
+                <div class="ml-15 pt-10 pb-10">
+                    <p>
+                        <span class="txtRed">*</span>
+                        <span class="ml-5 f-16">严重原因(一旦删除后该订单将成废单)</span>
+                    </p>
+                    <div class="hotSearchKeyword">
+                        <span class="inlinebk bd" ng-repeat="item in seriousProblem" style="border-radius: 18px;" ng-class="{'defaultSpan':!item.choseMoreType,'choseMoreSpan':item.choseMoreType}" ng-click="choseSeriousProblem($index)">{{item.reason}}</span>
+                    </div>
+                </div>
+                <div class="ml-15 pt-10 pb-10">
+                    <p>
+                        <span class="txtRed">*</span>
+                        <span class="ml-5 f-16">普通原因</span>
+                    </p>
+                    <div class="hotSearchKeyword">
+                        <span class="inlinebk bd" ng-repeat="item in commonProblem" style="border-radius: 18px;" ng-class="{'defaultSpan':!item.choseType,'choseSpan':item.choseType}" ng-click="choseCommonProblem($index)">{{item.reason}}</span>
+                    </div>
+                    <input type="textarea" class="mt-5 bd-0 bd-b width-90 pl-10" placeholder="描述你的问题" ng-model='input.proDescripte' style="height: 15vh;">
+                </div>
+            </div>
+            <div class="popup-buttons abs" style="width: 100%;bottom: 0;"><button class="button ng-binding button-calm border-radiu-25" ng-click="confirmReason()">确定提交</button></div>
+        </div>
+    </div>
+    <ion-content ng-class="has-footer">
+        <section class="informationListSection number-order mt-5">
+            <ion-list show-delete="false">
+                <ion-item class="bgWhite mb-5" ng-repeat="item in planReveiveOrders" ng-hide="item.type=='000010'">
+                    <div class="number-order-num">
+                        <div class="number-order-num-top pt-10 rel pb-10 bd-b rel">
+                            <span class="f-16">{{item.productName}}({{item.number}})</span>
+                            <label class="txt333 abs inlinebk" style="right: 0;">
+								<input type="datetime-local"  class="hide abs" style="width: 15vw; opacity:0" ng-model='item.createTime' ng-change="changeDealOrderTime($index)"/>
+								<span class="f-10 txtfff bgPrimary pl-10 pr-10">预约</span>
+							</label>
+                            <span class="txt666 block pt-5 f-15">{{item.shipAddress}}</span>
+                        </div>
+                    </div>
+                    <div class="rel pt-15 txt999 f-14">
+                        <span class="txt666">{{item.customer}}</span>
+                        <span class="haomaColor">{{item.phone}}</span>
+                        <span style="right:0rem;" class="f-13 abs">
+							<span class="txt666">预约时间：</span>
+                        <span>{{item.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </span>
+                    </div>
+                    <ion-option-button class="button-calm" ng-click="deleteList($index)">
+                        删除
+                    </ion-option-button>
+                </ion-item>
+            </ion-list>
+        </section>
+    </ion-content>
+    <div class="btn-wrap fixed bottom-fixed-btn" style="bottom: 0;width:100vw;" ng-hide='hienConfirmBtn'>
+        <button class="btn btn-primary" ng-disabled="resState" ng-click="planRoute()">{{btnText}}</button>
+    </div>
+</ion-view>

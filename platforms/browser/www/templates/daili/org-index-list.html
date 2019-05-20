@@ -1,0 +1,140 @@
+<ion-view  view-title="" hide-tabs="isNoShowHeader"  hide-nav-bar="isNoShowHeader">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+		<p class="rel">
+			<input type="text" placeholder="请输入渠道编码/名称/手机号进行查询" style="width:70vw;border-radius:5px;" class="pl-10 pr-10 bd" ng-model="keyword">
+			<span class="vertical text-999 pl-15 abs pt-10 pb-10" ng-click="lookKeywords(keyword)" style="right:0;"><i class="icon-sousuoic txt999"></i></span>
+		</p>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<!-- <div ng-click="orgAddSalesman()" ng-show="isShowAddSale"><i class="icon-tianjia" style="font-size:16px;"></i></div> -->
+		<div ui-sref="index_dl"><i class="icon-shouyehui"></i></div>
+	</ion-nav-buttons>
+	<div class="bar bar-subheader">
+		<div class="bgWhite"  style="width:100%">
+			<ul class="bgWhite flexWrap text-center txt666" style="height:100%;">
+				<li class="flex text-center f-15  subLineHeight rel" ng-class="{ 'activeBorderBtm' : tag.current == 1 }" ng-click="actions.setCurrent(1)">{{deptName}}<i class="icon-paixushengxujiangxu"></i></li>
+				<li class="flex text-center f-15  subLineHeight rel" ng-class="{ 'activeBorderBtm' : tag.current == 2 }" ng-click="actions.setCurrent(2)">异常渠道</li>
+				<li class="flex text-center f-15  subLineHeight rel" ng-class="{ 'activeBorderBtm' : tag.current == 3}" ng-click="actions.setCurrent(3)">
+					<input type="checkbox" name="withdrawsList" class="hide" ng-model='sortNum'/>
+					<span class="flexWrap">
+						<span class="width-60 txtRight">排序</span>
+						<span class="flexFix pt-10">
+							<span class="flexWrap sortFont" style="flex-direction: column;">
+								<i class="icon-paixushengxujiangxu flex" style="transform: rotate(180deg);margin:0!important;" ng-class="{'txtBlue' : sortOrder == 0,'txt666':sortOrder == 1}"></i>
+								<i class="icon-paixushengxujiangxu flex" style="margin:0!important;" ng-class="{'txtBlue' : sortOrder == 1,'txt666':sortOrder == 0}"></i>
+							</span>
+						</span>
+					</span>
+				</li>
+				<li class="flex text-center f-15  subLineHeight rel" ng-class="{ 'activeBorderBtm' : tag.current == 4 }" ng-click="actions.setCurrent(4)">筛选 <i class="icon-shaixuan"></i></li>
+			</ul>
+		</div>	
+		<!-- 渠道 -->
+		<div class="reviewSalesman" ng-click="closereviewSalesman()" ng-if="isNoShowReviewSalesman">
+			<div class="reviewSalesmanInfo flexWrap">
+				<div class="reviewSalesmanLeft" ng-click="$event.stopPropagation();">
+					<div class="flexWrap pl-10 pr-10 pt-10 pb-10 bd-b" ng-repeat="item in usermap track by $index" ng-class="{ 'chosed' : tag1.current == '{{item.num}}' }" ng-click="actions1.setCurrent('{{item.num}}','{{item.deptCode}}','{{item.deptName}}')">
+						<span class="inlinebk" style="width: 80%;">{{item.deptName}}</span>
+						<span class="flex transformX" style="margin: auto;"><i class="icon-fanhui"></i></span>
+					</div>
+				</div>
+				<div class="reviewSalesmanRight">
+					<div class="clear pl-10 pr-10 pt-10 pb-10 bd-b" ng-repeat="item in depts track by $index" ng-class="{ 'chosed' : tag2.current == '{{item.num}}' }" ng-click="actions2.setCurrent(item.num,item.levelCode,item.deptCode,item.deptName,item.deptType)">
+						<p>{{item.deptName}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 排序 -->
+		<div class="reviewSource" ng-click="closereviewSource()" ng-if="isNoShowReviewSource">
+			<div class="reviewSourceInfo">
+				<div class="list"  ng-click="$event.stopPropagation();">
+					<label class="item item-radio" ng-repeat="item in soureList" ng-click="actions3.setCurrent('{{item.num}}');closereviewSource()" ng-class="{'txtPrimary': tag4.current == '{{item.num}}'}">
+					  <input type="radio" name="group" value="go" ng-checked="tag4.current == '{{item.num}}'">
+						   <div class="radio-content">
+							   <div class="item-content">
+							    {{item.name}}
+							   </div>
+							   <i class="radio-icon ion-checkmark f-14"></i>
+						  </div>
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- 筛选 -->
+		<div class="chosePop" ng-click="closeChosePop()"  ng-if="isNoShowChosePop">
+			<div class="rel" style="height:100vh">
+				<div class="chosePopBody" ng-click="$event.stopPropagation();">
+					 <h4 class="ml-10 mb-10">排序标准</h4>
+					<ul class="flexWrap  bodyReview">
+					 	<li class="reviewItem" ng-repeat="item in sortClasses"  ng-class="{'active1' :  tag4.current == '{{item.num}}'}" ng-click="actions4.setCurrent('{{item.num}}',$index)">{{item.name}}</li>
+					 </ul>
+					 <h4 class="ml-10 mb-10">出卡量</h4>
+					 <ul class="flexWrap  bodyReview">
+					 	<li class="reviewItem" ng-repeat="item in carsAmount"   ng-class="{ 'active1' : tag5.current == '{{item.num}}' }" ng-click="actions5.setCurrent('{{item.num}}')">{{item.name}}</li>
+					 	
+					 </ul>	
+					 <h4 class="ml-10 mb-10">本月出卡量区间</h4>
+					 <ul class="flexWrap  bodyReview">
+					 	<li class="reviewItem" ng-repeat="item in monthCarsAmount"   ng-class="{ 'active1' : tag6.current == '{{item.num}}' }" ng-click="actions6.setCurrent('{{item.num}}')">{{item.name}}</li>
+					 	
+					 </ul>
+					 <div class="flexWrap chosePopBtn" style="bottom: 45px;">
+					 	<div class="flex text-center bd-t  pt-15 pb-15" ng-click="resetting()">
+					 		重置
+					 	</div>
+					 	<div class="flex text-center btn-primary pt-15 pb-15" style="color:#fff;background:#1E82D2" ng-click="ensure()">
+					 		确定
+					 	</div>
+					 </div>
+				</div>	
+			</div>
+			
+		</div>	
+	</div>
+	<ion-content class="has-subheader">
+		<div class="loadingWrap" ng-if="loading">
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+		<div class="bgWhite shopList bd-b" ng-repeat="item in statsList" ng-click="orgSalemanShopList('{{item.levelCode}}','{{item.deptCode}}','{{item.headImg}}','{{item.orgCode}}','{{item.deptName}}','{{item.deptType}}','{{item.userId}}',$index)">
+			<!--  -->
+			<div class="shopListInfo btnBg">
+				<div class="shopListPic rel">
+					<img src="{{item.headImg}}" class="abs" style="left:5vw;top:5vw;">
+				</div>
+				<!-- <div class="shopListPic rel" ng-hide="item.isNoShowPic">
+					<img src="img/daili.png" class="abs" style="left:3vw;top:3vw;">
+				</div> -->
+				<div class="shopListItem rel">
+					<div class="abs vertical pr-10" style="width:100%">
+						<p class="txt000 f-16 omit">{{item.deptName}} ({{item.userName}})</p>
+						<p class="txt999 omit f-12">{{item.address}}</p>
+						<p class="flexWrap">
+							<span class="txtBestRed">{{item.realName}}&nbsp;</span>
+							<span class="dealColor1">{{item.contractNumber}}</span>
+							<span class="txt flex text-right f-12 txt999">上月{{item.allOrderCntLastMonth}}单</span>
+						</p>
+						<p class="flexWrap alignItem rel">
+							<span class="f-12 txt999">最新登录：</span>
+							<time class="f-12 txtGreen">{{item.loginTime | date:"yyyy-MM-dd HH:mm:ss"}}</time>
+							<span class="f-12 txt999 abs text-right" style="right:0">
+								本月<em class="f-20 txtTips" ng-class="{'txtBestRed':item.isHasOrder,'txt999':item.noHasOrder}">{{item.allOrderCntThisMonth}}</em>单
+							</span>
+						</p>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="btn-wrap fixed bottom-fixed-btn" style="bottom: 0;width:100vw;">
+		<button class="btn btn-primary" ng-click="orgAddSalesman()" ng-show="isShowAddSale">{{btnText}}</button>
+	</div>
+	<style type="text/css">
+		.sortFont .icon-paixushengxujiangxu{
+			height: 10px;
+			line-height: 10px;
+		}	
+	</style>
+</ion-view>

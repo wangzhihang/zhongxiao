@@ -1,0 +1,29 @@
+<ion-view view-title="{{title}}">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="directory-list">
+			<ul>
+				<li>
+					<div class="txt-info item01" ui-sref="gadget-cbss-reset-card">
+						<span class="ico icon-shoujiqia" style="color:#36b097;"></span>
+						<p><em>废卡重置</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				 <!--
+				<li>
+					<div class="txt-info item02" ng-click="cancelCard()">
+						<span class="ico icon-SIMqia" style="color:#36b097;"></span>
+						<p><em>返销</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li> -->
+			</ul>
+		</div>
+	</ion-content>
+</ion-view>

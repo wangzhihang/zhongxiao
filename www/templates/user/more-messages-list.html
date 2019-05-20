@@ -1,0 +1,93 @@
+<ion-view view-title="{{title}}">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	
+	<div class="bar bar-subheader">
+		<div class="wrap" style="width:100%;">
+			 <ul class="bgWhite flexWrap" style="height:100%;">
+			 	<li class="flex text-center rel subLineHeight"  ng-class="{ 'activeBorderBtm' : tag.current == 1 }" ng-click="actions.setCurrent(1)">全部</li>
+			 	<li class="flex text-center rel subLineHeight"  ng-class="{ 'activeBorderBtm' : tag.current == 2 }" ng-click="actions.setCurrent(2)">预约号码</li>
+			 	<li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 3 }" ng-click="actions.setCurrent(3)">预约宽带</li>
+			 	<li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 4 }" ng-click="actions.setCurrent(4)">照片审核</li>
+			 </ul>
+		</div>
+	</div>
+	<!-- <div class="bar bar-subheader">
+		<div class="wxOrderNav subOrderNav" style="width:100%;">
+			<ul class="flexWrap text-center">
+				<li class="flex rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 1 }" ng-click="actions.setCurrent(1)">全部</li>
+				<li class="flex rel pt-10 pb-10" ng-class="{ 'activeBorderBtm' : tag.current == 2 }" ng-click="actions.setCurrent(2)">系统消息</li>
+				<li class="flex rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 2 }" ng-click="actions.setCurrent(2)">预约号码</li>
+				<li class="flex rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 3 }" ng-click="actions.setCurrent(3)">预约宽带</li>
+				<li class="flex rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 4 }" ng-click="actions.setCurrent(4)">照片审核</li>
+			</ul>
+		</div>
+	</div> -->
+	<ion-content class="has-subheader has-tabs">
+		<div class="cen padding" ng-class='{"hide":loading}'>
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+		<!-- <h1>消息中心列表</h1> -->
+		<section class="informationListSection number-order mt-5">
+			<div class="mb-5">
+				<ion-list show-delete="false">
+					<ion-item class="bgWhite pr-10 mb-5" ng-repeat="item in noticeList" ng-click="numberOrderDetail('{{item.orderCode}}','{{item.type}}')" ng-hide="item.type=='000010'">
+						<div>
+							<div class="complexHdTitle1 rel">
+								<div class="contrainIcon">
+									<img src="{{item.imgUrl}}">
+								</div>
+								<div class="topMiddle txt999">
+									<p class="omit mb-0">{{item.textType}}</p>
+									<p class="mb-0"><small>{{item.updateTime | date:"yyyy-MM-dd HH:mm:ss"}}</small></p>
+								</div>
+								<!-- <div class="cancel abs" ng-click="cancel('{{item.id}}','{{item.showTag}}',$index);$event.stopPropagation();">
+									<img src="img/gb.png">
+								</div> -->
+							</div>
+							<div class="flexWrap bottomInformation">
+								<div class="flex">
+									<p class="txt333">{{item.messagesArr0}}<span ng-class="{'haomaColor':item.haomaColor,'lanColor':item.lanColor}">{{item.haomaText}}</span>{{item.messagesArr1}}</p>
+								</div>
+							</div>
+							<ion-option-button class="button-calm" ng-click="deleteList($index)">
+				            删除
+				         </ion-option-button>
+						</div>
+					</ion-item>
+				</ion-list>
+			</div>	
+			<div class="noMore" ng-if="noMore"><span class="txt">没有更多</span></div>
+		</section>
+		<!-- <section>
+			<div class="mb-5 tapStyle informationList">
+				<ul>
+					<li class="bgWhite pl-10" ng-repeat="item in allDataSortDownByType" ng-click="numberOrderDetail('{{item.orderCode}}','{{item.type}}')"  ng-show="item.showTag == '000001'||item.showTag == null">
+						<div class="complexHdTitle bd-b omit rel">
+							<div class="contrainIcon">
+								<i><img src="{{item.imgUrl}}"></i>
+							</div>
+							<div class="pt-5 topMiddle txt999">
+								<p class="omit">{{item.type}}</p>
+								<p><small>{{item.time | date:"dd/MM HH:mm"}}</small></p>
+							</div>
+							<div class="cancel abs" ng-click="cancel('{{item.id}}','{{item.showTag}}',$index);$event.stopPropagation();">
+								<img src="../img/gb.png">
+							</div>
+						</div>
+						<div class="flexWrap bottomInformation">
+							<div class="flex">
+								<p class="txt666"><span style="color:#589DDB;">{{item.name}}</span>{{item.remark}}</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="noMore" ng-if="noMore"><span class="txt">没有更多</span></div>
+		</section> -->
+	</ion-content>
+</ion-view>

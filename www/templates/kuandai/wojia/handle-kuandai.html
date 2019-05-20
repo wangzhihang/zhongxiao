@@ -1,0 +1,267 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <!-- 价格明细 -->
+    <div class="carItem" ng-show="showPriceDetial" ng-click="closepriceDetial()" style="bottom:50px;">
+        <div class="carBody" ng-click="$event.stopPropagation();">
+            <div class="carTop clear">
+                <span class="fl">价格明细</span>
+                <span class="fr" ng-click="closepriceDetial()"><i class=" icon-guanbi1 txtPrimary f-16 pl-15"></i></span>
+            </div>
+            <div class="carInfo">
+                <ul>
+                    <li class="pt-10 pb-10 pl-10 pr-10 clear bd-b" ng-repeat="item in priceList track by $index">
+                        <span class="fl ">{{item.priceEntry}}:</span>
+                        <span class="fr ">
+                            <span class="f-14 txtBigOrange ">{{item.price | currency:" ￥ "}}</span>
+                        </span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ion-content class="has-footer ">
+        <!-- 证件信息 -->
+        <div class="pl-10 pt-10 pb-10 pr-10 ">
+            <span class="f-15">证件信息</span>
+            <span class="txtPrimary fr" ng-show="showIdentifyInfo " ng-click="readIdentifyInfo() ">重新读取身份证</span>
+        </div>
+        <div class="bgWhite pt-10 pb-10 f-15 mb-5 txtCenter txtPrimary " ng-hide="showIdentifyInfo " ng-click="readIdentifyInfo() ">
+            <img ng-src="img/identy.png" style="width:100vw;">
+        </div>
+        <div class="bgWhite pl-10 pr-10 f-13 " ng-show="showIdentifyInfo ">
+            <div class="flexWrap ">
+                <ul class="flexFix ">
+                    <li class="flexWrap pt-10 pb-10 ">
+                        <span>用户姓名：</span>
+                        <span class="flexFix ">娃哈哈</span>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>身份证号：</span>
+                        <div class="flexFix " style="word-break:break-word;">610254187523021256</div>
+                    </li>
+                </ul>
+                <div class="width-25 pl-10 pt-5 pb-5 txtCenter">
+                    <img ng-src="img/1111.jpeg " alt="身份证头像 " style="width:62%;">
+                </div>
+                <ul class="width-100 bd-t ">
+                    <li class="flexWrap pt-10 pb-10 ">
+                        <span>联系电话：</span>
+                        <span class="flexFix ">16523451654</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 号码信息 -->
+        <div class="pl-10 pt-10 pb-10 pr-10 ">
+            <span class="f-15">号码信息</span>
+            <span class="txtPrimary fr" ng-show="showNumberInfo " ng-click="selectNumber() ">重新选择号码</span>
+        </div>
+        <div class="bgWhite pt-10 pb-10 f-15 mb-5 txtCenter txtPrimary " ng-hide="showNumberInfo" ng-click="selectNumber() ">
+            <img ng-src="img/number.png" style="width:100vw;">
+        </div>
+        <div class="bgWhite pl-10 pr-10 f-13 " ng-show="showNumberInfo ">
+            <div class="flexWrap ">
+                <ul class="flexFix ">
+                    <li class="flexWrap pt-10 pb-10 " style="flex-direction: column; ">
+                        <div>
+                            <span class="flexFix f-bolder f-16">185 2645 1252</span>
+                            <p class="fr ">
+                                <span class="pl-5 pr-5 pt-5 pb-5 bgPrimary txtfff border-radiu-5 mr-10 ">写卡</span>
+                                <span class="pl-5 pr-5 pt-5 pb-5 bgGray txt666 border-radiu-5 ">删除</span>
+                            </p>
+                        </div>
+                        <p class="f-14 pt-5 txt666 " style="width:66vw;">4G畅爽99元套餐</p>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>参加活动：</span>
+                        <div class="flexFix ">4G畅爽全国冰激凌预存200元送280元</div>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>付款方式：</span>
+                        <div class="flexFix ">首月半价</div>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>附加产品：</span>
+                        <div class="flexFix ">4G畅爽全国冰激凌预存200元送280元</div>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t " ng-click='editPrestored()'>
+                        <span>手机预存：</span>
+                        <div class="flexFix ">
+                            <p class="inlinebk txt666 ">￥<em ng-bind-template="{{preCharge}} "></em>.00</p>
+                        </div>
+                        <span class='txtPrimary pl-15'>修改费用</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 装机信息 -->
+        <div class="pl-10 pt-10 pb-10 pr-10 f-15 ">装机信息</div>
+        <div class="bgWhite pt-10 pb-10 f-15 mb-5 txtCenter txtPrimary " ng-hide="showFirstKuandaiInfo" ng-click="handleFirstKuandai()">
+            <img ng-src="img/firKuandai.png" style="width:100vw;">
+            <!-- <i class="icon-add "></i>
+            <span>办理宽带(该套餐赠送一条免费宽带)</span> -->
+        </div>
+        <div class="bgWhite pl-10 pr-10 f-13 " ng-show="showFirstKuandaiInfo">
+            <div class="flexWrap ">
+                <ul class="flexFix ">
+                    <li class="flexWrap pt-10 pb-10 ">
+                        <span class="flexFix f-bolder f-15 txtPrimary">该套餐赠送一条免费宽带</span>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 ">
+                        <span class="flexFix f-bolder f-15 ">第一条宽带</span>
+                        <span class='txtPrimary pl-15'>更改</span>
+                    </li>
+                    <li class="flexWrap pb-10 ">
+                        <div class="flexFix f-15 ">陕西智慧沃家组合优化冰激凌融合产品(全国版)</div>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>宽带活动：</span>
+                        <div class="flexFix ">福建省的关键是广东省非凡哥</div>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t " ng-click="editFirstKuandaiFee() ">
+                        <span>宽带预存：</span>
+                        <div class="flexFix ">
+                            <p class="inlinebk txt666 ">￥<em ng-bind-template="{{firstKuandaiFee}} "></em>.00</p>
+                        </div>
+                        <span class='txtPrimary pl-15'>修改费用</span>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t " ng-click="editFirstMaterialFee() ">
+                        <span>&emsp;工料费：</span>
+                        <div class="flexFix ">
+                            <p class="inlinebk txt666 ">￥<em ng-bind-template="{{firstMaterialFee}} "></em>.00</p>
+                        </div>
+                        <span class='txtPrimary pl-15'>修改费用</span>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>&emsp;机顶盒：</span>
+                        <div class="flexFix txtBigOrange ">￥100.00</div>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>&emsp;光猫费：</span>
+                        <div class="flexFix txtBigOrange ">￥100.00</div>
+                    </li>
+                    <!-- <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <p class="flex ">
+                            <span class="icon-fuxuankuang txtPrimary "></span>
+                            <span>机顶盒</span>
+                        </p>
+                        <p class="flex ">
+                            <span class="icon-fuxuankuang1 txtPrimary "></span>
+                            <span>光猫</span>
+                        </p>
+                        <p class="flex ">
+                            <span class="icon-fuxuankuang txtPrimary "></span>
+                            <span>活动</span>
+                        </p>
+                    </li> -->
+                    <li class="pt-10 pb-10 bd-t ">
+                        <p>装机地址：</p>
+                        <div class="txt999 pt-10 ">陕西省咸阳市秦都区统一路同德公寓A-1108</div>
+                    </li>
+                    <li class="pt-10 pb-10 bd-t " ng-click="editFirstRemark() ">
+                        <p>备注</p>
+                        <div class="txt999 pt-10 "><em ng-bind-template="{{firstRemark}} "></em></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="bgWhite pt-10 pb-10 f-15 mb-5 txtPrimary " ng-show="showSedKuandaiInfo" ng-click="handleSedKuandai()">
+            <p class="f-bolder f-15 txtPrimary pl-10">可添加第二条宽带,30元/月</p>
+            <img ng-src="img/firKuandai.png" style="width:100vw;">
+            <!-- <i class="icon-add "></i>
+                <span>办理宽带(可添加第二条宽带,30元/月)</span> -->
+        </div>
+        <div class="bgWhite pl-10 pr-10 f-13 mt-5 " ng-show="showSedKuandaiDetail">
+            <div class="flexWrap ">
+                <ul class="flexFix ">
+                    <li class="flexWrap pt-10 pb-10 ">
+                        <span class="flexFix f-bolder f-15 txtPrimary">可添加第二条宽带,30元/月</span>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 ">
+                        <span class="flexFix f-bolder f-15 ">第二条宽带</span>
+                        <span class='txtPrimary pl-15'>更改</span>
+                    </li>
+                    <li class="flexWrap pb-10 ">
+                        <div class="flexFix f-15 ">陕西智慧沃家组合优化冰激凌融合产品(全国版)</div>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>宽带活动：</span>
+                        <div class="flexFix ">福建省的关键是广东省非凡哥</div>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t " ng-click="editSedKuandaiFee() ">
+                        <span>宽带预存：</span>
+                        <div class="flexFix ">
+                            <p class="inlinebk txt666 ">￥<em ng-bind-template="{{sedKuandaiFee}} "></em>.00</p>
+                        </div>
+                        <span class='txtPrimary pl-15'>修改费用</span>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t " ng-click="editSedMaterialFee() ">
+                        <span>&emsp;工料费：</span>
+                        <div class="flexFix ">
+                            <p class="inlinebk txt666 ">￥<em ng-bind-template="{{sedMaterialFee}} "></em>.00</p>
+                        </div>
+                        <span class='txtPrimary pl-15'>修改费用</span>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>&emsp;机顶盒：</span>
+                        <div class="flexFix txtBigOrange ">￥100.00</div>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>&emsp;光猫费：</span>
+                        <div class="flexFix txtBigOrange ">￥100.00</div>
+                    </li>
+                    <!-- <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <p class="flex ">
+                            <span class="icon-fuxuankuang1 txtPrimary "></span>
+                            <span>机顶盒</span>
+                        </p>
+                        <p class="flex ">
+                            <span class="icon-fuxuankuang1 txtPrimary "></span>
+                            <span>光猫</span>
+                        </p>
+                        <p class="flex ">
+                            <span class="icon-fuxuankuang1 txtPrimary "></span>
+                            <span>活动</span>
+                        </p>
+                    </li> -->
+                    <li class="pt-10 pb-10 bd-t ">
+                        <p>装机地址：</p>
+                        <div class="txt999 pt-10 ">陕西省咸阳市秦都区统一路同德公寓A-1108</div>
+                    </li>
+                    <li class="pt-10 pb-10 bd-t " ng-click="editSedRemark() ">
+                        <p>备注</p>
+                        <div class="txt999 pt-10 "><em ng-bind-template="{{sedRemark}} "></em></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pl-10 pt-10 pb-10 pr-10 f-14 txtBigOrange txtCenter ">(此金额仅供参考，具体以订单返回金额为准)</div>
+
+    </ion-content>
+    <div class="btn-wrap fixed bottom-fixed-btn bgWhite f-15 bd-t" style="bottom: 0;width:100vw;box-shadow: 0 10px 5px #eaeaed;">
+        <div class="flexWrap ">
+            <span class="pl-10 flexFix " style="margin:auto; ">
+                <em>应收金额：</em>
+                <strong class="txtBigOrange ">￥0.00</strong>
+                <em class="txtPrimary pr-10 rel " ng-click="AllpriceDetial();$event.preventDefault(); ">(明细
+                    <span class="icon-xiala2-copy f-16 f-bolder" ng-hide='pushTag'></span>
+            <span class="icon-xiala2 f-16 f-bolder" ng-show='pushTag'></span>
+            <span class="abs" style="width:15vw;height: 30px;left:5px;" ng-show='pushTag' ng-click="closepriceDetial();$event.stopPropagation();"></span>)
+            </em>
+            </span>
+            <button class="btn btn-primary " style="width:27%;height: 48px; ">确认提交</button>
+        </div>
+    </div>
+    <style>
+        .btn-wrap:active {
+            color: inherit;
+        }
+    </style>
+</ion-view>

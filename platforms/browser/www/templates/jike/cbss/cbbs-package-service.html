@@ -1,0 +1,30 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>	
+	<ion-content  class="package-detail">
+		<div class="comboAttrVal">
+			<h2>附加产品</h2>
+			<div class="cen padding" ng-class='{"hide":loading[0]}'>
+				<ion-spinner icon="ios-small"></ion-spinner>
+			</div>
+			<dl ng-repeat="row in serviceList" class="cc" ng-class='{"show":showChenk[row.productId]}'>
+				<dt ng-click="selectP({{row}})"><i ng-class='{"icon-fuxuankuang":!showChenk[row.productId],"icon-checkbox-selected-copy":showChenk[row.productId]}'></i>{{ row.productName }}</dt>
+				<dd>
+					<ion-checkbox ng-repeat="item in serviceSon[row.productId]"
+								ng-value="item"
+								ng-model="item.check">
+						{{ item.name }}
+					</ion-checkbox>
+				</dd>
+			</dl>
+		</div>
+		<div class="btn-wrap">
+			<button class="btn btn-primary" ng-disabled="resState" ng-click="order()">下一步</button>
+		</div>
+	</ion-content>
+
+</ion-view>

@@ -1,0 +1,40 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+<ion-nav-buttons side="left">
+	<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
+	<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+</ion-nav-buttons>
+<ion-content>
+
+<div class="getIdDeviceType">
+	<!-- <ul class="mb-10" ng-if="!nfcShow"> -->
+		<!--active为当前选中状态，disabled属性为不支持状态，可选状态移除其disabled属性即可-->
+		<!-- <li><button class="device" ng-class='{"active":displayDevice.nfc}' ng-click="read_nfc()">{{btnText.nfc}}</button></li> -->
+	<!-- </ul> -->
+	<ul class="mb-10">
+		<li><button class="device" ng-class='{"active":displayDevice.ble}' ng-click="find_ble()">{{btnText.ble}}</button></li>
+	</ul>
+	<!-- <div class="txtCenter" ng-show="isShowChange">
+		<p class="inlinebk txt999" ng-click="showAllDevice()" style="width: 40%;">更换设备</p>
+	</div> -->
+</div>
+
+
+<div class="search-show-list" ng-hide="bleDiv[0]">
+	<h2>搜索到的蓝牙设备</h2>
+	<p  ng-hide="bleDiv[1]">对不起，尚未搜索到蓝牙设备！请确保蓝牙设备开启,并重新搜索！</p>
+	<ul class="item-val" ng-hide="bleDiv[2]">
+		<li  ng-repeat="data in bleadderDatas | unique:'name'" ng-click="scan_ble(data)" ng-class='{"assertive":data.name == bleHistory}'>
+			{{data.name}} <span ng-show="data.name == bleHistory">(上次使用设备)</span>
+		</li>
+	</ul>
+</div>
+<div class="bgWhite" ng-if="ble">
+	<div class="pt-10 pb-10 pl-10 pr-10 bd-b">已连接的设备（<span class="txtRed">如需更换设备请点击搜索蓝牙设备</span>）</div>
+	<div class="pt-10 pb-10 pl-10 pr-10 txtBlue" ng-click="scan_ble(bleMark)">{{bleMark.name}}</div>
+</div>
+</ion-content>
+
+</ion-view>

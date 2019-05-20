@@ -1,0 +1,11 @@
+<ion-view hide-nav-bar="true" hide-tabs="true">
+<div class="noNetWork">
+	<div class="noNetWorkIco">
+		<img src="img/noNetWorkIco.png"/>
+		<p class="padding" style="color:#666;margin:1rem 0;">退出重新启动应用程序</p>
+		<div class="padding" ng-if="isIOS">
+			<button ng-click="reconnect()">退出应用程序</button>
+		</div>
+	</div>
+</div>
+</ion-view>

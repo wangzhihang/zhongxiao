@@ -1,0 +1,25 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="directory-list">
+			<ul>
+				<li ui-sref="daili-shop-index">
+					<div class="txt-info item01">
+						<span class="ico icon-dianpu" style="color:#FF6E5A;"></span>
+						<p><em>店铺</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li  ui-sref="daili-add-shop">
+					<div class="txt-info item02">
+						<span class="ico icon-dianpu" style="color:#FF6E5A;"></span>
+						<p><em>添加店铺</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</ion-content>
+</ion-view>

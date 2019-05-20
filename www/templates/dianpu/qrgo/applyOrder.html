@@ -1,0 +1,34 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+<ion-nav-buttons side="left">
+	<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
+	<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+</ion-nav-buttons>
+
+<ion-content>
+
+<div class="combo-list">
+	<ul>
+		<li class="rel" ng-repeat="row in orderList" ng-click="submitOrder($index)">
+			{{row.RECEIVER_NAME}}({{row.PHONE_NUMBER}})-{{row.ORDER_SUB_STATE_DESC}}{{row.PRODUCT_NAME}}
+		</li>
+	</ul>
+
+</div>
+
+
+
+<div style="text-align: center;" ng-show="noOrder">
+	<img src="img/noOrder.png"/ style="margin-top: 30%;width:48%">
+</div>
+
+
+
+ <div class="loadingWrap" ng-if="loading">
+        <ion-spinner icon="ios"></ion-spinner>
+ </div>
+
+
+</ion-content></ion-view>

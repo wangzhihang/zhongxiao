@@ -1,0 +1,51 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content style="background-color: #F6F6F6;">
+		
+	<div class="user-form-2" style="background-color: #F6F6F6;">
+		<ul>
+			<li>
+				<p class="f-13 pt-10 pb-10 txt000">请输入原始密码</p>
+				<input type="password" placeholder="请输入原始密码" class="input-text bgWhite" ng-model="input.oldPwd" />
+			</li>
+			<li>
+				<p class="f-13 pt-10 pb-10 txt000">请输入新密码</p>
+				<input type="password" placeholder="请输入新密码" class="input-text bgWhite" ng-model="input.newPwd" />
+			</li>
+			<li>
+				<p class="f-13 pt-10 pb-10 txt000">请重复新密码</p>
+				<input type="password" placeholder="请重复新密码" class="input-text bgWhite" ng-model="input.repeatPwd" />
+			</li>
+		</ul>
+	</div>
+	<!-- <div class="user-form-2">
+		<ul>
+			<li>
+				<input type="tel" placeholder="请输入手机号码" class="input-text"/>
+			</li>
+			<li>
+				<input type="text" placeholder="验证码" class="input-text"/>
+				<button class="getCode">获取验证</button>
+			</li>
+			<li>
+				<input type="tel" placeholder="请输入新密码" class="input-text"/>
+			</li>
+		</ul>
+	</div> -->
+	<div class="updateMimaTip">
+		<span class="txt666 f-14">密码必须至少8个字符，而且同时包含字母和文字。</span>
+	</div>
+	<div class="btn-wrap">
+		<button class="btn btn-primary" ng-click="changePwd()">立即修改</button>
+	</div>
+	
+
+	</ion-content>
+
+</ion-view>

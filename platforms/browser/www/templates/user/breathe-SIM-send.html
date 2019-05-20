@@ -1,0 +1,47 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref='index'><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content class="has-tabs">
+        <div class="card-hd-info-list">
+            <ul>
+                <li ng-class="{ 'active' : data.current == 1 }" ng-click="actions.setCurrent(1)">未开卡</li>
+                <li ng-class="{ 'active' : data.current == 2 }" ng-click="actions.setCurrent(2)" style="border-left: 1px #1E82D2 solid;">已开卡</li>
+            </ul>
+        </div>
+
+        <div class="bgWhite bd-b" ng-show='data.current==1' ng-repeat='item in blankCards'>
+            <label class="flexWrap pt-10 pb-10 pl-10 pr-10" ng-click='choseCard($index)'>
+                <input type="radio" name="withdrawsList" ng-model="item.aaa" class="hide"/>
+                <span class="pl-10 pr-10 f-18 flexWrap" style="margin:auto;">
+                    <i ng-class="item.aaa == true ? 'icon-xuanzedui txtSuccess' : 'icon-xuanze txt999'"></i>
+                </span>
+                <div class="flexFix" style='margin:auto;'>
+                        <p>{{item.iccid}}</p>
+                    </div>
+            </label>
+        </div>
+        <div class="bgWhite pt-10 pb-10 bd-b pl-20 pr-20" ng-show='data.current==2' ng-repeat='item in completeCards'>
+            <span>{{item.number}}</span>
+            <sapn class='fr txt999 f-13'>{{item.updateTime | date:"yyyy-MM-dd HH:mm:ss" }}</sapn>
+        </div>
+
+
+        <ion-infinite-scroll ng-if="hasmore" on-infinite="loadMore()" icon="ion-loading-c" distance="1%" immediate-check="false"></ion-infinite-scroll>
+
+        <div class="loadingWrap" ng-if="loading">
+            <ion-spinner icon="ios-small"></ion-spinner>
+        </div>
+
+        <div class="noMore" ng-if="noMore"><span class="txt">没有更多</span></div>
+
+
+    </ion-content>
+    <div class="btn-wrap fixed" style="bottom: 0;width:100vw;" ng-show='data.current==1'>
+        <button class="btn btn-primary" ng-click="confirmSend()">去开卡</button>
+    </div>
+</ion-view>

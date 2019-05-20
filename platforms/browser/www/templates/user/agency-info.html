@@ -1,0 +1,95 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="card-hd-info-list">
+			<ul>
+				<li ng-class="{ 'active' : current == 2 }" ng-click="setCurrent(2)">CBSS</li>
+				<li ng-class="{ 'active' : current == 1 }" ng-click="setCurrent(1)">BSS</li>
+			</ul>
+		</div>
+
+		<div class="card-bd-info-list" ng-show="data.current == 1">
+				<ul>
+					<li ng-repeat="item in bssAgencyList">
+						<p class="item-info">
+							<span>
+								<em class="pl-5">BSS工号：</em>
+								<em class="pl-5">{{item.userName}}</em>
+							</span>
+							<span class="fr" ng-show="setDefault">
+								<label class="radio" ng-class="{'selected':(item.defaultTag=='1' ? true : false)}" ng-click="bbsSetDefault($index)">
+									<em>设为默认</em>
+								</label>
+							</span>
+						</p>
+						<hr/>
+						<div>
+							<div class="flex pt-5">
+								<span class="inlinebk workNumLeftTopList txt333 txtRight">渠道</span>
+								<span class="flexFix pl-10 txt666">{{item.channelName}}</span>
+							</div>
+							<div class="flex pt-5">
+								<span class="inlinebk workNumLeftTopList txtRight"></span>
+								<span class="flexFix pl-10 txt999">{{item.channelCode}}</span>
+							</div>
+							<div class="flex pt-5">
+								<span class="inlinebk workNumLeftTopList txt333 txtRight">发展人</span>
+								<span class="flexFix pl-10 txt666">{{item.developName}}</span>
+							</div>
+							<div class="flex pt-5 pb-5">
+								<span class="inlinebk workNumLeftTopList txtRight"></span>
+								<span class="flexFix pl-10 txt999">{{item.developCode}}</span>
+							</div>
+						</div>
+						<div class="flex f-12" style="position:absolute;right: -1.0rem;" ng-show="item.ifReach">
+							<span class="pt-5 pb-5 pl-5 pr-5 txtRed transform45" style="border:1px solid #d51617;border-radius: 5px;">达量{{item.completed}}/{{item.target}}</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		<div class="card-bd-info-list" ng-show="current == 2">
+			<ul>
+				<li ng-repeat="item in cbssAgencyList">
+					<p class="item-info">
+						<span class="fl">工号：<em>{{item.userName}}</em></span>
+						<span class="fr" ng-show="setDefault">
+							<label class="radio" ng-class="{'selected':(item.defaultTag=='1' ? true : false)}" ng-click="cbbsSetDefault($index)">
+								<em>设为默认</em>
+							</label>
+						</span>
+					</p>
+					<hr/>
+					<div>
+						<div class="pt-5">
+							<span class="inlinebk workNumLeftTopList txt333 txtRight">渠道</span>
+							<span class="flexFix pl-10 txt666">{{item.channelName}}</span>
+						</div>
+						<div class="pt-5">
+							<span class="inlinebk workNumLeftTopList txtRight"></span>
+							<span class="flexFix pl-10 txt999">{{item.channelCode}}</span>
+						</div>
+						<div class="pt-5">
+							<span class="inlinebk workNumLeftTopList txt333 txtRight">发展人</span>
+							<span class="flexFix pl-10 txt666">{{item.developName}}</span>
+						</div>
+						<div class="pt-5 pb-5">
+							<span class="inlinebk workNumLeftTopList txtRight"></span>
+							<span class="flexFix pl-10 txt999">{{item.developCode}}</span>
+						</div>
+					</div>
+					<!-- <div class="f-12" style="margin:auto;" ng-show="item.ifReach">
+						<span class="pt-5 pb-5 pl-5 pr-5 txtRed transform45" style="border:1px solid #d51617;border-radius: 5px;">达量{{item.completed}}/{{item.target}}</span>
+					</div> -->
+				</li>
+			</ul>
+		</div>
+
+	</ion-content>
+
+</ion-view>

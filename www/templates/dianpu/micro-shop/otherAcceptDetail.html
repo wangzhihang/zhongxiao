@@ -1,0 +1,92 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="cen padding" ng-class='{"hide":loading}'>
+            <ion-spinner icon="ios-small"></ion-spinner>
+        </div>
+        <div class="number-order-list bgWhite number-order-list1">
+            <ul>
+                <li class="orderUserInfo">
+                    <dl class="rel">
+                        <dd>
+                            <span class="f-bolder f-15">产品信息</span>
+                            <span class="orderTimer abs f-10 {{orderData.numberOrder.status | statusColor:'color'}}">{{orderData.numberOrder.status | statusColor:'name'}}</span>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="orderDetailInfo1">
+                    <dl class="f-14">
+                        <dd class="number-order-num number-order-num1">
+                            <div class="num-order-money mt-10">
+                                <span class="order-detail-num grap-detail-num" style="font-size:1.8rem">{{orderData.numberOrder.number}}</span>
+                                <span></span>
+                                <span class="order-detail-num f-14 abs">
+                                    <em class="txt999">首次预存</em>
+                                    <em style="color:#e36426" class="grap-detail-num">{{orderData.numberOrder.amount | currency : '￥'}}</em>
+                                </span>
+                            </div>
+                        </dd>
+                        <dd class="order-detail-name bd-b">
+                            <div class="txt999 f-15 num-order-name num-order-name1">{{orderData.numberOrder.productName}}</div>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">套餐</span>
+                            <span class="flexFix pl-20 txt999">{{orderData.numberOrder.contractName}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">订购时间</span>
+                            <span class="flexFix pl-20 txt999">{{orderData.numberOrder.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </dd>
+                        <dd class="flexWrap" ng-if="orderData.numberOrder.status=='000003'">
+                            <span class="detailLeftTopList">完成时间</span>
+                            <span class="flexFix pl-20 txt999">{{orderData.numberOrder.finishDate | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="liNo"></li>
+                <li class="orderUserInfo">
+                    <dl>
+                        <dd class="f-bolder f-15">
+                            <span class="txtRight" style="width: 84px;">用户信息</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">客户姓名</span>
+                            <span class="flexFix pl-20 txt999">{{orderData.numberOrder.customer}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">联系方式</span>
+                            <span class="flexFix pl-20 txt999">{{orderData.numberOrder.contactNumber}}</span>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="liNo"></li>
+            </ul>
+            <div class="img-wrap">
+                <div class="col-img"><img ng-style='imgProp' ng-src="{{orderData.idCardImageUrl}}" /></div>
+                <div class="col-img" ng-click="changePic()"><img ng-style='imgProp' ng-src="{{orderData.handCardUrl}}" /></div>
+                <div class="col-img">
+                    <img ng-style='imgProp' ng-src="{{orderData.sign}}" ng-hide="showBtn"/>
+                    <div class="rel" style="height: 100%;" ng-show="showBtn">
+                        <div class="reSignBtn bgPrimary txtfff pt-10 pb-10 f-15 border-radiu-5 abs" style="left: 5%;top: 25%;width: 25vw;" ng-click="supplySignature()">补签名</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="btn-wrap" ng-show="isNoShowCard">
+            <button class="btn btn-white" ng-click="openCard()">一键开卡</button>
+        </div>
+    </ion-content>
+    <div class="bigPic flexWrap" ng-show="isShowBigPic">
+        <img ng-src="{{orderData.handCardUrl}}" ng-style="bigPic">
+        <div class="abs" style="top:1.5rem;right:1.5rem" ng-click="closeBigPic()">
+            <span><i class="icon-guanbi1 f-30" style="color:black;"></i></span>
+        </div>
+    </div>
+</ion-view>

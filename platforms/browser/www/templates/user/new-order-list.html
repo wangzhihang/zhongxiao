@@ -1,0 +1,33 @@
+<ion-view view-title="{{title}}">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="number-order-list" ng-show="showInfo">
+			<ul>
+				<li ng-repeat="item in newOrderList">
+					<dl>
+						<dt>
+							<span class="fl">{{item.orderType}}</span>
+							<span class="fr" style="color:#6fbe76;">{{item.status}}</span>
+						</dt>
+						<dd>业务项目：{{item.showInfo}}</dd>
+						<dd>所在城市：<em>{{item.city}}</em></dd>
+						<dd>交易时间：{{item.updateTime | date:"yyyy-MM-dd HH:mm:ss"}}</dd>
+					</dl>
+				</li>
+			</ul>
+			<div class="noMore">
+				<span>实时订单（TOP10）</span>
+			</div>
+		</div>
+		<div class="cen padding" ng-show="loading">
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+	</ion-content>
+
+</ion-view>

@@ -1,0 +1,87 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="login">已有账号？</div>
+	</ion-nav-buttons>
+	
+	
+	<ion-content>
+		<div class="formList">
+			<ul>
+				<li class="rowItem">
+					<div class="label">归属渠道：</div>
+					<div class="labelForm txt999" style="line-height: 34px;" ng-click="choseChannelCity()">
+						{{channelValue}}
+					</div>
+				</li>
+				
+				<!-- <li class="rowItem">
+					<div class="label">归属省分：</div>
+					<div class="labelForm">
+						<select class="select mr-10" ng-model="selectedOrgName_1" ng-options="item.orgName for item in orgList_1" ng-change="selectOrgName_1(selectedOrgName_1)">
+							<option value="">请选择</option>
+						</select>
+					</div>
+				</li>
+				<li class="rowItem" ng-if="orgListVal_2">
+					<div class="label">归属市分：</div>
+					<div class="labelForm">
+						<select class="select mr-10" ng-model="selectedOrgName_2" ng-options="item.orgName for item in orgList_2" ng-change="selectOrgName_2(selectedOrgName_2)">
+							<option value="">请选择</option>
+						</select>
+					</div>
+				</li>
+				<li class="rowItem" ng-if="orgListVal_3">
+					<div class="label">一级部门：</div>
+					<div class="labelForm">
+						<select class="select mr-10" ng-model="selectedOrgName_3" ng-options="item.orgName for item in orgList_3" ng-change="selectOrgName_3(selectedOrgName_3)">
+							<option value="">请选择</option>
+						</select>
+					</div>
+				</li> -->
+				<li class="rowItem">
+					<div class="label">网格名称：</div>
+					<div class="labelForm">
+						<input type="text" class="textBox" ng-model="formInfo.wangGe" placeholder="请填写网格名称"/>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">渠道经理：</div>
+					<div class="labelForm">
+						<input type="text" class="textBox" ng-model="formInfo.channelManager" placeholder="请填写渠道经理"/>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">渠道名称：</div>
+					<div class="labelForm">
+						<input type="text" class="textBox" ng-model="formInfo.channelName" placeholder="请填写渠道名称"/>
+					</div>
+				</li>			
+			</ul>
+		</div>
+		<div class="mt-15 pl-15 pr-15">
+<!--			<button class="btn" ng-click="confirm()" ng-disabled="resState">立即注册</button>-->
+			<button class="blueBtn" ng-disabled="resState" ng-click="confirm()">
+				<ion-spinner icon="ios-small" class="spinner-light" ng-if="loading"></ion-spinner>
+				<span>{{btnText}}</span>
+			</button>
+		</div>
+		
+	</ion-content>
+	<!-- 归属渠道 -->
+	<div class="allCity" ng-show="isNoShowChannelArea" ng-click="closeChannelCity()">
+		<div class="sidebar location slip">
+			<ul class="first-list province" style="width:30%" ng-click="$event.stopPropagation();">
+				<li ng-repeat="item in orgList_1" ng-class="{'selected':tag1.current1=='{{item.id}}'} " ng-click="actions1.setCurrent1('{{item}}');">{{item.orgName}}</li>
+			</ul>	
+			<ul class="other-list city" style="width:30%"  ng-click="$event.stopPropagation();">
+				<li ng-repeat="item in orgList_2" ng-class="{'selected':tag1.current2=='{{item.id}}'} " ng-click="actions1.setCurrent2('{{item}}');">{{item.orgName}}</li>
+			</ul>
+			<ul class="other-list city" style="width:40%"  ng-click="$event.stopPropagation();">
+				<li ng-repeat="item in orgList_3" ng-class="{'selected':tag1.current3=='{{item.id}}'} " ng-click="actions1.setCurrent3('{{item}}');">{{item.orgName}}</li>
+			</ul>
+		</div>
+	</div>
+</ion-view>

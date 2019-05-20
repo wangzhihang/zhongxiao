@@ -1,0 +1,63 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div>
+            <div id="myMapContainer0" ng-class="{'myMapLittleContainer':getNearbyOrderBtn==false}" class="mb-10 bgWhite txtCenter myMapContainer bd"></div>
+            <div class='circle' ng-show="getNearbyOrderBtn">
+                <div class='circle1'>&nbsp;</div>
+                <div class='circle2'>&nbsp;</div>
+                <div class='circle3'>&nbsp;</div>
+                <div class='center f-15 flexWrap'>
+                    <div style="margin: auto;">
+                        <p>获取</p>
+                        <p>订单</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="bgWhite fixed flexWrap txt666" ng-show="getNearbyOrderBtn" style="bottom: 0;width:100vw;height: 9vh;">
+        <div style="margin: auto;">
+            <p>正在获取订单</p>
+            <p>请您耐心等待</p>
+        </div>
+    </div>
+    <!-- 获取订单后底部 -->
+    <div class="carItem cardItem" ng-hide="getNearbyOrderBtn">
+        <div class="carBody" ng-click="$event.stopPropagation();">
+            <div class="carTop clear bd-b txtCenter">
+                <span class="fl pl-10" ng-click="choseAllClient()">
+					<i ng-class="allChose ? 'icon-xuanzedui txtSuccess' : 'icon-xuanze txt999'"></i>
+					<!-- <i ng-class="item.aaa == true ? 'icon-xuanzedui txtSuccess' : 'icon-xuanze txt999'" class="icon-xuanze txt999"></i> -->
+					{{txtState}}
+				</span>
+                <span style="color: #6BCA6B" ng-click="refuseOrder()">停止接单</span>
+                <span class="fr txtPrimary pr-10" ng-click="reSureMyOrders()">确定</span>
+            </div>
+            <div class="carInfo">
+                <ul style="overflow-y: auto;" ng-hide="showTip">
+                    <li class="flexWrap ml-10 pr-10 pt-10 pb-10 bd-b" ng-repeat="item in receivedWkBespeak" ng-click="choseServiceClient($index)">
+                        <span style="margin: auto"><i ng-class="item.tag == true ? 'icon-xuanzedui txtSuccess' : 'icon-xuanze txt999'"></i></span>
+                        <div class="flex pl-10">
+                            <p>
+                                <span class="f-16 f-bolder">{{item.productName}}</span>
+                                <span class="pl-5"><img ng-src="{{item.imgTag}}" style="width: 14px;margin-top: -6px;"></span>
+                            </p>
+                            <p>{{item.shipAddress}}</p>
+                        </div>
+                    </li>
+
+                </ul>
+                <div class="pl-15 pr-15 flexWrap" style="height: 100%;" ng-show="showTip">
+                    <span class="flex txtRed txtCenter" style="margin: auto;">附近暂无订单，若您有已接单未办理订单,直接点击确定进行办理。若无未办理订单，请稍后重新定位接单！</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-view>

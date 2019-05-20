@@ -1,0 +1,66 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+<ion-nav-buttons side="left">
+	<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
+	<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+</ion-nav-buttons>
+<ion-content>
+
+	<div class="userInfoForm">
+		<ul>
+			<li>
+				<label>查询号码：</label>
+				<input type="tel" class="input-text" ng-model="data.tel" ng-keyup="telChange()" placeholder="手机号码必填..."/>
+			</li>
+		</ul>
+	</div>
+	<div class="btn-wrap">
+		<button class="btn btn-primary" ng-click="order()" ng-disabled="resState">查询</button>
+	</div>
+
+	<div class="cen padding" ng-show="loading">
+		<ion-spinner icon="ios-small"></ion-spinner>
+	</div>
+
+	<div class="bgTransparent" ng-if="resultShow">
+		<dl class="mt-10 mb-0 bgWhite">
+			<dd  class="flexWrap pt-10 pb-10 pl-10 pr-10 bd-b">
+				<label class="col-25">业务号码：</label>
+				<div class="col-75 omit">{{bssinfo.serviceId}}</div>
+			</dd>
+			<dd  class="flexWrap pt-10 pb-10 pl-10 pr-10 bd-b">
+				<label class="col-25">受理编号：</label>
+				<div class="col-75 omit">{{bssinfo.registerNumber}}</div>
+			</dd>
+			<dd  class="flexWrap pt-10 pb-10 pl-10 pr-10 bd-b">
+				<label class="col-25">当前状态：</label>
+				<div class="col-75 omit">{{bssinfo.remark}}</div>
+			</dd>
+			<dd  class="flexWrap pt-10 pb-10 pl-10 pr-10 bd-b">
+				<label class="col-25">业务类型：</label>
+				<div class="col-75 omit">{{bssinfo.acceptServiceKind}}</div>
+			</dd>
+			<dd  class="flexWrap pt-10 pb-10 pl-10 pr-10 bd-b">
+				<label class="col-25">营业地址：</label>
+				<div class="col-75 omit">{{bssinfo.infoDetailAcceptId}}</div>
+			</dd>
+			<dd  class="flexWrap pt-10 pb-10 pl-10 pr-10 bd-b">
+				<label class="col-25">操作员：</label>
+				<div class="col-75 omit">{{bssinfo.acceptPerson}}</div>
+			</dd>
+			<dd  class="flexWrap pt-10 pb-10 pl-10 pr-10 bd-b">
+				<label class="col-25">受理时间：</label>
+				<div class="col-75 omit">{{bssinfo.sacceptDate}}</div>
+			</dd>
+			<dd  class="flexWrap pt-10 pb-10 pl-10 pr-10 bd-b">
+				<label class="col-25">竣工时间：</label>
+				<div class="col-75 omit">{{bssinfo.completeDate}}</div>
+			</dd>
+			
+		</dl>
+	</div>
+
+
+</ion-content></ion-view>

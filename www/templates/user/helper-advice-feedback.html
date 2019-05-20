@@ -1,0 +1,87 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="bgGrayer ml-10 mr-10 pl-10 pr-10 pt-20 pb-20">
+            <p class="pb-30">
+                小伙伴们，我们的新商城终于上线啦。哦也~大家在使用过程中遇到任何问题。可随时反馈给我们，我们会努力做的更好呢~~~
+            </p>
+            <article class="pb-30">
+                <p class="pb-15">1.遇到什么BUG(问题)呢？<span style="color:#F10D3B;">*</span></p>
+                <div>
+                    <p class="pb-10 f-12">填写一下问题描述吧~~</p>
+                    <input type="textarea" class="mt-5 width-100" ng-model='input.proDescripte' style="height: 12vh;">
+                </div>
+            </article>
+            <article class="pb-30">
+                <p class="pb-15">2.上传一张具体问题的截图给我们把，好不<span style="color:#F10D3B;">*</span></p>
+                <div>
+                    <p class="pb-10 f-12">传一张给我么，就一张，就一张</p>
+                    <label class="mt-5 width-100 pl-10 bd flexWrap rel" style="height: 15vh;">
+						<input  type="file" ng-model='input.file1' style="position: absolute;z-index: 1;opacity: 0;width:100%;height:100%;">
+                        <div class="flexWrap width-100" style="position:absolute;z-index:0;height: 100%;">
+							<img class="flex" src="img/sczp.png" style="height: 80%;margin: auto;">
+							<div class="flex pl-15" style="margin: auto;">
+								<p class="txtPrimary f-15">点击添加文件</p>
+								<p class="txt999 f-15">文件大小限制：5M</p>
+							</div>
+						</div>
+
+                    </label>
+                </div>
+            </article>
+            <article class="pb-30">
+                <p class="pb-15">2.上传一张具体问题的截图给我们把，好不<span style="color:#F10D3B;">*</span></p>
+                <div>
+                    <p class="pb-10 f-12">再传一张，再传一张给我啦</p>
+                    <label class="mt-5 width-100 pl-10 bd flexWrap rel" style="height: 15vh;">
+							<input  type="file" ng-model='input.file1' style="position: absolute;z-index: 1;opacity: 0;width:100%;height:100%;">
+							<div class="flexWrap width-100" style="position:absolute;z-index:0;height: 100%;">
+								<img class="flex" src="img/sczp.png" style="height: 80%;margin: auto;">
+								<div class="flex pl-15" style="margin: auto;">
+									<p class="txtPrimary f-15">点击添加文件</p>
+									<p class="txt999 f-15">文件大小限制：5M</p>
+								</div>
+							</div>
+	
+						</label>
+                </div>
+            </article>
+            <article class="pb-30">
+                <p class="pb-15">2.上传一张具体问题的截图给我们把，好不<span style="color:#F10D3B;">*</span></p>
+                <input type="number" class="bd width-100">
+            </article>
+            <div class="btn-wrap txtCenter">
+                <button class="btn btn-primary width-30" ng-click="sublimt()" style="height:4rem;">提交</button>
+            </div>
+        </div>
+        <!-- <div class="bgWhite">
+            <div class="ml-15 pt-10 pb-10">
+                <p>
+                    <span class="txtRed">*</span>一张
+                    <span class="ml-5 f-16">请概括你遇到的问题</span>
+                </p>
+                <input type="text" class="mt-5 bd-b width-90 pl-10" placeholder="概括你的问题" ng-model='input.proTitle' />
+            </div>
+            <div class="ml-15 pt-10 pb-10">
+                <p>
+                    <span class="txtRed">*</span>
+                    <span class="ml-5 f-16">请描述你遇到的问题</span>
+                </p>
+                <div class="hotSearchKeyword">
+                    <span class="inlinebk bd" ng-repeat="item in problemType" style="border-radius: 18px;" ng-class="{'defaultSpan':!item.choseType,'choseSpan':item.choseType}" ng-click="choseProType($index)">{{item.name}}</span>
+                </div>
+                <input type="textarea" class="mt-5 bd-0 bd-b width-90 pl-10" placeholder="描述你的问题" ng-model='input.proDescripte' style="height: 15vh;">
+            </div>
+        </div>
+        <div class="btn-wrap">
+            <button class="btn btn-primary" ng-click="sublimt()">提交申请</button>
+        </div> -->
+
+    </ion-content>
+</ion-view>

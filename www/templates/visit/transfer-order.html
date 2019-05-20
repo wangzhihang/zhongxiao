@@ -1,0 +1,73 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div>
+            <div id="myMapContainer2"  ng-class="{'myMapLittleContainer':getNearbyOrderBtn==false}" class="mb-10 bgWhite txtCenter myMapContainer bd"></div>
+            <div class='circle' ng-show="getNearbyOrderBtn">
+				<div class='circle1'>&nbsp;</div>
+				<div class='circle2'>&nbsp;</div>
+				<div class='circle3'>&nbsp;</div>
+				<div class='center f-15 flexWrap'>
+					<div style="margin: auto;">
+						<p>获取附近</p>
+						<p>客户经理</p>
+					</div>
+				</div>
+			</div>
+        </div>
+	</ion-content>
+	<div class="bgWhite fixed flexWrap txt666" ng-show="getNearbyOrderBtn" style="bottom: 0;width:100vw;height: 9vh;">
+		<div style="margin: auto;">
+			<p>正在获取订单</p>
+			<p>请您耐心等待</p>
+		</div>
+	</div>
+	<!-- 获取订单后底部 -->
+	<div class="carItem cardItem" ng-hide="getNearbyOrderBtn" style="height: 35vh;bottom: 0;background: transparent;">
+		<div class="carBody" ng-click="$event.stopPropagation();" style="top: 0;background: transparent;">
+			<div class="carTop clear bd-b bd-t txtCenter flexWrap bgWhite" style="border-top-left-radius: 12px;border-top-right-radius: 12px;">
+				<p class="rel pl-20">
+					<input type="text" placeholder="请输入手机号/姓名" style="width:70vw;border-radius:5px;" class="pl-10 pr-10 bd" ng-model="keyword" >
+					<span class="vertical text-999 pl-15 abs pt-10 pb-10" ng-click="lookKeywords(keyword)" style="right:0;"><i class="icon-sousuoic txt999"></i></span>
+				</p>
+				<span class="flex txtRight txtPrimary pr-15 pt-5 pb-5" ng-click="goTransferOrder()">确定</span>
+			</div>
+			<div class="carInfo bgWhite">
+				<ul style="overflow-y: auto;">
+					<li class="flexWrap ml-10 bd-b" ng-repeat="item in clientManagerList">
+						 <label class="block rel width-100  pr-10 pt-10 pb-10 pl-10" ng-click="choseServiceClient($index)">
+							<input type="radio" name="msgType" class="hide" />
+							<i class="vertical abs pl-10 pr-15 f-18" style="left:0;">
+							</i>
+							<div class="pl-30 ml-10">
+								<p>
+									<span class="f-16 f-bolder">{{item.userName}}</span>
+									<span class="pl-5"><img ng-src="{{item.imgTag}}" style="width: 14px;margin-top: -6px;"></span>
+								</p>
+								<p><a href="tel:{{item.number}}">{{item.number}}</a></p>
+							</div>
+						</label>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<style>
+        label i:after {
+            content: '\e625';
+            font-family: 'iconfont';
+        }
+        
+        label input[type="radio"]:checked+i:after {
+            content: '\e626';
+            color: #f3b761 !important;
+        }
+    </style>
+</ion-view>

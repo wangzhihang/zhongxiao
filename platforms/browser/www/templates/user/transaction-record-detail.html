@@ -1,0 +1,35 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="record-detail">
+			<ul>
+				<li>
+					<span class="fl">金额</span>
+					<span class="fr"><em  ng-class="{'txtRed':incomeMoney,'txtGreen':expendMoney}" ng-bind-template="{{side}}{{amount | currency : '￥'}}">0.00</em></span>
+				</li>
+				<li>
+					<span class="fl">收支类型</span>
+					<span class="fr" ng-bind-template="{{category}}">类型</span>
+				</li>
+				<li>
+					<span class="fl">交易时间</span>
+					<span class="fr" ng-bind-template="{{createTime}}">时间</span>
+				</li>
+				<li>
+					<span class="fl">订单编号</span>
+					<span class="fr" ng-bind-template="{{accountFlow}}">流水编号</span>
+				</li>
+			</ul>
+		</div>
+		<div class="cen padding" ng-show="loading">
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+	</ion-content>
+
+</ion-view>

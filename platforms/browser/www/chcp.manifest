@@ -1,0 +1,1150 @@
+[
+  {
+    "file": "app.js",
+    "hash": "f38ed04bf20bc80d010c054ddcea80c3"
+  },
+  {
+    "file": "css/font/iconfont.css",
+    "hash": "a388f1128d2dd53e270e9a7aaca7de96"
+  },
+  {
+    "file": "css/font/iconfont.eot",
+    "hash": "c2303823a17fe0c123a41b1860f0ed22"
+  },
+  {
+    "file": "css/font/iconfont.svg",
+    "hash": "396c941f1bc8894fac1e31dcf83a446a"
+  },
+  {
+    "file": "css/font/iconfont.ttf",
+    "hash": "8ae60517d4bb8429c67dffefccd9cd83"
+  },
+  {
+    "file": "css/font/iconfont.woff",
+    "hash": "2e9954b0263a51190c16cfda466fe19d"
+  },
+  {
+    "file": "css/my.css",
+    "hash": "7c2632d292124b8bb47abfb1d62f3649"
+  },
+  {
+    "file": "css/reset.css",
+    "hash": "985159bc2f800a981fc90d9cdf78599c"
+  },
+  {
+    "file": "css/style.css",
+    "hash": "f5b17c75f9ae49302a3dfd96acf5a94c"
+  },
+  {
+    "file": "css/style2.css",
+    "hash": "964e188863278c0166f59e061c5dc7eb"
+  },
+  {
+    "file": "data/bc-package-wojia.json",
+    "hash": "1e824abccf6ff83457e3f4400c9f2743"
+  },
+  {
+    "file": "data/bc-package.json",
+    "hash": "0e744f9180fb17edac840ee145f683c1"
+  },
+  {
+    "file": "data/combination-package.json",
+    "hash": "2408d104f8c0c4a9aca09e60f4d9e8ce"
+  },
+  {
+    "file": "data/number-filter.json",
+    "hash": "63e8f45d428815d84ce97189a3ae6df7"
+  },
+  {
+    "file": "img/BD.jpg",
+    "hash": "077c944b44b15104999f50d9ba319e6b"
+  },
+  {
+    "file": "img/c01.png",
+    "hash": "02f21494a13d504306324e219ab4b637"
+  },
+  {
+    "file": "img/c02.png",
+    "hash": "7cc29d8e27dcba2bb37e64eddd387a1b"
+  },
+  {
+    "file": "img/id-01.jpg",
+    "hash": "81dd9ad2d389afe043b17649f877b58b"
+  },
+  {
+    "file": "img/id-02.jpg",
+    "hash": "0255b7c23588a232c7b7780eb26d18f7"
+  },
+  {
+    "file": "img/id01.jpg",
+    "hash": "0021999158d703d91dc4a0ee3c39e63b"
+  },
+  {
+    "file": "img/id02.jpg",
+    "hash": "1ff9d9643a039134f7111c81dcd89251"
+  },
+  {
+    "file": "img/logo.png",
+    "hash": "ab047e2eb529bbc8aab37f49ce4a909c"
+  },
+  {
+    "file": "img/nfc.jpg",
+    "hash": "38139c4ea479f77480f111665d297fe1"
+  },
+  {
+    "file": "img/otc.jpg",
+    "hash": "6fcc4ac9fc2fea5012201dd7a70fc174"
+  },
+  {
+    "file": "img/title.png",
+    "hash": "48916c37cde7c6e31dff55246e038f4d"
+  },
+  {
+    "file": "img/user.jpg",
+    "hash": "8f1a9c81b44ee69e37e204406cc7dda9"
+  },
+  {
+    "file": "img/wechatQRcode.jpg",
+    "hash": "1576e6dbadaa69f1f5198c1f26e12b78"
+  },
+  {
+    "file": "img/ydg.png",
+    "hash": "92111aeebcd2b92f359c99c555fb78c4"
+  },
+  {
+    "file": "img/yxz.png",
+    "hash": "60ee5a427a310f1b3a7c7a167c15b740"
+  },
+  {
+    "file": "img/zhaoxiangji.png",
+    "hash": "5334e665fed30c826b3c118cb01cde06"
+  },
+  {
+    "file": "index.html",
+    "hash": "d6e057da1e3b8bffcf692cc9b7ef7ba3"
+  },
+  {
+    "file": "js/controllers.js",
+    "hash": "14b405096c1e72c49ad2cca61939b2ad"
+  },
+  {
+    "file": "js/controllers/authentication/identity.js",
+    "hash": "a049c01e5b224ee77c8f7fecea14d178"
+  },
+  {
+    "file": "js/controllers/authentication/pc.js",
+    "hash": "1bc70dfb127b4e50e5ff38b455fb1703"
+  },
+  {
+    "file": "js/controllers/broadband/address_area.js",
+    "hash": "2662b0065aef06b8c61205192455ca40"
+  },
+  {
+    "file": "js/controllers/broadband/address_detailed.js",
+    "hash": "a95a513c5e397f2474d224e9f1a32608"
+  },
+  {
+    "file": "js/controllers/broadband/combination_4g_activity.js",
+    "hash": "61346e5227845f37a7df09fd44b14afa"
+  },
+  {
+    "file": "js/controllers/broadband/combination_4g_package.js",
+    "hash": "02282c7e03ef881d8e8683a165e55c8d"
+  },
+  {
+    "file": "js/controllers/broadband/combination_install.js",
+    "hash": "cab6b506473f1ddbaf47224efea15909"
+  },
+  {
+    "file": "js/controllers/broadband/combination_package.js",
+    "hash": "b83d40e1153e0fe084f1108ab7677c9d"
+  },
+  {
+    "file": "js/controllers/broadband/combination_remark.js",
+    "hash": "f9fa870738f953aca548a095bf48b106"
+  },
+  {
+    "file": "js/controllers/broadband/combination_service_pack.js",
+    "hash": "c75f83c5afca97d263a506d8502b0b87"
+  },
+  {
+    "file": "js/controllers/broadband/combination-detail.js",
+    "hash": "671e56ff167266b86dc1f7ef189dbeb0"
+  },
+  {
+    "file": "js/controllers/broadband/combination/_old/broadband-package.js",
+    "hash": "87b0362ee334e94a1186570f90397300"
+  },
+  {
+    "file": "js/controllers/broadband/combination/_old/combination_package_activity.js",
+    "hash": "1e8f7e7fe46c03ac7d818ee475a031e6"
+  },
+  {
+    "file": "js/controllers/broadband/combination/_old/combination_package_detail.js",
+    "hash": "930eefbd8880776ecfd6ad48e28695ed"
+  },
+  {
+    "file": "js/controllers/broadband/combination/_old/combination_package.js",
+    "hash": "d49f6f87c8b110c58ddb8f5d9076e4ef"
+  },
+  {
+    "file": "js/controllers/broadband/combination/_old/combination_product_list.js",
+    "hash": "653253f71b8ac76552793d36678632f3"
+  },
+  {
+    "file": "js/controllers/broadband/combination/_old/order_info_confirm.js",
+    "hash": "a16e7e2588b15edee6f6b7332cad142c"
+  },
+  {
+    "file": "js/controllers/broadband/combination/_old/system_state.js",
+    "hash": "cd97a007049848c2eddf7283b877f75c"
+  },
+  {
+    "file": "js/controllers/broadband/combination/_old/system_state2.js",
+    "hash": "428e8592091c1758ce9e7d68e4ba4fcb"
+  },
+  {
+    "file": "js/controllers/broadband/combination/_system_state.js",
+    "hash": "3141dda9a7871bfdbc6f50d6ac2fe35f"
+  },
+  {
+    "file": "js/controllers/broadband/combination/order_info_confirm.js",
+    "hash": "392874bd244eed6daf361e244425a736"
+  },
+  {
+    "file": "js/controllers/broadband/combination/package-lan.js",
+    "hash": "6715960cc1c351c72c31b58ddabbfb92"
+  },
+  {
+    "file": "js/controllers/broadband/combination/package-tel.js",
+    "hash": "edff542ae8209f003532d82eacf092de"
+  },
+  {
+    "file": "js/controllers/broadband/combination/package.js",
+    "hash": "87846c6ba2f8c2d0d9cc5aaa8a25ead9"
+  },
+  {
+    "file": "js/controllers/broadband/combination/select_terminals.js",
+    "hash": "d5b36381476126dbe19f79c0a19972e0"
+  },
+  {
+    "file": "js/controllers/broadband/combination/system_state.js",
+    "hash": "703db7629e1b4430ffe5b9c2600e6d93"
+  },
+  {
+    "file": "js/controllers/broadband/combination/system_state.js.bak",
+    "hash": "9c1606a43fe722f7be6bff8454569ec7"
+  },
+  {
+    "file": "js/controllers/broadband/index.js",
+    "hash": "fd3363ad104c061167e2d3f2ce3c3630"
+  },
+  {
+    "file": "js/controllers/broadband/wojia/_system_state.js",
+    "hash": "3141dda9a7871bfdbc6f50d6ac2fe35f"
+  },
+  {
+    "file": "js/controllers/broadband/wojia/order_info_confirm.js",
+    "hash": "a16e7e2588b15edee6f6b7332cad142c"
+  },
+  {
+    "file": "js/controllers/broadband/wojia/package-lan.js",
+    "hash": "e2aae5fd8801f5bf45eaed0b5777e5bb"
+  },
+  {
+    "file": "js/controllers/broadband/wojia/package-tel.js",
+    "hash": "8a63a6dc92d5e0d627e4a3b54f7f8d47"
+  },
+  {
+    "file": "js/controllers/broadband/wojia/package.js",
+    "hash": "2f6439e5acf13d85b629aa7c834c595f"
+  },
+  {
+    "file": "js/controllers/broadband/wojia/system_state.js",
+    "hash": "60931d1bc93eeb02be70a46656efd781"
+  },
+  {
+    "file": "js/controllers/broadband/wojia/system_state.js.bak",
+    "hash": "378c24373521248dd531cdca51601ab5"
+  },
+  {
+    "file": "js/controllers/fandan.js",
+    "hash": "72517663c9fc08c868de7d12b5333207"
+  },
+  {
+    "file": "js/controllers/index.js",
+    "hash": "2b2aa2afbe6d0caf14e5fc0f6b58e7b0"
+  },
+  {
+    "file": "js/controllers/number/——number-package-cbss.js",
+    "hash": "2e928d4fa4af6a1bd729b35a6e8c370e"
+  },
+  {
+    "file": "js/controllers/number/bss-write-sim - 副本.js",
+    "hash": "1a8ba4be4cb1107b196d4e5c965c9850"
+  },
+  {
+    "file": "js/controllers/number/bss-write-sim-halfCard.js",
+    "hash": "335eb8451ef38b77fbf1d1bc7fcacc83"
+  },
+  {
+    "file": "js/controllers/number/bss-write-sim.js",
+    "hash": "3db97af8d4e5943e287203bc9618a025"
+  },
+  {
+    "file": "js/controllers/number/cbss-write-sim.js",
+    "hash": "ab1652d2dc14a94d4f67f3af0867ed9f"
+  },
+  {
+    "file": "js/controllers/number/group/group-write-sim.js",
+    "hash": "2b7ff47a8fb316bfc2bc873ea714affd"
+  },
+  {
+    "file": "js/controllers/number/group/querygrouplist.js",
+    "hash": "6f9cdf63eee10708cb390d72378a6f4a"
+  },
+  {
+    "file": "js/controllers/number/number-list.js",
+    "hash": "ab65f98ff937edf32112f3272adede49"
+  },
+  {
+    "file": "js/controllers/number/number-package-cbss.js",
+    "hash": "86fca29024c4539f3fc6af2733c3d246"
+  },
+  {
+    "file": "js/controllers/number/number-package.js",
+    "hash": "9a3059cc7c13eee6483d44602b5b08b1"
+  },
+  {
+    "file": "js/controllers/number/school/school.js",
+    "hash": "c2d64e4e45a79cb5b882ed5e3ec4628a"
+  },
+  {
+    "file": "js/controllers/number/school/writesim.js",
+    "hash": "bbb2a57a97d1a2912e93d36e7160523b"
+  },
+  {
+    "file": "js/controllers/temp.js",
+    "hash": "23f838d35a84fffe4a5e1f36b1c7eda0"
+  },
+  {
+    "file": "js/controllers/user/_login.js",
+    "hash": "6fa13fee63cf0b9e94b84c5da510b826"
+  },
+  {
+    "file": "js/controllers/user/login.js",
+    "hash": "44902c55c9ecbcfcfa0af0efc9fda209"
+  },
+  {
+    "file": "js/global.js",
+    "hash": "2ad60577cbca3379a8a39d3569d14b38"
+  },
+  {
+    "file": "js/jquery.js",
+    "hash": "d0212568ce69457081dacf84e327fa5c"
+  },
+  {
+    "file": "js/service/bbs_order.js",
+    "hash": "697b88374a09dc8d58b35435c230b581"
+  },
+  {
+    "file": "js/service/ble.js",
+    "hash": "f90d7cc944d627af8b8fdb8c6bcbe791"
+  },
+  {
+    "file": "js/service/telList.js",
+    "hash": "441cee6d1b76b19415b1aec55e2aa3b8"
+  },
+  {
+    "file": "js/service/unicomm_server.js",
+    "hash": "d0742915871e48dc1b29384e0f6e6da6"
+  },
+  {
+    "file": "js/service/writesim.js",
+    "hash": "43d1131ae5fb6ee776d02149e07b7754"
+  },
+  {
+    "file": "js/services.js",
+    "hash": "11dff0f601cecbe0d9a4a9deb28f51d9"
+  },
+  {
+    "file": "js/signature.js",
+    "hash": "42f48d178c14e2005b4abf6eac9d91ec"
+  },
+  {
+    "file": "js/state.js",
+    "hash": "548b6c03a5a8684578879d13f439f818"
+  },
+  {
+    "file": "js/tms/_tms_cbss_lan.js",
+    "hash": "caa94f477fc122d5f24c7eb7c9467ce7"
+  },
+  {
+    "file": "js/tms/tms_bss_customer.js",
+    "hash": "12605d18928988f1b3ce6ebdb95f270e"
+  },
+  {
+    "file": "js/tms/tms_bss_login.js",
+    "hash": "d754b22f73dc57163fd7ab04b8480807"
+  },
+  {
+    "file": "js/tms/tms_bss_number.js",
+    "hash": "606e3a8d6f65e9a452c3282fb5965c96"
+  },
+  {
+    "file": "js/tms/tms_cbss_customer.js",
+    "hash": "ceef96c4c024458201f78315857f4b51"
+  },
+  {
+    "file": "js/tms/tms_cbss_login.js",
+    "hash": "6f93db027773230d189bf91883af500b"
+  },
+  {
+    "file": "js/tms/tms_cbss_number.js",
+    "hash": "1b3b4704ab85b8c54c49d6e8f61dc1b5"
+  },
+  {
+    "file": "js/tms/tms_unicomm_server.js",
+    "hash": "ce692f03f7388e13146c73c59d89f254"
+  },
+  {
+    "file": "lib/ionic/css/ionic.css",
+    "hash": "1835baf222bae515552c33cf6dffab6b"
+  },
+  {
+    "file": "lib/ionic/css/ionic.min.css",
+    "hash": "893db9a1b633adb61ddf064e5314a509"
+  },
+  {
+    "file": "lib/ionic/fonts/ionicons.eot",
+    "hash": "2c2ae068be3b089e0a5b59abb1831550"
+  },
+  {
+    "file": "lib/ionic/fonts/ionicons.svg",
+    "hash": "621bd386841f74e0053cb8e67f8a0604"
+  },
+  {
+    "file": "lib/ionic/fonts/ionicons.ttf",
+    "hash": "24712f6c47821394fba7942fbb52c3b2"
+  },
+  {
+    "file": "lib/ionic/fonts/ionicons.woff",
+    "hash": "05acfdb568b3df49ad31355b19495d4a"
+  },
+  {
+    "file": "lib/ionic/js/angular-ui/angular-ui-router.js",
+    "hash": "1f7fe3573d463743394e98d8b00eb228"
+  },
+  {
+    "file": "lib/ionic/js/angular-ui/angular-ui-router.min.js",
+    "hash": "83f32131b638a8686a43510fbd645b1b"
+  },
+  {
+    "file": "lib/ionic/js/angular/angular-animate.js",
+    "hash": "b1a0315d4738ba305aca3b00146e232c"
+  },
+  {
+    "file": "lib/ionic/js/angular/angular-animate.min.js",
+    "hash": "fb61c6d539943f24f85f49cad4c187b5"
+  },
+  {
+    "file": "lib/ionic/js/angular/angular-resource.js",
+    "hash": "523cfbb962e367e90da4bf1976b53d7f"
+  },
+  {
+    "file": "lib/ionic/js/angular/angular-resource.min.js",
+    "hash": "8da982bb4bc3275659b4c081f34f9b7c"
+  },
+  {
+    "file": "lib/ionic/js/angular/angular-sanitize.js",
+    "hash": "7b57f04a2b23847203394400eeb2c97d"
+  },
+  {
+    "file": "lib/ionic/js/angular/angular-sanitize.min.js",
+    "hash": "04a7b73d1dc5d573a5b17d70122e8781"
+  },
+  {
+    "file": "lib/ionic/js/angular/angular.js",
+    "hash": "1b3d5bfbeb67c93df0f8ee9de569a206"
+  },
+  {
+    "file": "lib/ionic/js/angular/angular.min.js",
+    "hash": "0744b6e5cd7b7cdad98cefb3d9c141c6"
+  },
+  {
+    "file": "lib/ionic/js/ionic-angular.js",
+    "hash": "b9f40cc1dbc2d8b5fffbd59d2714ba40"
+  },
+  {
+    "file": "lib/ionic/js/ionic-angular.min.js",
+    "hash": "efc0aa8f5a9b7eabcfce7e36cae57e68"
+  },
+  {
+    "file": "lib/ionic/js/ionic.bundle.js",
+    "hash": "c5ffb9b482a1c8562c3288f240a584e0"
+  },
+  {
+    "file": "lib/ionic/js/ionic.bundle.min.js",
+    "hash": "b46d366b4160a1a81b7944a1dcf822c2"
+  },
+  {
+    "file": "lib/ionic/js/ionic.js",
+    "hash": "47b98a8c910b59b65c66997ea3cb68a6"
+  },
+  {
+    "file": "lib/ionic/js/ionic.min.js",
+    "hash": "d651a0c6df47f361e188d3275fec5852"
+  },
+  {
+    "file": "lib/ionic/scss/_action-sheet.scss",
+    "hash": "d0c6449f31db02323aa6e7f56ef55e67"
+  },
+  {
+    "file": "lib/ionic/scss/_animations.scss",
+    "hash": "5596f74cb1ee03f9faf453ad4ee11807"
+  },
+  {
+    "file": "lib/ionic/scss/_backdrop.scss",
+    "hash": "7ff048e091b39f6615db62ee136ef040"
+  },
+  {
+    "file": "lib/ionic/scss/_badge.scss",
+    "hash": "c7b1b0e3049754fc22b45730e6c560fa"
+  },
+  {
+    "file": "lib/ionic/scss/_bar.scss",
+    "hash": "3a3e2b39cb46db25fafff9d68c3f062e"
+  },
+  {
+    "file": "lib/ionic/scss/_button-bar.scss",
+    "hash": "bf90c5d85e628b451f90b65f9c807f5a"
+  },
+  {
+    "file": "lib/ionic/scss/_button.scss",
+    "hash": "e365f13abd3c547f442fc1ac5385111f"
+  },
+  {
+    "file": "lib/ionic/scss/_checkbox.scss",
+    "hash": "89a0987dd24210f16863d7ba2c7312bd"
+  },
+  {
+    "file": "lib/ionic/scss/_form.scss",
+    "hash": "169f7a6e449aa9e1bed20a1f30887c97"
+  },
+  {
+    "file": "lib/ionic/scss/_grid.scss",
+    "hash": "9a87c565e397bb73b7f467726a63e01c"
+  },
+  {
+    "file": "lib/ionic/scss/_items.scss",
+    "hash": "711c0937e27c2ab5979f44e36ff31ac6"
+  },
+  {
+    "file": "lib/ionic/scss/_list.scss",
+    "hash": "0ab8daf57764aac25bf68aa0b0e6c776"
+  },
+  {
+    "file": "lib/ionic/scss/_loading.scss",
+    "hash": "9f23e266d43a432bbf07a8677d1d1592"
+  },
+  {
+    "file": "lib/ionic/scss/_menu.scss",
+    "hash": "c12d33c8bea78495b2571665e35cb192"
+  },
+  {
+    "file": "lib/ionic/scss/_mixins.scss",
+    "hash": "dfa91bbaa3f54a417ce1567c5b34dc13"
+  },
+  {
+    "file": "lib/ionic/scss/_modal.scss",
+    "hash": "38e8624ef28a495e7a01341915516bd1"
+  },
+  {
+    "file": "lib/ionic/scss/_platform.scss",
+    "hash": "db73214ac171e89a966c24d5320fe096"
+  },
+  {
+    "file": "lib/ionic/scss/_popover.scss",
+    "hash": "924a0474d4e58b3280e7d1ebf1938a55"
+  },
+  {
+    "file": "lib/ionic/scss/_popup.scss",
+    "hash": "988126e645408f1e5a270934520c20ac"
+  },
+  {
+    "file": "lib/ionic/scss/_progress.scss",
+    "hash": "19a19537d8e9483db7bde8a7febd43f6"
+  },
+  {
+    "file": "lib/ionic/scss/_radio.scss",
+    "hash": "9e5544332590f92c25ea065140610b03"
+  },
+  {
+    "file": "lib/ionic/scss/_range.scss",
+    "hash": "ae2eb0fc86bdcef56346885dcb76370f"
+  },
+  {
+    "file": "lib/ionic/scss/_refresher.scss",
+    "hash": "23c7b98a85caf376b414f4ed5a713831"
+  },
+  {
+    "file": "lib/ionic/scss/_reset.scss",
+    "hash": "319f0fb2d58da7fc89222752c5e527a4"
+  },
+  {
+    "file": "lib/ionic/scss/_scaffolding.scss",
+    "hash": "83d10a4997b12f655e847c886ae54dac"
+  },
+  {
+    "file": "lib/ionic/scss/_select.scss",
+    "hash": "7b40e394e01f33ebc89fcfc89f826410"
+  },
+  {
+    "file": "lib/ionic/scss/_slide-box.scss",
+    "hash": "ae10f39144dc0f6b5b24fb6e811e992a"
+  },
+  {
+    "file": "lib/ionic/scss/_slides.scss",
+    "hash": "504700ae567875f003c7fd1571a482e1"
+  },
+  {
+    "file": "lib/ionic/scss/_spinner.scss",
+    "hash": "472ae7eb35a68c22078b1d56b10f35be"
+  },
+  {
+    "file": "lib/ionic/scss/_tabs.scss",
+    "hash": "a8e939c50fd869edf42979129898a84e"
+  },
+  {
+    "file": "lib/ionic/scss/_toggle.scss",
+    "hash": "05e76b843e03e5df07342f8f4b352ba3"
+  },
+  {
+    "file": "lib/ionic/scss/_transitions.scss",
+    "hash": "c060678db2049bbca8833bf769d65dd1"
+  },
+  {
+    "file": "lib/ionic/scss/_type.scss",
+    "hash": "db602af625137bdc4d95b262d77a15c1"
+  },
+  {
+    "file": "lib/ionic/scss/_util.scss",
+    "hash": "c7af3ffdcc728e1c6f44061ed6120c15"
+  },
+  {
+    "file": "lib/ionic/scss/_variables.scss",
+    "hash": "aa0fd7fb8581ecd75a9efaa647b1dc50"
+  },
+  {
+    "file": "lib/ionic/scss/ionic.scss",
+    "hash": "a102a720475b3304d099fc3c94e7f619"
+  },
+  {
+    "file": "lib/ionic/scss/ionicons/_ionicons-font.scss",
+    "hash": "9a1734051fa60f52fdbdd74001b0f0e0"
+  },
+  {
+    "file": "lib/ionic/scss/ionicons/_ionicons-icons.scss",
+    "hash": "fcdab55027fe7da71f277ee58fad686a"
+  },
+  {
+    "file": "lib/ionic/scss/ionicons/_ionicons-variables.scss",
+    "hash": "0af49648c5756e4a96eb1eb70f016ee3"
+  },
+  {
+    "file": "lib/ionic/scss/ionicons/ionicons.scss",
+    "hash": "37204d759a9eb7bfc074034fd1bf95fb"
+  },
+  {
+    "file": "lib/ionic/version.json",
+    "hash": "2090c5e7ae8cdeeef68908193515cd37"
+  },
+  {
+    "file": "lib/ngCordova/ng-cordova.js",
+    "hash": "d95b5124c2c7c49f27e143d41cf8a182"
+  },
+  {
+    "file": "lib/ngCordova/ng-cordova.min.js",
+    "hash": "5c2332c0d6da30e9eaab7f1ab32d46d8"
+  },
+  {
+    "file": "lib/require.js",
+    "hash": "6bd2f88aafdbf67d47f03d6eac64ddc7"
+  },
+  {
+    "file": "manifest.json",
+    "hash": "a3e888fb8cb528ebdbf38073f29d148c"
+  },
+  {
+    "file": "service-worker.js",
+    "hash": "7de431000cd0f19fc38619fdd7314f81"
+  },
+  {
+    "file": "templates/_kuandai/01index.html",
+    "hash": "24eaf2d14ff0d5f3738348f585738861"
+  },
+  {
+    "file": "templates/_kuandai/02address--.html",
+    "hash": "a7918240be510dc125e0136dd6b717f0"
+  },
+  {
+    "file": "templates/_kuandai/02address.html",
+    "hash": "7e9a6f68d337408f952a9364540eb39c"
+  },
+  {
+    "file": "templates/_kuandai/03modeldevices.html",
+    "hash": "abee27485bc9a35e1c1ec31e09e9b296"
+  },
+  {
+    "file": "templates/_kuandai/04package.html",
+    "hash": "7d9e8608e0dcfe72c6f7fa1ca65c0ecc"
+  },
+  {
+    "file": "templates/_kuandai/05InstallApply.html",
+    "hash": "69338af18e7e875768b7c50bb408259b"
+  },
+  {
+    "file": "templates/_kuandai/06InstallApplyConfirm.html",
+    "hash": "fea1a8a97dd124b164c602d9831bbeba"
+  },
+  {
+    "file": "templates/_kuandai/dp-index.html",
+    "hash": "7eb21f8e4850c5c447e9a9343816bd8d"
+  },
+  {
+    "file": "templates/_kuandai/index.html",
+    "hash": "03474a7659298b8f5ee66cb41e5de4d6"
+  },
+  {
+    "file": "templates/_kuandai/readIdCard.html",
+    "hash": "8b26f1e656d5010eeeb6d2347dcba082"
+  },
+  {
+    "file": "templates/authentication/identity/contact.html",
+    "hash": "9245579cdf1aa0f64a557790499d97e8"
+  },
+  {
+    "file": "templates/authentication/identity/device.html",
+    "hash": "94468022ca5203b8c91e228342d7dd79"
+  },
+  {
+    "file": "templates/authentication/identity/face.html",
+    "hash": "f86dbdff9801058a6313a871fa1b427e"
+  },
+  {
+    "file": "templates/authentication/identity/readIdCard.html",
+    "hash": "92b7db460c18b2746aabe538be07f1ac"
+  },
+  {
+    "file": "templates/authentication/identity/signature.html",
+    "hash": "3e0152bb17c04ae73932bc746333ac74"
+  },
+  {
+    "file": "templates/authentication/pc/camera.html",
+    "hash": "9b7401a1094ff4303754a373aa80d005"
+  },
+  {
+    "file": "templates/authentication/pc/ok.html",
+    "hash": "202b0c77972a91166d6bd5a59c593e64"
+  },
+  {
+    "file": "templates/broadband/address-area.html",
+    "hash": "cb8527fdac5676832db78d1aea0fd84d"
+  },
+  {
+    "file": "templates/broadband/address-detailed.html",
+    "hash": "aab4a741fd74ee9b4956adfc28e8cbf7"
+  },
+  {
+    "file": "templates/broadband/combination-4g-activity.html",
+    "hash": "116c4d259438dea160e7eab63efc9cc4"
+  },
+  {
+    "file": "templates/broadband/combination-4g-package.html",
+    "hash": "2a081efb0d9dab165645e11734ba302a"
+  },
+  {
+    "file": "templates/broadband/combination-detail.html",
+    "hash": "79f8c9a97fe965bb7126001c1aefef1b"
+  },
+  {
+    "file": "templates/broadband/combination-install.html",
+    "hash": "7d9e8608e0dcfe72c6f7fa1ca65c0ecc"
+  },
+  {
+    "file": "templates/broadband/combination-package.html",
+    "hash": "ff4c7138f54c26b8ef539df63bf2fb54"
+  },
+  {
+    "file": "templates/broadband/combination-remark.html",
+    "hash": "78abc0f2f8afcb628cc9a3ec87a64b76"
+  },
+  {
+    "file": "templates/broadband/combination-service-pack.html",
+    "hash": "28fac9d0624077277a3e2fc3d6813435"
+  },
+  {
+    "file": "templates/broadband/combination/_old/broadband-package.html",
+    "hash": "51b938ecf6ad7e2c3e90afccc39b7f17"
+  },
+  {
+    "file": "templates/broadband/combination/_old/combination-package-activity.html",
+    "hash": "0f459486051af85e8b53590dd7e0f6dc"
+  },
+  {
+    "file": "templates/broadband/combination/_old/combination-package-detail.html",
+    "hash": "3686669f60d3f21b315f24d60fcf59b1"
+  },
+  {
+    "file": "templates/broadband/combination/_old/combination-package.html",
+    "hash": "df568ff1b8e800b03394e5b2be89151c"
+  },
+  {
+    "file": "templates/broadband/combination/_old/combination-product-list.html",
+    "hash": "1875e3175e90f53e72f362907f78eb48"
+  },
+  {
+    "file": "templates/broadband/combination/_old/order-info-confirm.html",
+    "hash": "e1c99c885d7f3c6aa55e95192caeda9a"
+  },
+  {
+    "file": "templates/broadband/combination/_old/select-terminals.html",
+    "hash": "30c700247e3b1a86b957d78a6d8219c9"
+  },
+  {
+    "file": "templates/broadband/combination/_old/system-state.html",
+    "hash": "0bb059f180a7306ad632a56eecb3aa51"
+  },
+  {
+    "file": "templates/broadband/combination/combination-package-detail.html",
+    "hash": "275a05134faf241d1eedd4b6d09c1b76"
+  },
+  {
+    "file": "templates/broadband/combination/combination-package-list.html",
+    "hash": "027c9ff717c33ce42be575805d460d17"
+  },
+  {
+    "file": "templates/broadband/combination/order-info-confirm.html",
+    "hash": "d3c5fa01375a6356fa31020c3460832f"
+  },
+  {
+    "file": "templates/broadband/combination/select-terminals.html",
+    "hash": "9e4636221e75182c3c1f3830814abc1f"
+  },
+  {
+    "file": "templates/broadband/combination/system-state.html",
+    "hash": "a8e7133f3f9ba652005ad95ce1734d91"
+  },
+  {
+    "file": "templates/broadband/combination/tel-package-activity.html",
+    "hash": "6bb809a600a4c7700c8ce2670d1da9b3"
+  },
+  {
+    "file": "templates/broadband/combination/tel-package-list.html",
+    "hash": "5c446408315dc54ac8e7538190cbc41d"
+  },
+  {
+    "file": "templates/broadband/combination/tel-package-result.html",
+    "hash": "4b28d864d61a5ac7ae4e1c7709fa4559"
+  },
+  {
+    "file": "templates/broadband/combination/tel-package-service.html",
+    "hash": "4f6c316399666994d61681ed0b8bd3b6"
+  },
+  {
+    "file": "templates/broadband/dankuan/broadband-apply-confirm.html",
+    "hash": "81652f93e871d03ec8609531b245bd04"
+  },
+  {
+    "file": "templates/broadband/dankuan/broadband-combo-attr.html",
+    "hash": "43569711ba779f616aa607692ffd58d0"
+  },
+  {
+    "file": "templates/broadband/dankuan/broadband-combo-detail.html",
+    "hash": "c28257bd73cd94bff10f447792ae4cb8"
+  },
+  {
+    "file": "templates/broadband/dankuan/broadband-combo-list.html",
+    "hash": "a1b038037c5612455a2f339b168c7d9d"
+  },
+  {
+    "file": "templates/broadband/dankuan/broadband-install-apply.html",
+    "hash": "f9b1adcd7d7f188ded5861b6ca21c4f9"
+  },
+  {
+    "file": "templates/broadband/dankuan/pay.html",
+    "hash": "e1723bbfd6fdfb7e50332d3cf5a10fff"
+  },
+  {
+    "file": "templates/broadband/dankuan/protocol.html",
+    "hash": "cad03991722653926abb26c876317776"
+  },
+  {
+    "file": "templates/broadband/dankuan/system-state.html",
+    "hash": "8425e3ce015dc9bdfbd11d774673f281"
+  },
+  {
+    "file": "templates/broadband/dankuan/user-info.html",
+    "hash": "cd28104a69c71b3ac9ab621ad1fadc5c"
+  },
+  {
+    "file": "templates/broadband/index.html",
+    "hash": "352a18d72b794b5d0a664bd9009cc494"
+  },
+  {
+    "file": "templates/broadband/wojia/_old/access-mode.html",
+    "hash": "1640ef81f04f6365f3f48aa73fd288dd"
+  },
+  {
+    "file": "templates/broadband/wojia/_old/broadband-combo-attr.html",
+    "hash": "fd53510d60f498dde3e962c7adcbbce7"
+  },
+  {
+    "file": "templates/broadband/wojia/_old/broadband-combo-detail.html",
+    "hash": "e75e8c7e8390abad38c4e3f8faa889d4"
+  },
+  {
+    "file": "templates/broadband/wojia/_old/broadband-combo-list.html",
+    "hash": "ebf68f71368726bb5e4172f78fac194d"
+  },
+  {
+    "file": "templates/broadband/wojia/_old/select-terminals.html",
+    "hash": "c68206ff4c5516bbfdc92fe80d560513"
+  },
+  {
+    "file": "templates/broadband/wojia/_old/system-state.html",
+    "hash": "d101ac7764d6a82fe1f9b8b60a1a6e1a"
+  },
+  {
+    "file": "templates/broadband/wojia/_old/wojia-combo-attr.html",
+    "hash": "25d3b75a4ba58a7b745658927f0aefcf"
+  },
+  {
+    "file": "templates/broadband/wojia/_old/wojia-combo-detail.html",
+    "hash": "a150ae5f33545f0d6c5c02b6db06faff"
+  },
+  {
+    "file": "templates/broadband/wojia/_old/wojia-order-info-confirm.html",
+    "hash": "7fc91d06ef2f058b98a1a7cb76335907"
+  },
+  {
+    "file": "templates/broadband/wojia/access-mode.html",
+    "hash": "1640ef81f04f6365f3f48aa73fd288dd"
+  },
+  {
+    "file": "templates/broadband/wojia/broadband-combo-attr.html",
+    "hash": "fd53510d60f498dde3e962c7adcbbce7"
+  },
+  {
+    "file": "templates/broadband/wojia/broadband-combo-detail.html",
+    "hash": "e75e8c7e8390abad38c4e3f8faa889d4"
+  },
+  {
+    "file": "templates/broadband/wojia/broadband-combo-list.html",
+    "hash": "ebf68f71368726bb5e4172f78fac194d"
+  },
+  {
+    "file": "templates/broadband/wojia/select-terminals.html",
+    "hash": "30c700247e3b1a86b957d78a6d8219c9"
+  },
+  {
+    "file": "templates/broadband/wojia/system-state.html",
+    "hash": "66c0cf09bd9f4a5a9456f9de7ff78caa"
+  },
+  {
+    "file": "templates/broadband/wojia/tel-package-activity.html",
+    "hash": "78510e170dd946d7bdde56e103639507"
+  },
+  {
+    "file": "templates/broadband/wojia/tel-package-list.html",
+    "hash": "a6d478bdb4663ee05dbed04c397539d4"
+  },
+  {
+    "file": "templates/broadband/wojia/tel-package-result.html",
+    "hash": "8e2ddcef53cadb1127356011b2e14d61"
+  },
+  {
+    "file": "templates/broadband/wojia/tel-package-service.html",
+    "hash": "f1578ae0d342b563be79c5f020a7ca53"
+  },
+  {
+    "file": "templates/broadband/wojia/wojia-combo-attr.html",
+    "hash": "25d3b75a4ba58a7b745658927f0aefcf"
+  },
+  {
+    "file": "templates/broadband/wojia/wojia-combo-detail.html",
+    "hash": "a150ae5f33545f0d6c5c02b6db06faff"
+  },
+  {
+    "file": "templates/broadband/wojia/wojia-order-info-confirm.html",
+    "hash": "57a114f4be5e3bbe539deb1581382cda"
+  },
+  {
+    "file": "templates/broadband/wojia/wojia-package-detail.html",
+    "hash": "a98364c4493a2ae23b6d27da7febabb6"
+  },
+  {
+    "file": "templates/broadband/wojia/wojia-package-index.html",
+    "hash": "a98364c4493a2ae23b6d27da7febabb6"
+  },
+  {
+    "file": "templates/broadband/wojia/wojia-package-list.html",
+    "hash": "2f709d3801c2eae6c3a6e69abb2630af"
+  },
+  {
+    "file": "templates/fandan/index.html",
+    "hash": "4417ded089725f5e6a754df4b119dcea"
+  },
+  {
+    "file": "templates/fandan/ok.html",
+    "hash": "6b8e58ca241c0cfaddda288ffeec5682"
+  },
+  {
+    "file": "templates/fandan/package.html",
+    "hash": "7cf1e5502ea2bffbfa25c33e6326191c"
+  },
+  {
+    "file": "templates/index.html",
+    "hash": "2c81391d5e75b6c9f0b5153840f5e6a8"
+  },
+  {
+    "file": "templates/kaika/bss-write-sim.html",
+    "hash": "56ff56f73a394144813e8e8e436ac04c"
+  },
+  {
+    "file": "templates/kaika/cbbs-package-activity.html",
+    "hash": "6ad94853a8a10debe4f134c7d0fefecd"
+  },
+  {
+    "file": "templates/kaika/cbbs-package-result.html",
+    "hash": "4b28d864d61a5ac7ae4e1c7709fa4559"
+  },
+  {
+    "file": "templates/kaika/cbbs-package-service.html",
+    "hash": "ef054c0f38921c68556a3a2da013ee62"
+  },
+  {
+    "file": "templates/kaika/cbss-package-list.html",
+    "hash": "5c446408315dc54ac8e7538190cbc41d"
+  },
+  {
+    "file": "templates/kaika/cbss-package.html",
+    "hash": "5c446408315dc54ac8e7538190cbc41d"
+  },
+  {
+    "file": "templates/kaika/group/01querygrouplist.html",
+    "hash": "216319677aed176b81b1c97770815edb"
+  },
+  {
+    "file": "templates/kaika/group/02querygroupproductlist.html",
+    "hash": "d5a1c44d567cf11d22791fd9834b805f"
+  },
+  {
+    "file": "templates/kaika/group/03queryproductbygroupid.html",
+    "hash": "daa1a07ca3611b23cf5a8d247383e07e"
+  },
+  {
+    "file": "templates/kaika/group/group-write-sim.html",
+    "hash": "66e84d569de358509d3e64182bf13e3c"
+  },
+  {
+    "file": "templates/kaika/kkUserInfo.html",
+    "hash": "e7cdf2c3a2d0ad4fd4d3f0a43aef5be0"
+  },
+  {
+    "file": "templates/kaika/number-list-filter.html",
+    "hash": "c3a278eca5cc45901524fa2a5ae2f93b"
+  },
+  {
+    "file": "templates/kaika/number-list.html",
+    "hash": "e9613ee7dd3b147f0c5a493043c3208f"
+  },
+  {
+    "file": "templates/kaika/ok.html",
+    "hash": "f9cc3d9d43455fa5233be9b8210144fd"
+  },
+  {
+    "file": "templates/kaika/package.html",
+    "hash": "0f8cd796caf449007312289efd49a86b"
+  },
+  {
+    "file": "templates/kaika/school/01querydealer.html",
+    "hash": "ff30a46e89614461c841ce0cea51667f"
+  },
+  {
+    "file": "templates/kaika/school/02querydevelopcode.html",
+    "hash": "7e02f6bd29d973af13089a569cef0f6a"
+  },
+  {
+    "file": "templates/kaika/school/03queryareatown.html",
+    "hash": "e9fb2a80252ce1117c77be8992bb6412"
+  },
+  {
+    "file": "templates/kaika/school/package.html",
+    "hash": "c1045fe66b9416a6a5e432af64ef9b11"
+  },
+  {
+    "file": "templates/kaika/school/querylist.html",
+    "hash": "bbfd9097f5d8eb02cda7f584717d1a6c"
+  },
+  {
+    "file": "templates/kaika/school/writesim.html",
+    "hash": "7db75edfb541106cdb0cb01dc9254f02"
+  },
+  {
+    "file": "templates/kaika/signature.html",
+    "hash": "3a0d641d4e483b68dfcf6d643347a2ad"
+  },
+  {
+    "file": "templates/kaika/tel-index.html",
+    "hash": "3c5cbebaa9b6b1f93fe1c6e5eeefaa7c"
+  },
+  {
+    "file": "templates/kaika/write-sim.html",
+    "hash": "ec47572848d278d908b2e7315c7bc124"
+  },
+  {
+    "file": "templates/number-attribution.html",
+    "hash": "e8883ad91a0b96dec3bd2a5ce1bbd5cf"
+  },
+  {
+    "file": "templates/number-lovers.html",
+    "hash": "3fe34bac27a9a1ca47a256f6686d0d62"
+  },
+  {
+    "file": "templates/number-portentous.html",
+    "hash": "8252f30c1608ad9a749e8d565a4bdc73"
+  },
+  {
+    "file": "templates/recharge/call.html",
+    "hash": "7ed4fc2db652c17d19a64da3ccd79dc5"
+  },
+  {
+    "file": "templates/recharge/flow.html",
+    "hash": "9aafcc9f59c0af53e0219f26fd64a102"
+  },
+  {
+    "file": "templates/recharge/main.html",
+    "hash": "ab2097c81caa4c7110573c6061f519ba"
+  },
+  {
+    "file": "templates/recharge/shop.html",
+    "hash": "84bf7c930179082e4630741978dfb66e"
+  },
+  {
+    "file": "templates/temp/write-sim.html",
+    "hash": "2b9b0f1b30ec6981da941e69afce673a"
+  },
+  {
+    "file": "templates/user/_login.html",
+    "hash": "a4d2a627289a4445bf438b48774c5dc4"
+  },
+  {
+    "file": "templates/user/login.html",
+    "hash": "8bf3279f477e9fc3f4fb533d30bc8925"
+  },
+  {
+    "file": "upload/ad.jpg",
+    "hash": "48d5e06adcb0e2bdaca7e5b6359d72f7"
+  }
+]

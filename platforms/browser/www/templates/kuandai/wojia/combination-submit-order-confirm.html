@@ -1,0 +1,182 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+
+		<div class="info-hd-title">号码信息</div>
+		<div class="info-list info-list2"  ng-repeat="row in telList">
+			<ul>
+				<li class="flexWrap">
+					<div class="pl-10 pr-10">
+						<span>办理号码：</span>
+					</div>
+					<div class="flexFix txtLeft">
+						<p ng-bind-template="{{row.tel}}"></p>
+					</div>
+				</li>
+				<li class="flexWrap">
+					<div class="pl-10 pr-10">
+						<span>号码套餐：</span>
+					</div>
+					<div class="flexFix txtLeft">
+						<p ng-bind-template="{{row.packageName}}"></p>
+					</div>
+				</li>
+				<li class="flexWrap" ng-if="row.activityShow">
+					<div class="pl-10 pr-10">
+						<span>号码活动：</span>
+					</div>
+					<div class="txt999 flexFix txtLeft">
+						<p ng-bind-template="{{row.activity}}"></p>
+					</div>
+				</li>
+				<!-- 共享 -->
+				<li class="flexWrap" ng-if="!row.isOldNumber" ng-click="editTelPreCharge(row.tel)">
+					<div class="pl-10 pr-10">
+						<span>号码预存：</span>
+					</div>
+					<div class="flexFix txtLeft">
+						<p class="inlinebk">￥<em ng-bind-template="{{row.preCharge}}"></em>.00</p>
+						<button class="rt-btn rt-btn1 fr"><i class="icon-beizhu"></i></button>
+					</div>
+				</li>
+				<!-- 组合新装 -->
+				<!-- <li ng-if="!row.isOldNumber"  ng-show="!row.ronghe">
+					<div class="info-label" style="width:12rem;">
+						<span>号码预存：</span>
+					</div>
+					<div class="flexFix txtLeft">
+						<select
+							ng-model="row.preCharge"
+							ng-options="item for item in row.chargeList"
+							ng-change="orderinfoFee()"
+							style="width: 100%;border:none;background:none;text-align:right;text-align-last:right;"></select>
+					</div>
+				</li> -->
+				<!-- 老号码纳入 -->
+				<li class="flexWrap" ng-if="row.isOldNumber">
+					<div class="pl-10 pr-10">
+						<span>号码预存：</span>
+					</div>
+					<div class="flexFix txtLeft">老号码纳入</div>
+				</li>
+			</ul>
+		</div>
+		
+
+
+		<div class="info-hd-title">宽带信息</div>
+		<div class="info-list">
+			<ul>
+				<li class="flexWrap">
+					<div class="pl-10 pr-10">
+						<span>宽带套餐：</span>
+					</div>
+					<div class="flexFix txtLeft">
+						<p ng-bind-template="{{orderinfo.lan}}"></p>
+					</div>
+				</li>
+				<li class="flexWrap" ng-if="wojiaActivityShow">
+					<div class="pl-10 pr-10">
+						<span>套餐活动：</span>
+					</div>
+					<div class="flexFix txtLeft">
+						<p ng-bind-template="{{orderinfo.activity}}"></p>
+					</div>
+				</li>
+				<li class="flexWrap" ng-if="tvShow">
+					<div class="pl-10 pr-10">
+						<span>机顶盒设备：</span>
+					</div>
+					<div class="flexFix txtLeft">
+						<p>￥<em ng-bind-template="{{orderinfo.TV}}"></em>.00</p>
+					</div>
+				</li>
+				<li class="flexWrap" ng-if="ftthShow">
+					<div class="pl-10 pr-10">
+						<span>光猫设备：</span>
+					</div>
+					<div class="flexFix txtLeft">
+						<p>￥<em ng-bind-template="{{orderinfo.FTTH}}"></em>.00</p>
+					</div>
+				</li>
+				<li class="flexWrap" style="flex-direction: column;" ng-click="cancelMaterialFee()">
+					<div class="flexWrap">
+						<div class="pl-10 pr-10">
+							<span>工料费：</span>
+						</div>
+						<div class="flexFix txtLeft">
+							<p>￥<em ng-bind-template="{{orderinfo.fee_8234}}"></em>.00</p>
+						</div>
+						<button class="rt-btn rt-btn1 fr"><i class="icon-beizhu"></i></button>
+					</div>
+					<p class="pt-10 txtCenter txtRed">双十一线上订单可点击取消工料费，违规取消后果自负</p>
+				</li>
+				<!-- <li ng-if="!editKdPrice">
+					<div class="info-label" style="width:12rem;">
+						<span>宽带预存：</span>
+					</div>
+					<div class="info-cont right-font-middle" style="margin-left:9.5rem;">
+						<select ng-model="rwo.preCharge" ng-options="item for item in row.chargeList" style="width: 90%;padding-left:57%;border:none;background:none;"></select>
+					</div>
+				</li> ng-if="editKdPrice" -->
+				<li  class="flexWrap" ng-click="editKDPreCharge()">
+					<div class="pl-10 pr-10">
+						<span>宽带预存：</span>
+					</div>
+					<div class="flexFix txtLef">
+						<p class="inlinebk">￥<em ng-bind-template="{{orderinfo.preCharge}}"></em>.00</p>
+						<button class="rt-btn rt-btn1 fr"><i class="icon-beizhu"></i></button>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="info-list">
+			<ul>
+				<li class="pt-10 pb-10 pl-15 pr-15 bd-b" style="height:auto;">
+					<div class="pt-10 pb-10">
+						<span>装机地址：</span>
+					</div>
+					<div class="pb-10 txt666">{{orderinfo.address}}</div>
+				</li>
+			</ul>
+		</div>
+
+
+		<div class="info-list">
+			<ul>
+				<li class="pt-10 pb-10 pl-15 pr-15 bd-b">
+					<div class="pt-10 pb-10">
+						<span>备注信息：</span>
+					</div>
+					<div class="pb-10 txt666" ng-click="updateRemark()">
+						<!-- <textarea class="text-area" ng-model="orderinfo.remark" style="color:#999;width:100%;"></textarea> -->
+						<!-- <div contenteditable='true' class="mouse-focus"  style='-webkit-user-select:text'>{{orderinfo.remark}}</div> -->　
+						{{orderinfo.remark}}
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="padding cen" style="margin-bottom: 1rem;color:#ff7747;"><small>此金额仅供参考，具体以订单返回金额为准！</small></div>
+		
+		<div class="info-ft-info">
+			<span><em>应收金额</em>：￥<strong ng-bind-template="{{orderinfo.fee}}">0.00</strong>.00</span>
+			<button ng-click="order();">确认提交</button>
+		</div>
+	</ion-content>
+	<style>
+		.info-hd-title{height:5rem;line-height:5rem;color:#e3724a;background:white;font-size:1.6rem;padding:0 3%;}
+		.info-ft-info{background:white;position:relative;font-size:1.6rem;height:5rem;line-height:5rem;padding:0 3%;}
+		.info-ft-info span{color:#ff7747}
+		.info-ft-info span em{color:black;}
+		.info-ft-info span strong{font-size:2rem;}
+		.info-ft-info button{background:#ff7747;color:white;border:none;position:absolute;right:0;top:0;padding:0 1rem;}
+		.info-ft-info button:active{background:#fd6732;}
+		.info-list li .info-label{text-align:left;}
+	</style>
+</ion-view>

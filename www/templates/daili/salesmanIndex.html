@@ -1,0 +1,124 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="daili-add-salesman"><i class="icon-tianjia"></i></div>
+	</ion-nav-buttons>
+	
+	<ion-content>
+		<div class="dataInfoPrimary pt-15 pb-15">
+			<ul class="flexWrap">
+				<li class="flex text-center" ng-click="orderJump()">
+					<p class="f-14 txtfff"><em>号码订单</em></p>
+					<p class="f-16 txtfff"><strong>{{numOrderCnt}}</strong></p>
+				</li>
+				<li class="flex text-center" ui-sref="kd-order-list">
+					<p class="f-14 txtfff"><em>宽带订单</em></p>
+					<p class="f-16 txtfff"><strong>{{lanOrderCnt}}</strong></p>
+				</li>
+				<li class="flex text-center" ng-click="shopJump()">
+					<p class="f-14 txtfff"><em>店铺</em></p>
+					<p class="f-16 txtfff"><strong>{{shopCnt}}</strong></p>
+				</li>
+				<li class="flex text-center">
+					<p class="f-14 txtfff"><em>业务员</em></p>
+					<p class="f-16 txtfff"><strong>{{deveCnt}}</strong></p>
+				</li>
+			</ul>
+		</div>
+		
+<!--
+		<div class="bgWhite pt-10 pb-10 pl-10 pr-10 clear">
+			<div class="fl" style="height:10rem">
+				<p>累计登录</p>
+				<p class="mt-15 f-28"><strong class="txtWarn">320</strong></p>
+			</div>
+			<div class="fr">
+				<p>近七日登录</p>
+				<div id="container" style="width:60vw;height:8rem;"></div>
+			</div>
+		</div>
+-->
+		<div class="loadingWrap" ng-if="loading">
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+		<section style="margin-top:1rem">
+			<div class="bgWhite shopList bd-b" ng-repeat="item in deveList | orderBy : '-writeCardCount'" ng-click="deveDetail($index)">
+				<!--  -->
+				<div class="shopListInfo">
+					<div class="shopListPic rel">
+						<img src="{{item.headImgUrl}}" ng-show="item.headImg" class="abs" style="left:3vw;top:3vw;">
+						<img src="img/logo1_03.png" ng-hide="item.headImg" class="abs" style="left:3vw;top:3vw;">
+					</div>
+					<div class="shopListItem rel">
+						<div class="abs vertical pr-10" style="width:100%">
+							<p class="txt000 f-16 omit">{{item.realName}}</p>
+							<p class="txtPrimary omit f-14">{{item.phoneNum}}</p>
+							<p class="flexWrap">
+								<span class="f-12 txt999">最新登录：</span>
+								<time class="f-12 txtGreen">{{item.loginTime | date:"MM-dd HH:mm:ss"}}</time>
+							</p>
+							<p>
+								<span class="txt flex f-12 txtWarn" style="padding:.5rem 0;">店铺数（{{item.shopCount}}）</span>
+								<span class="f-12 txt999 fr" style="margin-top: -.4rem;">
+									本月<em class="f-20" ng-class="{'txtBestRed':item.isHasOrder,'txt999':item.noHasOrder}">{{item.writeCardCount}}</em>单
+								</span>
+							</p>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- <div class="bgWhite shopList bd-b" ng-repeat="item in deveList | orderBy : '-writeCardCount'" ng-click="deveDetail($index)">
+				
+				<div class="shopListInfo">
+					<div class="shopListPic" >
+						<img src="../img/logo1_03.png">
+>>>>>>> .r14616
+					</div>
+					<div class="shopListItem rel">
+						<div class="abs vertical pr-10" style="width:100%">
+							<p class="txt000 f-18 omit">{{item.realName}}</p>
+							<p class="txt999 omit f-12">{{item.phoneNum}}</p>
+							<p class="flexWrap">
+								<span class="dealColor">{{item.phoneNum | telFormat}}</span>
+							</p>
+							<p class="flexWrap alignItem rel">
+								<span class="f-12 txt999">最新登录：</span>
+								<time class="f-12 txtGreen">{{item.loginTime | date:"MM-dd HH:mm:ss"}}</time>
+								<span class="txt flex f-12" style="padding:.5rem;margin-top: 1rem;">店铺数（{{item.shopCount}}）</span>
+								<span class="f-12 txt999 abs text-right" style="top:-0.7rem;right:0">
+									本月<em class="f-20" ng-class="{'txtBestRed':item.isHasOrder,'txt999':item.noHasOrder}">{{item.writeCardCount}}</em>单
+								</span>
+							</p>
+						</div>
+						
+					</div>
+				</div>
+			</div> -->
+		</section>
+		<!-- <section class="mt-10">
+			<div class="bgWhite pl-10 pr-10 mb-10 tapStyle" ng-repeat="item in deveList | orderBy : '-writeCardCount'" ng-click="deveDetail($index)">
+				<h2 class="hdTitle hd bd-b">
+					<i class="icon-yewuyuanguanli mr-5" style="color:#fdcc30;"></i>{{item.userName}}
+					<span class="fr txt666">店铺数（{{item.shopCount}}）</span>
+					<span class="fr txt999">{{item.loginTime}}</span>
+				</h2>
+				<div class="rel pt-10 pb-10 ml-15">
+					<div >
+						<p class="f-16">
+							<span class="txt666">{{item.realName}}</span>
+							<span class="txt666"><span></span></span>
+						</p>	
+						<p class="txtWarn" ng-click="shopJump({{item.userId}});;$event.stopPropagation();">店铺数（{{item.shopCount}}）</p>
+					</div>
+					<div class="abs vertical" style="right:0" ng-click="orderJump();$event.stopPropagation();">
+						<span class="txtLabel " ng-class="{'txtLabelDefault':item.writeCardCount == 0,'successColor':item.writeCardCount!==0}">{{item.writeCardCount}}单</span>
+					</div>
+				</div>
+			</div>
+			<div class="noMore"><span class="txt">没有更多</span></div>
+		</section> -->
+	</ion-content>
+</ion-view>

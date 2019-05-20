@@ -1,0 +1,137 @@
+<ion-view view-title="{{title}}">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ng-click="saveUserInfo()">{{editShop}}</div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="mt-5 bgWhite mb-20">
+            <div class="pt-15 pb-15 pl-15 pr-15 flexWrap bd-b" style="align-items:center;">
+                <span class="width-23">个人头像</span>
+                <div class="flexFix txtRight">
+                    <img ng-src="{{avatar}}" style="height:3rem;border-radius:2rem;margin-top: -.7rem;" ng-show="isNoShowPig" />
+                    <img ng-src="{{data.headImgUrl}}" style="width:2rem;height:2rem;border-radius:2rem;margin-top: -.7rem;" ng-hide="isNoShowPig" />
+                    <span class="icon-fanhui-copy txt999"></span>
+                </div>
+            </div>
+            <div class="pt-15 pb-15 pl-15 pr-15 flexWrap bd-b">
+                <span class="width-23">姓名</span>
+                <div class="flexFix txtRight">
+                    <div class="flexWrap">
+                        <input type="text" ng-show="editVal" ng-model="data.realName" class="textBox txt999 flexFix" id="inputFocus" />
+                        <span class="txt666 flexFix" ng-hide="editVal">飞翔通讯123</span>
+                        <span class="icon-fanhui-copy txt999"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-list mt-0">
+            <ul>
+                <li>
+                    <div class="info-label width-23 txtRight pl-0">
+                        <span>用户ID：</span>
+                    </div>
+                    <div class="info-cont txtLeft pl-0 txt333">
+                        <span>{{data.signId}}</span>
+                    </div>
+                </li>
+                <!-- <li>
+					<div class="info-label width-23 txtRight pl-0">
+						<span>头像：</span>
+					</div>
+					<div class="info-cont txtLeft pl-0">
+						<span>
+							<img ng-src="{{avatar}}" style="height:3rem;border-radius:2rem;margin-top: -.7rem;" ng-show="isNoShowPig"/>
+							<img ng-src="{{data.headImgUrl}}" style="width:3rem;height:3rem;border-radius:2rem;margin-top: -.7rem;" ng-hide="isNoShowPig"/>
+						</span>
+						<span class="icon-fanhui abs transformX"></span>
+					</div>
+				</li> -->
+                <li>
+                    <div class="info-label width-23 txtRight pl-0">
+                        <span>姓名：</span>
+                    </div>
+                    <div class="info-cont txtLeft pl-0">
+                        <input type="text" ng-show="editVal" ng-model="data.realName" class="textBox width-100 txt999" id="inputFocus" />
+                        <span ng-show="showData">{{data.realName}}</span>
+                        <!-- <span class="icon-fanhui abs transformX"></span> -->
+                    </div>
+                </li>
+                <li>
+                    <div class="info-label width-23 txtRight pl-0">
+                        <span>店铺名称：</span>
+                    </div>
+                    <div class="info-cont txtLeft pl-0">
+                        <input type="text" ng-show="editVal" ng-model="data.shopName" class="textBox width-100 txt999" />
+                        <span ng-show="showData">{{data.shopName}}</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="info-label width-23 txtRight pl-0">
+                        <span>联系电话：</span>
+                    </div>
+                    <div class="info-cont txtLeft pl-0">
+                        <input type="text" ng-show="editVal" ng-model="data.userTel" class="textBox width-100 txt999" />
+                        <span ng-show="showData">{{data.userTel}}</span>
+                        <!-- <span class="icon-fanhui abs transformX"></span> -->
+                    </div>
+                </li>
+                <li>
+                    <div class="info-label width-23 txtRight pl-0">
+                        <span>微信号：</span>
+                    </div>
+                    <div class="info-cont txtLeft pl-0">
+                        <input type="text" ng-show="editVal" ng-model="data.weixinNo" class="textBox width-100 txt999" />
+                        <span ng-show="showData">{{data.weixinNo}}</span>
+                        <!-- <span class="icon-fanhui abs transformX"></span> -->
+                    </div>
+                </li>
+                <li>
+                    <div class="info-label width-23 txtRight pl-0">
+                        <span>QQ号：</span>
+                    </div>
+                    <div class="info-cont txtLeft pl-0">
+                        <input type="text" ng-show="editVal" ng-model="data.qq" class="textBox width-100 txt999" />
+                        <span ng-show="showData">{{data.qq}}</span>
+                        <!-- <span class="icon-fanhui abs transformX"></span> -->
+                    </div>
+                </li>
+                <li class="flexWrap">
+                    <div class="width-23 txtRight pl-0 txt333">
+                        <span>联系地址：</span>
+                    </div>
+                    <div class="flexFix txtLeft pl-0 txt999">
+                        <input type="text" ng-show="editVal" ng-model="data.userAddress" class="textBox width-100 txt999" />
+                        <span ng-show="showData">{{data.userAddress}}</span>
+                        <!-- <span class="icon-fanhui abs transformX"></span> -->
+                    </div>
+                </li>
+                <!-- <li  ui-sref="securityCenter">
+					<div class="info-label width-23 txtRight">
+						<span>账户安全</span>
+					</div>
+					<div class="info-cont">
+						<input type="text" ng-model="data.userTel" placeholder="用户手机号码" class="txt-box" readonly="readonly"/>
+						<span class="icon-fanhui abs transformX"></span>
+					</div>
+				</li> -->
+                <!-- <li>
+					<div class="info-label width-23 txtRight">
+						<span>详细地址：</span>
+					</div>
+					<div class="info-cont">
+						<textarea class="text-area" ng-bind-template="{{data.userAddress}}" placeholder="用户详细地址..." readonly="readonly"></textarea>
+					</div>
+				</li> -->
+            </ul>
+        </div>
+        <!--<div class="btn-wrap">
+			<button class="btn btn-primary" ng-click="saveUserInfo()">更新用户信息</button>
+		</div>-->
+
+    </ion-content>
+
+</ion-view>

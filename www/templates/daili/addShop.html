@@ -1,0 +1,92 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index_dl"><i class="icon-shouyehui-shouye"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<p class="txt999 f-16" style="padding:1.5rem 3% .5rem;"><i class="icon-gerenxinxi mr-5"></i>用户信息</p>
+		<div class="formList">
+			<ul>
+				<li class="rowItem">
+					<div class="label">业务员：</div>
+					<div class="labelForm">
+						<select class="select mr-10" ng-change="select(data.salesman)" 
+							ng-model="data.salesman" ng-options="item.realName for item in deveList"  style="width:100%;" ng-show="isNoDevelop">
+							<option value="">--请选择-- </option>
+						</select>
+						
+						<input type="text" class="textBox" ng-model="firstName" ng-hide="isNoDevelop" readonly/>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">用户名：</div>
+					<div class="labelForm">
+						<input type="text" class="textBox" placeholder="如：c13288888888" ng-model="data.userName" ng-change="userName()"/>
+						<span class="vertical abs txtWarn" style="right:0;">{{userNameErrorTips}}</span>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">密码：</div>
+					<div class="labelForm">
+						<input type="password" class="textBox" placeholder="设置店铺密码" ng-model="data.password" ng-change="password()"/>
+						<span class="vertical abs txtWarn" style="right:0;">{{passwordErrorTips}}</span>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">确认密码：</div>
+					<div class="labelForm">
+						<input type="password" class="textBox" placeholder="确认密码" ng-model="data.password1" ng-change="password()"/>
+						<span class="vertical abs txtWarn" style="right:0;">{{passwordErrorTips}}</span>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">真实姓名：</div>
+					<div class="labelForm">
+						<input type="text" class="textBox" placeholder="联系人姓名" ng-model="data.realName" ng-change="realName()"/>
+						<span class="vertical abs txtWarn" style="right:0;">{{realNameErrorTips}}</span>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">联系电话：</div>
+					<div class="labelForm">
+						<input type="tel" class="textBox" placeholder="联系人手机号码" ng-model="data.contractNumber" ng-change="contractNumber()"/>
+						<span class="vertical abs txtWarn" style="right:0;">{{contractNumberErrorTips}}</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<p class="txt666 f-16" style="padding:1.5rem 3% .5rem;"><i class="icon-dianpu mr-5"></i>店铺信息</p>
+		<div class="formList">
+			<ul>
+				<li class="rowItem">
+					<div class="label">店铺名称：</div>
+					<div class="labelForm">
+						<input type="text" class="textBox" placeholder="设置店铺名称" ng-model="data.shopName" ng-change="shopName()"/>
+						<span class="vertical abs txtWarn" style="right:0;">{{shopNameErrorTips}}</span>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">详细地址：</div>
+					<div class="labelForm">
+						<input type="text" class="textBox" placeholder="详细地址（不少于6位）" ng-model="data.address" ng-change="address()"/>
+						<span class="vertical abs txtWarn" style="right:0;">{{addressErrorTips}}</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="btn-wrap">
+			<ion-spinner icon="ios-small" class="spinner-light" ng-if="loading"></ion-spinner>
+			<button class="btn btn-primary" ng-click="submitForm()" ng-disabled="resState">{{stateTxt}}</button>
+		</div>
+
+		<!-- <div class="mt-15 pl-15 pr-15 mb-15">
+			<button class="btn" ng-click="submitForm()" ng-disabled="resState">
+				<ion-spinner icon="ios" class="spinner-light" ng-if="loading"></ion-spinner>
+				<span>{{stateTxt}}</span>
+			</button>
+		</div> -->
+	</ion-content>
+</ion-view>

@@ -1,0 +1,64 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="inputTel">
+			<input type="tel" placeholder="请输入号码" ng-model="data.tel" ng-keyup="telChange()" autofocus/>
+		</div>
+
+		<div class="dropSlidePanel" ng-if="netType2">
+			<p class="tipsInfo"><i class="icon-zhuyi"></i>根据您的手机卡的类型，为您推荐以下业务</p>
+			<ul>
+				<li class="itemList">
+					<div class="itemhd">
+						<div class="itemLabel">
+							<em class="itemTag">转4G</em>
+						</div>
+						<div class="itemTxt">
+							<p><small>2/3转4G业务</small></p>
+							<p><small>建议您将您的卡转为4G用户</small></p>
+							<button class="operateBtn" ng-click="upgrade4g()">办理</button>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!--province::activity-->
+		<div class="marketing-activities" ng-if="dataInfo">
+			<dl class="activityItem" ng-repeat="items in provinceActivityList">
+				<dt class="activityTitle" ng-class="{'active':items.showChildCont}" ng-click="showProvinceData($index)">
+					<em>{{items.activityName | cut:true:15:'...'}}</em>
+					<span class="tag mr-10">省份</span>
+				</dt>
+				<dd class="activityCont" ng-if="items.showChildCont" ng-repeat="item in items.productList track by $index">
+<!--					<span class="promotionTag" ng-if="item.promotion == '1'">惠</span>-->
+					<p>{{item.productName}}</p>
+					<button class="operateBtn" ng-click="order($index)">办理</button>
+				</dd>
+			</dl>
+		</div>
+		<!--city::activity-->
+		<div class="marketing-activities" ng-if="dataInfo">
+			<dl class="activityItem">
+				<dt class="activityTitle" ng-class="{'active':showCityChildCont}" ng-click="showCityData()">
+					<em>城市活动列表</em>
+					<span class="tag mr-10">城市</span>
+				</dt>
+				<dd class="activityCont" ng-if="showCityChildCont" ng-repeat="items in cityActivityList">
+<!--					<span class="promotionTag" ng-if="item.promotion == '1'">惠</span>-->
+					<p>{{items.activityName}}</p>
+					<button class="operateBtn" ng-click="order($index)">办理</button>
+				</dd>
+			</dl>
+		</div>
+		<div class="btn-wrap" ng-show="queryBtn">
+			<button class="btn btn-primary" ng-click="query()" ng-disabled="resState">{{btnText}}</button>
+		</div>
+
+		<div class="cen padding" ng-if="loading"><ion-spinner icon="ios-small"></ion-spinner></div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,42 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content style="bottom:53.38px;">
+        <div class="cen pt-20 pb-20">
+            <mark class="online-service-tips">号码之家在线客服人员，很高兴为您服务！</mark>
+        </div>
+        <div class="pl-10 pr-10">
+            <div class="online-service-Info" ng-class="{ 'lt-info' : item.user=='admin','rt-info': item.user=='user' }" ng-repeat="item in chatInfo">
+                <div class="user-pic">
+                    <img ng-src="{{item.avatar}}" alt="user"/>
+                </div>
+                <div class="info-cont">
+                    <span class="text">{{item.news}}</span>
+                </div>
+            </div>
+
+            <!--B::mock data-->
+            <div class="online-service-Info rt-info" ng-repeat="item in static">
+                <div class="info-cont">
+                    <span class="text">{{item.news}}</span>
+                </div>
+                <div class="user-pic">
+                    <img src="img/user-pic.png" alt="user"/>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="online-service-reply-panel">
+        <div class="flex">
+            <textarea ng-model="reply.info" ng-change="inputInfo()"></textarea> 
+        </div>
+        <div>
+            <button class="sendBtn" ng-click="reply()" ng-disabled="btnState">发送</button>
+        </div>
+    </div>
+</ion-view>

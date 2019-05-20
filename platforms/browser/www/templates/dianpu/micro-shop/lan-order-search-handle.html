@@ -1,0 +1,106 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content>
+    
+    <!-- <div class="getIdDeviceType" >
+        <ul class="mb-10">
+            <li><button class="device" ng-class='active' ng-click="lanOrderPay()">实名</button></li>
+        </ul>
+        <ul class="mb-10">
+            <li><button class="device" ng-class='active' ng-click="goRedeploy()">转派</button></li>
+        </ul>
+        <ul class="mb-10">
+            <li><button class="device" ng-class='active' ng-click="addRemark()">添加装维回执备注</button></li>
+        </ul>
+    </div> -->
+        <div class="number-order-list bgWhite number-order-list1">
+
+            <div class="top-hd-title1">
+                <h2 class="top-hd-title txt333 f-16">产品信息</h2>
+            </div>
+        
+            <ul style="margin-bottom:50px">
+                <li class="orderDetailInfo1">
+                    <dl  class="f-14">
+                        <dd class="number-order-num" style="padding:0;border:0;">
+                            <div class="num-order-money mt-10">
+                                <span class="order-detail-num grap-detail-num" style="font-size:1.8rem">{{preorderList.orderCode}}</span>
+                            </div>
+                        </dd>
+                        <dd class="order-detail-name hm-detail-name">
+                            <div class="txt999 f-16 num-order-name num-order-name1">{{preorderList.projectAddress.setupaddress}}</div>
+                        </dd>
+                        <!-- <dd class="rel">
+                            <span>联系人</span>
+                            <span class="orderTimer abs" >{{preorderList.customer=="null"?"":preorderList.customer}}</span>
+                        </dd> -->
+                        <dd class="rel">
+                            <span>联系电话</span>
+                            <span class="orderTimer abs" >{{preorderList.contactNumber | telFormat}}</span>
+                        </dd>
+                        <dd class="rel" ng-hide="preorderInfo.status=='000101'">
+                            <span>创建时间</span>
+                            <span class="orderTimer abs">{{preorderList.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </dd>
+                        <dd class="rel" ng-show="preorderInfo.status=='000101'">
+                            <span>完成时间</span>
+                            <span class="orderTimer abs">{{preorderList.finishDate | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </dd>
+                        <dd class="rel">
+                            <span>验证码</span>
+                            <span class="orderTimer abs">{{preorderList.verifyCode}}</span>
+                        </dd>
+                        <dd class="clear">
+                            <span class="fl">备注</span>
+                            <div class="fr" style="max-width:60vw">
+                                <p ng-repeat="item in remarkList track by $index">{{$index+1}}、{{item}}</p>
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+            
+                <li class="liNo"></li>
+        
+                <li class="orderUserInfo">
+                    <dl>
+                        <dt>其他信息</dt>
+                        <dd class="rel">
+                            <span class="orderTimerTitle">ITV包</span>
+                            <span class="orderTimer abs">{{preorderList.itv=="000001"?"有":"无"}}</span>
+                        </dd>
+                        <dd class="rel">
+                            <span class="orderTimerTitle">机顶盒</span>
+                            <a class="orderTimer abs">
+                                {{preorderList.box=="000001"?"有":"无"}}
+                            </a>
+                        </dd>
+                        <dd class="errorInfoDetail flexWrap">
+                            <span class="orderTimerTitle">光猫</span>
+                            <span class="orderTimer lanOrderAddress">{{preorderList.cat=="000001"?"有":"无"}}</span>
+                        </dd>
+                    </dl>
+                </li>
+        
+            </ul>
+        </div>
+</ion-content>
+<div class="bgWhite fixed bottomBtn bd-t" style="height:auto">
+    <ul class="flexWrap">
+        <li class="flex bd-r" ng-click="lanOrderPay()" >					
+            <span>实名</span>
+        </li>
+        <li class="flex bd-r" ng-click="goRedeploy()">	
+            <span>转派</span>
+        </li>
+        <li class="flex" ng-click="addRemark()">	
+            <span>装维回执</span>
+        </li>
+    </ul>
+</div>
+</ion-view>

@@ -1,0 +1,30 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+
+	<ion-content>
+		<div class="fatherMyCode">
+			<div class="childMyCode">
+				<div class="myCode">
+					<div class="myCodeInfo">
+						<div class="myCodeBody text-center">
+							
+							 <div  id="qrbox"></div>
+							
+							<span class="f-12">扫描二维码收费</span>
+						</div>					
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</ion-content>
+	<div class="btn-wrap fixed" style="bottom: 0;width: 100vw;">
+		<button class="btn btn-primary" ng-click="paySuccess()">支付完成</button>
+	</div>
+</ion-view>

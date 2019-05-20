@@ -1,0 +1,95 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+
+<ion-nav-buttons side="left">
+	<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
+	<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+</ion-nav-buttons>
+<ion-content>
+
+
+<!--<div class="upload-wrap">
+	<div class="initial"><img src="img/zhaoxiangji.png"><span>点击拍摄正面照片</span></div>
+</div>-->
+
+
+<div class="compare">
+	<ul>
+		<li><img src="data:image/jpeg;base64,{{idHeadImg}}" /></li>
+		<li ng-click="Camera()" ng-if="setPhoto">
+			<img src="img/camera.png" id="upImage-contrast" />
+		</li>
+		<li ng-click="zoom()" ng-if="showPhoto">
+			<img ng-src="{{avatar}}" />
+			<span class="tips" ng-if="tips">重新拍摄</span>
+		</li>
+	</ul>
+</div>
+
+<div style="background:white;padding:1.5rem 3%;margin-bottom:1rem;">
+	<p style="margin-bottom:1rem;font-size:1.5rem;"><strong>拍照注意事项</strong></p>
+	<p style="margin-bottom:2px;color:#999;">1.五官可见，证件号码清晰可见</p>
+	<p style="margin-bottom:2px;color:#999;">2.光线正常，背景不能有多个人出现（包括海报）</p>
+</div>
+<div ng-if="wrap">
+	<div class="row" style="background:white;">
+		<div class="col" style="padding:5px 0;"><b>人证效果图</b></div>
+		<div class="col" style="padding:5px 0;"><b>拍照效果</b></div>
+	</div>
+	<img src="img/eg.jpg" style="width:100%;height:auto;margin:0 auto;display:block;"/>
+</div>
+
+<div ng-if="!wrap">
+	<div class="btn-wrap" ng-class='{"hide":btn_displayState[0]}'>
+		<button class="btn btn-primary" id="compare" ng-click="contrast()" ng-disabled="resState">人脸对比</button>
+	</div>
+	<div class="btn-wrap" ng-class='{"hide":btn_displayState[1]}'>
+		<button class="btn btn-primary" id="compare" ng-click="queryManualResult()" ng-disabled="resState">获取人工审核结果</button>
+	</div>
+	<div class="stepTxt" ng-show="loading">
+		<ion-spinner icon="ios-small" class="spinner-assertive"></ion-spinner>
+		<span>{{readOkText}}</span>
+	</div>
+</div>
+</ion-content>
+<div class="fullScreenPic" ng-if="pop">
+	<img ng-src="{{avatar}}">
+	<div class="operate">
+		<div class="row text-center" style="padding:0;">
+			<div class="col" style="padding:0;">
+				<button class="button button-dark button-block" ng-click="reCamera()" style="border-radius:0">重拍</button>
+			</div>
+			<div class="col" style="padding:0;">
+				<button class="button button-balanced button-block" ng-click="confirm()" style="border-radius:0">确认</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="cropperWrap"  ng-show="croppe">
+	<div class="itemWrap">
+		<p class="txtfff pt-10 pb-10 pl-10 pr-10" style="background:red;">请将头像和身份证移动到框内，点击确认</p>
+	</div>
+	<div class="itemWrap cropper" id="cropperBox">
+		<img ng-src="{{croppeImgSrc}}" id="cropperImg">
+	</div>
+
+	<div class="operate">
+		<div class="row text-center" style="padding:0;">
+			<div class="col" style="padding:0;">
+				<button class="button button-dark button-block" ng-click="reCamera()" style="border-radius:0">重拍</button>
+			</div>
+			<div class="col" style="padding:0;">
+				<button class="button button-balanced button-block" ng-click='getCroppedCanvas({"method":"getCroppedCanvas","option":{"width":1000, "height":750}})' style="border-radius:0">确认</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.spinner svg{width:80px!important;height:80px!important;}
+	.stepTxt{border:1px #ff0000 dotted;padding:1rem;margin:1rem 3%;color:#ff0000;text-align:center;}
+	.stepTxt .spinner svg{width:25px!important;height:25px!important;vertical-align:-7px;}
+</style>
+</ion-view>
+

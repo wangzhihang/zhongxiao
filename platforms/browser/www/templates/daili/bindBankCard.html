@@ -1,0 +1,53 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="formList">
+			<ul>
+				<li class="rowItem">
+					<div class="label">银行卡：</div>
+					<div class="labelForm">
+						<select class="select" style="width:100%;">
+							<option>选择银行</option>
+						</select>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">卡号：</div>
+					<div class="labelForm">
+						<input type="tel" class="textBox" placeholder="正确输入银行卡号"/>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">姓名：</div>
+					<div class="labelForm">
+						<input type="text" class="textBox" placeholder="银行卡本人真实姓名"/>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">身份证号：</div>
+					<div class="labelForm">
+						<input type="text" class="textBox" placeholder="正确输入本人身份证号码"/>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">手机号码：</div>
+					<div class="labelForm">
+						<input type="tel" class="textBox" placeholder="正确输入联系人手机号码"/>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">校验码：</div>
+					<div class="labelForm rel">
+						<input type="tel" class="textBox" placeholder="输入短信校验码"/>
+						<span class="vertical abs bd-l pl-15 txt666" style="right:0;">获取验证码</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="mt-15 pl-15 pr-15">
+			<button class="blueBtn" disabled="disabled">立即绑定</button>
+		</div>
+	</ion-content>
+</ion-view>

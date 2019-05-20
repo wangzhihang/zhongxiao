@@ -1,0 +1,34 @@
+<ion-view view-title="{{title}}">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		
+		<div class="userInfo">
+			<p>您提供的身份信息我们将予以加密保护,保证此证件照片仅用于办理本次入网业务。</p>
+		</div>
+		
+		<div class="upload-wrap" style="margin-top:1rem;">
+			<div class="initial" ng-show="divShow" ng-click="Camera()">
+				<img src="img/zhaoxiangji.png">
+				<span>点击上传正面照片</span>
+			</div>
+			<div class="photo-wrap" ng-hide="divShow">
+				<img src="data:image/jpeg;base64,{{imgData}}">
+				<!-- <div class="txtWatermark">这里是水印文件哇这里是水印文件哇哇哇这里是水印文件哇哇哇这里是水印文件哇哇哇这里是水印文件哇哇哇哇哇~</div> -->
+				<span class="reset" ng-click="Camera()">重新拍摄</span>
+			</div>
+		</div>
+		
+		<div class="btn-wrap" ng-hide="divShow">
+			<button class="btn btn-secondary" ng-disabled="resState" ng-click="contrast()">立即上传</button>
+		</div>
+		
+		<div class="cen padding" ng-show="resState">
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+	</ion-content>
+</ion-view>

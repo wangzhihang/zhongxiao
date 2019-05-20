@@ -1,0 +1,35 @@
+<ion-view view-title="筛选" hide-tabs="true">
+
+
+	<ion-nav-buttons side="right">
+		<div ng-click="newTelList()">确定</div>
+	</ion-nav-buttons>
+
+	<ion-nav-buttons side="left">
+		<div ui-sref="number-list"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+
+	
+
+	<ion-content class="attr-filter-list">
+
+		<div id="item-list" class="item-list" ng-class='{"filterDisplay":itemLiDisplay}'>
+			<ul>
+				<li ng-repeat="row in itemList" ng-click="setItem($index)" ng-if="numberType == row.type">
+					<span>{{row.name}}</span>
+					<small style="color: red;" ng-class='{"filterHide":row.state}'>{{row.select[1]}}</small>
+					<small ng-class='{"filterHide":row.stateNo}'>不限</small>
+				</li>
+			</ul>
+		</div>
+
+		<div id="val-list" class="val-list" ng-class='{"filterDisplay":valLiDisplay}'>
+			<ul>
+				<li  ng-repeat="row in valList" ng-class='{"selected":valSelectClass(row[0])}' ng-click="setVal({{row}})">
+					<span>{{row[1]}}</span>
+				</li>
+			</ul>
+		</div>
+	</ion-content>
+
+</ion-view>

@@ -1,0 +1,39 @@
+<ion-view view-title="{{title}}">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index_dl"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	
+	<ion-content>
+		<div>
+			<div id="mapContainer" class="mb-10 bgWhite txtCenter mapContainer bd"></div>
+		</div>
+		<div class="cen padding" ng-class='{"hide":loading}'>
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+		<section style="margin-top:1rem">
+			<div class="bgWhite shopList" style="border-top: 1px #D3D3D3 solid;">
+				<div ng-repeat="item in shopList" style="width:95%;margin:0 auto;" class="bd-b rel btnBg">
+				<!--  -->
+					<div class="pt-15 pb-15 ml-10 f-15 goShopList">
+						<p>
+							<span>店铺名称：</span>
+							<span>{{item.shopName}}</span>
+						</p>
+						<p>
+							<span>用户名称：</span>
+							<span>{{item.realName}}</span>
+						</p>
+						<p>
+							<span style="vertical-align:top;">店铺地址：</span>
+							<span class="inlinebk" style="width:40vw;">{{item.address}}</span>
+						</p>
+					</div>
+					<button class="shopInspectionBtn btn-primary abs" ng-click="shopInspection('{{item.ownerId}}')">巡店</button>
+				</div>
+			</div>
+		</section>
+	</ion-content>
+</ion-view>

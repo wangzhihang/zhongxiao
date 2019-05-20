@@ -1,0 +1,61 @@
+<ion-view  view-title="{{title}}" hide-tabs="true">
+<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<!-- <div class="f-16"  ng-click="share()">分享</div> -->
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+		<div style="position: fixed;bottom: 0"><!-- position: fix;bottom:0; -->
+					<ul style="display:flex;justify-content: space-around;align-items: center;box-shadow: -23px 27px 4px 28px #eaeaed;">
+						<li style="background-color:#f9f9f9;width: 50vw;text-align: center;"  ng-click="myCode()"><span  class="txt000 f-18"  style="line-height: 7vh;"><i class="icon-erweima"></i>二维码</span ></li>
+						<li style="background-color:#f17904;width: 50vw;text-align: center;"   ng-click="share()"><span  class="txtfff  f-18" style="line-height: 7vh;"><i class="icon-fenxiang1"></i>分享</span></li>
+					</ul>
+			</div>
+	<ion-content  class="has-tabs" style="background-color:#fff;"><!--  -->
+	
+          <div class="personalInfo clear"> 
+	  			<div class="fr pr-5" style="padding-top:3vw;">
+	            </div>
+	  			<div class="infoImg fl">
+	                <img src="img/personalPag.jpg" /> 
+	            </div>
+	            
+	            <div class="infoName ">
+	                <div>
+	                	<span class="txtfff realName">{{infoList.shopName}}</span>
+	                	<span class="txtfff userName">{{infoList.userName}}</span>
+	                </div>
+	            </div>
+	 	 </div>
+        
+        <div class="personalMoney">
+            <div class="businessNum">
+                <ul class="businessList">
+                    <li class="myMoney">
+                        <p class="moneyType payMoney">我的佣金(元)</p>
+                        <p class="moeyOfMine amount">{{infoList.accountBo.amount}}</p>
+                    </li>
+                    <li class="numberOrd">
+                        <p class="moneyType numOrder">号码订单(笔)</p>
+                        <p class="moneyOfbusiness numberOrderCount">{{numberLength}}</p>
+                    </li>
+                    <li class="kuandaiOrd">
+                        <p class="moneyType lanOrder">宽带订单(笔)</p>
+                        <p class="moneyOfbusiness lanOrderCount">{{infoList.lanOrderCount}}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      <div>
+		<div style="width:100vw;background-color:#fff;" > 
+				<ul  class="bgWhite" style="width:100vw">
+			            <li class="littleBox pl-10 pr-10  " ng-repeat="item in smallProgramImgList"  style="width:50%;float:left;display:block;border-left: 1px solid #f9f9f9;border-bottom: 1px solid #f9f9f9;margin-left: -1px;height:260px;"  ng-click="ComboInfoUrl($index)">
+				            <img src="{{item.photo}}" style="width:100%;" style="padding:5px"/>
+							<p class="mt-5 productName" style="text-overflow: ellipsis;font-size:15px;font-weight: 550;color:#000;">{{item.productName}}</p>
+			            </li>
+			     </ul>
+		</div>
+
+</ion-content>
+</ion-view>

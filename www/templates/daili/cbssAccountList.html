@@ -1,0 +1,98 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+    <ion-nav-buttons side="left">
+        <div ui-sref="jobnum-config-list"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="add-cbss-account"><i class="icon-tianjia"></i></div>
+    </ion-nav-buttons>
+    <ion-content style='margin-top:1px;'>
+
+        <div class="wrap bd-b mb-5" ng-repeat="item in cbssInfoList">
+            <div class="flexWrap pt-10 pb-10 bd-b pl-5 f-16" style="background-color: #FBFBFB;width:100vw;margin-left: -3%;">
+                <span class="flex ml-10">开启验证码</span>
+                <label class="flex toggle  toggle-positive col-20" style="margin-right: -10px;">
+				   <input type="checkbox" ng-model="item.checked" ng-checked='item.checked' ng-change="needVertifyCode('{{item.id}}',$index)">
+				   <div class="track" style="height: 24px;width: 43px;">
+				     <div class="handle" style="width: 20px;height: 20px;"></div>
+				   </div>
+				</label>
+            </div>
+            <div class="flexWrap pt-10 pb-10 bd-b pl-5 f-16" style="background-color: #FBFBFB;width:100vw;margin-left: -3%;">
+                <span class="flex ml-10">活体认证</span>
+                <label class="flex toggle  toggle-positive col-20" style="margin-right: -10px;">
+					<input type="checkbox" ng-model="item.liveBody" ng-checked='item.liveBody' ng-change="needliveBody('{{item.id}}','{{item.bodyCertification}}')">
+					<div class="track" style="height: 24px;width: 43px;">
+						<div class="handle" style="width: 20px;height: 20px;"></div>
+					</div>
+				</label>
+            </div>
+            <div class="flexWrap pt-10 pb-10 bd-b pl-5 f-16" style="background-color: #FBFBFB;width:100vw;margin-left: -3%;">
+                <span class="flex ml-10">身份证正反面</span>
+                <label class="flex toggle  toggle-positive col-20" style="margin-right: -10px;">
+					<input type="checkbox" ng-model="item.identify" ng-checked='item.identify' ng-change="needIdentify('{{item.id}}','{{item.identityCard}}')">
+					<div class="track" style="height: 24px;width: 43px;">
+						<div class="handle" style="width: 20px;height: 20px;"></div>
+					</div>
+				</label>
+            </div>
+            <div class="flexWrap pt-10 pb-10 bd-b f-16">
+                <p class="flex ml-5">{{item.realName}}（代理）</p>
+                <p class="flex mr-15 txtRight">{{item.auserName}}</p>
+            </div>
+            <div class="flex pt-5 txt333">
+                <span class="inlinebk workNumLeftTopList txtRight">CBSS工号</span>
+                <span class="flexFix pl-10">{{item.userName}}</span>
+            </div>
+            <div class="flex pt-5">
+                <span class="inlinebk workNumLeftTopList txt333 txtRight">渠道</span>
+                <span class="flexFix pl-10 txt666">{{item.channelName}}</span>
+            </div>
+            <div class="flex pt-5">
+                <span class="inlinebk workNumLeftTopList txtRight"></span>
+                <span class="flexFix pl-10 txt999">{{item.channelCode}}</span>
+            </div>
+            <div class="flex pt-5">
+                <span class="inlinebk workNumLeftTopList txt333 txtRight">发展人</span>
+                <span class="flexFix pl-10 txt666">{{item.developName}}</span>
+            </div>
+            <div class="flex pt-5 pb-5">
+                <span class="inlinebk workNumLeftTopList txtRight"></span>
+                <span class="flexFix pl-10 txt999">{{item.developCode}}</span>
+            </div>
+            <!-- <p class="pt-10 pb-5">
+				<em class="f-14 txt333">{{item.developName}}</em>
+				<span class="f-14 txt999">（发展人名称）</span>
+			</p>
+			<p class="pb-5">
+				<em class="f-14 txt333">{{item.developCode}}</em>
+				<span class="f-14 txt999">（发展人编码）</span>
+			</p>
+			<p class="pb-5">
+				<em class="f-14 txt333">{{item.channelCode}}</em>
+				<span class="f-14 txt999">（渠道编码）</span>
+			</p> -->
+            <hr/>
+            <div class="flexWrap txt666" style='margin-left:-11px;'>
+                <!-- <div class="flex text-center pt-10 pb-10" ui-sref="cbss-shop-list" ng-click="powerDivsion($index)">
+					<i class="icon-fenpei txtSuccess"></i>
+					<span>权限分配</span>
+				</div> -->
+                <div class="flex text-center pt-10 pb-10" ng-click="powerDivsion($index)">
+                    <i class="icon-fenpei txtSuccess"></i>
+                    <span>权限分配</span>
+                </div>
+                <div class="flex text-center pt-10 pb-10" ng-click="changePwd($index)">
+                    <i class="icon-xiugaimima txtSuccess"></i>
+                    <span>修改密码</span>
+                </div>
+                <div class="flex text-center pt-10 pb-10" ng-click="showPopu($index)">
+                    <i class="icon-shanchu txtSuccess"></i>
+                    <span>删除账号</span>
+                </div>
+            </div>
+        </div>
+        <div class="loadingWrap" ng-if="loading">
+            <ion-spinner icon="ios-small"></ion-spinner>
+        </div>
+    </ion-content>
+</ion-view>

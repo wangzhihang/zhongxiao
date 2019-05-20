@@ -1,0 +1,311 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="icon-fanhui ml-10"  style="font-size: 2rem;"></i></div>
+		
+		
+		
+		<ul style="display: flex;justify-content: space-around;align-items: center;width:54vw;z-index: 100;margin-left: 3rem;">
+			<li ng-click=""><span class="f-16">商品详情</span></li>
+			<!-- <li ng-click=""><span class="f-16">详情</span></li>
+			<li ng-click=""><span class="f-16">评价</span></li> -->
+		</ul>
+		
+		
+	</ion-nav-buttons><br />
+	<ion-nav-buttons side="right" class="ml-20">
+		<!-- <div ng-click=""><i class="icon-fenxiang1" style="font-size: 2rem;"></i></div> -->
+		<div ng-click="showMore()"><i class="icon-more" style="font-size: 2rem;" ></i></div>
+	</ion-nav-buttons><br />
+			
+			<!--<div class="" style="position: fixed; width: 100vw;height:100vh;z-index: 999;background: rgba(0,0,0,.5);bottom: 0;" ng-show="isNoShowFloor">
+				<div style="position: absolute;bottom: 0;left:0;width:100vw;">
+						<div class="addCarFloor bgWhite mt-25">
+						<div class="row carFloor">
+					    		<div class=" col-33 carFloorPic" >
+					       		 	<img src="{{product.imgMain}}" />
+			                  	</div>
+					     	 			
+					     	 	<div class="col  carFloorWord pt-5">
+					      	  		<span class="f-14 txt000"><span>{{product.productName}}</span>	<span>{{product.keyword}}</span></span>
+					      	  		<div class="myPrice pt-10">
+										<span class="f-18 txtRed ">￥{{allSoldPrice | number:2}}<span class="txt999 f-8 ordPrice pl-5">原价：￥{{product.primePrice | number:2}}</span></span>
+									</div>
+					      		</div>
+					 			
+							 	<div class="col-10 carFloorClose pt-5" ng-click="closeFloor()">
+							 		<i class="icon-guanbi1 mr-5" style="font-size: 2.5rem;color: #999;"></i>
+					      	  	</div>
+						</div>
+					</div>
+					
+					<div class="bgWhite"  style="padding-bottom: 4rem;">
+						<div class="carFloorNum clear bgWhite pt-5 pb-5 bd-t bd-b ml-15  mr-15">
+						    <span class="txt000 f-14 fl ">购买数量</span>
+						    <div class="caraddOrSub fr flexWrap">
+								<span class="carsubBnt text-center bd-r" ng-click="subClick()">-</span>
+								<span class="carmuchInfo text-center">{{num}}</span>
+								<span class="caraddBnt text-center bd-l" ng-click="addClick()">+</span>
+							</div>
+						</div>
+					</div>
+				
+					<div class="carSpec bgWhite pl-15 pb-10"  >
+						<span class="carSpecWord txt000 f-14 mt-20">规格</span>
+						<div class="carSpecBtn pt-3 pb-3 ">
+							<input type="button" value="6个约80mm 约3斤" class="txtfff f-12 specone pl-5 pr-5"  ng-class="{ 'spectwo' : tag.current == 1 }" ng-click="actions.setCurrent(1);"/>
+							<input type="button" value="12个75mm约4斤"  class="txtfff f-12 specone pl-5 pr-5"  ng-class="{ 'spectwo' : tag.current == 2 }" ng-click="actions.setCurrent(2);"/>
+						</div>
+					</div>
+					<div class="addBigBtn bgWhite">
+						<input type="button" value="添加购物车"  class="txtfff f-16"  ng-click="addcarok()"/>
+					</div>		
+			</div>
+			</div>
+		-->
+			
+			<!--底部-->
+			
+			<!-- <div class="indexAddBags">
+				<div class="fl pl-15 indexCar">
+					<i class="icon-gouwuche" style="font-size: 3rem; color:#767877;
+						padding:0.2rem; background-color: #323232;border-radius:3rem;
+						box-shadow: 0rem -0.1rem 0rem 0.3rem #626262;
+						"  ng-click="openCar()" ></i><span  class="txtfff f-10 indexGoodsNum ">1</span>
+					<span class="txtfff f-18 indexZ">￥49.90</span>
+				</div>
+				<div class="fr indexPay">
+					<span class="txtfff f-16 indexZ  indexToPay"   ui-sref="market-ord"> 去结算</span>
+				</div>
+			</div>
+			 -->
+
+
+
+
+<!-- 购物车 -->
+	<div class="carItem" ng-show="ifShowCar" ng-click="closeCar()">
+		<div class="carBody" ng-click="$event.stopPropagation();">
+			<div class="carTop clear">
+				<span class="fl">已选商品({{allOrderNum}})</span>
+				<span class="fr" ng-click="emptyCar()"><i class="icon-shanchu2"></i>清空</span>
+			</div>
+			<div class="carInfo">
+				<ul>
+					<li class="pt-10 pb-10 pl-10 pr-10 clear bd-b" ng-repeat="item in carList track by $index" ng-hide="item.orderNum==0">
+						<span class="fl">{{item.productName}}</span>
+						<span class="fr">
+							<span class="f-14 txtBigOrange">{{item.soldPrice | currency:" ￥"}}</span>
+							<i class="icon-jian f-20 txtBlue" ng-click="carUpOrder($index)"></i>
+							<i>{{item.orderNum}}</i>
+							<i class="icon-zengjiaanniu f-20 txtBlue" ng-click="carDownOrder($index)"></i>
+						</span>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="indexAddBags">
+		<div class="fl pl-15 indexCar">
+			<i class="icon-gouwuche f-30 txt999 " ng-class="{'txtblue':choseColor}" ng-click="openCar()" style="padding:0.8vw; background-color: #323232;border-radius:7vw;
+				box-shadow: 0rem -0.1rem 0rem 0.3rem #626262;
+				"></i><span  class="txtfff f-10 indexGoodsNum ">{{allOrderNum}}</span>
+			<span class="txtfff f-18 indexZ">￥{{allPrice |  number:2}}</span>
+		</div>
+		<div class="fr indexPay"  ng-class="{'bgBlue':choseColor}"   ui-sref="market-ord">
+			<span class="txtfff f-16 indexZ  indexToPay"  >去结算</span>
+		</div>
+	</div>
+
+
+
+
+
+
+
+			
+			<!--<div class="carOrbuy bgWhite" ng-show="isNoShowCard">
+				<div class="pl-0 fr payBtn">
+					<input type="button" value="加入购物车" class=" f-14 txtfff addcar" ng-click="addCard()"/>
+					<input type="button" value="立即购买" class=" f-14 txtfff addbuy"  ng-click="atONceBuy()"/>
+				</div>
+			</div>-->
+			
+			
+			<!--分享框-->
+		<div class="positionMore mb-25" ng-show="isShowMore">
+			<div class="backMore fr pr-15 pb-10">
+				<div id="triangle-up"></div>
+				<div class="pt-10 radiusBack">
+					<ul class="pl-10 ">
+						<li class="lines  pr-5" ui-sref="market-index"><a href="#"><span class="txtfff f-15"><i class="icon-shouye pr-10" style="padding-left: 0rem;"></i>首页</span></a></li>
+						<!-- <li class="lines  pr-5"><a href="#"><span class="txtfff f-15"><i class="icon-kefu pr-10" style="padding-left: 0%;"></i>订单</span></a></li>
+						<li class="lines  pr-5"><a href="#"><span class="txtfff f-15"><i class="icon-fankui pr-10" style="padding-left: 0%;"></i>地址</span></a></li> -->
+						<li class="  pr-5"><a href="#"><span class="txtfff f-15"><i class="icon-fenxiang pr-10" style="padding-left: 0%;"></i>分享</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!--		
+		<div class="shoppingCar">
+			<i class="icon-gouwuche" style="color: red;font-size: 3rem;"></i>
+		</div>-->
+	
+	<ion-content>
+		
+	
+		<div class="loadingWrap" ng-if="loading">
+	         <ion-spinner icon="ios"></ion-spinner>
+	    </div>
+	
+		
+	<div class="goodsDataInfo pb-10";>
+		<div  ng-click="isNoShowMore()">
+		<!--轮播图-->	
+		<div class="goodsLunbo bgWhit " >	
+			<ion-slide-box on-slide-changed="slideHasChanged($index)" class=" ">
+		  		<ion-slide>
+		    		<div class="box "><img src="{{product.imgLbs[0]}}" style=""></div>
+		  		</ion-slide>
+		  		<ion-slide>
+		  			<div class="box"><img src="{{product.imgLbs[1]}}" style=""></div>
+		  		</ion-slide>
+				<ion-slide>
+					<div class="box "><img src="{{product.imgLbs[2]}}"  style=""></div>
+				</ion-slide>
+				<ion-slide>
+					<div class="box "><img src="{{product.imgLbs[3]}}" style=""></div>
+				</ion-slide>
+			</ion-slide-box>
+		</div>	
+		
+		
+		<!--商品信息-->
+		<div class="goodsTitle pl-15 pr-15 pt-10 pb-10 bgWhite mb-20">
+				<div class="">	
+					<span class="txt000 f-16">{{product.productName}}{{product.keyword}}</span>
+					<!--<div class="bgWhite pt-3 pb-3">-->
+				</div>	
+
+				<div class="pt-5" ng-show="product.title != null">
+					<div class="indexTopIofoL "><span class="txtBigOrange f-10">{{product.title}}</span></div>
+				</div>
+
+
+				<div style="" class=" pt-5 clear">	
+					<span class="txtBigOrange f-18  fl" style="font-weight: 700;">￥{{product.soldPrice | number:2}}<span class="txt999 f-12 ordPrice pl-10" style="font-weight: 300;">原价：￥{{product.primePrice}}</span></span>
+					<span class="txtfff bgBlue fr mr-10 pl-10 pr-10 f-14" style="border-radius: 1rem;"     ng-click="addcarInfo()">加入购物车</span>
+				</div>
+		</div>
+		
+		<!--通告-->
+		<!-- <div class="takeTable">
+			<span class="f-12 txt666 pl-15  " style="background-color:#fcf4df">直降200！支持人脸解锁！高通8核处理器！</span>
+		</div> -->
+	
+		<!--商品活动信息以及送达地址-->
+		<div class="goodssale">
+			<div class="goods  mt-5">
+				<div class="row bgWhite">
+		    		<div class="col-20 fl pl-15">
+		       		 	<span class="f-14 txt999 fl">促销</span>
+                  	</div>
+		     	 	<div class="col-67">
+		      	  		<p><span class="activeGoods f-14">满减</span><span class="f-14 pl-10 txt000">{{activeName}}</span></p>
+		      	  		<!-- <p><span class="activeGoods f-14">限制</span><span class="f-14 pl-10 txt000">满减价格不与套装优惠同时享受</span></p> -->
+		      		</div>
+		 			<!-- <div class="col">
+				 		<i class="icon-more fr mr-15 ml-10" style="font-size: 2rem;color: #999;"></i>
+		      	  	</div> -->
+				</div> 
+				
+				<!--<div class="row bgWhite">
+		    		<div class="col-20 fl pl-15">
+		       		 	<span class="f-14 txt999 fl">促销</span>
+                  	</div>
+		     	 	<div class="col-67">
+		     	 		<span class="f-10 txt000   pr-5 mb-5"><span class="f-8 txtBigOrange saleGo pl-3 pr-3  mr-10">换购</span>购买1件可优惠换购热销商品</span>   
+					<span class="f-10  txt000  pr-5 saleGos"><span class="f-8 txtBigOrange saleGo  pl-3 pr-3   mr-10">限制</span>此价格不与套装优惠同时享受</span>
+		      		</div>
+		 			<div class="col fr">
+				 		<i class="icon-xiala2 fr  ml-10" style="font-size: 1.6rem;color: #999;"></i>
+		      	  	</div>
+				</div> -->
+				
+				 <div class="row bgWhite mt-5  pt-10 pb-10 ">
+		    		<div class="col-20 fl pl-15">
+		       		 	<span class="f-14 txt999 fl">已选</span>
+                  	</div>
+		     	 	<div class="pr-15">
+		     	 		<span class="f-14 txt000 mr-5  pr-5">{{product.keyword}}</span>
+		     	 	</div>
+		 			
+				</div>
+				
+				<!--<!-- <div class="row bgWhite mt-5 pt-10">
+		    		<div class="col-20 fl pl-15">
+		       		 	<span class="f-14 txt999 fl">送至</span>
+                  	</div>
+		     	 	<div class="col-67">
+		     	 		<span class="f-12 txt000  pr-5 mb-5"><i class="icon-dizhi" style="color: red;"></i>西安市高新区沣惠南路旺座国际E座901</span>   
+						<span class="f-12  txtBigOrange  pr-5 saleGos">现货，11:00前下单，预计今天送达</span>
+					
+		      		</div>
+		 			<div class="col">
+				 		<i class="icon-more fr mr-15 ml-10" style="font-size: 2rem;color: #999;"></i>
+		      	  	</div>
+				</div>
+				<!-- <div class="row bgWhite pt-10 pb-10 ">
+		    		<div class="col-20 fl pl-15">
+		       		 	<span class="f-14 txt999 fl">重量</span>
+                  	</div>
+		     	 	<div class="col-67 ">
+		     	 		<span class="f-12 txt000 mr-5  pr-5">2.1kg</span>
+		     	 	</div>
+		 			<div class="col">
+				 	</div>
+				</div> -->
+				<!-- <div class="goodssendps pt-5 pb-10">
+					<ul class="ml-5 mr-5 pt-5">
+						<li class=""><i class="icon-queren1" style="color: red;"></i><span class="f-10  txt000">货到付款</span></li>
+						<li><i class="icon-queren1" style="color: red;"></i><span class="f-10  txt000">自提</span></li>
+						<li><i class="icon-queren1" style="color: red;"></i><span class="f-10  txt000">生鲜99元免基础运费(50kg内)</span></li>
+					</ul>
+					<span class="f-10  txt000"><i class="icon-tiwen " style="color: #999;font-size: 1.5rem;padding-left: 1.3rem;"></i>不支持7天无理由退货</span> 
+				</div>--> 
+			</div>
+		</div>	
+	 
+	
+		<!--商品详细图解标题-->
+		<div class="title pl-15 pr-15 mt-10 mb-10">
+			<span class="cutline"></span>
+			<span class="txt999 f-14 pl-10 pr-10">商品详情</span>
+			<span class="cutline"></span>
+		</div>
+		
+		
+		<div class="picDeta" ng-bind-html="goodDepict" style="padding-bottom: 6rem;">
+			<!--{{product.depict}}-->
+		</div>
+		
+		
+	</div>		
+		</div>
+	</div>		
+	
+	<!--等待圈-->
+	<ion-infinite-scroll ng-if="hasmore" on-infinite="loadMore()" icon="ion-loading-c" distance="1%" immediate-check="false"></ion-infinite-scroll>
+    <div class="loadingWrap" ng-if="loading">
+        <ion-spinner icon="ios"></ion-spinner>
+    </div>
+	
+	</ion-content>
+	
+</ion-view>
+
+

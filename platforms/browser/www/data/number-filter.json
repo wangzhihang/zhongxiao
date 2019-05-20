@@ -1,0 +1,165 @@
+[
+	{
+		"key":"numberSection",
+		"name":"号段",
+		"select":[],
+		"state":"false",
+		"type":"java",
+		"val":[
+			["-1","全部"],
+			["HD02","186"],
+			["HD01","185"],
+			["HD07","156"],
+			["HD06","155"],
+			["HD03","130"],
+			["HD04","131"],
+			["HD05","132"],
+			["HD32","175"],
+			["HD33","176"]
+		]
+	},
+	
+	{
+		"key":"priceZone",
+		"name":"话费",
+		"select":[],
+		"state":"false",
+		"type":"java",
+		"val":[
+			["-1","全部"],
+			["JG01","0-200元"],
+			["JG02","200-500元"],
+			["JG03","500-1000元"],
+			["JG04","1000-2000元"],
+			["JG05","2000-5000元"],
+			["JG06","5000-10000元"],
+			["JG07","10000-20000元"],
+			["JG08","20000元以上"]
+		]
+	},
+	
+	{
+		"key":"tailRule",
+		"name":"尾数规律",
+		"select":[],
+		"state":"false",
+		"type":"java",
+		"val":[
+			["-1","全部"],
+			["WB03","AAA"],
+			["WB06","AAAAB"],
+			["WB07","AAAB"],
+			["WB08","AABBCC"],
+			["WB09","AABB"],
+			["WB12","ABCDABCD"],
+			["WB13","ABCD"],
+			["WB14","ABC"],
+			["WB15","ABCABC"],
+			["WB16","AABBCC*"],
+			["WB18","ABABAB*"],
+			["WB20","ABC*ABC"]
+		]
+	},
+	
+	{
+		"key":"numberLots",
+		"name":"数字属性",
+		"select":[],
+		"state":"false",
+		"type":"java",
+		"val":[
+			["-1","全部"],
+			["MY09","数字9多"],
+			["MY08","数字8多"],
+			["MY07","数字7多"],
+			["MY06","数字6多"],
+			["MY05","数字5多"],
+			["MY04","数字4多"],
+			["MY03","数字3多"],
+			["MY02","数字2多"],
+			["MY01","数字1多"],
+			["MY00","数字0多"]
+		]
+	},
+	
+	{
+		"key":"numberSpecial",
+		"name":"不含47",
+		"select":[],
+		"state":"false",
+		"type":"java",
+		"val":[
+			["-1","全部"],
+			["NO01","不含4"],
+			["NO02","不含7"]
+		]
+	},
+
+	{
+		"key":"sortStr",
+		"name":"排序",
+		"select":[],
+		"state":"false",
+		"type":"java",
+		"val":[
+			["-1","综合排序"],
+			["NUMBER DESC","号码降序"],
+			["NUMBER ASC","号码升序"],
+			["SOLD_PRICE DESC","价格降序"],
+			["SOLD_PRICE ASC","价格升序"],
+			["UPDATE_TIME DESC","更新时间降序"],
+			["UPDATE_TIME ASC","更新时间升序"]
+		]
+	},
+
+	{
+		"key":"isOrdinary",
+		"name":"号码类型",
+		"select":["000001","普通号码"],
+		"state":false,
+		"type":"java",
+		"stateNo":true,
+		"val":[
+			["000001","普通号码"],
+			["000002","其他"]
+		]
+	},
+
+
+	{
+		"key":"deposit",
+		"name":"预存话费",
+		"select":[],
+		"state":"false",
+		"type":"unicomm",
+		"val":[
+			["-1","全部"],
+			["0|100","0~100"],
+			["101|200","101~200"],
+			["201|500","201~500"],
+			["501|1000","501~1000"],
+			["1001|100000","1000以上"]
+		]
+	},
+	
+	
+	{
+		"key":"lh_type",
+		"name":"靓号规则",
+		"select":[],
+		"state":"false",
+		"type":"unicomm",
+		"val":[
+			["-1","全部"],
+			["ABCD","ABCD"],
+			["AAA","AAA"],
+			["AABB","AABB"],
+			["ABAB","ABAB"],
+			["AAAB","AAAB"],
+			["ABC","ABC"],
+			["AA","AA"],
+			["201","普通号码"]
+		]
+	}
+
+]

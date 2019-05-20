@@ -1,0 +1,99 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+<ion-nav-buttons side="right">
+	<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+</ion-nav-buttons>
+
+<ion-content>
+<div class="padding">
+	<div class="noMore">
+		<span>实际费用以订单成功后返回金额为准</span>
+	</div>
+</div>
+<div class="userInfoForm">
+	<ul>
+		<li>
+			<label>用户姓名：</label>
+			<input type="text" class="input-text" ng-model="simInput.name" readonly="readonly"/>
+		</li>
+		<li>
+			<label>身份证号码：</label>
+			<input type="text" class="input-text" ng-model="simInput.cardId"  readonly="readonly"/>
+		</li>
+		<li>
+			<label>手机号码：</label>
+			<input type="text" class="input-text" ng-model="simInput.number"  readonly="readonly"/>
+		</li>
+		<li class="flexWrap">
+			<span class="txtRight" style='width: 9rem;line-height: 5rem;'>套餐信息：</span>
+			<!-- <input type="text" class="input-text" ng-model="simInput.productName"  readonly="readonly"/> -->
+			<span class="flexFix txt666 pl-10" style='margin:auto'>{{simInput.productName}}</span>
+		</li>
+
+		<li ng-show="simInput.effectiveTimeShow">
+			<label>首月计费：</label>
+			<input type="text" class="input-text" ng-model="simInput.effectiveTime"  readonly="readonly"/>
+		</li>
+		<li ng-show="simInput.additionalProductShow" class="flexWrap">
+			<span class="txtRight" style='width: 9rem;line-height: 5rem;'>附加活动：</span>
+			<span class="flexFix txt666 pl-10" style='margin:auto'>{{simInput.additionalProduct}}</span>
+			<!-- <input type="text" class="input-text" ng-model="simInput.additionalProduct"  readonly="readonly"/> -->
+		</li>
+		<li ng-hide="simInput.activity">
+			<label>参加活动：</label>
+			<input type="text" class="input-text" ng-model="simInput.activityName" readonly="readonly"/>
+		</li>
+		<li ng-class='{"hide":reduceMoneyShow}'>
+			<label>减免费用：</label>
+			<input type="text" class="input-text" ng-model="simInput.reduceMoney" readonly="readonly"/>
+		</li>
+		<li>
+			<label>月承诺通信费：</label>
+			<input type="text" class="input-text" ng-model="simInput.preNumberCharge" readonly="readonly"/>
+		</li>
+		<li>
+			<label>协议期：</label>
+			<input type="text" class="input-text" ng-model="simInput.leaseLength" readonly="readonly"/>
+		</li>
+		<li class="item item-input item-select">
+			<label>预存话费：</label>
+			<select ng-model="select.preFeeList" ng-options="item for item in preFeeList" ng-change="reset_preFee()" style="width:100%"></select>
+		</li>
+		<li>
+			<label style="color:red">应收费用：</label>
+			<input type="text" class="input-text" ng-model="simInput.amount" readonly="readonly" style="color:red"/>
+		</li>
+	</ul>
+
+</div>
+
+<div>
+	<div style="margin:1rem 5%;border:1px #f1666b dotted;background-color:#fff5f5;padding:1rem;color:#f1666b;">
+		受理的号码及宽带所参与的套餐、活动、预存金额均按照联通当前政策执行。如有疑问，请咨询渠道经理或联通相关部门。
+	</div>
+
+
+	<div>
+		<p class="protocol txtCenter pt-5 pb-10 f-12 pl-0">
+	        <label class="inlinebk" style="width: 8vw;" ng-click="agreeClick()">
+				<!-- <input type="checkbox" name="withdrawsList" class="hide"/> -->
+				<span class="vertical f-18">
+					<i ng-class="agree == true ? 'icon-xuanzedui txtSuccess' : 'icon-xuanze txt999'"></i>
+				</span>
+			</label>
+			我已阅读并同意
+	        <a id="go-protocol" style="margin-left: 6%;" ng-click="protocolDetails()">《客户入网服务协议及业务协议》</a>
+	    </p>
+	</div>
+
+
+	<div class="btn-wrap">
+		<button class="btn btn-primary" ng-click="order()">订单已确认！我要签名，提交订单</button>
+	</div>
+
+</div>
+
+
+</ion-content></ion-view>

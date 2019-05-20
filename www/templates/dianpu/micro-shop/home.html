@@ -1,0 +1,45 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="QRcodeWrap">
+			<div class="QRcode">
+				<div class="shopQRcode">
+					<div id="qrbox"></div>
+				</div>
+				<p class="cen btm-info">扫描二维码，选择号码</p>
+			</div>
+		</div>
+		<div class="user-menu-list">
+			<h3>
+				<span>预占号码</span>
+				<span class="fr" style="color:#666;font-size:small;">
+					<span>刷新</span>
+					<i style="margin:0 1rem;color:#999;">&#124;</i>
+					<span>编辑</span>
+				</span>
+			</h3>
+			<ul>
+				<li>
+					<a>
+						<em>158 2551 8194</em>
+						<span class="fr calm padding-left padding-right">办理</span>
+					</a>
+				</li>
+				<li>
+					<a>
+						<em>176 0297 6002</em>
+						<span class="fr calm padding-left padding-right">办理</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+	</ion-content>
+
+</ion-view>

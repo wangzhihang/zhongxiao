@@ -1,0 +1,73 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div><i class="icon-shouyehui" style="font-size:16px;" ui-sref="index_dl"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="formList">
+			<ul>
+				<li class="rowItem" ng-show="showChoseSaleman">
+					<div class="label">代理商：</div>
+					<div class="labelForm">
+						<select class="select mr-10" ng-blur="select(data.salesman)" 
+							ng-model="data.salesman" ng-options="item.realName for item in deveList"  style="width:100%;">
+							<option value="">--请选择-- </option>
+						</select>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">用户名：</div>
+					<div class="labelForm">
+						<input type="text" class="textBox" placeholder="请输入用户名(手机号码)" ng-model="data.userName" ng-blur="userName()" maxlength="11"/>
+						<span class="vertical abs txtBestRed" style="right:0;">{{userNameErrorTips}}</span>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">真实姓名：</div>
+					<div class="labelForm">
+						<input type="text" class="textBox" placeholder="联系人姓名" ng-model="data.realName" ng-blur="realName()"/>
+						<span class="vertical abs txtBestRed" style="right:0;">{{realNameErrorTips}}</span>
+					</div>
+				</li>
+				<!-- <li class="rowItem">
+					<div class="label">联系电话：</div>
+					<div class="labelForm">
+						<input type="tel" class="textBox" placeholder="联系人手机号码" ng-model="data.contractNumber" ng-blur="contractNumber()" maxlength="11"/>
+						<span class="vertical abs txtBestRed" style="right:0;">{{contractNumberErrorTips}}</span>
+					</div>
+				</li> -->
+				<li class="rowItem" ng-show="choseDianpuType">
+					<div class="label">店铺类型：</div>
+					<div class="labelForm">
+
+						<select ng-model="input.id" style="margin-top:2%;" class="bd-0 txt999" ng-options="input.typeName for input in sites" ng-change="input1()">
+						</select>
+					</div>
+				</li>
+			</ul>
+			<ul class="mt-10">
+				<li class="rowItem ">
+					<div class="label">设置密码：</div>
+					<div class="labelForm">
+						<input type="password" class="textBox" placeholder="设置密码" ng-model="data.password" ng-blur="password()"/>
+						<span class="vertical abs txtBestRed" style="right:0;">{{passwordErrorTips}}</span>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">确认密码：</div>
+					<div class="labelForm">
+						<input type="password" class="textBox" placeholder="再次确认密码" ng-model="data.password1" ng-change="password()"/>
+						<span class="vertical abs txtBestRed" style="right:0;">{{rePasswordErrorTips}}</span>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+
+		<div class="btn-wrap">
+			<button class="btn btn-primary" ng-click="submitForm()" ng-disabled="resState">{{stateTxt}}</button>
+		</div>
+	</ion-content>
+</ion-view>

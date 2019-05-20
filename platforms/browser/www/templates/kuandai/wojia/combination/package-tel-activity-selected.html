@@ -1,0 +1,27 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+
+	<ion-content  class="package-detail">
+		<div class="comboAttrVal">
+			<dl>
+				<dd ng-repeat="row in lists">
+					<ion-radio ng-value="row.code" ng-model="input.code"><i class="icon-{{row.code}}"></i>{{row.name}}</ion-radio>
+				</dd>
+			</dl>
+		</div>
+		<div class="btn-wrap">
+			<button class="btn btn-primary" ng-click="order()">下一步</button>
+		</div>
+	</ion-content>
+	<style>
+		.package-detail .item-radio .radio-icon{left:auto;right:.5rem;}
+		.package-detail .item-complex .item-content, .item-radio .item-content{padding: 10px;}
+	</style>
+</ion-view>

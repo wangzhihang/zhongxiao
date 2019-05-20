@@ -1,0 +1,123 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+<ion-nav-buttons side="left">
+	<div ng-click="BLEdis()"><i class="resetBackBtn"></i></div>
+</ion-nav-buttons>
+<!-- <ion-nav-buttons side="right">
+	<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+</ion-nav-buttons> -->
+
+<ion-content>
+
+<!-- 蓝牙 -->
+<div class="getId" ng-hide="div_displayState[0]">
+	<ul>
+		<li><img src="img/id-01.jpg" alt="身份证正面"/></li>
+		<li><img src="img/id-02.jpg" alt="身份证背面"/></li>
+	</ul>
+</div>
+	
+<!-- nfc -->
+<div class="mask" style="display:block;z-index:0;background:rgba(0,0,0,.75);" ng-if="readingId"></div>
+<div class="fullScreenReadCard" ng-if="readingId">
+	<ion-spinner icon="ripple" class="spinner-light"></ion-spinner>
+	<p class="txt" ng-bind-html="tipsTxt"></p>
+</div>
+
+	
+<!-- 读取成功 -->
+<div class="identityCheck" ng-hide="div_displayState[1]">
+	<ul>
+		<li>
+			<img src="img/watermark.png" alt="水印" class="id-bg" style="z-index:1986;"/>
+			<img src="img/id01.jpg" alt="身份证正面" class="id-bg"/>
+			<div class="get-info">
+				<div class="id-pic">
+					<img src="data:image/jpeg;base64,{{idInfo.list.idHeadImg}}" alt="身份证头像"/>
+				</div>
+				<p>
+					<span class="label">姓 名</span>
+					<span class="txt-info">{{idInfo.list.name}}</span>
+				</p>
+				<p>
+					<span class="label">性 别</span>
+					<span class="txt-info" style="margin-right:1.5rem;">{{idInfo.list.gender}}</span>
+					<span class="label">民 族</span>
+					<span class="txt-info">{{idInfo.list.nation}}</span>
+				</p>
+				<p>
+					<span class="label">出 生</span>
+					<span class="txt-info">{{idInfo.show.birthday["Y"]}}</span>
+					<span class="label">年</span>
+					<span class="txt-info">{{idInfo.show.birthday["M"]}}</span>
+					<span class="label">月</span>
+					<span class="txt-info">{{idInfo.show.birthday["D"]}}</span>
+					<span class="label">日</span>
+				</p>
+				<p>
+					<span class="label">住 址</span>
+					<span class="txt-info">{{idInfo.list.address}}</span>
+				</p>
+				<p>
+					<span class="label">公民身份证号码</span>
+					<span class="txt-info">{{idInfo.list.cardId}}</span>
+				</p>
+			</div>
+		</li>
+		<li>
+			<img src="img/watermark.png" alt="水印" class="id-bg" style="z-index:3;"/>
+			<img src="img/id02.jpg" alt="身份证背面" class="id-bg"/>
+			<div class="get-info">
+				<div class="btm-info">
+					<p>
+						<span>签发机关</span>
+						<span>{{idInfo.list.police}}</span>
+					</p>
+					<p>
+						<span>有效期限</span>
+						<span>{{idInfo.show.limitedPeriod}}</span>
+					</p>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+
+
+<!-- 蓝牙loading -->
+<div class="cen padding ble" ng-show="bleLoading">
+	<ion-spinner icon="ios-small"></ion-spinner>
+</div>
+
+
+<!-- 校对loading -->
+<div class="stepTxt"  ng-show="readOk">
+	<ion-spinner icon="ios-small" class="spinner-assertive"></ion-spinner>
+	<span>{{readOkText}}</span>
+</div>	
+
+
+<!-- 按钮 -->
+<div class="btn-wrap" ng-show="btn_displayState[0]">
+	<button class="btn btn-primary" ng-click="ble_readCard()">蓝牙设备读取身份证信息</button>
+</div>
+
+<div class="btn-wrap" ng-show="btn_displayState[1]">
+	<button class="btn btn-primary" ng-click="order()">身份信息获取成功,进行下一步</button>
+</div>
+
+<div class="btn-wrap" ng-show="btn_displayState[2]">
+	<button class="btn btn-primary" ng-click="Revalidation()">重新验证</button>
+</div>
+
+</ion-content>
+
+<style>
+	.ble .spinner svg{width:40px!important;height:40px!important;}
+	.loading-container .loading{background:rgba(0,0,0,0);}
+	.backdrop{background:rgba(0,0,0,.75)}
+	.spinner svg{width:80px!important;height:80px!important;}
+	.stepTxt{border:1px #ff0000 dotted;padding:1rem;margin:1rem 3%;color:#ff0000;text-align:center;}
+	.stepTxt .spinner svg{width:25px!important;height:25px!important;vertical-align:-7px;}
+</style>
+</ion-view>

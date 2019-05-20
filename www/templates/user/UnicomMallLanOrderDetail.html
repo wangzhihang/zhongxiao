@@ -1,0 +1,118 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="cen padding" ng-class='{"hide":loading}'>
+            <ion-spinner icon="ios-small"></ion-spinner>
+        </div>
+        <div class="wrap bd-t">
+            <div class="pt-15 pb-10">
+                <span class="f-18 txt000">订单信息</span>
+                <span class="fr" ng-class="{'successColor':successColor,'verifyColor':verifyColor,'failColor':failColor,'dealColor':dealColor,'signatureColor':signatureColor,'cancelColor':cancelColor}">{{status}}</span>
+            </div>
+            <div class="pt-10 pb-10 bd-t">
+                <div>
+                    <span class="txtBigOrange f-18">{{bespeakId}}</span>
+                    <span class="fr txt999">预约渠道 <span class="f-18 txtBigOrange">{{comeFrom}}</span></span>
+                </div>
+               <!--  <div class="txt999 pt-5 pb-10">
+                    <span>优惠活动手机号</span>{{actPhone}}
+                </div> -->
+                <!-- <div class="pb-10"  ng-show="isNoShowActivityName">
+                    <p class="pt-5 pb-5 pl-10 pr-10 txt666 bgRemind">{{}}</p>
+                </div> -->
+            </div>
+            <div class="bd-t">
+                <div class="pt-10 pb-10">
+                    <span class="txt666 f-16">优惠活动手机号</span>
+                    <time class="fr txt999">{{actPhone}}</time>
+                </div>
+            </div>
+            <div class="bd-t ">
+                <div class="pt-10 pb-10">
+                    <span class="txt666 f-16">预定时间</span>
+                    <time class="fr txt999">{{updateTime | date:"yyyy-MM-dd HH:mm:ss"}}</time>
+                </div>
+            </div>
+            <div class="bd-t">
+                <div class="pt-10 pb-10">
+                    <span class="txt666 f-16">预约安装时间</span>
+                    <time class="fr txt999">{{appointment}}</time>
+                </div>
+            </div>
+            <div class="bd-t"  ng-show="isNoShowCancelReason">
+                <div class="pt-10 pb-10 rel clear">
+                    <span class="txt666 f-16">取消原因</span>
+                    <span class="fr txtfff bgRed pr-3 pl-3 pt-3 pb-3" style="border-radius:3px;max-width:70vw">{{cancelReason}}</span>
+                </div>
+            </div>
+            <div class="pt-10 pb-10 bd-t" ng-show="orderInfo.cancelType">
+                <span class="txt666 f-16">取消类型</span>
+                <span class="fr txt999">{{orderInfo.cancelType}}</span>
+            </div>
+        </div>
+        <!-- <div class="pt-20 pl-10 pb-20 pr-10">
+            <ul class="flexWrap pl-5 pr-5">
+                <li class="flex text-center"><span class="bgBlue pt-5 pl-5 pb-5 pr-5 txtfff bdRadius">补写卡</span></li>
+                <li class="flex text-center"><span class="bgBlue pt-5 pl-5 pb-5 pr-5 txtfff bdRadius">补照片</span></li>
+                <li class="flex text-center"><span class="bgBlue pt-5 pl-5 pb-5 pr-5 txtfff bdRadius">补缴费</span></li>
+                <li class="flex text-center"><span class="bgBlue pt-5 pl-5 pb-5 pr-5 txtfff bdRadius">补签名</span></li>
+            </ul>
+        </div> -->
+        <div class="ml-5 mr-5 mt-5 wrap bd-b pb-10">
+            <div class="txt000 pt-15 pb-15 f-15">用户信息</div>
+            <div class="pb-15">
+                <span class="txt666 f-16">客户姓名</span>
+                <span class="fr txt999">{{userName}}</span>
+            </div>
+            <div class="bd-t pt-15 pb-15">
+                <span class="txt666 f-16">联系方式</span>
+                <span class="fr txt999">{{userPhone}}</span>
+            </div>
+            <div class="bd-t pt-15 pb-15">
+                <span  class="txt666 f-16">身份证号</span>
+                <span class="fr txt999">{{certNo}}</span>
+            </div>
+            <div class="bd-t pt-15 pb-15">
+                <span  class="txt666 f-16">地址</span>
+                <span class="fr txt999">{{userAddress}}</span>
+            </div>
+        </div>
+         <div class="ml-5 mr-5 mt-5 wrap bd-b pb-10">
+            <div class="txt000 pt-15 pb-15 f-15">套餐地址</div>
+            <div class="pb-15">
+                <span class="txt666 f-16">产品ID</span>
+                <span class="fr txt999">{{broadbandId}}</span>
+            </div>
+            <div class="bd-t pt-15 pb-15">
+                <span class="txt666 f-16">产品名称</span>
+                <span class="fr txt999">{{productName}}</span>
+            </div>
+            <div class="bd-t pt-15 pb-15">
+                <span  class="txt666 f-16">速率</span>
+                <span class="fr txt999">{{speed}}</span>
+            </div>
+            <div class="bd-t pt-15 pb-15">
+                <span  class="txt666 f-16">资费方式</span>
+                <span class="fr txt999">{{tariffType}}</span>
+            </div>
+            <div class="bd-t pt-15 pb-15">
+                <span  class="txt666 f-16">价格</span>
+                <span class="fr txt999">{{price  | currency : '￥'}}</span>
+            </div>
+        </div>
+       
+
+      
+    </ion-content>
+   <!--  <div class="loadingPage" ng-if="hideLoadingPage">
+        <div class="loadingAction text-center">
+            <ion-spinner icon="spiral" class="spinner-light"></ion-spinner>
+            <p class="txt999">页面载入中...</p>
+        </div>
+    </div> -->
+</ion-view>

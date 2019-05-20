@@ -1,0 +1,66 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+
+		<div class="info-list">
+			<ul>
+				<li>
+					<div class="info-label">
+						<span>主卡号码：</span>
+					</div>
+					<div class="info-cont">
+						<input  type="tel"  
+								ng-keyup="telChange()" 
+								ng-model="input.mainCardSerialNumber" 
+								placeholder="输入主卡号码" 
+								class="txt-box"
+								ng-readonly="input.readonly.mainCardSerialNumber"
+								/>
+					</div>
+				</li>
+				<li>
+					<div class="info-label">
+						<span>副卡号码：</span>
+					</div>
+					<div class="info-cont">
+						<input  type="tel"
+								ng-keyup="telChange()" 
+								ng-model="input.serialNumber" 
+								placeholder="输入副卡号码" 
+								class="txt-box"
+								ng-readonly="input.readonly.serialNumber"
+								/>
+					</div>
+				</li>
+				<li>
+					<div class="info-label">
+						<span>客户名称：</span>
+					</div>
+					<div class="info-cont">{{input.custName}}</div>
+				</li>
+				<li>
+					<div class="info-label">
+						<span>证件号码：</span>
+					</div>
+					<div class="info-cont">{{input.cardId}}</div>
+				</li>
+			</ul>
+		</div>
+
+		
+		<div class="getIdDeviceType" ng-class='{"hide":divShow.btn}'>
+			<ul>
+				<li><button class="device" ng-click="order()" ng-disabled="resState">副卡确认</button></li>
+			</ul>
+		</div>
+		
+		<div class="cen padding" ng-hide='loading'>
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,146 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <!-- 价格明细 -->
+    <div class="carItem" ng-show="showPriceDetial" ng-click="closepriceDetial()" style="bottom:50px;">
+        <div class="carBody" ng-click="$event.stopPropagation();">
+            <div class="carTop clear">
+                <span class="fl">价格明细</span>
+                <span class="fr" ng-click="closepriceDetial()"><i class=" icon-guanbi1 txtPrimary f-16 pl-15"></i></span>
+            </div>
+            <div class="carInfo">
+                <ul>
+                    <li class="pt-10 pb-10 pl-10 pr-10 clear bd-b" ng-repeat="item in priceList track by $index">
+                        <span class="fl ">{{item.priceEntry}}:</span>
+                        <span class="fr ">
+                            <span class="f-14 txtBigOrange ">{{item.price | currency:" ￥ "}}</span>
+                        </span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ion-content class="has-footer ">
+        <!-- 证件信息 -->
+        <div class="pl-10 pt-10 pb-10 pr-10 ">
+            <span class="f-15">证件信息</span>
+            <span class="txtPrimary fr" ng-show="showIdentifyInfo " ng-click="readIdentifyInfo() ">重新读取身份证</span>
+        </div>
+        <div class="bgWhite pt-10 pb-10 f-15 mb-5 txtCenter txtPrimary " ng-hide="showIdentifyInfo " ng-click="readIdentifyInfo() ">
+            <img ng-src="img/identy.png" style="width:100vw;">
+        </div>
+        <div class="bgWhite pl-10 pr-10 f-13 " ng-show="showIdentifyInfo ">
+            <div class="flexWrap ">
+                <ul class="flexFix ">
+                    <li class="flexWrap pt-10 pb-10 ">
+                        <span>用户姓名：</span>
+                        <span class="flexFix ">娃哈哈</span>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>身份证号：</span>
+                        <div class="flexFix " style="word-break:break-word;">610254187523021256</div>
+                    </li>
+                </ul>
+                <div class="width-25 pl-10 pt-5 pb-5 txtCenter">
+                    <img ng-src="img/1111.jpeg " alt="身份证头像 " style="width:62%;">
+                </div>
+                <ul class="width-100 bd-t ">
+                    <li class="flexWrap pt-10 pb-10 ">
+                        <span>联系电话：</span>
+                        <span class="flexFix ">16523451654</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 号码信息 -->
+        <div class="pl-10 pt-10 pb-10 pr-10 ">
+            <span class="f-15">号码信息</span>
+            <span class="txtPrimary fr" ng-show="showNumberInfo " ng-click="selectNumber() ">重新选择号码</span>
+        </div>
+        <div class="bgWhite pt-10 pb-10 f-15 mb-5 txtCenter txtPrimary " ng-hide="showNumberInfo" ng-click="selectNumber() ">
+            <img ng-src="img/number.png" style="width:100vw;">
+        </div>
+        <div class="bgWhite pl-10 pr-10 f-13 " ng-show="showNumberInfo ">
+            <div class="flexWrap ">
+                <ul class="flexFix ">
+                    <li class="flexWrap pt-10 pb-10 " style="flex-direction: column; ">
+                        <div>
+                            <span class="flexFix f-bolder f-16">185 2645 1252</span>
+                            <p class="fr ">
+                                <span class="pl-5 pr-5 pt-5 pb-5 bgPrimary txtfff border-radiu-5 mr-10 ">写卡</span>
+                                <span class="pl-5 pr-5 pt-5 pb-5 bgGray txt666 border-radiu-5 ">删除</span>
+                            </p>
+                        </div>
+                        <p class="f-14 pt-5 txt666 " style="width:66vw;">4G畅爽99元套餐</p>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>首月计费：</span>
+                        <div class="flexFix ">首月全量全价</div>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>参加活动：</span>
+                        <div class="flexFix ">4G畅爽全国冰激凌预存200元送280元</div>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>最低消费：</span>
+                        <div class="flexFix ">￥100.00</div>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t ">
+                        <span>减免费用：</span>
+                        <div class="flexFix ">￥20.00</div>
+                    </li>
+                    <li class="flexWrap pt-10 pb-10 bd-t " ng-click='editPrestored()'>
+                        <span>预存话费：</span>
+                        <div class="flexFix ">
+                            <p class="inlinebk txt666 ">￥<em ng-bind-template="{{preCharge}} "></em>.00</p>
+                        </div>
+                        <span class='txtPrimary pl-15'>修改费用</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="pt-10 pb-10 bd-t mt-5 bgWhite pl-10 pr-10" ng-show="showNumberInfo " ng-click='editRemark()'>
+            <p>备注</p>
+            <div class="txt999 pt-10 "><em ng-bind-template="{{remark}} "></em></div>
+        </div>
+
+
+        <div>
+            <div style="margin:1rem 5%;border:1px #f1666b dotted;background-color:#fff5f5;padding:1rem;color:#f1666b;">
+                受理的号码及宽带所参与的套餐、活动、预存金额均按照联通当前政策执行。如有疑问，请咨询渠道经理或联通相关部门。
+            </div>
+
+
+            <div>
+                <p class="protocol txtCenter pt-5 pb-10 f-12 pl-0">
+                    <label class="inlinebk" style="width: 8vw;" ng-click="agreeClick()">
+				<span class="vertical f-18">
+					<i ng-class="agree == true ? 'icon-xuanzedui txtSuccess' : 'icon-xuanze txt999'"></i>
+				</span>
+			</label> 我已阅读并同意
+                    <a id="go-protocol" style="margin-left: 6%;" ng-click="protocolDetails()">《客户入网服务协议及业务协议》</a>
+                </p>
+            </div>
+        </div>
+
+    </ion-content>
+    <div class="btn-wrap fixed bottom-fixed-btn bgWhite f-15 bd-t" style="bottom: 0;width:100vw;box-shadow: 0 10px 5px #eaeaed;">
+        <div class="flexWrap ">
+            <span class="pl-10 flexFix " style="margin:auto; ">
+                <em>应收金额：</em>
+                <strong class="txtBigOrange ">￥0.00</strong>
+            </span>
+            <button class="btn btn-primary " style="width:27%;height: 48px; ">确认提交</button>
+        </div>
+    </div>
+    <style>
+        .btn-wrap:active {
+            color: inherit;
+        }
+    </style>
+</ion-view>

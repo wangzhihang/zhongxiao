@@ -1,0 +1,112 @@
+
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="org-add-shop" ng-show="isShowAddSale"><i class="icon-tianjia f-20"></i></div>
+		<!-- <div ng-hide="isShowAddSale" ui-sref="index_dl"><i class="icon-shouyehui"></i></div> -->
+		<div ng-hide="isShowAddSale" ng-click="resertPwd()">重置密码</div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="bd-b">
+			<div id="container1" style="height:21rem;"></div>
+		</div>
+		<div ng-show="isShowShopInfo">
+			<div class="dataInfo pl-10 pr-10 rel">
+				<ul class="flexWrap">
+					<li class="flex text-center btnBg pt-10 pb-10" ng-click="getTotalNumData()">
+						<p class="f-13 txt666 pb-5 pt-5 pt-5"><em>号码成功订单</em></p>
+						<p class="f-16"><strong>{{dealNumberOrder}}</strong></p>
+					</li>
+					<li class="flex text-center btnBg pt-10 pb-10" ng-click="getTotalLanData()">
+						<p class="f-13 txt666 pb-5 pt-5"><em>宽带成功订单</em></p>
+						<p class="f-16"><strong>{{dealLanOrder}}</strong></p>
+					</li>
+					<li class="flex text-center btnBg pt-10 pb-10">
+						<p class="f-13 txt666 pb-5 pt-5"><em>订单总数(含失败)</em></p>
+						<p class="f-16"><strong>{{totalOrderCnt}}</strong></p>
+					</li>
+					<li class="flex text-center btnBg pt-10 pb-10" ng-hide='showDianpuCard' style="border-right: 0;">
+						<p class="f-13 txt666 pb-5 pt-5"><em>订单成功率</em></p>
+						<p class="f-16"><strong>{{dealRate}}%</strong></p>
+					</li>
+					<li class="flex text-center btnBg pt-10 pb-10" ng-click="viewDianpuCard()" ng-show='showDianpuCard' style="border-right: 0;">
+						<p class="f-13 txt666 pb-5 pt-5"><em>卡片数</em></p>
+						<p class="f-16"><strong>{{cardsNum}}</strong></p>
+					</li>
+				</ul>
+			</div>
+			<!-- <div class="bgWhite bd-t" style="height: 15vh;">
+				<ul class="flexWrap">
+					<li class="flex pl-20">
+						<div class="flexWrap" style="height: 100%;flex-direction:column; ">
+							<p class="f-16 txt666 flex pt-10">累计登陆</p>
+							<p class="f-30 txtTips flex">{{totalLoginNumber}}</p>
+						</div>
+					</li>
+					<li class="flex">
+						<div id="container1" class="pl-20" style="height:14vh;width:100%;padding-top:.5rem;"></div>
+					</li>
+				</ul>
+			</div> -->
+			<div class="bgWhite hdTitle bd-t bd-b txt999 pl-10 pr-10 f-14" style="height: 4rem;line-height: 4rem;">
+				<i class="icon-shangcidenglushijian txtTips mr-5"></i>上次登录时间<time class="ml-5">{{user.loginTime}}</time>
+			</div>
+		</div>
+		<div class="rel wrap mt-5 bd-b tapStyle" ng-repeat="item in orderList" ng-click="orgShopOrderInfo($index)">
+			<div class="btnBg">
+				<div class="hdTitle bd-b" style="height:4rem;line-height:4rem;">
+					<div class="inlineBlock hdMiddleTitle">
+						<p style="width:60vw;height:auto;">
+							<span class="ng-binding">{{item.serviceRealName}}</span>
+							<span class="txt666 ng-binding">({{item.serviceUserName}})</span>
+						</p>
+						<p class="abs vertical f-12 txt999" style="right:0;border-radius:3px;padding:0 3px">{{item.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+					</div>
+				</div>
+				<div class="rel pt-10 pb-10 inlineBlock" style="width:80%;">
+					<p>
+						<span class="f-18 pr-10 txtPrimary ng-binding">{{item.number}}</span>
+						<span class="txt999 f-16 ng-binding">{{item.isCbss}}</span>
+					</p>
+					<p class="txt999 f-14 ng-binding pt-5">{{item.productName | cut:true:20:' ...'}}</p>
+				</div>
+				<div class="abs inlineBlock order-money txtBestRed fr" style="padding:2rem 0;right: 1rem;">
+					<span class="ng-binding {{item.status | statusColor:'color'}}">{{item.status | statusColor:'name'}}</span>
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="rel wrap mt-5 bd-b tapStyle" ng-repeat="item in lanOrderList" ng-click="orgShopLanOrderInfo($index)">
+			<div class="btnBg">
+				<div class="hdTitle bd-b">
+					<div class="inlineBlock hdMiddleTitle">
+						<p style="width:60vw;height:auto;">
+							<span class="ng-binding">{{item.serviceRealName}}</span>
+							<span class="txt666 ng-binding">({{item.serviceUserName}})</span>
+						</p>
+						<p class="abs vertical f-12 txt999" style="right:0;border-radius:3px;padding:0 3px">{{item.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+					</div>
+				</div>
+				<div class="rel pt-10 pb-10 inlineBlock" style="width:80%;">
+					<p>
+						<span class="f-18 pr-10 txtPrimary ng-binding">{{item.lanNumber}}</span>
+						<!-- <span class="txt999 f-16 ng-binding">{{item.amount | currency : '￥'}}</span> -->
+					</p>
+					<p class="txt999 f-14 ng-binding pt-5">{{item.detailedProductName}}</p>
+				</div>
+				<div class="abs inlineBlock order-money txtBestRed fr" style="padding:2rem 0;right: 1rem;">
+					<span class="ng-binding cancelColor">{{item.status | statusColor:'name'}}</span>
+				</div>
+			</div>
+		</div>
+		<ion-infinite-scroll ng-if="hasmore" on-infinite="loadMore()" icon="ion-loading-c" distance="1%" immediate-check="false"></ion-infinite-scroll>
+            
+        <div class="loadingWrap" ng-if="loading">
+            <ion-spinner icon="ios"></ion-spinner>
+        </div>
+       <div class="noMore" ng-if="noMore"><span class="txt">{{noMoreTxt}}</span></div>
+	</ion-content>
+</ion-view>

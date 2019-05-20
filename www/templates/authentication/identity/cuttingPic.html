@@ -1,0 +1,70 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+	<!-- <ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons> -->
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>	
+	<ion-content>
+
+	</ion-content>
+	<div class="cropperWrap">
+		<div class="itemWrap">
+			<p class="txtfff pt-10 pb-10 pl-10 pr-10" style="background:red;">请将头像和身份证移动到框内，点击确认</p>
+		</div>
+		<div class="itemWrap cropper" id="cropperBox1">
+			<img ng-src="{{croppeImgSrc}}" id="cropperImg2">
+		</div>
+
+		<div class="itemWrap bgWhite fun-menu-list" style="height: 19vh;">
+				<ul class="btnList cl flexWrap" style="height: 12vh;padding: 1vh 0;">
+					<li class="col-25" ng-click='getCroppedCanvas({"method":"rotate","option":"90"})'>
+						<a>
+							<i>
+								<span class="btnIcon">
+									<img src="img/btn_icon_17.png" alt="旋转">
+								</span>
+							</i>
+							<strong>旋转</strong>
+						</a>
+					</li>
+					<li class="col-25"  ng-click='getCroppedCanvas({"method":"zoom","option":"0.1"})'>
+						<a>
+							<i>
+								<span class="btnIcon">
+									<img src="img/btn_icon_20.png" alt="放大">
+								</span>
+							</i>
+							<strong>放大</strong>
+						</a>
+					</li>
+					<li class="col-25" ng-click='getCroppedCanvas({"method":"zoom","option":"-0.1"})'>
+						<a>
+							<i>
+								<span class="btnIcon">
+									<img src="img/btn_icon_23.png" alt="缩小">
+								</span>
+							</i>
+							<strong>缩小</strong>
+						</a>
+					</li>
+				</ul>
+				<!--底部按钮-->
+				<div class="" style="width: 100vw; height: 7vh;">
+					<ul class="flexWrap"  style="height: 7vh;">
+						<li class="flex" ng-click="reCamera()" style="border-radius:0"><button class="button bgPrimary button-block mt-0 mb-0 txtfff" style="border-radius:0">重拍</button>
+						</li>
+						<li class="flex">
+							<button ng-click='getCroppedCanvas({"method":"getCroppedCanvas","option":{"width":750,"height":600}})' class="button bgPrimary button-block mt-0 mb-0 txtfff" style="border-radius:0">确认</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+	</div>
+	
+	<style>
+		.spinner svg{width:80px!important;height:80px!important;}
+		.stepTxt{border:1px #ff0000 dotted;padding:1rem;margin:1rem 3%;color:#ff0000;text-align:center;}
+		.stepTxt .spinner svg{width:25px!important;height:25px!important;vertical-align:-7px;}
+	</style>
+</ion-view>

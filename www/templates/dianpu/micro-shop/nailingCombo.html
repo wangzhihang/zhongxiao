@@ -1,0 +1,89 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<section>
+			<div class="adPicWrap txtCenter">
+				<img src="img/ad_01.png">
+				<div class="tabInfo bgWhite">
+					<p class="txt999 pt-10 pd-10">请选择套餐（激活后可更改）</p>
+					<div class="attrList">
+						<ul class="flexWrap">
+							<li class="flex" id="productName" name="productName" value="商务钻石卡" ng-class="{'active':tag.current==1}" ng-click="isShowCardDetail(1)">
+								<img src="img/tap-1-96-68.png">
+								<p>商务钻石卡</p>
+								<em class="tipsIco">商务钻石卡</em>
+							</li>
+							<li class="flex" id="productName" name="productName" value="商务金卡" ng-class="{'active':tag.current==2}"  ng-click="isShowCardDetail(2)">
+								<img src="img/tap-2-96-68.png">
+								<p>商务金卡</p>
+							</li>
+							<li class="flex" id="productName" name="productName" value="商务银卡" ng-class="{'active':tag.current==3}" ng-click="isShowCardDetail(3)">
+								<img src="img/tap-3-96-68.png">
+								<p>商务银卡</p>
+							</li>
+						</ul>
+					</div>
+					<div class="cardPackageInfo" ng-show="showCardDetail1">
+						<p>最高含<span class="packageImportantInfo"><b>1300</b></span>分钟/月＋<span class="packageImportantInfo"><b>11G</b></span>流量/月</p>
+						<p>（钉钉专享价仅<span class="packageImportantInfo"><b>99</b></span>元，<span class="packageOriginalValue"><del>市场价值约<span>399</span>元</del></span>）</p>
+					</div>
+					<div class="cardPackageInfo" ng-show="showCardDetail2">
+						<p>最高含<span class="packageImportantInfo"><b>650</b></span>分钟/月＋<span class="packageImportantInfo"><b>4.5G</b></span>流量/月</p>
+						<p>（钉钉专享价仅<span class="packageImportantInfo"><b>49</b></span>元，<span class="packageOriginalValue"><del>市场价值约<span>199</span>元</del></span>）</p>
+					</div>
+					<div class="cardPackageInfo" ng-show="showCardDetail3">
+						<p>最高含<span class="packageImportantInfo"><b>400</b></span>分钟/月＋<span class="packageImportantInfo"><b>2G</b></span>流量/月</p>
+						<p>（钉钉专享价仅<span class="packageImportantInfo"><b>29</b></span>元，<span class="packageOriginalValue"><del>市场价值约<span>99</span>元</del></span>）</p>
+					</div>
+					<p style="color:rgba(56,173,255,1);">为什么选择钉钉卡</p>
+				</div>
+				<!--<img src="images/ad_02.png"/>-->
+				<img src="img/ad_03.png">
+				<img src="img/ad_04.png">
+				<div class="ad_info">
+					<h1><em>套餐详情</em></h1>
+					<ul>
+						<li>
+							<dl>
+								<dt ng-click="isShowDetail(1)">商务钻石卡<small>（专享价99元每个月,<del>市场价值约399元</del>）</small></dt>
+								<dd ng-show="showDetail1"><img src="img/1.png"></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt ng-click="isShowDetail(2)">商务金卡<small>（专享价49元每个月,<del>市场价值约120元</del>）</small></dt>
+								<dd ng-show="showDetail2"><img src="img/2.png"></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt ng-click="isShowDetail(3)">商务银卡<small>（专享价29元每个月,<del>市场价值约99元</del>）</small></dt>
+								<dd ng-show="showDetail3"><img src="img/3.png"></dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<!--<img src="images/ad_05.png"/>-->
+				<img src="img/ad_06.png">
+			</div>
+			<div style="height:5rem;"></div>
+		</section>
+	</ion-content>
+	<!-- <div class="btmFix">
+		<div class="flexWrap">
+			<div class="flex inputBtn">
+				<button class="button" disabled="disabled">批量办理已预约</button>
+			</div>
+			<div class="flex">
+			<input id="userId" hidden="true" value="48" name="userId">
+				<button class="button" id="selectNumber">立即预约</button>
+			</div>
+		</div>
+	</div> -->
+</ion-view>

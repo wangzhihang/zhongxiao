@@ -1,0 +1,42 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+<ion-nav-buttons side="right">
+	<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+</ion-nav-buttons>
+
+<ion-content>
+
+<div class="userInfoForm" ng-hide="boxDisplay[0]">
+	<ul>
+		<li>
+			<label>SIM卡信息：</label>
+			<input type="text" class="input-text" ng-model="simInput.simcard"  ng-change="simcardInput()"  maxlength="19"/>
+		</li>
+	</ul>
+</div>
+<div ng-hide="boxDisplay[0]">
+	<div class="btn-wrap" ng-hide="btnDisplay[0]">
+		<button class="btn btn-primary" ng-class='{"active":btnActive[0]}' ng-click="read()">{{btnText["read"]}}</button>
+	</div>
+	<div class="btn-wrap" ng-hide="btnDisplay[1]">
+		<button class="btn btn-primary" ng-class='{"active":btnActive[1]}' ng-click="write()">{{btnText["write"]}}</button>
+	</div>
+</div>
+
+<div ng-hide="boxDisplay[1]">
+	<div class="buildOrderProcess">
+		<p class="txt-tips">{{domEaplan}}</p>
+		<div class="progress-bar">
+			<span class="progressing" style="width:{{domLine}}%" id="progresseaLine"></span>
+			<em class="progressing-val">{{domLine}}%</em>
+		</div>
+	</div>
+</div>
+	
+	
+<div class="btn-wrap" ng-hide="ReSubmitDiv">
+	<button class="btn btn-primary" ng-click="reSubmit()">继续提交</button>
+</div>
+
+
+</ion-content></ion-view>

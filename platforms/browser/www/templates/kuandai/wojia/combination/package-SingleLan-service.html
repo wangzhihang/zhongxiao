@@ -1,0 +1,18 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content  class="package-detail">
+		<div class="comboAttrVal">
+			<dl ng-repeat="row in packageList">
+				<ion-checkbox ng-checked="row.check" ng-model="row.check" ng-change="pushNotificationChange($index)">{{ row.productName }}</ion-checkbox>
+			</dl>
+		</div>
+		<div class="btn-wrap">
+			<button class="btn btn-primary" ng-disabled="resState" ng-click="order()">下一步</button>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,184 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="icon-fanhui" style="font-size: 1.8rem;margin-left: 1rem;"></i></div>
+		<div class="indexSearch"  ui-sref="market-search">
+			<input type="text" placeholder="输入所需商品名称" class="pl-15 ml-25" style="text-align: center;border:1px solid #eaeaea;"/>
+		</div>
+	</ion-nav-buttons>
+	
+	
+	<!--<ion-nav-buttons side=""-->
+		<!--<div class="indexSearch">
+			<input type="text" placeholder="输入所需商品名称" class="pl-15"/>
+		</div>-->
+		
+		
+	<ion-nav-buttons side="right">
+		<div ng-click=""  ui-sref="market-search"><i class="icon-sousuo1 ml-25" style="font-size: 2rem;"></i></div>
+	</ion-nav-buttons>
+
+
+	<div class="carItem" ng-show="ifShowCar" ng-click="closeCar()">
+		<div class="carBody" ng-click="$event.stopPropagation();">
+			<div class="carTop clear">
+				<span class="fl">已选商品({{allOrderNum}})</span>
+				<span class="fr" ng-click="emptyCar()"><i class="icon-shanchu2"></i>清空</span>
+			</div>
+			<div class="carInfo">
+				<ul><!--   -->
+					<li class="pt-10 pb-10 pl-10 pr-10 clear bd-b" ng-repeat="item in carList track by $index" ng-hide="item.orderNum==0">
+						<span class="fl">{{item.productName}}</span>
+						<span class="fr">
+							<span class="f-14 txtBigOrange">{{item.soldPrice | currency:" ￥"}}</span>
+							<i class="icon-jian f-20 txtBlue" ng-click="carUpOrder($index)"></i>
+							<i>{{item.orderNum}}</i>
+							<i class="icon-zengjiaanniu f-20 txtBlue" ng-click="carDownOrder($index)"></i>
+						</span>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="indexAddBags" ng-show="shoppongCarBtn">
+		<div class="fl pl-15 indexCar">
+			<i class="icon-gouwuche f-30 txt999 " ng-class="{'txtblue':choseColor}" ng-click="openCar()" style="
+				padding:0.8vw; background-color: #323232;border-radius:7vw;
+				box-shadow: 0rem -0.1rem 0rem 0.3rem #626262;
+				"></i><span  class="txtfff f-10 indexGoodsNum ">{{allOrderNum}}</span>
+			<span class="txtfff f-18 indexZ">￥{{allPrice |  number:2}}</span>
+		</div>
+		<div class="fr indexPay"  ng-class="{'bgBlue':choseColor}"   ng-click="toOrd()"><!--  ui-sref="market-ord" -->
+			<span class="txtfff f-16 indexZ  indexToPay"  >去结算</span>
+		</div>
+	</div>
+	
+	
+
+		<!--商品详情简述-->
+		<div style="position: fixed; width: 100vw;height:100vh;z-index:999;
+			background: rgba(0,0,0,.5);"  ng-show="isNoShowFloor" ng-click="noShowTheGood()" >
+			<div class="bgWhite indexTheGoods" ng-click="$event.stopPropagation();intoGoodsInfo()" style="z-index: 9999;position: absolute!important;left: 50%;top: 45%;width: 82vw;height: 70vh;	transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);" >
+			
+
+			<!-- <i class="icon-fenxiang2" style="z-index: 9999;font-size:2rem;background: #999;border-radius: 50%;color: #fff;position: absolute;right: 13%;top:12%;padding:1% 0.1%;"></i> -->
+			<div style="height: 72%">
+				<img src="{{proLists.imgMain}}" style="height: 100%"/>
+			</div>
+
+			<div class=" ">
+				<p class="txt000 f-14 ml-10 omitRow">{{proLists.productName}} {{proLists.keyword}}</p>
+				<p class="txt999 f-12 ml-10">月售{{proLists.sales}}<span class="txt999 f-12 pl-10">好评率{{proLists.goodAssessRate *100}}%</span></p>
+				<span class="txtBigOrange f-12  ml-10 pl-3 pr-3" style="border:0.1rem solid orange;border-radius: 0.3rem;">店铺特推</span>
+				<div class="pb-10" style="height:6.6vh;">
+					<span class="txtBigOrange f-14 fl  ml-10"><span class="f-18 " style="font-weight: 700;">{{proLists.soldPrice | currency:" ￥"}}</span></span>
+					<span class="txtfff bgBlue fr mr-10 pl-10 pr-10 f-14" style="border-radius: 1rem;"  ng-click="$event.stopPropagation();addCar()">加入购物车</span> 
+				</div>
+			</div>
+		</div>
+		</div>
+
+
+	<ion-content>
+		<div class="fruitCity">
+		<!--搜索框-->
+		
+		
+		
+		
+			
+			
+		<!--业务列表-->
+		
+		<!-- <div class="bgWhite ">
+			<ul class="lisList pt-5 pb-5">
+				<li><a ><span class="txt999 f-14" ng-class="{ 'markethChosed' : tag.current == 1 }" ng-click="actions.setCurrent(1);">综合</span></a></li>
+				<li><a><span class="txt999 f-14" ng-class="{ 'markethChosed' : tag.current == 2 }" ng-click="actions.setCurrent(2);">销量<i class="icon-sort1"></i></span></a></li>
+				<li><a><span class="txt999 f-14" ng-class="{ 'markethChosed' : tag.current == 3 }" ng-click="actions.setCurrent(3);">价格<i class="icon-sort1"></i></span></a></li>
+				<li><a><span class="txt999 f-14" ng-class="{ 'markethChosed' : tag.current == 4 }" ng-click="actions.setCurrent(4);">新品</span></a></li>
+			</ul>
+		</div> -->
+			
+		
+	
+
+	<!-- 	<div class="fr ListGoodsInfo pl-15 pr-15 bgWhite">
+					<ul >
+						<li  ng-click="theGoods($index)"  ng-repeat="item in productList">
+							<div class="row goodsNames pt-10 pb-10" ng-click="detaInfo($index)">
+								<div class="col-25">
+									<img src="{{item.imgMain}}"/>
+								</div>
+								<div class="pl-10 goodsNamesWords ">
+									<p class="txt000 f-14 omitRow">{{item.productName}} {{item.keyword}}</p>
+									<span class="txt999 f-12">月售{{item.sales}}<span class="txt999 f-12 pl-10">好评率{{item.goodAssessRate *100}}%</span></span>
+									<div class="indexGoodsPrice pt-10">
+										<p class="txtBigOrange f-16 f-bolder">{{item.soldPrice | currency:" ￥"}}</p>
+										<span class="f-16 pr-5 " ng-click="$event.stopPropagation();">
+											 <i class="icon-zengjiaanniu f-20 txtBlue" ng-click="dowmOrder($index)" ng-hide="item.orderNum==0"></i>
+											<i ng-hide="item.orderNum==0">{{item.orderNum}}</i>
+											<i class="icon-zengjiaanniu f-20 txtBlue" ng-click="upOrder($index)"></i> 
+										</span>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div> -->
+		
+
+
+
+
+
+				<div class="fr ListGoodsInfo pl-15 pr-15 bgWhite" style="padding-bottom: 4vw;">
+					<ul >
+
+                       <li  ng-click="theGoods($index)"  ng-repeat="item in productList">
+							<div class="row goodsNames pt-10 pb-10" ng-click="detaInfo($index)">
+								<div class="col-25">
+									<img src="{{item.imgMain}}"/>
+								</div>
+								<div class="pl-10 goodsNamesWords ">
+									<p class="txt000 f-14 omitRow">{{item.productName}} {{item.keyword}}</p>
+									<span class="txt999 f-12">月售{{item.sales}}<span class="txt999 f-12 pl-10">好评率{{item.goodAssessRate *100}}%</span></span>
+									<div class="indexGoodsPrice pt-10">
+										<p class="txtBigOrange f-16 f-bolder">{{item.soldPrice | currency:" ￥"}}</p>
+										<span class="f-16 pr-5 " ng-click="$event.stopPropagation();">
+											<i class="icon-jian f-20 txtBlue" ng-click="dowmOrder($index)" ng-hide="item.orderNum==0"></i>
+											<i ng-hide="item.orderNum==0">{{item.orderNum}}</i>
+											<i class="icon-zengjiaanniu f-20 txtBlue" ng-click="upOrder($index)"></i>
+										</span>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+
+
+
+
+
+
+
+
+	
+		<ion-infinite-scroll ng-if="hasmore" on-infinite="loadMore()" icon="ion-loading-c" distance="1%" immediate-check="false"></ion-infinite-scroll>
+        <div class="loadingWrap" ng-if="loading">
+            <ion-spinner icon="ios"></ion-spinner>
+        </div>
+        <!-- <div class="noMore" ng-if="noMore"><span class="txt">没有更多</span></div>	 -->
+	</ion-content>
+</ion-view>
+
+
+
+
+
+
+
+

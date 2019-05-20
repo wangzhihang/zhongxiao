@@ -1,0 +1,62 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+<ion-nav-buttons side="left"><div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div></ion-nav-buttons>
+<ion-nav-buttons side="right"><div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div></ion-nav-buttons>
+
+
+<!-- <div class="bar bar-subheader" ng-hide="javaNumber">
+		<div class="top-search-wrap">
+			<div class="search-wrap">
+				<div class="colwrap">
+					<input type="tel" maxlength="11" ng-model="input.bufenhaoma" class="textBox" placeholder="您喜欢的数字"/>
+					<label class="select-box">
+						<select ng-model="input.hm" ng-options="hmRow.name for hmRow in hmList" ng-change="switchTv(tvLi)"></select>
+					</label>
+				</div>
+				<div class="btnWrap">
+					<button class="s-go" ng-click="searchUnicommTel()">搜索</button>
+				</div>
+			</div>
+			<div class="topNumber" ng-if="occupyShow">
+				<ul class="bgWhite pl-5 pr-5">
+					<li class="flexWrap flexCen pt-10 pb-10" ng-repeat="row in occupyNumber">
+						<div class="flex">
+							<strong class="assertive">{{row.tel | stringFormat}}</strong>
+						</div>
+						<div>
+							<a class="btn ml-5 btnPrimary" ng-click="continueOrder($index)">继续办理</a>
+							<!-- <a class="btn ml-5 btnCancel" ng-if="row.isCbss" ng-click="cancelOrder($index)">释放</a> -->
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div> -->
+
+
+<ion-content>
+
+
+<div class="qugo-number-list"><!-- margin-top: 18vw; -->
+	<ul class="aaa" style="width:100%;">
+		<li class="bbb" ng-repeat="row in numberList" ng-click='occupyNumber($index)' style="color: #505050;">
+			<span style="color:red;">{{row.numCutOne}}<span>
+			<span style="color:green;">{{row.numCutTwo}}<span>
+			<span style="color:red;">{{row.numCutThree}}<span>
+				<!-- {{row}} -->
+		</li>
+	</ul>
+</div>
+
+
+
+
+
+<div class="loadingWrap" ng-if="loading"  style="padding-top: 20vh;">
+        <ion-spinner icon="ios"></ion-spinner>
+</div>
+
+
+
+
+</ion-content></ion-view>

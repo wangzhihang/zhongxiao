@@ -1,0 +1,356 @@
+.justifyAlign{text-align:justify;text-align-last:justify;}
+
+.txt000{color:@color000!important;}
+.txt333{color:@color333!important;}
+.txt666{color:@color666!important;}
+.txt999{color:@color999!important;}
+.txtfff{color:@colorfff!important;}
+.txtBlue{color:#057EF5!important;}
+.txtRed{color:@colorRed!important;}
+.txtWarn{color:@colorWarn!important;}
+.txtGreen{color:@colorGreen!important;}
+.txtTips{color:@colorTips!important;}
+.txtblue{color:@colorblue!important;}
+
+.width-10{min-width:10%!important;} 
+.width-20{min-width:20%!important;} 
+.width-23{min-width: 23%!important;}
+.width-29{min-width:29%!important;} 
+.width-30{min-width:30%!important;} 
+.width-40{width:40%!important;} 
+.width-50{width:50%!important;} 
+.width-60{width:60%!important;} 
+.width-70{width:70%!important;} 
+.width-80{width:80%!important;} 
+.width-90{width:90%!important;} 
+
+.greenColor{color:@colorGreen!important;border:1px solid @colorGreen!important;}
+.blueColor{color:@colorblue!important;border:1px solid @colorblue!important;}
+.warnColor{color:@colorWarn!important;border:1px solid @colorWarn!important;}
+.redColor{color:@colorRed!important;border:1px solid @colorRed!important;}
+.failColor{color: #999!important;border:1px solid #999;    border-radius: 3px;}
+.txtCenter{text-align: center!important;}
+.txtLeft{text-align: left!important;}
+.txtRight{text-align: right!important;}
+.txtOrange{color:#c29c5e!important;}
+.txtBigOrange{color:#fb7951!important;}
+.rel{position:relative!important;}
+.abs{position:absolute!important;}
+.fixed{position:fixed!important;}
+.transformX{display:inline-block;transform:scaleX(-1)!important;}
+.transformY{display:inline-block;transform:scaleY(-1)!important;}
+.transform45{display:inline-block;-webket-transform:rotate(45deg)!important;transform:rotate(45deg)!important;}
+.transform-45{display:inline-block;-webket-transform:rotate(-45deg)!important;transform:rotate(-45deg)!important;}
+.borderRadius{border-radius:50%;} 
+
+.f-lighter{font-weight:lighter;}
+.f-bolder{font-weight:bolder;}
+.f-bolde-500{font-weight:500;}
+.txtInden{display:inline-block;text-indent:30px;}
+.verticalTop{vertical-align: top;}
+.verticalMiddle{vertical-align: middle;}
+.verticalBottom{vertical-align: bottom;}
+
+.translateX:hover .fill {
+  -webkit-transform: translateX(45px);
+  transform: translateX(45px);
+}
+.wxOrderNav li.activeChosed{
+	color:#1E82D2;
+	border-bottom: 1px solid #1E82D2;
+}
+.wrap {
+  background: white!important;
+  padding: 0 3%;
+}
+.dateChange{
+    &::-webkit-calendar-picker-indicator,&::-webkit-clear-button {
+        display: none;
+    }
+}
+
+/********** 图文卡片 **********/
+.mealList{
+    background: #fff;
+    padding: 10px 10px;
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-align-items:center;
+    align-items:center;
+    margin-bottom: 5px;
+    .mealLeft{
+        width:20%;
+        a{
+            display: inline-block;
+            width:80%;
+            img{
+                width:100%;
+            }
+        }
+    }
+    .mealTop{vertical-align: top;}
+    .mealMiddle{vertical-align: middle;}
+    .mealBottom{vertical-align: bottom;}
+    .mealBody{
+            width: 80%;
+            padding: 10px 0;
+        .mealHead{
+            font-size: 16px;
+            margin: 0 0 5px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .mealDetail{
+            color:#999;
+            font-size: 12px;
+        }
+        .mealOther{
+            display: flex;
+            justify-content: space-between;
+            
+            &.mealOtherTop{
+                align-items: flex-start;
+                -webkit-align-items:flex-start;
+            }
+            &.mealOtherMiddle{
+                align-items: center;
+                -webkit-align-items:center;
+            }
+            &.mealOtherBottom{
+                align-items: flex-end;
+                -webkit-align-items:flex-end;
+            }
+            span{
+                display: inline-block;
+            }
+            .mealDetailWord{
+                width: 72%;
+            }
+            .look{
+                float: right;
+                background: #c874d2;
+                border-radius: 5px;
+                color: #fff;
+                padding: 5px 15px;
+            }
+        }
+    }
+}
+.maskLayer{
+    .fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    text-align: center;
+    line-height: 95vh;
+}
+.minWid{
+    min-width: 25vw;
+}
+.userPanelSec{
+    position: relative;
+     background: #ffffff!important; 
+    color: white;
+    padding: 1rem 0 1rem 1rem;
+}
+.marCenter{
+    margin: 0 auto;
+}
+
+.btnBg:active{
+    background: #f7f7f7;
+}
+.btn-wrap:active,.btn-primary:active,.blueBtn:active{
+    background-color: #56A1DD;
+    color: white;
+  }
+
+//状态
+
+//进行中的状态 
+.goingStatus{
+    color: #1e82d2!important;
+    border: 1px solid #1e82d2;
+    border-radius: 3px;
+    padding: 2px;
+}
+//已完成状态
+.finishStatus{
+    color:#25c724;
+    border: 1px solid #25c724;
+    border-radius: 3px;
+    padding: 2px;
+}
+//无需关注的状态（未完成）
+.unfinishedStatus{
+    color:#ff0000;
+    border: 1px solid #ff0000;
+    border-radius: 3px;
+    padding: 2px;
+}
+//需要关注的状态
+.otherStatus{
+    color:#ea9711;
+    border: 1px solid #ea9711;
+    border-radius: 3px;
+    padding: 2px;
+}
+.readIdentifyBox{
+    border:1px dashed #C5C5C5;
+    border-radius:2px;
+    padding:1rem 0;
+    img{
+        width:15vw;
+    }
+}
+.protocol {
+    font-size: .8rem;
+    transform-origin: left;
+    color: #787878;
+    padding-left: 2rem;
+    white-space: nowrap;
+}
+.popTitle{
+    height:7vh;
+    color: #fff;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+}
+.border-radiu-30{
+    border-radius:30px!important;
+}
+//订单头部阴影
+@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+    .bar {
+      border: none;
+      background-image: none;
+      background-position: bottom;
+      background-size: 100% 1px;
+      background-repeat: no-repeat;
+     } }
+.bar-subheader{
+	box-shadow: 0px 1px 2px rgba(221,221,221,0.3);
+}
+
+//订单详情左边头部
+.detailLeftTopList{
+    min-width: 56px;
+    .txtRight;
+    .txt333;
+}
+.kkDetailLeftTopList{
+    min-width: 84px;
+    .txtRight;
+    .txt333;
+}
+.yuyueKdDetailLeftTopList{
+    min-width: 70px;
+    .txtRight;
+    .txt333;
+}
+.workNumLeftTopList{
+    min-width: 66px;
+    .txtRight;
+    .txt333;
+}
+.removeLastListBd dd:last-of-type{
+    border-bottom:0;
+}
+
+
+.myMapContainer{
+    width: 100vw;
+    height: 85vh;
+    margin: 0 auto;
+}
+.myMapLittleContainer{
+    height: 55vh;
+}
+
+// 圆形扩散波点
+.circle{width:200px;height:200px;position:absolute;top:50%;left:50%;margin:-100px 0 0 -100px;}
+.circle1, .circle2, .circle3, .center{
+position:absolute;
+left:50%;
+top:50%;
+margin:-30px 0 0 -30px;
+width:60px;
+height:60px;
+border-radius:30px;
+background-color:#0e61ec;
+}
+.center{
+position:absolute; 
+left:50%;
+top:50%;
+margin:-35px 0 0 -35px;
+width:70px;
+height:70px;
+border-radius:35px;
+background-color:#0168e4;
+text-align:center;
+color:#EAEAEA;
+font-size:16px;
+font-family:'';
+}
+
+.circle1{
+-webkit-animation:circle 3s linear infinite;
+animation:circle 3s linear infinite;
+}
+
+.circle2{
+-webkit-animation:circle 3s linear 0.8s infinite;
+animation:circle 3s linear 0.8s infinite;
+}
+.circle3{
+-webkit-animation:circle 3s linear 1.6s infinite;/* Safari and Chrome */
+animation:circle 3s linear 1.6s infinite;
+}
+@-webkit-keyframes circle{ /* Safari and Chrome */
+from{
+opacity:1;
+-webkit-transform:scale(0);
+}
+to{
+opacity:0;
+-webkit-transform:scale(3);
+}
+}
+.cardItem{
+    bottom: 0!important;
+    background: transparent!important;
+    height: 42vh!important;
+    .carBody{
+        height: 42vh;
+        .carTop{
+            padding: 1.5rem 0!important;
+            background: #fff!important;
+        }
+        .carInfo{
+            height: 34vh!important;
+        }
+   }
+}
+
+// .item-complex .item-content, .item-radio .item-content{
+//     padding: 16px 16px 0 16px;
+// }
+.amap-icon img{
+    width: 16px;
+}
+.border-radiu-5{
+    border-radius: 5px;
+}
+.textBox{
+    max-height: 20px;
+    width: 100%;
+}
+
+
+
+	  

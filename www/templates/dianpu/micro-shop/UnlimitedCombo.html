@@ -1,0 +1,74 @@
+<ion-view view-title="{{title}}" hide-tabs="true"  hide-nav-bar="isNoShowHeader">
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ng-click="share()"><i class="f-16">分享</i></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="user-hd" style="background-image: url('img/user_hd_bg.jpg');">
+            <div class="transparent">
+                <div class="btm-cont pb-10">
+                    <div class="pic">
+                        <img src="http://a.mhaoma.com/img/m/thw.ico" alt="关键字">
+                    </div>
+                     <div class="rt-info" style="height:5rem">
+                        <p><a  class="f-14">{{shopName}}</a></p>
+                        <p>
+                            <i class="iconfont icon-shoucang"></i>
+                            <i class="iconfont icon-shoucang"></i>
+                            <i class="iconfont icon-shoucang"></i>
+                            <i class="iconfont icon-shoucang"></i>
+                            <i class="iconfont icon-shoucang"></i>
+                        </p>
+                        <address>地址：{{address}}</address>
+                    </div>
+                    <!-- <div class="side-info">
+                        <div class="fs">
+                            <span><i class="icon-shoucang2"></i>粉丝</span>
+                            <em>2687人</em>
+                        </div>
+                        <div class="pl">
+                            <span><i class="icon-duanxin1"></i>已售</span>
+                            <em>301单</em>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="monthCard">
+            <div class="monthTop">
+                <img src="img/99_01.png">
+            </div>
+            <div class="monthCardClick" ng-click="subscribe()">
+                <img src="img/99_02.png">   
+            </div>
+            <div class="monthInfo">
+                <img src="img/99_03.png">
+                <!-- <img src="img/99_04.png"> -->
+            </div>
+            </section>
+        </div>
+        <div  style="height:6rem;width:100vw"></div>  
+    </ion-content>
+     <!-- 引导说明 -->
+    <div class="hint" ng-show="ifShowHint">
+        <div class="hintPic">
+            <img src="img/hint _01.png">
+        </div>
+        <div class="hintInfo flexWrap">
+            <p class="flex" ng-click="backClick()"></p>
+            <p class="flex" ng-click="nextClick()"></p>
+        </div>
+    </div>
+    <div class="monthBtn">
+        <div class="picBtn" style="width:65%">
+             <a class="referBtn" ui-sref="dianpu-wei-dian" style="width:45%"><img src="img/bot_04.png"></a>
+             <!-- <a class="phoneBtn" href="tel:{{shopTel}}" style="width:32%"><img src="img/bot_02.png"></a> -->
+             <a class="referBtn" ng-click="share()" style="width:45%"><img src="img/bot_03.png"></a>
+        </div>
+       
+        <a class="manageBtn" id="nowApplyBtn" style="width:35%" ng-click="subscribe()">立即预约</a>
+    </div>
+            
+</ion-view>

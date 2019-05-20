@@ -1,0 +1,93 @@
+<ion-view view-title="{{title}}" >
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<!-- <div class="fun-menu">
+		<ul>
+			<li >
+				<a ng-click="weiDian()">
+					<i class="icon-M" style="color:#E65648;"></i>
+					<strong style="color:#000000;">微店</strong>
+				</a>
+			</li>
+			<li >
+				<a ng-click="hmOrderList()">
+					<i class="icon-haomadingdan" style="color:#4AAB91;"></i>
+					<strong style="color:#000000;">号码订单</strong>
+				</a>
+			</li>
+			<li >
+				<a ng-click="lanOrderList()">
+					<i class="icon-kuandaidingdan" style="color:#EA972C;"></i>
+					<strong style="color:#000000;">宽带订单</strong>
+				</a>
+			</li>
+			<li >
+				<a ng-click="myCode()">
+					<i class="icon-qrcode" style="color:#4AAB91;"></i>
+					<strong style="color:#000000;">我的二维码</strong>
+				</a>
+			</li>		
+		</ul>
+	</div> -->
+		<div class="directory-list">
+			<ul>
+				<li >
+						<div class="txt-info item01" ng-click="weiDian()">
+							<span class="ico icon-M" style="color:#45c45d;"></span>
+							<p><em>微店</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li>
+					<!-- <li>
+						<div class="txt-info item02"  ng-click="hmOrderList()">
+							<span class="ico icon-haomadingdan" style="color:#45c45d;"></span>
+							<p><em>号码订单</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li>
+					<li>
+						<div class="txt-info item02" ng-click="lanOrderList()">
+							<span class="ico icon-kuandaidingdan" style="color:#45c45d;"></span>
+							<p><em>宽带订单</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li> -->
+					<li>
+						<div class="txt-info item02" ng-click="myCode()">
+							<span class="ico icon-qrcode" style="color:#45c45d;"></span>
+							<p><em>我的二维码</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li>
+					<li ui-sref="dianpu-wx-other-accept">
+						<div class="txt-info item03">
+							<span class="ico icon-qrcode" style="color:#45c45d;"></span>
+							<p><em>异业受理</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li>
+					<!-- <li>
+						<div class="txt-info item02" ng-click="statistical()">
+							<span class="ico icon-qrcode" style="color:#4AAB91;"></span>
+							<p><em>微店统计</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li> -->
+					<!-- <li>
+						<div class="txt-info item02" ng-click="otherAccept()">
+							<span class="ico icon-qrcode" style="color:#45c45d;"></span>
+							<p><em>异业受理</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li> -->
+			</ul>	
+		</div>
+	</ion-content>
+
+</ion-view>

@@ -1,0 +1,60 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	
+	<ion-content>
+		<div class="pl-10 pr-10 bgWhite">
+			<div class="pt-10 pb-10 clear bd-b">
+				<span class="fl txt000 f-16">订单信息</span>
+				<span class="fr {{orderItem.status | orderColor : 'color'}}">{{orderItem.status | orderColor : 'name'}}</span>
+			</div>
+			<div class="pt-10 pb-10 bd-b">
+				<div class="flexWrap">
+					<span class="width-60">
+						<span class="txt000 f-18 pr-10">{{orderItem.name}}</span>
+						<span class="txt999">{{orderItem.contactNumber}}</span>
+					</span>
+					<!-- <span class="width-40 txtBlue text-right">{{orderTypeVal}}</span> -->
+				</div>
+				<div class="pt-10 txt999">
+					{{orderItem.productName}}
+				</div>
+			</div>
+			<div class="pt-10 pb-10 clear  bd-b">
+				<span class="fl txt000">身份证号</span>
+				<span class="fr txt999">{{orderItem.cardId}}</span>
+			</div>
+			<div class="pt-10 pb-10 clear  bd-b">
+				<span class="fl txt000">地区</span>
+				<span class="fr txt999">{{orderItem.cateName}}</span>
+			</div>
+			<div class="pt-10 pb-10 clear  bd-b">
+				<span class="fl txt000">预约时间</span>
+				<span class="fr txt999">{{orderItem.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+			</div>
+			<!-- <div class="pt-10 pb-10 clear  bd-b">
+				<span class="fl txt000">提货方式</span>
+				<span class="fr txt999">{{typeVal}}</span>
+			</div> -->
+			<!-- <div class="pt-10 pb-10 clear  bd-b" ng-hide="orderItem.status=='000001'">
+				<span class="fl txt000">关联订单号</span>
+				<span class="fr txt999" ng-click="lookOrder(orderItem.orderType)">查询<i class="icon-fanhui-copy"></i></span>
+			</div> -->
+			<div class="pt-10 pb-10 clear  bd-b" ng-hide="orderItem.remark==null">
+				<div class="txt000">备注（取消原因）</div>
+				<p class="txtInden txt999 pt-5">
+					{{orderItem.remark}}
+				</p>
+			</div>
+
+			<div class="pt-5 pb-5 flexWrap" ng-show="orderItem.status=='000001'">
+				<span class="flex bd-r txt999 text-center pt-5 pb-5 f-16">取消订单</span>
+				<span class="flex txtBlue text-center pt-5 pb-5 f-16">办理</span>
+			</div>
+		</div>
+		
+	</ion-content>
+
+</ion-view>

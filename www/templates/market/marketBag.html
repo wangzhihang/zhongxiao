@@ -1,0 +1,110 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons><br />
+	<ion-nav-buttons side="right">
+		<span class="f-12 txtfff mr-10" ng-click="allCheckedBags()">{{edit}}</span><i class="icon-more" style="font-size: 2rem;"></i>
+	</ion-nav-buttons><br />
+	<div class="payPosition">
+		
+		<div class="payFooter" >
+			<div class="fl" ng-click="CheckAll()">
+				<span class="f-14 pl-15 "><i  class="icon-xuanze mr-5" ng-class="{'icon-xuanze':allChose,'icon-xuanzedui txtRed':!allChose}" style="font-size: 1.8rem;"></i>全选</span>
+			</div>
+			
+			
+			<div class="payPay ">
+				<span class="f-14 txtRed pr-10" >合计:￥{{ totalPrice | number:2}}</span>
+				<div class="triangle-left"></div>
+			</div>
+			<input type="button" value="去结算" class="pl-25 pr-25 f-16 fr"     ng-click="atONceBuy()">
+		</div>
+	</div>
+	
+	
+	
+	
+
+	<div class="payEditMore" ng-show="bagsAllDel" >
+		<div class="payFooter " >
+			<div class="fl"  ng-click="CheckAll()">
+				<span class="f-14 pl-15">
+				<i class="icon-xuanze mr-5"
+					ng-class="{'icon-xuanze':allChose,'icon-xuanzedui txtRed':!allChose}"
+					style="font-size: 1.8rem;"></i>
+				全选</span>
+			</div>
+			<div class="payEdit fr pr-15">
+			<!--	<input type="button" value="分享" class="bgWhite shareOrd  txt999 "/>	-->
+				<input type="button" value="删除" class="bgWhite delOrd  txtRed fr" ng-click="carsGoodsDel()"/>
+			</div>
+		</div>
+	</div>
+	<!--<div class="payAll bgWhite">
+		
+		<div class="payAlll item-checkbox">
+			<label class="checkbox checkbox-assertive">  
+		        <input type="checkbox" style="height: 18px;width:18px;"/>  
+		    </label><span class="f-16 txt000">全选</span>  
+        </div>
+        <div class="payAllr">
+			<div class="allmoney ">
+				<span class="f-14 txtRed" >合计：￥256</span>
+				<div class="triangle-left"></div>
+			</div>
+			<input type="button" value="去结算" class="pl-25 pr-25 f-16 fr"/>
+		</div>
+	</div>
+	-->
+	<ion-content>
+		
+		
+		<div class="loadingWrap" ng-if="loading">
+            <ion-spinner icon="ios"></ion-spinner>
+    	</div>
+		
+		
+		<div style="margin-bottom: 9rem;">
+		<div class="bgWhite mb-5" ng-repeat="items in cartList" style="margin-bottom: 6rem;">
+			<div class="goods  pt-5 pr-10 pb-5 pl-10"  >
+				<div class="row">
+		    		<div class=" col item-checkbox" style="position: relative;">
+		       		 	<i  ng-click="oneChecked($index)"
+		       		 		ng-class="items.ww==true ? 'icon-xuanze':'icon-xuanzedui txtRed'"
+		       		 		style="position:absolute;font-size: 1.8rem;top: 40%;left:0%;width: 70%;"></i>
+                  	</div>
+		     	 			
+		     	 	<div class="col-20 imgPosition">
+		      	  		<img src="{{items.imgUrl}}" />
+		      		</div>
+		 			
+				 	<div class="col-67 ml-10">
+				 		<div class="goodsInfo">
+				 			<span class="f-14">{{items.productName}}</span>
+		      	  		</div>
+		      	  		
+		      	  		<div class="sendWay pt-10 pb-10">
+		      	  			<span class="txt999 f-10">{{}}</span>
+		      	  		</div>
+		      	  		
+		      	  		<div class="goodsLot clear">
+		      	  			
+		      	  			<span class="txtRed f-18 fl ">￥{{items.price*items.nums | number:2}}</span>
+		      	  			
+			      	  		<div class="addOrSub fr flexWrap">
+				      	  		<span class="subBnt text-center bd-r" ng-click="subClick($index)">-</span>
+				      	  		<span class="muchInfo text-center">{{items.nums}}</span>
+				      	  		<span class="addBnt text-center bd-l" ng-click="addClick($index)">+</span>
+			      	  		</div>
+			      	  	</div>
+		      		</div>
+				</div>
+			</div>
+		</div>	
+		
+		</div>
+		
+		
+		
+		</ion-content>
+</ion-view>

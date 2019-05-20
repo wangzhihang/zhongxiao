@@ -1,0 +1,142 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ng-click="toggleSearchPanel()">重置</div>
+    </ion-nav-buttons>
+
+    <div class="bar bar-subheader" style="top: 38px;">
+        <div class="hdSwitchPanelKd">
+            <ul class="flexWrap text-center">
+                <li class="flex pt-5 pl-5 pb-10 pr-5">
+                    <button class="hmBtn" ng-class="{ 'blueBtn' : tag.current1 == 1 }" ng-click="actions.setCurrent1(1)" style="border-color:rgba(234,234,2310,1);">日期范围</button>
+                </li>
+                <li class="flex pt-5 pl-5 pb-10 pr-5">
+                    <button class="hmBtn" ng-class="{ 'blueBtn' : tag.current1 == 2 }" ng-click="actions.setCurrent1(2)" style="border-color:rgba(234,234,2310,1);">手机号码</button>
+                </li>
+                <li class="flex pt-5 pl-5 pb-10 pr-5">
+                    <button class="hmBtn" ng-class="{ 'blueBtn' : tag.current1 == 3 }" ng-click="actions.setCurrent1(3)" style="border-color:rgba(234,234,2310,1);">客户姓名</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="bar bar-subheader" style="top: 100px;">
+        <div class="wrap" style="width:100%;">
+            <ul class="bgWhite flexWrap" style="height:100%;">
+                <li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 1 }" ng-click="actions.setCurrent(1)">全部</li>
+                <li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 2 }" ng-click="actions.setCurrent(2)">已完成</li>
+                <li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 3 }" ng-click="actions.setCurrent(3)">未完成</li>
+                <li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 4 }" ng-click="actions.setCurrent(4)">签名完成</li>
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="bar bar-subheader">
+		<div class="wxOrderNav subOrderNav" style="width:100%;">
+			<ul class="flexWrap text-center">
+				<li class="flex rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 1 }" ng-click="actions.setCurrent(1)">全部</li>
+				<li class="flex rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 2 }" ng-click="actions.setCurrent(2)">已完成</li>
+				<li class="flex rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 3 }" ng-click="actions.setCurrent(3)">未完成</li>
+				<li class="flex rel pt-10 pb-10" ng-class="{ 'activeBorderBtm' : tag.current == 4 }" ng-click="actions.setCurrent(4)">补拍照</li>
+			</ul>
+		</div>
+	</div> -->
+    <ion-content class="has-subheader" style='top: 144px;'>
+        <div class="number-order">
+            <ul>
+                <li ng-repeat="row in kdOrderList" ng-click="orderDetail('{{row.orderCode}}')" class="pt-5 pb-5 message-list">
+                    <div class="number-order-num">
+                        <div class="number-order-num-top pt-10 rel">
+                            <span class="txt333" style="font-size:1.6rem;">{{row.lanNumber}}</span>
+                            <div class="num-order-name inlinebk abs pt-10">
+                                <span class="number-money">{{row.amount  | currency : '￥'}}</span>
+                            </div>
+                            <!-- <span ng-show="yiwancheng"  class="wanchengStatus yiwancheng">{{button}}</span>
+							<span class="wanchengStatus weiwancheng" ng-show="weiwancheng">
+								<span class="buxieka">补写卡</span>
+								<span class="bujiaofei">补缴费</span>
+								<span class="weiwanchengBtn">{{button}}</span>
+							</span>
+							<span class="wanchengStatus bupaizhao" ng-show="bupaizhao">{{button}}</span> -->
+                            <!-- <span></span> -->
+                            <span class="txt666 block pt-5 f-14">{{row.detailedProductName}}</span>
+                        </div>
+                    </div>
+                    <div class="rel clear message-list-bottom pt-5 pb-5 bd-b f-14">
+                        <span class="txt666">{{row.customer}}</span>
+                        <span class="haomaColor">{{row.contractNumber}}</span>
+                    </div>
+                    <div class="rel pt-5 pb-5 txt999 f-14">
+                        <span>{{row.status | statusColor:'timeStatus'}}</span>
+                        <span ng-hide="row.status == '000003'">{{row.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        <span ng-show="row.status == '000003'">{{row.finishDate | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        <span style="right:-.3rem;" class="f-13 abs produceProgress {{row.status | statusColor:'color'}}">{{row.status | statusColor:'name'}}</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- <div class="number-order" >
+			<ul>
+				<li ng-repeat="row in kdOrderList">
+					<div ng-click="orderDetail('{{row.orderCode}}')">
+						<div class="number-order-num">
+							<span class="txt333">{{row.lanNumber}}</span>
+							<span></span>
+							<span class="number-money"><em>{{row.amount  | currency : '￥'}}</em></span>
+						</div>
+						<div class="txt666 num-order-name">{{row.detailedProductName}}</div>
+						<div class="num-order-time-btn">
+							<div class="txt999">{{row.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</div>
+							<div class="wanchengStatus yiwancheng" ng-show="yiwancheng" ><span>{{button}}</span></div>
+							<div class="wanchengStatus weiwancheng" ng-show="weiwancheng">
+								<span class="buxieka">补写卡</span>
+								<span class="bujiaofei">补缴费</span>
+								<span class="weiwanchengBtn">{{button}}</span>
+							</div>
+							<div class="wanchengStatus bupaizhao" ng-show="bupaizhao"><span>{{button}}</span></div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div> -->
+        <!-- <div class="list" style="margin-bottom:5px;">
+			        <div class="item item-input-inset">
+			          <label class="item-input-wrapper">
+			            <input type="tel" placeholder="请正确输入联系人手机号码" ng-model="input.tel" style="width:100%;"/>
+			          </label>
+			          <button class="button button-small" ng-click="searchOrder()">查询订单</button>
+			        </div>
+		     	</div>
+		<div class="number-order-list" ng-class='{"hide":showList}'>
+			<ul>
+				<li ng-repeat="item in kdOrderList">
+					<dl>
+						<dt>
+							<span class="fl">{{item.detailedProductName | cut:true:12:' ...'}}</span>
+							<a class="fr" ng-click="orderDetail('{{item.orderCode}}')">详情</a>
+						</dt>
+						<dd>客户姓名：{{item.customer | hideCode:'1,2'}}</dd>
+						<dd>联系方式：{{item.contractNumber}}</dd>
+						<dd class="clear">
+							<span class="fl"><small>{{item.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</small></span>
+							<span class="fr">订单金额：<em>{{item.amount | currency : '￥'}}</em></span>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+		</div> -->
+        <div class="cen padding" ng-class='{"hide":loading}'>
+            <ion-spinner icon="ios-small"></ion-spinner>
+        </div>
+        <div class="cen padding" ng-click="loadMoreData($index)" ng-hide="readMore">
+            <button ng-bind-template="{{infoState}}" class="loadingMore"></button>
+        </div>
+        <div class="noMore" ng-hide="noMoreTips">
+            <span>已经到底了</span>
+        </div>
+    </ion-content>
+    <div class="mask" style="display:block;z-index:0;background:rgba(0,0,0,.25)" ng-show="mask" ng-click="cancelDateSearch()"></div>
+</ion-view>

@@ -1,0 +1,30 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref='user-helper-search-keyword'><i class="icon-sousuoic" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="directory-list">
+            <ul>
+                <li>
+                    <div class="txt-info" ui-sref='user-breathe-SIM-send'>
+                        <span class="ico icon-houtai-caidanlan-paisongguanli" style="color:#F4A33D;"></span>
+                        <p><em>SIM卡派送</em></p>
+                        <p><small>立即操作</small></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="txt-info" ui-sref='user-breathe-SIM-submit'>
+                        <span class="ico icon-chaxun" style="color:#F4A33D;"></span>
+                        <p><em>SIM卡查询</em></p>
+                        <p><small>立即操作</small></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ion-content>
+
+</ion-view>

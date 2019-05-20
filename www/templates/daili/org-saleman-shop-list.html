@@ -1,0 +1,110 @@
+<ion-view view-title="{{title}}" hide-tabs="true" >
+	<!-- <ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons> -->
+	<!-- <ion-nav-buttons side="right">
+		<div ng-click="resertPwd()">重置密码</div>
+	</ion-nav-buttons> -->
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+		<p>
+			<!-- <input type="text" placeholder="请输入店名/人名/手机号" style="width:70vw;border-radius:5px;" class="pl-10 pr-10 bd" ng-model="keyword" >
+			<span class="vertical text-999 pl-15 abs pt-10 pb-10" ng-click="lookKeywords(keyword)" style="right:0;"><i class="icon-sousuoic txt999"></i></span> -->
+			<p style="width:63vw;" ng-click="superiorSelect()" class="pl-10 pr-10 rel txtCenter f-15">{{deptName}}
+				<span class="vertical pl-15 abs pt-10 pb-10" style="right:17%;"><i class="icon-paixushengxujiangxu"></i></span>
+			</p>
+			<!-- <select style="border: 0;" ng-options="input.deptName for input in salemanList" ng-model='input.select' ng-init="input.select=salemanList[index+1]" ng-change="switchSelect()">
+			</select> -->
+		</p>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ng-show="isShowResertPwd" ng-click="resertPwd()"">重置密码</div>
+		<div ui-sref="index_dl" ng-hide="isShowResertPwd"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<!-- 上级筛选层 -->
+	<div class="popup-container popup-showing active chosePop" ng-show='showSuperiorSelect' ng-click="closeSuperiorSelect()">
+		<div class="popup" ng-click="$event.stopPropagation();">
+			<ul class="rel" style="height: 35vh;overflow-y: auto;" >
+				<li class="pl-10 pt-10 pr-10 pb-10 txtCenter txt000" ng-repeat="item in salemanList" ng-click="switchOption('{{item.userId}}','{{item.deptName}}','{{item.deptType}}','{{item.levelCode}}','{{item.deptCode}}','{{item.orgCode}}')">
+					<p class="rel">{{item.deptName}}
+						<i class="radio-icon ion-checkmark f-14 abs" style="right: 14px;color: #1E82D2;" ng-show="tag.current=='{{item.levelCode}}'"></i>
+					</p>
+				</li>
+				<div class="popup-buttons abs" style="width: 100%;bottom: 0;"><button class="button ng-binding button-calm" ng-click="switchSelect()" >确定</button></div>
+			</ul>
+		</div>
+	</div>
+	<ion-content class='has-tabs'>
+		<section class="userPanel" style="padding: 0px 1rem 1rem 1rem;margin-top: -20px;">
+			<!-- <h1  class="userPanelTitle" style="margin-top:19px;">
+				<span ng-click="$ionicGoBack()" style="vertical-align: baseline;"><i class="icon-fanhui"></i></span>
+				<span class="logoIco">
+					<img ng-src="{{imgUrl}}" alt="dianpu" ng-show="isImgUrl"/>
+					<img src="img/logo.png" alt="dianpu" ng-hide="isImgUrl"/>
+				</span>
+				<em style="padding-left: 3vw;" class="f-18">{{deptName}}</em>
+				<em style="padding-left: 3vw;" class="f-16">
+					<select style="border: 0;" ng-options="input.deptName for input in salemanList" ng-model='input.select' ng-init="input.select=salemanList[index+1]" ng-change="switchSelect()">
+					</select>
+				</em>
+				<a class="rtTopBtn f-14" style="top:1rem" ng-show="isShowResertPwd" ng-click="resertPwd()">重置密码</a>
+			</h1> -->
+			<!-- <div class="fixed width-80 mt-0 txt333" style="top: 4rem;left: 10%;height: 2rem;">
+				<select style="width: 100%;" ng-options="input.deptName for input in salemanList" ng-model='input.select' ng-init="input.select=salemanList[index+1]" ng-change="switchSelect()">
+				</select>
+			</div> -->
+			<div>
+				<div id="container" style="height:21rem;padding-top:.5rem;"></div>
+			</div>
+		</section>
+		<div class="dataInfo pl-10 pr-10 rel" style="margin-top: 2px;">
+			<ul class="flexWrap">
+				<li class="flex text-center btnBg pt-10 pb-10">
+					<p class="f-16 txtTips"><strong>{{totalOrderMoney | currency : ''}}</strong></p>
+					<p class="f-14 txt999"><em>订单总额（元）</em></p>
+				</li>
+				<li class="flex text-center btnBg pt-10 pb-10" ng-click="salemanOrderList()">
+					<p class="f-16"><strong>{{totalOrderCnt}}</strong></p>
+					<p class="f-14 txt999"><em>订单数量</em></p>
+				</li>
+				<li class="flex text-center btnBg pt-10 pb-10">
+					<p class="f-16"><strong>{{shopNum}}</strong></p>
+					<p class="f-14 txt999"><em>下级数量</em></p>
+				</li>
+			</ul>
+		</div>
+		<div class="bgWhite hdTitle bd-t bd-b txt999 pl-10 pr-10 f-14" style="height: 4rem;line-height: 4rem;">
+			<i class="icon-shangcidenglushijian txtTips mr-5"></i>上次登录时间<time class="ml-5">{{user.loginTime | date:"yyyy-MM-dd HH:mm:ss"}}</time>
+		</div>
+		<div class="bgWhite shopList bd-b" ng-repeat="item in statsList" ng-click="orgSalemanShopInfo('{{item.levelCode}}','{{item.deptCode}}','{{item.deptType}}','{{item.deptName}}',$index,'{{item.headImg}}','{{item.userId}}')">
+			<div class="shopListInfo btnBg">
+				<div class="shopListPic rel">
+					<!-- <img src="img/logo1_03.png" ng-show="null==item.headImg" class="abs" style="left:3vw;top:3vw;"> -->
+					<img src="{{item.headImg}}" class="abs" style="left:5vw;top:5vw;">
+				</div>
+				<div class="shopListItem rel">
+					<div class="abs vertical pr-10" style="width:100%">
+						<p class="txt000 f-16 omit">{{item.deptName}} ({{item.userName}})</p>
+						<p class="txt999 omit f-12">{{item.address}}</p>
+						<p class="flexWrap">
+							<span class="txtBestRed">{{item.realName}}&nbsp;</span>
+							<span class="dealColor1">{{item.contractNumber}}</span>
+							<span class="txt flex text-right f-12 txt999">上月{{item.allOrderCntLastMonth}}单</span>
+						</p>
+						<p class="flexWrap alignItem rel">
+							<span class="f-12 txt999">最新登录：</span>
+							<time class="f-12 txtGreen">{{item.loginTime | date:"yyyy-MM-dd HH:mm:ss"}}</time>
+							<span class="f-12 txt999 abs text-right" style="right:0">
+								本月<em class="f-20 txtTips" ng-class="{'txtBestRed':item.isHasOrder,'txt999':item.noHasOrder}">{{item.allOrderCntThisMonth}}</em>单
+							</span>
+						</p>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="btn-wrap fixed bottom-fixed-btn" style="bottom: 0;width:100vw;">
+		<button class="btn btn-primary" ng-click="addShopInfo()">{{btnText}}</button>
+	</div>
+</ion-view>

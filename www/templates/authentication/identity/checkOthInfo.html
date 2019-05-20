@@ -1,0 +1,45 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+	<!-- <ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons> -->
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>	
+	<ion-content>
+		<div class="checkIdentyInfo mt-40 mb-40 txtCenter">
+			<span class="icon-2shenfenzhenghaoma" style="color:#3B84D1;font-size: 10rem;"></span>
+			<p class="tx999 mt-10 f-16">证件在有效期内</p>
+		</div>
+		<div class="info-list">
+			<ul>
+				<li>
+					<div class="info-label">
+						<span>签发机关</span>
+					</div>
+					<div class="info-cont txtLeft">
+						<!-- <input type="text" ng-show="editAdd" ng-model="{{data.list.police}}" class="textBox"/> -->
+						<span>{{data.list.police}}</span>
+						<!-- <button class="rt-btn rt-btn1" ng-click="changeOthInfo()"><i class="icon-beizhu"></i></button> -->
+					</div>
+				</li>
+				<li>
+					<div class="info-label">
+						<span>有效期</span>
+					</div>
+					<div class="info-cont txtLeft">
+						<!-- <input type="text" ng-show="editTime" ng-model="{{data.list.start_date}}-{{data.list.end_date}}" class="textBox"/> -->
+						<span>{{data.list.start_date}}-{{data.list.end_date}}</span>
+						<!-- <button class="rt-btn rt-btn1" ng-click="changeOthTime()"><i class="icon-beizhu"></i></button> -->
+					</div>
+				</li>
+			</ul>
+		</div>
+	</ion-content>
+	<div class="monthBtn" style="height:9vh;">
+        <ul class="bgPrimary flexWrap f-16 txtCenter" style="width:100%">
+           <li class="flex" ui-sref='authentication-readIDCard'>
+    		<span class="txtfff">下一步</span>
+           </li>
+        </ul>
+    </div>
+</ion-view>

@@ -1,0 +1,117 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index_dl"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<!-- <div class="wrap">
+			<div class="pt-10 pb-10 pl-15 pr-15">
+				<ul class="flexWrap changeNav">
+					<li class="flex text-center txt333" ng-class="{'active':tag.current==1}" ng-click="actions.setCurrent(1)">已修改</li>
+					<li class="flex text-center txt333" ng-class="{'active':tag.current==2}" ng-click="actions.setCurrent(2)">未修改</li>
+				</ul>
+			</div>
+		</div>
+		<div class="pt-15 pl-15 pr-15 pb-15">
+			<p class="f-14" style="color:#fb7951">
+				已修改：若您已经在bss中修改过密码，请填写下面表单进行密码修改。注意：原始密码需填写您上次绑定时填写的密码，若您已忘记，请删除该工号重新进行绑定。<br/>
+				未修改：当前bss密码正确，且该密码即将到期，请准确填写下面表单进行bss密码修改，获取验证码时间较长请耐心等待。
+
+			</p>
+		</div> -->
+		<div class="getIdDeviceType" ng-hide="hideChangePwdBtn">
+			<ul class="mb-10">
+				<li><button class="device" ng-click="actions.setCurrent(1)">我已经在bss系统中修改过密码</button></li>
+			</ul>
+			<ul class="mb-10">
+				<li><button class="device" ng-click="actions.setCurrent(2)">我想在号码之家直接修改bss密码</button></li>
+			</ul>
+		</div>
+		<div ng-show="tag.current==1">
+			<div class="pt-15 pb-15 pl-15 pr-15" style="color:#fb7951">
+				<p>注：这里只修改此bss工号在号码之家的密码，不会修改登录联通系统的密码！</p>
+			</div>
+			<div class="formList">
+				<ul>
+					<li class="rowItem">
+						<div class="label width-23 txtRight">原密码：</div>
+						<div class="labelForm">
+							<input type="password" class="textBox" placeholder="原密码" ng-model="input.oldpwd" ng-change="checkOldpwd()"/>
+							<span class="vertical txtWarn abs" ng-if="oldpwdTips" style="right:0;">密码错误</span>
+						</div>
+					</li>
+					<li class="rowItem">
+						<div class="label width-23 txtRight">设置新密码：</div>
+						<div class="labelForm">
+							<input type="password" class="textBox" placeholder="设置新密码" ng-model="input.newpwd"/>
+						</div>
+					</li>
+					<li class="rowItem">
+						<div class="label width-23 txtRight">确认新密码：</div>
+						<div class="labelForm">
+							<input type="password" class="textBox" placeholder="确认新密码" ng-model="input.rnewpwd"/>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="mt-15 pl-15 pr-15">
+				<button class="blueBtn" ng-click="changePwded()">确认修改</button>
+			</div>
+		</div>
+		<div ng-show="tag.current==2">
+			<div class="pt-15 pb-15 pl-15 pr-15" style="color:#fb7951">
+				<p>注：这里会同时修改此bss工号在号码之家和登录联通系统的密码！</p>
+			</div>
+			<div class="formList">
+				<ul>
+					<li class="rowItem">
+						<div class="label width-23 txtRight">BSS工号：</div>
+						<div class="labelForm">
+							<input type="text" class="textBox" placeholder="BSS工号" ng-model="input.userName" readonly="readonly"/>
+						</div>
+					</li>
+					<!-- <li class="rowItem">
+						<div class="label">发展人：</div>
+						<div class="labelForm">
+							<input type="text" class="textBox" placeholder="发展人" ng-model="input.developName" readonly="readonly"/>
+						</div>
+					</li> -->
+					<li class="rowItem">
+						<div class="label width-23 txtRight">原密码：</div>
+						<div class="labelForm">
+							<input type="password" class="textBox" placeholder="原密码" ng-model="input.oldpwd" ng-blur="checkOldpwd()"/>
+							<span class="vertical txtWarn abs" ng-if="oldpwdTips" style="right:0;">密码错误</span>
+						</div>
+					</li>
+					<li class="rowItem">
+						<div class="label width-23 txtRight">设置新密码：</div>
+						<div class="labelForm">
+							<input type="password" class="textBox" placeholder="设置新密码" ng-model="input.newpwd"/>
+						</div>
+					</li>
+					<li class="rowItem">
+						<div class="label width-23 txtRight">确认新密码：</div>
+						<div class="labelForm">
+							<input type="password" class="textBox" placeholder="确认新密码" ng-model="input.rnewpwd"/>
+						</div>
+					</li>
+					<li class="rowItem">
+						<div class="label width-23 txtRight">输入校验码：</div>
+						<div class="labelForm">
+							<input type="tel" class="textBox" placeholder="输入校验码" ng-model="input.smscode"/>
+							<button class="vertical abs txtPrimary" ng-click="getCheckCode()" ng-disabled="vm.resState" style="right:5px;border:none;background:none;">
+								{{vm.data}}
+							</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="mt-15 pl-15 pr-15">
+				<button class="blueBtn" ng-click="changePwd()">确认修改</button>
+			</div>
+		</div>
+		
+	</ion-content>
+</ion-view>

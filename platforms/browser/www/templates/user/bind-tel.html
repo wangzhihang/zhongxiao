@@ -1,0 +1,29 @@
+<ion-view view-title="{{title}}">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		
+	<div class="user-form-2">
+		<ul>
+			<li>
+				<input type="tel" placeholder="输入手机号码 ..." class="input-text"/>
+			</li>
+			<li>
+				<input type="text" placeholder="校验码 ..." class="input-text"/>
+				<button class="getCode">获取验证</button>
+			</li>
+		</ul>
+	</div>
+	<div class="btn-wrap">
+		<button class="btn btn-primary">立即绑定</button>
+	</div>
+
+
+	</ion-content>
+
+</ion-view>

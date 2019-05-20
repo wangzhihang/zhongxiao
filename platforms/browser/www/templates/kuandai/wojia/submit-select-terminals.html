@@ -1,0 +1,51 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content>
+
+
+        <div class="userInfoForm">
+            <h2 class="userInfoTitle">机顶盒信息</h2>
+            <ul>
+                <li>
+                    <label>MAC地址：</label>
+                    <input type="text" placeholder="终端MAC地址" ng-model="mac.tvMacAddress" class="input-text" />
+                    <button class="go drop" ng-click="tvMac();"><i class="icon-saomiao"></i></button>
+                </li>
+
+                <li class="selectArea">
+                    <label>提供方式：</label>
+                    <select ng-model="select.tvLi" ng-options="fB.productName for fB in tvList" ng-change="switchTv(select.tvLi.id)" class="input-text"></select>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="userInfoForm" ng-show="ftthShow">
+            <h2 class="userInfoTitle">光猫设备</h2>
+            <ul>
+                <li class="selectArea">
+                    <label>提供方式：</label>
+                    <select ng-model="select.ftthLi" ng-options="fB.productName for fB in ftthList" class="input-text"></select>
+                </li>
+
+            </ul>
+        </div>
+        <div class="pt-20 pb-20 txtRed txtCenter" ng-show="showTip">
+            <p class="pl-10 txtLeft f-16" style='font-weight: 600;'>温馨提示:</p>
+            <p>无需设备收100元工料费</p>
+            <p>只需光猫收100元工料费</p>
+            <p>只需机顶盒收190元工料费</p>
+            <p>双设备收290元工料费</p>
+        </div>
+
+
+        <div class="btn-wrap">
+            <button class="btn btn-primary" ng-click="order()">确定</button>
+        </div>
+    </ion-content>
+</ion-view>

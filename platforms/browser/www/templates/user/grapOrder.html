@@ -1,0 +1,169 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+      <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+      </ion-nav-buttons>
+      
+      <div class="bar bar-subheader">
+          <div class="wxOrderNav">
+                  <ul class="flexWrap text-center">
+                        <li class="flex f-16" ng-class="{ 'chosed' : tag.current == 3 }" ng-click="actions.setCurrent(3);" >我的<i class="icon-paixushengxujiangxu"></i></li>
+                        <li class="flex f-16 pl-10 pr-10" ng-class="{ 'chosed' : tag.current == 1 }" ng-click="actions.setCurrent(1);">首页</li>
+                        <li class="flex f-16" ng-class="{ 'chosed' : tag.current == 2 }" ng-click="actions.setCurrent(2);">地区<i class="icon-paixushengxujiangxu"></i></li>
+                       <!--  <li class="flex" ng-class="{ 'chosed' : tag.current == 4 }" ng-click="actions.setCurrent(4);">筛选<i class="icon-shaixuan"></i></li> -->
+                  </ul>
+                </div>
+            <!-- 地区 -->
+           <div class="grapOrderArea" ng-if="ifNoShowArea" ng-click="closeArea()">
+                  <div class="grapAreaInfo"  ng-click="$event.stopPropagation();">
+                    <label class="item item-radio" ng-repeat="item in cityList" ng-class="{ 'txtPrimary' : tag2.current == '{{item.num}}' }" ng-click="actions2.setCurrent('{{item.num}}');closeArea();">
+                        <input type="radio" name="group" value="go" ng-checked=" tag2.current == '{{item.num}}'">
+                           <div class="radio-content">
+                             <div class="item-content">
+                                {{item.name}}
+                             </div>
+                             <i class="radio-icon ion-checkmark f-14"></i>
+                          </div>
+                      </label>
+                  </div>
+            </div>
+            <!-- 我的订单 -->
+            <div class="grapOrderState" ng-if="ifNoShowState" ng-click="closeState()">
+                  <div class="grapStateInfo">
+                       <!--  <ion-radio ng-repeat="item in stateList" ng-value="item.name" ng-model="stateData.txt" ng-change="stateChange(item)">
+                            {{item.name}}
+                        </ion-radio>  -->
+                        <label class="item item-radio" ng-repeat="item in stateList" ng-class="{ 'txtPrimary' : tag3.current == '{{item.num}}' }" ng-click="actions3.setCurrent('{{item.num}}');closeState();">
+                        <input type="radio" name="group" value="go" ng-checked=" tag3.current == '{{item.num}}'">
+                           <div class="radio-content">
+                             <div class="item-content">
+                                {{item.name}}
+                             </div>
+                             <i class="radio-icon ion-checkmark f-14"></i>
+                          </div>
+                      </label>
+                  </div>
+            </div>
+           
+      </div>
+  <ion-content >
+    <!-- <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()"></ion-refresher> -->
+    <div class="number-order-list" style="padding-top:4.5rem;">
+      <ul>
+            <li ng-repeat="row in newOrderList">
+                   <!--  <dl>
+                          <dt>
+                                <span class="fl txtBlue f-18">{{row.number | telFormat}}15594654292</span>
+                                <a class="fr" ng-class="{'waitColor':row.waitColor,'successColor':row.successColor,'failureColor':row.failureColor,'dealColor':row.dealColor}">{{row.wxOrderState}}</a>
+                                 <a class="fr txtRed f-18">{{row.amount | currency : '￥'}}</a>
+                          </dt>
+                          <dd  ng-click="grapOrderDetail($index)">所选套餐：{{row.productName}}</dd>
+                          <dd  ng-click="grapOrderDetail($index)">送货地址：{{row.contactAddress}}</dd>
+                          <dd  ng-click="grapOrderDetail($index)">订购时间：{{row.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</dd>
+                          <dd  ng-click="grapOrderDetail($index)">订单金额：<em>{{row.amount | currency : '￥'}}</em></dd>
+                          <dd class="orderInfo" ng-show="{{row.btnIsHide}}" ng-class="{'ng-hide':!row.btnIsHide}">
+                                <span class="itemInfo" ng-click="aleryGiveUp($index)">放弃订单</span>
+                                <span class="itemInfo active" ng-click="manage($index)">继续办理</span>
+                          </dd>
+                          <dd  ng-show="{{row.btnIsShow}}" style="text-align: center;color: #0085cf;"  ng-click="getGrapOrderNum($index)">
+                                <span>{{row.btnIsHideValue}}</span>
+                          </dd>
+                  </dl> -->
+                <div class="pt-15 pb-15 bd-b" ng-click="grapOrderDetail($index)">
+                    <p class="clear mb-5">
+                        <span class="fl txtBlue f-18">{{row.number | telFormat}}</span>
+                        <a class="fr txtRed f-18">{{row.amount | currency : '￥'}}</a>
+                    </p>
+                    <p class="f-15 txt666 mb-5">{{row.productName}}</p>
+                    <p class="f-15 bgWarn inlinebk txtWarn mb-5">{{row.contactAddress}}</p>
+                    <p class="clear mb-0">
+                        <span class="fl txt999">{{row.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        <a class="fr" ng-class="{'waitColor':row.waitColor,'successColor':row.successColor,'failureColor':row.failureColor,'dealColor':row.dealColor}">{{row.wxOrderState}}</a>
+                    </p>
+                </div>
+                <div  class="orderInfo" ng-show="{{row.btnIsHide}}" ng-class="{'ng-hide':!row.btnIsHide}">
+                    <span class="itemInfo" ng-click="aleryGiveUp($index)">放弃订单</span>
+                    <span class="itemInfo active" ng-click="manage($index)">继续办理</span>
+                </div>
+                <div class="pt-15 pb-15" ng-show="{{row.btnIsShow}}" style="text-align: center;color: #0085cf;"  ng-click="getGrapOrderNum($index)">
+                    <span>{{row.btnIsHideValue}}</span>
+                </div>
+            </li>
+      </ul>
+    </div>
+    <div class="cen padding" ng-class='{"hide":loading}'>
+            <ion-spinner icon="ios-small"></ion-spinner>
+    </div>
+    <div class="cen padding" ng-click="loadMoreData()" ng-hide="readMore">
+            <button ng-bind-template="{{infoState}}" class="loadingMore"></button>
+    </div>
+    <div class="noMore" ng-hide=" " style="margin-bottom:12rem">
+            <span>已经到底了</span>
+    </div>
+
+    
+  </ion-content>
+  <div class="grapOrderBot">
+        <ul class="flexWrap pt-10">
+            <li class="flex txtCenter" ng-click="setBtn()">
+                <p class="grapOrderBotPic"><img src="img/set.png"></p>
+                <p class="f-12 mb-5">设置</p>
+            </li>
+            <li class="flex txtCenter rel">
+                <p class="grapOrderBotCen"><img ng-class="{'Rotation':isNoRun}" src="img/Listen.png"></p>
+                <p class="grapOrderBotVal">{{grapOrderBotVal}}</p>
+            </li>
+            <li class="flex txtCenter" ng-click="hearBtn();img.rotate=img.rotate+90">
+                <p class="grapOrderBotPic"><img src="img/{{hearImg}}"></p>
+                <p class="f-12 mb-5">{{hearVal}}</p>
+            </li>
+        </ul>
+        <!-- <div class="grapOrderBotCen">
+
+        </div> -->
+    </div>
+     <!-- 设置 -->
+    <div class="gragOrderChange"  ng-if="ifNoShowChange" ng-click="closeChange()">
+          <div class="gragChangeInfo pl-10 pr-10 pt-10" ng-click="$event.stopPropagation();">
+                <div class="gragOrderSetTop">
+                    <ul class="flexWrap pt-10 pb-10">
+                        <li class="col-25 txtCenter"></li>
+                        <li class="col-50 txtCenter f-18 txt999">实时听单设置</li>
+                        <li class="col-25 txtCenter"></li>
+                    </ul>
+                </div>
+                <div class="gragOrderModel clear">
+                    <p class="txt999 f-16 fl mb-0">听单模式</p>
+                    <p class="f-16 fr mb-0">抢单模式</p>
+                </div>
+                 <div class="gragOrderSetTop">
+                    <ul class="flexWrap pt-10 pb-10">
+                        <li class="col-25 txtCenter"></li>
+                        <li class="col-50 txtCenter f-18 txt999">附近（智能距离）</li>
+                        <li class="col-25 txtCenter"></li>
+                    </ul>
+                </div>
+                <!-- <div class="pb-10 txtCenter pt-20 f-18 txt999">附近（智能距离）</div> -->
+                <div class="gragChangeList">
+                      <ul class="flexWrap">
+                            <li class="col-50 txt999 pt-10 pb-10 pr-10 txtRight"><span class="f-16" ng-class="{ 'active1' : tag1.current == 1 }" ng-click="actions1.setCurrent(1)">1公里内</span></li>
+                            <li class="col-50 txt999 pt-10 pb-10 pl-10"><span class="f-16" ng-class="{ 'active1' : tag1.current == 2 }" ng-click="actions1.setCurrent(2)">3公里内</span></li>
+                            <li class="col-50 txt999 pt-10 pb-10 pr-10 txtRight"><span class="f-16" ng-class="{ 'active1' : tag1.current == 3 }" ng-click="actions1.setCurrent(3)">6公里内</span></li>
+                              <li class="col-50 txt999 pt-10 pb-10 pl-10"><span class="f-16" ng-class="{ 'active1' : tag1.current == 4 }" ng-click="actions1.setCurrent(4)">10公里内</span></li>
+                            <li class="col-50 txt999 pt-10 pb-10 pr-10 txtRight"><span class="f-16" ng-class="{ 'active1' : tag1.current == 5}" ng-click="actions1.setCurrent(5)">全城</span></li>
+                      </ul>
+                </div>
+
+               <!--  <div class="flexWrap gragChangeBtn">
+                      <div class="flex text-center pt-10 pb-10" style="border-top:1px solid #eaeaed" ng-click="resetting()">
+                        重置
+                      </div>
+                      <div class="flex text-center pt-10 pb-10 " style="color:#fff;background:#d51617" ng-click="ensure()">
+                        确定
+                      </div>
+                </div> -->
+          </div>
+          
+            </div>
+  <div class="mask" style="display:block;z-index:0;background:rgba(0,0,0,.25)" ng-show="mask" ng-click="cancelDateSearch()"></div>
+</ion-view>

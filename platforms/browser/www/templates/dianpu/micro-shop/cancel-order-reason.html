@@ -1,0 +1,26 @@
+<ion-view view-title="{{title}}" hide-tabs="true" >
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<ion-list>
+			  <ion-radio ng-repeat="item in list" ng-change="choseReason(item)" ng-model="input.cancelCode" ng-value="item.cancelCode" >{{item.cancelValue}}</ion-radio>
+			 <!--   <ion-radio ng-change="choseReason(cancelCode)" ng-model="cancelCode" ng-value="'row.cancelCode'" ng-repeat="item in list">{{item.cancelValue}}</ion-radio> -->
+			 <div class="" ng-if="ifShowOther">
+                <input type="text" placeholder="请输入其他原因" style="width: 100vw; border-radius: 5px;" class="pl-10 pr-10 mt-5 pt-20 pb-20" ng-change="lookKeywords(keyword)" ng-model="keyword">
+            </div>
+            <div class="mt-20">
+            	<button class="button button-full button-positive" ng-click="entrue()">提交</button>
+            </div>
+		</ion-list>
+
+	</ion-content>
+	
+	<style type="text/css">
+		.item-radio .item-content{padding:16px 49px 16px 16px;}
+		.item-radio input:checked + .radio-content .radio-icon {
+		    color: red;
+		}
+	</style>
+</ion-view>

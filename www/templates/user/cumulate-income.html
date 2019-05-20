@@ -1,0 +1,57 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="mt-5">
+            <div class="bgWhite">
+                <p class="pt-15 pb-15 pl-15 pr-15">
+                    <span class="txt666">累计收益</span>
+                    <span class="f-20 colorRed">0.00</span>
+                </p>
+                <div class="pl-10 pr-10 pt-10 pb-10 ml-10 mr-10" style="background-color:#F7F7F7;color: #BFBFBF;">
+                    您在云集平台因销售产生的相关收入、奖励，不包括因交易、货品产生的补偿金以及退款(账户余额中可查看)。
+                </div>
+                <ul>
+                    <li class="pt-10 pb-10 pl-15 pr-15 incomeBdBorder">
+                        <span>今日收益：</span>
+                        <span class="colorRed f-13">￥0.00</span>
+                    </li>
+                    <li class="pt-10 pb-10 pl-15 pr-15 incomeBdBorder">
+                        <span>本周收益：</span>
+                        <span class="colorRed f-13">￥0.00</span>
+                    </li>
+                    <li class="pt-10 pb-10 pl-15 pr-15 incomeBdBorder">
+                        <span>本月收益：</span>
+                        <span class="colorRed f-13">￥0.00</span>
+                    </li>
+                    <li class="pt-10 pb-10 pl-15 pr-15">
+                        <span>上月收益：</span>
+                        <span class="colorRed f-13">￥0.00</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <div id="incomeCompare" style="min-width:400px;height:400px"></div>
+            </div>
+        </div>
+    </ion-content>
+    <style>
+        .colorRed {
+            color: #F72F57;
+        }
+        
+        .incomeBdBorder {
+            border-bottom: 1px dotted #EAEAED;
+        }
+        
+        rect[Attributes] {
+            fill: #F72F57
+        }
+    </style>
+
+</ion-view>

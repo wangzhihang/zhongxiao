@@ -1,0 +1,52 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index_dl"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content class="has-tabs">
+		<div class="txtInfoList mt-10 pl-15 pr-10">
+			<div class="rowItem">
+				<div class="label f-17 txtLeft">发布人</div>
+				<div class="labelForm txtRight pr-10">{{visitorName}}</div>
+			</div>
+		</div>
+		<div class="bgWhite mt-15 pl-15 pr-10 pb-10">
+			<div class="mr-10 f-17 problemFeedbackTitle">上次问题反馈</div>
+			<textarea class="txt666 problemFeedback pl-10 pr-10" ng-model="input.problemFeedback" placeholder="请输入历史问题"></textarea>
+		</div>
+		<div class="bgWhite mt-10 pl-15 pr-10 pb-10">
+			<div class="mr-10 f-17 problemFeedbackTitle">最新问题</div>
+			<textarea class="txt666 newProblemFeedback pl-10 pr-10" ng-model="input.newProblemFeedback" placeholder="请输入最新问题"></textarea>
+		</div>
+		<div class="txtInfoList mt-10 pl-15 pr-10">
+			<div class="rowItem">
+				<div class="label f-17 txtLeft">评分:</div>
+				<div class="labelForm txtRight pr-10">
+					<select ng-model="input.evaluate" style="width:30%;" class="bd-0">
+						<option ng-repeat="x in sites" value="{{x.status}}">{{x.site}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="bgWhite mt-10 pl-10 pr-10 pb-10">
+			<div class="ml-10 mr-10 f-17 problemFeedbackTitle inlinebk">评分:</div>
+			<div class="inlinebk txtRight txt999" style="width:70vw;">
+				<select ng-model="input.evaluate" style="width:30%;" class="bd-0">
+					<option ng-repeat="x in sites" value="{{x.status}}">{{x.site}}</option>
+				</select>
+			</div>
+			<select class="select mr-10 evaluate ml-20" ng-model="input.evaluate">
+				<option value="">--请选择-- </option>
+				<option value="000001">--优秀-- </option>
+				<option value="000002">--良好-- </option>
+				<option value="000003">--一般-- </option>
+				<option value="000004">--差-- </option>
+			</select>
+		</div> -->
+		<div class="btn-wrap">
+			<button class="btn btn-primary" ng-click="addShopInspection()">保存</button>
+		</div>
+	</ion-content>
+</ion-view>

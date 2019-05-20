@@ -1,0 +1,76 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index" ><i class="icon-shouyehui" style="font-size:18px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content >
+		
+
+
+
+
+
+	<div  style="position:fixed;top:0%;width:100vw;" class="pb-5"><!--  -->
+	   <div class="bgWhite kindState  js-nav">
+	        <ul >
+	            <li  ng-class="{ 'orderTypeChosed' : tag.ordType == 1 }" ng-click="actions.setOrdType(1);" ><span>全部</span></li>
+	            <li  ng-class="{ 'orderTypeChosed' : tag.ordType == 2 }" ng-click="actions.setOrdType(2);" ><span>已完成</span></li>
+	            <li  ng-class="{ 'orderTypeChosed' : tag.ordType == 3 }" ng-click="actions.setOrdType(3);" ><span>未完成</span></li>
+	        </ul>
+    	</div>
+    </div>
+    <div style="padding-top: 14%">
+    	<ul>
+    		<li ng-repeat="item in shopOrderList" class="bgWhite" ng-click="goToDetail($index)">
+    			    
+		    		<div class="listOne bgWhite mb-5">
+		        		<div class="ordInfoDeal ">
+				            <div class="ordKindDeal">
+				                <p class="ordNum pt-10">{{item.number}}</p>
+				                <p class="ordkindInfo txt999 pt-5 pb-5">{{item.contractName}}</p>
+				            </div>
+				            <div class="ordMoney ">
+				                <span class=" ">￥{{item.amount}}</span>
+				            </div>
+		        		</div>
+				        <div class="ordTime pt-5 pb-5" >
+				            <div class="ordSetTime"><span style="color:#a7a7a7;">{{item.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span></div>
+				            <div class="ordOk" ng-show="item.status==000003" style="border-color:green;"><span class="typeKind finishOrd">已完成</span></div>
+				            <div class="ordOk" ng-show="item.status==000001" style="border-color:orange;"><span class="typeKind conductOrd">等待认证</span></div>
+				            <div class="ordOk" ng-show="item.status==000002" style="border-color:orange;"><span class="typeKind conductOrd">身份验证成功</span></div>
+				            <div class="ordOk" ng-show="item.status==000004" style="border-color:#d8d8d8;"><span class="typeKind failord">订单取消</span></div>
+				            <div class="ordOk" ng-show="item.status==000005" style="border-color:#d8d8d8;""><span class="typeKind failord">身份验证失败</span></div>
+				            <div class="ordOk" ng-show="item.status==000006" style="border-color:orange;"><span class="typeKind conductOrd">长号完成</span></div>
+				            <div class="ordOk" ng-show="item.status==000007" style="border-color:orange;"><span class="typeKind conductOrd">签名成功</span></div>
+				            <div class="ordOk" ng-show="item.status==000009" style="border-color:orange;"><span class="typeKind conductOrd">订单提交成功</span></div>
+				            <div class="ordOk" ng-show="item.status==000010" style="border-color:orange;"><span class="typeKind conductOrd">活体认证成功</span></div>
+				            <div class="ordOk" ng-show="item.status==000011" style="border-color:#d8d8d8;"><span class="typeKind failord">活体认证失败</span></div>
+				           
+				        </div>
+		    		</div>
+			
+    		</li>
+
+    	
+    	</ul>
+		
+	</div>
+
+
+
+ <div class="noneList" ng-show="shopOrderList.length==0">
+    	<span>暂时没有相关订单</span>
+ </div>
+
+
+
+
+
+
+
+
+	</ion-content>
+	
+</ion-view>

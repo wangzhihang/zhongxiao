@@ -1,0 +1,139 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ng-click="share()"><i class="f-16">分享</i></div>
+    </ion-nav-buttons>
+    <ion-content>
+        
+        <div class="user-hd" style="background-image: url('img/user_hd_bg.jpg');">
+                <div class="transparent">
+                    <div class="btm-cont pb-10">
+                        <div class="pic">
+                            <img src="http://a.mhaoma.com/img/m/thw.ico" alt="关键字">
+                        </div>
+                         <div class="rt-info" style="height:5rem">
+                            <p><a  class="f-14">{{shopName}}</a></p>
+                            <p>
+                                <i class="iconfont icon-shoucang"></i>
+                                <i class="iconfont icon-shoucang"></i>
+                                <i class="iconfont icon-shoucang"></i>
+                                <i class="iconfont icon-shoucang"></i>
+                                <i class="iconfont icon-shoucang"></i>
+                            </p>
+                            <address>地址：{{address}}</address>
+                        </div>
+                        <!-- <div class="side-info">
+                            <div class="fs">
+                                <span><i class="icon-shoucang2"></i>粉丝</span>
+                                <em>2687人</em>
+                            </div>
+                            <div class="pl">
+                                <span><i class="icon-duanxin1"></i>已售</span>
+                                <em>301单</em>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+        </div>
+        <div class="monthCard">
+            <div class="monthTop">
+                <img src="img/img_02_01.png">
+            </div>
+            <section>
+                <div class="monthMeal">
+                    <!-- <img src="img/pro36.jpg" ng-show="showWind">
+                    <img src="img/pro56.jpg" ng-hide="showWind">
+                
+                    <div class="choseLeft" ng-click="isShowWind56()"></div>
+                    <div class="choseRight" ng-click="isShowWind139()"></div> -->
+                    <div class="monthMealBody">
+                        <!-- <ul class="monthMealPic">
+                            <li class="monthMealList" ng-class="{'chose1':choseMeal,'chose2':!choseMeal}">
+                                <div class="choseLeft" ng-click="choseLeft()">畅爽36</div>
+                                <div class="choseRight" ng-click="choseRight()">畅爽56</div>
+                            </li>
+                        </ul>
+                        <div class="monthMealDetail pt-10">
+                            <div class="" ng-show="choseMeal">
+                                <p>36元即享8G大流量+160分钟，全国接听免费</p>
+                                <p class="pt-10">国内60分钟，本地100分钟，5GB省内流量+3G闲时，送50M宽带，合约12/24个月</p>
+                            </div>  
+                            <div  ng-show="!choseMeal">
+                                <p>56元即享10G大流量+300分钟，大流量，低月付</p>
+                                <p class="pt-10">国内100分钟，登网赠送200分钟本地，7GB省内流量+3G闲时，送100M宽带，合约12/24个月</p>
+                            </div>      
+                        </div> -->
+                        <ul class="monthMealPic">
+                            <li class="monthMealList chose3">
+                                <div class="choseRight chose" style="width:100%">畅爽56</div>
+                            </li>
+                        </ul>
+                        <div class="monthMealDetail pt-10">
+                            <div class="Meal119">
+                                <p>56元即享10G大流量+300分钟，大流量，低月付</p>
+                                <p class="pt-10">国内100分钟，登网赠送200分钟本地，7GB省内流量+3G闲时，送100Mbps宽带，合约12/24个月</p>
+                            </div>  
+                        </div>
+                    </div>  
+                </div>
+                <div class="monthInfo" >
+                    <img src="img/img_04.jpg">
+                   <!--  <img src="img/pro57.jpg"> -->
+                </div>
+                <div class="monthExpenses">
+                    <div class="monthExpensesTop flexWrap">
+                        <p></p>
+                        <p>资费详情</p>
+                        <p></p>
+                    </div>
+                    <table class="monthExpensesBody">
+                        <tr>
+                            <th style="width:20%">名称</th>
+                            <th style="width:40%">套餐内</th>
+                            <th style="width:40%">专属特权</th>
+                        </tr>
+                        <tr>
+                            <td>36元/月</td>
+                            <td>长市话<span>150分钟</span>5G省内+3G闲时流量</td>
+                            <td>50Mbps宽带合约<span>预存200送宽带</span> 入网再送 <span>10G</span>省内流量</td>
+                        </tr>
+                        <tr>
+                            <td>56元/月</td>
+                            <td><span>300分钟</span>本地长市话任性打<span>10GB</span>省内流量任意玩</td>
+                            <td>5<span>1G</span>省内+登网赠送 <span>6G</span>省内+3G闲时 入网再送 <span>10G</span>省内流量</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="monthInfo">
+                    <img src="img/img_06.jpg">
+                    <img src="img/img_07.jpg">
+                    <img src="img/img_08.jpg">
+                </div>
+            </section>
+        </div>
+        <div  style="height:6rem;width:100vw"></div>  
+    </ion-content>
+     <!-- 引导说明 -->
+    <div class="hint" ng-show="ifShowHint">
+        <div class="hintPic">
+            <img src="img/hint _01.png">
+        </div>
+        <div class="hintInfo flexWrap">
+            <p class="flex" ng-click="backClick()"></p>
+            <p class="flex" ng-click="nextClick()"></p>
+        </div>
+    </div>
+     <div class="monthBtn">
+        <div class="picBtn" style="width:65%">
+             <a class="referBtn" ui-sref="dianpu-wei-dian" style="width:45%"><img src="img/bot_04.png"></a>
+             <!-- <a class="phoneBtn" href="tel:{{shopTel}}" style="width:32%"><img src="img/bot_02.png"></a> -->
+             <a class="referBtn" ng-click="share()" style="width:45%"><img src="img/bot_03.png"></a>
+        </div>
+       
+        <a class="manageBtn" id="nowApplyBtn" style="width:35%" ng-click="subscribe()">立即预约</a>
+    </div>
+
+            
+</ion-view>

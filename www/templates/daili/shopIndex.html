@@ -1,0 +1,253 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+		<p class="rel">
+			<input type="text" placeholder="请输入店名/人名/手机号" style="width:70vw;border-radius:5px;" class="pl-10 pr-10 bd" ng-model="keyword" >
+			<span class="vertical text-999 pl-15 abs pt-10 pb-10" ng-click="lookKeywords(keyword)" style="right:0;"><i class="icon-sousuoic txt999"></i></span>
+		</p>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index_dl"><i class="icon-shouyehui"></i></div>
+	</ion-nav-buttons>
+	
+	<!-- <div class="bar bar-subheader">
+		<div class="bgWhite" style="width:100%;height:4rem">
+			 <ul class="flexWrap">
+			 	<li class="flex text-center  pt-10 pb-10"  ng-class="{ 'active' : tag.current == 1 }" ng-click="actions.setCurrent(1)">
+			 		全部</i>
+			 	</li>
+			 	<li class="flex text-center pt-10 pb-10"  ng-class="{ 'active' : tag.current == 2 }" ng-click="actions.setCurrent(2)">
+			 		范围<i class="icon-paixushengxujiangxu"></i>
+			 	</li>
+			 	<li class="flex text-center pt-10 pb-10" ng-class="{ 'active' : tag.current == 3 }" ng-click="actions.setCurrent(3)">
+			 		排序<i class="icon-paixushengxujiangxu"></i>
+			 	</li>
+			 	<li class="flex text-center pt-10 pb-10" ng-class="{ 'active' : tag.current == 4 }" ng-click="actions.setCurrent(4)">
+			 		筛选<i class="icon-paixushengxujiangxu"></i>
+			 	</li>
+			 </ul>
+		</div> -->
+
+		<!-- 范围 -->
+		<div class="shopTopPop" ng-if="isNoShowRange" ng-click="closeRange()">
+			<div class="shopTopIofo">
+				<div class="list"  ng-click="$event.stopPropagation();">
+					<label class="item item-radio" ng-class="{ 'txtPrimary' : tag1.current == 1 }" ng-click="actions1.setCurrent(1)">
+					  <input type="radio" name="group" value="go" ng-checked=" tag1.current == 1">
+						   <div class="radio-content">
+							   <div class="item-content">
+							    	1公里内
+							   </div>
+							   <i class="radio-icon ion-checkmark f-14"></i>
+						  </div>
+					</label>
+					 
+					<label class="item item-radio" ng-class="{ 'txtPrimary' : tag1.current == 2 }" ng-click="actions1.setCurrent(2)">
+						  <input type="radio" name="group" value="python"  ng-checked="tag1.current == 2">
+						  <div class="radio-content">
+							   <div class="item-content">
+							  	 3公里内
+							   </div>
+							   <i class="radio-icon ion-checkmark f-14"></i>
+						  </div>
+					</label>
+					<label class="item item-radio" ng-class="{ 'txtPrimary' : tag1.current == 3 }" ng-click="actions1.setCurrent(3)">
+						  <input type="radio" name="group" value="python"  ng-checked="tag1.current == 3">
+						  <div class="radio-content">
+							   <div class="item-content">
+							  	 6公里内
+							   </div>
+							   <i class="radio-icon ion-checkmark f-14"></i>
+						  </div>
+					</label>
+					<label class="item item-radio" ng-class="{ 'txtPrimary' : tag1.current == 4 }" ng-click="actions1.setCurrent(4)">
+						  <input type="radio" name="group" value="python"  ng-checked="tag1.current == 4">
+						  <div class="radio-content">
+							   <div class="item-content">
+							  	 10公里内
+							   </div>
+							   <i class="radio-icon ion-checkmark f-14"></i>
+						  </div>
+					</label>
+					<label class="item item-radio" ng-class="{ 'txtPrimary' : tag1.current == 5 }" ng-click="actions1.setCurrent(5)">
+						  <input type="radio" name="group" value="python"  ng-checked=" tag1.current == 5">
+						  <div class="radio-content">
+							   <div class="item-content">
+							  	 全城
+							   </div>
+							   <i class="radio-icon ion-checkmark f-14"></i>
+						  </div>
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- 排序 -->
+		<div class="shopTopPop"  ng-if="isNoShowRank" ng-click="closeRank()"> 
+			<div class="shopTopIofo">
+				<div class="list"  ng-click="$event.stopPropagation();">
+					<label class="item item-radio" ng-class="{ 'txtPrimary' : tag2.current == 1 }" ng-click="actions2.setCurrent(1)">
+					  <input type="radio" name="group" value="go" ng-checked=" tag2.current == 1">
+						   <div class="radio-content">
+							   <div class="item-content">
+							    	出卡量 <i class="icon-xiajiang transformY"></i>
+							   </div>
+							   <i class="radio-icon ion-checkmark f-14"></i>
+						  </div>
+					</label>
+					 
+					<label class="item item-radio" ng-class="{ 'txtPrimary' : tag2.current == 2 }" ng-click="actions2.setCurrent(2)">
+						  <input type="radio" name="group" value="python"  ng-checked="tag2.current == 2">
+						  <div class="radio-content">
+							   <div class="item-content">
+							  	 出卡量<i class="icon-xiajiang "></i>
+							   </div>
+							   <i class="radio-icon ion-checkmark f-14"></i>
+						  </div>
+					</label>
+					<label class="item item-radio" ng-class="{ 'txtPrimary' : tag2.current == 3 }" ng-click="actions2.setCurrent(3)">
+						  <input type="radio" name="group" value="python"  ng-checked="tag2.current == 3">
+						  <div class="radio-content">
+							   <div class="item-content">
+							  	 出卡时间
+							   </div>
+							   <i class="radio-icon ion-checkmark f-14"></i>
+						  </div>
+					</label>
+					<label class="item item-radio" ng-class="{ 'txtPrimary' : tag2.current == 4 }" ng-click="actions2.setCurrent(4)">
+						  <input type="radio" name="group" value="python"  ng-checked="tag2.current == 4">
+						  <div class="radio-content">
+							   <div class="item-content">
+							  	 登陆时间
+							   </div>
+							   <i class="radio-icon ion-checkmark f-14"></i>
+						  </div>
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- 筛选 -->
+		<div class="chosePop"  ng-click="closeChosePop()"  ng-if="isNoShowChosePop">
+			<div class="chosePopBody" ng-click="$event.stopPropagation();">
+				<div  style="height:75vh;overflow:auto;">
+						<p class="ml-10 mb-10 mt-15 f-16 ">排序标准</p>
+						 <ul class="flexWrap  bodyReview">
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag3.current == 1 }" ng-click="actions3.setCurrent(1)">号卡</li>
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag3.current == 2 }" ng-click="actions3.setCurrent(2)">宽带</li>
+						 </ul>
+						 <p class="ml-10 mb-10 f-16">出卡量</p>
+						 <ul class="flexWrap  bodyReview">
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag4.current == 1 }" ng-click="actions4.setCurrent(1)">当日</li>
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag4.current == 2 }" ng-click="actions4.setCurrent(2)">当月</li>
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag4.current == 3 }" ng-click="actions4.setCurrent(3)">上月</li>
+
+						 </ul>
+						 <p class="ml-10 mb-10 f-16">本月出卡量区间</p>
+						 <ul class="flexWrap  bodyReview">
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag5.current == 1 }" ng-click="actions5.setCurrent(1)">不限</li>
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag5.current == 2 }" ng-click="actions5.setCurrent(2)">0-3</li>
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag5.current == 3 }" ng-click="actions5.setCurrent(3)">3-10</li>
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag5.current == 4 }" ng-click="actions5.setCurrent(4)">10-20</li>
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag5.current == 5 }" ng-click="actions5.setCurrent(5)">20-30</li>
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag5.current == 6 }" ng-click="actions5.setCurrent(6)">30以上</li>
+						 </ul>
+						 <p class="ml-10 mb-10 f-16">上月出卡量区间</p>
+						 <ul class="flexWrap  bodyReview">
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag6.current == 1 }" ng-click="actions6.setCurrent(1)">不限</li>
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag6.current == 2 }" ng-click="actions6.setCurrent(2)">0-3</li>
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag6.current == 3 }" ng-click="actions6.setCurrent(3)">3-10</li>
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag6.current == 4 }" ng-click="actions6.setCurrent(4)">10-20</li>
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag6.current == 5 }" ng-click="actions6.setCurrent(5)">20-30</li>
+						 	<li class="reviewItem"  ng-class="{ 'active1' : tag6.current == 6 }" ng-click="actions6.setCurrent(6)">30以上</li>
+					 	</ul>
+				 </div>
+				 <div class="flexWrap chosePopBtn">
+				 	<div class="flex text-center pt-15 pb-15 bd-t bg bgWhite" ng-click="resetting()">
+				 		重置
+				 	</div>
+				 	<div class="flex text-center pt-15 pb-15 " style="color:#fff;background:#d51617" ng-click="ensure()">
+				 		确定
+				 	</div>
+				 </div>
+			</div>
+		</div>
+	</div>
+	<ion-content>
+		<!-- style="margin-top:4.2rem"  -->
+		
+		<div class="bgWhite shopList bd-b" ng-repeat="item in statsList" ng-click="orgSalemanShopList('{{item.levelCode}}','{{item.deptCode}}','{{item.deptName}}','{{item.userId}}')">
+			<!--  -->
+			<div class="shopListInfo">
+				<div class="shopListPic rel">
+					<img src="{{item.headImg}}" class="abs" style="left:5vw;top:5vw;">
+				</div>
+				<!-- <div class="shopListPic rel" ng-hide="item.isNoShowPic">
+					<img src="img/logo1_03.png" class="abs" style="left:3vw;top:3vw;">
+				</div> -->
+				<div class="shopListItem rel">
+					<div class="abs vertical pr-10" style="width:100%">
+						<p class="txt000 f-16 omit" ng-show="item.deptType=='000004'">
+							<p>{{item.userName}}</p>
+							<p class="f-13 txt666">{{item.deptName}}</p>
+						</p>
+						<p class="txt000 f-16 omit flexWrap" ng-show="item.deptType=='000003'">
+							<span class="flex">{{item.userName}}</span>
+						</p>
+						<p class="txt999 omit f-12">{{item.address}}</p>
+						<p class="flexWrap">
+							<span class="txtBestRed">{{item.realName}}&nbsp;</span>
+							<span class="dealColor1">{{item.contractNumber}}</span>
+							<span class="txt flex text-right f-12 txt999">上月{{item.allOrderCntLastMonth}}单</span>
+						</p>
+						<p class="flexWrap alignItem rel">
+							<span class="f-12 txt999">最新登录：</span>
+							<time class="f-12 txtGreen">{{item.loginTime | date:"yyyy-MM-dd HH:mm:ss"}}</time>
+							<span class="f-12 txt999 abs text-right" style="right:0">
+								本月<em class="f-20 txtTips" ng-class="{'txtBestRed':item.isHasOrder,'txt999':item.noHasOrder}">{{item.allOrderCntThisMonth}}</em>单
+							</span>
+						</p>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="bgWhite shopList bd-b" ng-repeat="item in shopList | orderBy : '-numOrderCntThisMon'" ng-click="shopDetail('{{item.ownerId}}','{{item.headImgUrl}}','{{item.id}}')">
+			<div class="shopListInfo">
+				<div class="shopListPic rel" ng-show="item.isNoShowPic">
+					<img src="{{item.headImgUrl}}" class="abs" style="left:3vw;top:3vw;">
+				</div>
+				<div class="shopListPic rel" ng-hide="item.isNoShowPic">
+					<img src="img/logo1_03.png" class="abs" style="left:3vw;top:3vw;">
+				</div>
+				<div class="shopListItem rel">
+					<div class="abs vertical pr-10" style="width:100%">
+						<p class="txt000 f-16 omit">{{item.deptName}}</p>
+						<p class="txt999 omit f-12">{{item.address}}</p>
+						<p class="flexWrap">
+							<span class="txtBestRed">{{item.realName  | limitTo:-3}}&nbsp;</span>
+							<span class="dealColor1">{{item.contractNumber}}</span>
+							<span class="txt flex text-right f-12 txt999">上月{{item.numberOrderNumLastMon}}单</span>
+						</p>
+						<p class="flexWrap alignItem rel">
+							<span class="f-12 txt999">最新登录：</span>
+							<time class="f-12 txtGreen">{{item.loginTime | date:"MM-dd HH:mm:ss"}}</time>
+							<span class="f-12 txt999 abs text-right" style="top:-0.7rem;right:0">
+								本月<em class="f-20" ng-class="{'txtBestRed':item.isHasOrder,'txt999':item.noHasOrder}">{{item.numOrderCnt}}</em>单
+							</span>
+						</p>
+					</div>
+					
+				</div>
+			</div>
+		</div> -->
+		
+		<ion-infinite-scroll ng-if="hasmore" on-infinite="loadMore()" icon="ion-loading-c" distance="1%" immediate-check="false"></ion-infinite-scroll>
+		
+		<div class="loadingWrap" ng-if="loading">
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+		
+		<div class="noMore" ng-if="noMore"><span class="txt">没有更多</span></div>
+		
+	</ion-content>
+</ion-view>

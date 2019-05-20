@@ -1,0 +1,51 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+
+	<ion-content>
+		<div class="retrieval-parameter-tab">
+			<ul>
+				<li ng-class="{ 'active' : data.current == 1 }" ng-click="actions.setCurrent(1)">模糊搜索</li>
+				<li ng-class="{ 'active' : data.current == 2 }" ng-click="actions.setCurrent(2)">按位搜索</li>
+				<li ng-class="{ 'active' : data.current == 3 }" ng-click="actions.setCurrent(3)">条件筛选</li>
+			</ul>
+		</div>
+		<div class="retrieval-parameter-cont" ng-show="data.current == 1">
+			<div class="search-area">
+				<input type="tel" maxlength="11" ng-model="input.bufenhaoma" placeholder="输入您喜欢的数字"/>
+				<button ng-click="search()"><i class="icon-sousuo1"></i></button>
+			</div>
+			<div class="search-state-list">
+				<ul>
+					<li ng-repeat="name in hmList" ng-class="clicked[$index]" ng-click="conditionTag($index)">{{name.name}}</li>
+				</ul>
+			</div>
+		</div>
+		<div class="retrieval-parameter-cont" ng-show="data.current == 2">
+			<div class="number-segment">
+				<ul>
+					<li><input type="tel" maxlength="1" ng-value="1" readonly="readonly"/></li>
+					<li><input type="tel" maxlength="1"/></li>
+					<li><input type="tel" maxlength="1"/></li>
+					<li style="border-color:red;"><input type="tel" maxlength="1"/></li>
+					<li style="border-color:red;"><input type="tel" maxlength="1"/></li>
+					<li style="border-color:red;"><input type="tel" maxlength="1"/></li>
+					<li style="border-color:red;"><input type="tel" maxlength="1"/></li>
+					<li style="border-left-color:red;"><input type="tel" maxlength="1"/></li>
+					<li><input type="tel" maxlength="1"/></li>
+					<li><input type="tel" maxlength="1"/></li>
+					<li><input type="tel" maxlength="1"/></li>
+				</ul>
+			</div>
+			<div class="btn-wrap">
+				<button class="btn btn-primary">按位查询</button>
+			</div>
+		</div>
+	</ion-content>
+
+</ion-view>

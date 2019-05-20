@@ -1,0 +1,28 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-content style="background: #393939;">
+		<div class="fatherMyCode">
+			<div class="childMyCode">
+				<div class="myCode">
+					<div class="myCodeInfo">
+						<div class="myCodeTop">
+							<span><img src="img/logo.png" alt="" /></span>
+							<p class="myName"><em>{{shopName}}</em></p>
+							<p class="myNum"><small>{{shopTel}}</small></p>
+						</div>
+						<div class="myCodeBody text-center">
+							
+							 <div  id="qrbox"></div>
+							
+							<span class="f-12">扫描二维码，向我付款</span>
+						</div>					
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</ion-content>
+</ion-view>

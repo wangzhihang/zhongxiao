@@ -1,0 +1,37 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content class="package-detail">
+		<div class="comboAttrVal">
+			<dl>
+				<dd>
+					<div class="cen padding" ng-class='{"hide":loading}'>
+						<ion-spinner icon="ios-small"></ion-spinner>
+					</div>
+					<ion-radio  ng-repeat="row in input.list"
+						ng-value="row"
+						ng-model="selected">
+						{{row.serviceName}}
+					</ion-radio>
+				</dd>
+			</dl>
+		</div>
+
+		<div class="userInfoForm" style="height:240px;">
+			<ul>
+				<li>
+					<p style="margin:1.5rem 0;font-size:1.6rem;padding-bottom:1.5rem;border-bottom:1px solid #eaeaed">装机地址:</p>
+					<textarea ng-model="input.addressname" rows="5" style="width:100%" autofocus></textarea>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="btn-wrap">
+			<button class="btn btn-primary" ng-click="order()" ng-disabled='resState'>下一步</button>
+		</div>
+	</ion-content>
+</ion-view>

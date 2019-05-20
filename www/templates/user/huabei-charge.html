@@ -1,0 +1,69 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="info-list mt-0">
+			<ul>
+				<li>
+					<div class="info-label width-23 txtCenter">
+						<span>商品名称：</span>
+					</div>
+					<div class="info-cont txtLeft pl-0">
+						<input type="text" ng-model="data.produceName" class="textBox width-100 bd pl-10 mt-0"/>
+					</div>
+				</li>
+				<li>
+					<div class="info-label width-23 txtCenter">
+						<span>商品价格：</span>
+					</div>
+					<div class="info-cont txtLeft pl-0">
+						<input type="number" ng-model="data.producePrice" class="textBox width-100 bd pl-10 mt-0" ng-change="stagingAmount()"/>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="flexWrap txtCenter bgWhite pt-15 pb-15 pl-15 pr-15" ng-show="showCharge">
+			<div class="flexFix pt-10 pb-10 border-radiu-5 mr-10" style="background-color: #F5F5F6;" ng-click="actions('1',boa.qishu)">
+				<p class="f-16">
+					<i ng-show="tag.current == 1" class="icon-queren" style="color: #FF0000;"></i>
+					<span>{{boa.eachToal | currency : '￥'}}元*{{boa.qishu}}期</span>
+				</p>
+				<p class="txt999 f-12">含服务费{{boa.fuwufei | number : 4}}/期 费率8.75%/年</p>
+			</div>
+			<div class="flexFix pt-10 pb-10 border-radiu-5" style="background-color: #F5F5F6;" ng-click="actions('2',bob.qishu)">
+				<p class="f-16">
+					<i ng-show="tag.current == 2" class="icon-queren" style="color: #FF0000;"></i>
+					<span>{{bob.eachToal | currency : '￥'}}元*{{bob.qishu}}期</span>
+				</p>
+				<p class="txt999 f-12">含服务费{{bob.fuwufei | number : 3}}/期 费率7.5%/年</p>
+			</div>
+		</div>
+		<div class="fatherMyCode" ng-show="showCode" style="position: fixed;top: 0;background-color: #ACACAC;height: 95vh;" ng-click="closeTip()">
+			<div class="childMyCode">
+				<div class="myCode">
+					<div class="myCodeInfo">
+						<div class="myCodeBody text-center">
+							
+							 <div  id="qrbox"></div>
+							
+							<span class="f-12">扫描二维码收费</span>
+						</div>					
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</ion-content>
+		<div class="btn-wrap fixed bottom-fixed-btn" style="bottom: 0;width:100vw;" ng-hide="showCode">
+			<button class="btn btn-primary" ng-click="qrCodeCharge()">{{btnText}}
+				<div class="cen padding inlinebk" ng-hide='loading'>
+		            <!-- <ion-spinner icon="ios-small"></ion-spinner> -->
+		        </div>
+			</button>
+		</div>
+</ion-view>

@@ -1,0 +1,28 @@
+<ion-view view-title="{{title}}">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="directory-list">
+			<ul>
+				<li   ng-click='cBSSOrder({"wx":true})' ng-show="appFuncListShow['000004']">
+					<div class="txt-info item01">
+						<span class="ico icon-wangshangxuanhao" style="color:#f7b616;"></span>
+						<p><em>CBSS选号</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li   ng-click='cbssPhoneGiveFee({"wx":true})' ng-show="appFuncListShow['000011']">
+					<div class="txt-info item02">
+						<span class="ico icon-goujizengfei" style="color:#f7b616;"></span>
+						<p><em>购机赠费</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>				
+			</ul>
+		</div>
+	</ion-content>
+</ion-view>

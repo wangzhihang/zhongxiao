@@ -1,0 +1,68 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref='index'><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <div class="popup-container popup-showing active chosePop" ng-show='showBanksList' ng-click="closeBankSelect()">
+        <div class="popup" ng-click="$event.stopPropagation();">
+            <ul style="height: 35vh;overflow-y: auto;">
+                <li class="pl-10 pt-10 pr-10 pb-10 txtCenter txt000">
+                    <p style='overflow:hidden;overflow-x: auto;height: 33px;line-height: 33px;'>兴业银行兴业银行</p>
+                    <p style='overflow:hidden;overflow-x: auto;height: 33px;line-height: 33px;'>兴业银行兴业银行兴业银行兴业银行兴业银行兴业银行兴业银行</p>
+                    <p>兴业银行兴业银行</p>
+                    <p>兴业银行兴业银行</p>
+                    <p>兴业银行兴业银行</p>
+                </li>
+                <!-- <div class="popup-buttons abs" style="width: 100%;bottom: 0;"><button class="button ng-binding button-calm" ng-click="switchSelect()">确定</button></div> -->
+            </ul>
+        </div>
+    </div>
+    <ion-content>
+        <div class='bgWhite mt-5'>
+            <p class='pt-15 pl-15 txt666'>提现金额</p>
+            <div class='pt-10 pb-15 flexWrap ml-15 mr-15 bd-b'>
+                <span class='f-18' style='margin:auto;'>￥</span>
+                <input type="number" class='flexFix ml-5' ng-model='input.amount' placeholder="输入提现金额(提现金额必须大于100元)">
+            </div>
+            <div class='flexWrap pt-10 pb-10 pl-15 pr-15 txt666'>
+                <span>可提现金额</span>
+                <span class='pl-10'>{{amount  | currency : '￥'}}</span>
+                <span class='flexFix txtRight' style='color:#6C6AE9;' ng-click='allWithdraw()'>全部提现</span>
+            </div>
+        </div>
+        <div class='bgWhite mt-5'>
+            <div class='pl-15 pr-15 pt-15'>
+                <span>姓名</span>
+                <span class='f-10 ml-15' style='background-color: #FFEFD4;color:#D89874;transform: scale(0.80);padding:.1rem .3rem;'>只能提现到店主本人银行卡</span>
+            </div>
+            <div class="pt-10 pb-15 flexWrap ml-15 mr-15 bd-b">
+                <input type="number" class='pt-15 pb-15 width-100' ng-model='input.bankCard' placeholder="输入银行卡号">
+            </div>
+        </div>
+        <div class="pt-15 pb-15 pl-15 pr-15 flexWrap bd-b bgWhite" ng-click='choseBank();'>
+            <p class="f-15">选择银行</p>
+            <p class='flex pl-10 txt999'>兴业银行</p>
+            <p class="flex txtRight txt999">
+                <span class="icon-fanhui-copy"></span>
+            </p>
+            <!-- <div class='bgWhite abs pl-5 pr-5' ng-show='showBanksList' style='right:35px;max-height:22vh;width:50vw;overflow:hidden;overflow: auto'>
+                <p style='overflow:hidden;overflow-x: auto;height: 33px;line-height: 33px;'>兴业银行</p>
+                <p style='overflow:hidden;overflow-x: auto;height: 33px;line-height: 33px;'>兴业银行兴业银行兴业银行兴业银行兴业银行兴业银行兴业银行</p>
+                <p style='overflow:hidden;overflow-x: auto;height: 33px;line-height: 33px;'>兴业银行</p>
+                <p style='overflow:hidden;overflow-x: auto;height: 33px;line-height: 33px;'>兴业银行</p>
+                <p style='overflow:hidden;overflow-x: auto;height: 33px;line-height: 33px;'>兴业银行</p>
+                <p style='overflow:hidden;overflow-x: auto;height: 33px;line-height: 33px;'>兴业银行</p>
+            </div> -->
+        </div>
+        <div class='pt-15 pl-15 txt999'>
+            <span>常见问题</span>
+            <span class='icon-tiwen'></span>
+        </div>
+        <div class="btn-wrap" style="margin-top:10vh;width:100vw;">
+            <button class="btn btn-primary" ng-click="submit()">申请提现</button>
+        </div>
+    </ion-content>
+</ion-view>

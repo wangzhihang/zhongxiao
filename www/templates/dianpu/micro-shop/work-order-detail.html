@@ -1,0 +1,68 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content>
+    
+    <!-- <div class="getIdDeviceType" >
+        <ul class="mb-10">
+            <li><button class="device" ng-class='active' ng-click="lanOrderPay()">实名</button></li>
+        </ul>
+        <ul class="mb-10">
+            <li><button class="device" ng-class='active' ng-click="goRedeploy()">转派</button></li>
+        </ul>
+        <ul class="mb-10">
+            <li><button class="device" ng-class='active' ng-click="addRemark()">添加装维回执备注</button></li>
+        </ul>
+    </div> -->
+        <div class="number-order-list bgWhite number-order-list1">
+
+            <div class="top-hd-title1">
+                <h2 class="top-hd-title txt333 f-16">产品信息</h2>
+            </div>
+        
+            <ul>
+                <li class="orderDetailInfo1">
+                    <dl  class="f-14">
+                        <dd class="number-order-num" style="padding:0;border:0;">
+                            <div class="num-order-money mt-10">
+                                <span class="order-detail-num grap-detail-num" style="font-size:1.8rem">{{orderList.orderCode}}</span>
+                            </div>
+                        </dd>
+                        <dd class="order-detail-name hm-detail-name">
+                            <div class="txt999 f-16 num-order-name num-order-name1">{{orderList.contactAddress}}</div>
+                        </dd>
+                        <dd class="rel">
+                            <span>联系电话</span>
+                            <span class="orderTimer abs" >{{orderList.number | telFormat}}</span>
+                        </dd>
+                        <dd class="rel" ng-hide="orderList.status == '000006'">
+                            <span>下单时间</span>
+                            <span class="orderTimer abs">{{orderList.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </dd>
+                        <dd class="rel" ng-show="orderList.status == '000006'">
+                            <span>完成时间</span>
+                            <span class="orderTimer abs">{{orderList.finishDate | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </dd>
+                        <dd class="clear">
+                            <span class="fl">备注</span>
+                            <div class="fr" style="max-width:60vw">
+                                <p ng-repeat="item in remarkList track by $index">{{$index+1}}、{{item}}</p>
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+            
+                <!-- <li class="liNo"></li>
+         -->
+               
+        
+            </ul>
+        </div>
+</ion-content>
+
+</ion-view>

@@ -1,0 +1,400 @@
+<ion-view view-title="{{title}}" hide-nav-bar="true">
+
+    <ion-nav-buttons side="left">
+        <div ui-sref="index"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="userCenterSet">设置</div>
+        <!--  <i class="icon-xitongpeizhiguanli" style="font-size:16px;"></i> -->
+    </ion-nav-buttons>
+
+    <ion-content class="has-tabs" style="background-color:#F3F4F9;">
+        <div class="bgLayer rel">
+            <div class="bgLayerHeader flexWrap txtfff">
+                <div class="flexFix pl-20 pr-20 pt-20" ui-sref="news-list">
+                    <span class="icon-duanxin1 f-18"></span>
+                    <p>消息</p>
+                </div>
+                <div class="inlinebk txtCenter">
+                    <div class="flexWrap pt-20">
+                        <div class="flex pl-5 pr-5" ui-sref='userCenterSet'>
+                            <span class="icon-shezhi f-18"></span>
+                            <p>设置</p>
+                        </div>
+                        <div class="flex pl-5 pr-5" ui-sref='market-shopping-card'>
+                            <span class="icon-gouwuche1 f-18"></span>
+                            <p>购物车</p>
+                        </div>
+                        <div class="flex pl-5 pr-20" ui-sref="onlineService">
+                            <span class="icon-rexian f-18"></span>
+                            <p>客服</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="u-ctr-hd rel txtfff" style="background:transparent;">
+                <div class="user-pic mt-5" ng-click="photograph()">
+                    <img ng-src="{{avatar}}" id="userPic" alt="logo" style='width: 100%;' />
+                </div>
+                <div ui-sref="userCenterSet" class="pt-5 pb-5">
+                    <div class="user-info">
+                        <h2>
+                            <span>{{realName}}</span>
+                            <span>{{contractNumber}}</sapn>
+                        </h2>
+                        <p>
+                            <span>用户ID:</span>
+                            <span>{{signId}}<div>
+                        </p>
+                    </div>
+                    <div class="abs f-15" style="right:1.2rem;top:2.5rem;">
+                        <span>店铺管理</span>
+                            <span class="icon-fanhui transformX"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="abs layerContent" style="top:22vh;">
+            <div class="bgWhite ml-10 mr-10">
+                <div class="flexWrap pt-15  ml-15 mr-10" style="align-items:center;">
+                    <div class="flex rel">
+                        <p class="txtRed f-18">100.00</p>
+                        <p class="txt999">本月销售额(元)</p>
+                    </div>
+                    <div class="flex txtRight f-10">
+                        <span class="pl-10 pr-5" style="padding:.3rem 0;color:#D18D69;background:#FFEFD4;border-top-left-radius: 30px;border-bottom-left-radius: 30px;">查看销售额统计></span>
+                    </div>
+                </div>
+                <ul class="pb-15 pt-15 txt666 flexWrap ml-15 mr-15 bgWhite">
+                    <!-- 账户管理需判断 -->
+                    <li style="width:25vw;" class="rel" ng-click="userAccount()">
+                        <p class="f-17">200.00</p>
+                        <p class="txt999">余额(元)</p>
+                        <img class="abs" style="top: 20%;right: 15%;width: 30%;" src="img/ktx.png">
+                    </li>
+                    <li style="width:25vw;">
+                        <p class="f-17">20</p>
+                        <p class="txt999">订单总数量</p>
+                    </li>
+                    <!-- 累计收益需判断 ng-click="commissionRecord()" -->
+                    <li style="width:25vw;" ui-sref='cumulate-income'>
+                        <p class="f-17">2000.00</p>
+                        <p class="txt999">累计收益(元)</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="bgWhite ml-10 mr-10" ui-sref='visitor-detial'>
+                <div class="bd-t ml-15 mr-10">
+                    <div class="flexWrap bd-b pt-15 pb-15">
+                        <span class="flex txt666">今日有<span class="txtRed">10</span>人查看了你的商品</span>
+                        <div class="flex txtRight txt999">
+                            <span>查看详情</span>
+                            <span class="icon-fanhui-copy"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 ml-10 mr-10 border-radiu-5 bgWhite">
+                <div class="pl-15 pr-10">
+                    <div class="flexWrap bd-b pt-15 pb-15">
+                        <span class="flex f-16">我的分享赚</span>
+                        <div class="flex txtRight txt999">
+                            <span>查看</span>
+                            <span class="icon-fanhui-copy"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="pt-15 pb-15 pl-0 pr-0 txtCenter txt666 flexWrap">
+                    <li>
+                        <span class="icon-icon1101 f-20"></span>
+                        <p>待付款</p>
+                    </li>
+                    <li>
+                        <span class="icon-kuaidiyunshu f-20"></span>
+                        <p>待发货</p>
+                    </li>
+                    <li>
+                        <span class="icon-daoqishijian f-20"></span>
+                        <p>待收货</p>
+                    </li>
+                    <li>
+                        <span class="icon-daoqishijian f-20"></span>
+                        <p>待售后</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mt-5 border-radiu-5 bgWhite ml-10 mr-10">
+                <img src='img/dlb.png' style="width:100%;">
+            </div>
+            <div class="HeaderTip">
+                <div class="ml-10 mr-10  bgWhite border-radiu-5 pl-15 pr-10 pt-15" style="height:100%;">
+                    <div class="flexWrap bd-b pb-15" ui-sref='index_dl'>
+                        <span class="flex f-16">联通业务</span>
+                        <div class="flex txtRight txt999">
+                            <span>查看全部</span>
+                            <span class="icon-fanhui-copy"></span>
+                        </div>
+                    </div>
+                    <div class="flexWrap pt-15 pb-15">
+                        <div class="flex" ui-sref="numberOrderList">
+                            <p>20</p>
+                            <p class="txt999">号码订单</p>
+                        </div>
+                        <div class="flex" ui-sref="kdOrderList">
+                            <p>20</p>
+                            <p class="txt999">宽带订单</p>
+                        </div>
+                        <div class="flex" ui-sref="fixPhone">
+                            <p>20</p>
+                            <p class="txt999">固话订单</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 border-radiu-5 bgWhite pl-15 pr-10 ml-10 mr-10">
+                <div class="pt-15 pb-15 flexWrap bd-b" ui-sref="lock">
+                    <p class="flex f-15">设置手势解锁</p>
+                    <p class="flex txtRight txt999">
+                        <span class="icon-fanhui-copy"></span>
+                    </p>
+                </div>
+                <div class="pt-15 pb-15 flexWrap bd-b" ng-click="wxLogin()">
+                    <p class="flex f-15">{{weixinTop}}</p>
+                    <p class="flex txtRight txt999">
+                        <span>{{weixinName}}</span>
+                        <span class="icon-fanhui-copy"></span>
+                    </p>
+                </div>
+                <!-- <div class="pt-15 pb-15 flexWrap bd-b" ng-click="checkAuthorize()">
+                    <p class="flex f-15">支付宝授权</p>
+                    <p class="flex txtRight txt999">
+                        <span class="icon-fanhui-copy"></span>
+                    </p>
+                </div>
+                <div class="pt-15 pb-15 flexWrap bd-b" ng-click='userHuabeiRegister()'>
+                    <p class="flex f-15">花呗商家注册</p>
+                    <p class="flex txtRight txt999">
+                        <span class="icon-fanhui-copy"></span>
+                    </p>
+                </div> -->
+                <div class="pt-15 pb-15 flexWrap bd-b" style="align-items:center;" ui-sref="agencyInfo">
+                    <p class="flexFix f-15">发展人信息</p>
+                    <div class="width-70 txtRight txt999 inlinebk">
+                        <div class="flexWrap" style="align-items:center;">
+                            <div class="flex">
+                                <p>西安联通宽带连锁飞翔代理点</p>
+                                <p>飞翔代理点</p>
+                            </div>
+                            <span class="icon-fanhui-copy"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="pt-15 pb-15 flexWrap bd-b" ui-sref="commission">
+                    <p class="flex f-15">佣金返还规则</p>
+                    <p class="flex txtRight txt999">
+                        <span class="icon-fanhui-copy"></span>
+                    </p>
+                </div> -->
+                <div class="pt-15 pb-15 flexWrap bd-b" ui-sref="user-dianpu-card" ng-show='showDianpuCard'>
+                    <p class="flex f-15">我的卡片</p>
+                    <p class="flex txtRight txt999">
+                        <span class="icon-fanhui-copy"></span>
+                    </p>
+                </div>
+                <!-- <div class="pt-15 pb-15 flexWrap bd-b" ui-sref="news-list">
+                    <p class="flex f-15">系统公告</p>
+                    <p class="flex txtRight txt999">
+                        <span class="icon-fanhui-copy"></span>
+                    </p>
+                </div>
+                <div class="pt-15 pb-15 flexWrap bd-b" ui-sref="onlineService">
+                    <p class="flex f-15">在线客服</p>
+                    <p class="flex txtRight txt999">
+                        <span class="icon-fanhui-copy"></span>
+                    </p>
+                </div> -->
+                <div class="pt-15 pb-15 flexWrap bd-b" ui-sref="user-helper-center">
+                    <p class="flex f-15">帮助与客服</p>
+                    <p class="flex txtRight txt999">
+                        <span class="icon-fanhui-copy"></span>
+                    </p>
+                </div>
+                <div class="pt-15 pb-15 flexWrap bd-b" ui-sref="user-helper-advice-feedback">
+                    <p class="flex f-15">意见反馈</p>
+                    <p class="flex txtRight txt999">
+                        <span class="icon-fanhui-copy"></span>
+                    </p>
+                </div>
+                <!-- <div class="pt-15 pb-15 flexWrap bd-b" ui-sref="contactUs">
+                    <p class="flex f-15">技术支持</p>
+                    <p class="flex txtRight txt999">
+                        <span class="icon-fanhui-copy"></span>
+                    </p>
+                </div> -->
+                <div class="pt-15 pb-15 flexWrap bd-b" ui-sref="aboutUs">
+                    <p class="flex f-15">关于号码之家</p>
+                    <p class="flex txtRight txt999">
+                        <span class="icon-fanhui-copy"></span>
+                    </p>
+                </div>
+                <div class="pt-15 pb-15 flexWrap bd-b" ng-click="versionUpdate()">
+                    <p class="flex f-15">版本更新</p>
+                    <p class="flex txtRight txt999">
+                        <span class="txt999 abs f-13" style="right:10%;" ng-show='updateVersion'>{{lastUpdateTime}}(上次更新时间)</span>
+                        <span class="icon-fanhui-copy"></span>
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- <div class="u-ctr-hd rel bd-b">  充值订单 在线客服请注释
+            <div class="user-pic mt-5" ng-click="photograph()">
+                <img ng-src="{{avatar}}" id="userPic" alt="logo" />
+            </div>
+            <div ui-sref="userCenterSet" class="pt-5 pb-5">
+                <div class="user-info">
+                    <h2 class="txt000">
+                        <span claass='txt666'>{{realName}}</span>
+                        <span class="txt333">{{contractNumber}}</sapn>
+					</h2>
+					<p class="txt666">
+				        <span>用户ID:</span>
+                        <span>{{signId}}<span>
+					</p>
+				</div>
+				<span class="icon-fanhui abs transformX txt000" style="right:1.2rem;top:2.5rem;"></span>
+                </div>
+            </div>
+
+            <div class="uc-amount-statistics">
+                <ul>
+                    <li ng-click="userAccount()">
+                        <strong ng-bind-template="{{balance | currency : ''}}">0.00</strong>
+                        <small>账户余额（元）</small>
+                    </li>
+                    <li ng-click="commissionRecord()">
+                        <strong ng-bind-template="{{commission | currency : ''}}">0.00</strong>
+                        <small>总收益（元）</small>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="fun-menu">
+                <h2>我的订单</h2>
+                <div class="row light-bg padding-top padding-bottom" style="color:#999;">
+                    <div ui-sref="numberOrderList" class="col col-33 cen btnBg" style="border-right:1px #eaeaed solid;">
+                        <i class="icon-dingdanguanli1" style="font-size:2rem;color:#F51A83;"></i>
+                        <span class="block">号码订单</span>
+                    </div>
+                    <div ui-sref="kdOrderList" class="col col-33 cen btnBg" style="border-right:1px #eaeaed solid;">
+                        <i class="icon-gongzuopiaoqingkuang-chulizhong-" style="font-size:2rem;color:#FFA600;"></i>
+                        <span class="block">宽带订单</span>
+                    </div>
+                    <div ui-sref="fixPhone" class="col col-33 cen btnBg">
+                        <i class="icon-guhuakuandai" style="font-size:2rem;color:#65B5FE;"></i>
+                        <span class="block">固话订单</span>
+                    </div>
+                     <div ui-sref="telFareOrderList" class="col col-25 cen">
+					<i class="icon-chongzhidingdan" style="font-size:2rem;color:#44b549;"></i>
+					<span class="block">充值订单</span>
+			  </div>
+                </div>
+            </div>
+            <div class="user-menu-list">
+                <ul>
+                    <li class="btnBg">
+                        <a ui-sref="lock">
+                            <em><i class="icon-jiesuo" style="color:#FF9601;font-size: 2rem;"></i>设置手势解锁</em>
+                            <span class="icon-xiala2"></span>
+                        </a>
+                    </li>
+                    <li class="btnBg" ng-click="wxLogin()">
+                        <a>
+                            <em><i class="icon-weixin" style="color:#44b549;font-size: 2rem;"></i>{{weixinTop}}</em>
+                            <p class="abs txt999" style="right: 3%;top: 0">
+                                <span>{{weixinName}}</span>
+                                <span class="icon-xiala2" style="position: static;"></span>
+                            </p>
+                        </a>
+                    </li>
+                    <li ng-click="checkAuthorize()">
+                        <a>
+                            <em><i class="icon-zhifubaozhifu" style="color:#00A2E9;font-size: 2rem;"></i>支付宝授权</em>
+                            <span class="icon-xiala2"></span>
+                        </a>
+                    </li>
+                    <li ng-click='userHuabeiRegister()'>
+                        <a>
+                            <em><i class="icon-huabei" style="color:#00A2E9;font-size: 2rem;"></i>花呗商家注册</em>
+                            <span class="icon-xiala2"></span>
+                        </a>
+                    </li>
+                    <li class="btnBg">
+                        <a ui-sref="agencyInfo">
+                            <em><i class="icon-tuijianren" style="color:#8A94FF;font-size: 2rem;"></i>发展人信息</em>
+                            <span class="icon-xiala2"></span>
+                        </a>
+                    </li>
+                    <li class="btnBg">
+                        <a ui-sref="commission">
+                            <em><i class="icon-yongjinjiesuan" style="color:#FFB900;font-size: 2rem;"></i>佣金返还规则</em>
+                            <span class="icon-xiala2"></span>
+                        </a>
+                    </li>
+                    <li class="btnBg" ui-sref="user-dianpu-card" ng-show='showDianpuCard'>
+                        <a>
+                            <em><i class="icon-kaiqiachongzhidingdan" style="color:#44b549;font-size: 2rem;"></i>我的卡片</em>
+                            <span class="icon-xiala2"></span>
+                        </a>
+                    </li>
+                    <div class="liNo"></div>
+                    <li class="btnBg">
+                        <a ui-sref="news-list">
+                            <em><i class="icon-xiaoxitongzhi1" style="color:#66B6FE;font-size: 2rem;"></i>系统公告</em>
+                            <span class="icon-xiala2"></span>
+                        </a>
+                    </li>
+                    <li>
+					<a ui-sref="onlineService">
+						<em><i class="icon-zaixiankefu" style="color:#66B6FE;font-size: 2rem;"></i>在线客服</em>
+						<span class="icon-xiala2"></span>
+					</a>
+				</li>
+                    <li class="btnBg">
+                        <a ui-sref="user-helper-center">
+                            <em><i class="icon-bangzhuzhongxin" style="color:#65B5FE;font-size: 2rem;"></i>帮助中心</em>
+                            <span class="icon-xiala2"></span>
+                        </a>
+                    </li>
+                    <li class="btnBg">
+                        <a ui-sref="contactUs">
+                            <em><i class="icon-iconfont-jishu" style="color:#66B6FE;font-size: 2rem;"></i>技术支持</em>
+                            <span class="icon-xiala2"></span>
+                        </a>
+                    </li>
+                    <li class="btnBg">
+                        <a ui-sref="aboutUs">
+                            <em><i class="icon-shouye" style="color:#65B5FE;font-size: 2rem;"></i>关于号码之家</em>
+                            <span class="icon-xiala2"></span>
+                        </a>
+                    </li>
+                    <li class="btnBg">
+                        <a ng-click="versionUpdate()">
+                            <em><i class="icon-icon103" style="color:#44b549;font-size: 2rem;"></i><i class="abs txt333">版本更新</i></em>
+                            <span class="txt999 abs f-13" style="right:10%;" ng-show='updateVersion'>{{lastUpdateTime}}(上次更新时间)</span>
+                            <span class="icon-xiala2"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div> -->
+
+            <div class="btn-wrap">
+                <button class="btn btn-white" ng-click="loginOut()">安全退出</button>
+            </div>
+    </ion-content>
+
+
+</ion-view>

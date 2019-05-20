@@ -1,0 +1,90 @@
+<ion-view view-title="CBSS选号">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div style="padding-bottom: 15%;">
+			<div class="mt-10 mb-10 pl-10 f-10 txt999  ml-5" style="border-left:3px solid #1E82D2">开户</div>
+			<div class="directory-list">
+				<ul>
+					<li ng-click="cBSSOrder()" ng-show="appFuncListShow['000004']">
+						<div class="txt-info item01">
+							<span class="ico icon-wangshangxuanhao" style="color:#38BFB8;"></span>
+							<p><em>CBSS选号</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li>
+					<li ng-click="cbsszFuka()" ng-show="appFuncListShow['000004']">
+						<div class="txt-info item02">
+							<span class="ico icon-fuqia" style="color:#38BFB8;"></span>
+							<p><em>CBSS副卡</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li>
+					<li ng-click="cbssSemiManufactures()" ng-show="appFuncListShow['000019']">
+						<div class="txt-info item01">
+							<span class="ico icon-shoujiqia" style="color:#38BFB8;"></span>
+							<p><em>CBSS半成卡</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li>
+					<li ng-click="cbssDealerreturn()" ng-show="appFuncListShow['000018']">
+						<div class="txt-info item01">
+							<span class="ico icon-dingdan" style="color:#38BFB8;"></span>
+							<p><em>CBSS成卡返单</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li>
+					<li ng-click="cbssPhoneGiveFee()" ng-show="appFuncListShow['000011']">
+						<div class="txt-info item02">
+							<span class="ico icon-youhuiquan" style="color:#38BFB8;"></span>
+							<p><em>购机赠费</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="mt-10 mb-10 pl-10 f-10 txt999  ml-5" style="border-left:3px solid #1E82D2">服务</div>
+			<div class="directory-list">
+				<ul>
+					<!-- <li ng-click="CbssShangshi()" ng-show="appFuncListShow['000004']">
+						<div class="txt-info item02">
+							<span class="ico icon-changshi" style="color:#38BFB8;"></span>
+							<p><em>4G畅视卡</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li> -->
+					<li>
+						<div class="txt-info item03" ui-sref='dianpu-cbss-site-writeCard'>
+							<span class="ico icon-xieqia" style="color:#F00;"></span>
+							<p><em>现场写卡</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li>
+					<li ui-sref="dianpu-cbss-order_queryOrderInfo">
+						<div class="txt-info item03">
+							<span class="ico icon-fapiaoshenlingzhuangtaichaxun" style="color:#38BFB8;"></span>
+							<p><em>号码状态查询</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="mt-10 mb-10 pl-10 f-10 txt999  ml-5" style="border-left:3px solid #1E82D2">商务座机</div>
+			<div class="directory-list">
+				<ul>
+					<li>
+						<div class="txt-info item03" ui-sref='unicomm-cbss-fixed-information'>
+							<span class="ico icon-shangwuzuoji" style="color:#EE833C;"></span>
+							<p><em>商务座机</em></p>
+							<p><small>立即操作</small></p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,49 @@
+<ion-view view-title="{{title}}">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="directory-list">
+			<ul>
+				<li  ng-click='combination({"wx":true})'  ng-show="appFuncListShow['000020']">
+					<div class="txt-info item01">
+						<span class="ico icon-liantongxuanhao" style="color:#6fbe76;"></span>
+						<p><em>组合套餐</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li ng-click='wojia({"wx":true})'>
+					<div class="txt-info item02" ng-show="appFuncListShow['000021']">
+						<span class="ico icon-banlixinzhuang-" style="color:#6fbe76;"></span>
+						<p><em>共享套餐</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li ng-click='bssLan({"wx":true})'>
+					<div class="txt-info item01" ng-show="appFuncListShow['000022']">
+						<span class="ico icon-liantongxuanhao" style="color:#6fbe76;"></span>
+						<p><em>宽带单品</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li ng-click='wojiaShareSuburb({"wx":true})' ng-show="appFuncListShow['000030']">
+					<div class="txt-info item02">
+						<span class="ico icon-banlixinzhuang-" style="color:#6fbe76;"></span>
+						<p><em>郊县共享</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li ng-click='combination56({"wx":true})' ng-show="appFuncListShow['000020']">
+					<div class="txt-info item02">
+						<span class="ico icon-liantongxuanhao" style="color:#6fbe76;"></span>
+						<p><em>组合56套餐</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</ion-content>
+</ion-view>

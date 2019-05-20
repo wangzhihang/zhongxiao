@@ -1,0 +1,172 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	
+	<ion-nav-buttons side="right">
+		<div>
+			<i class=""></i>
+			<!--<span class="txtfff f-14">保存</span>-->
+		</div>
+	</ion-nav-buttons>
+	<div class="allCity" ng-show="isNoShowArea" ng-click="closeCity()" 
+	 		style="position: fixed;top: 0;left: 0;width: 100vw; height: 100vh;z-index: 1001;background: rgba(0, 0, 0, 0.7);">
+			<div class="sidebar location slip">
+				<ul class="first-list province" style="width:40%" ng-click="$event.stopPropagation();">
+					<li ng-repeat="item in provinceList" ng-class="{'selected':tag.current1=='{{item.id}}'} " ng-click="actions.setCurrent1('{{item}}')"> {{item.cateName}}省</li>
+				</ul>	
+				<ul class="other-list city" style="width:60%"  ng-click="$event.stopPropagation();">
+					<li ng-repeat="item in cityList" ng-class="{'selected':tag.current=='{{item.id}}'} " ng-click="actions.setCurrent('{{item}}')"> {{item.cateName}}市</li>
+				</ul>
+			    <!--<ul class="other-list city" style="width:60%"  ng-click="$event.stopPropagation();">
+					<li ng-repeat="item in area" ng-class="{'selected':tag.current=='{{item.id}}'} " ng-click="actions.setCurrent('{{item}}')"> {{item.cateName}}</li>
+				</ul>-->
+			</div>
+		</div>
+	<ion-content>
+		
+		<div class="mt-10 bgWhite "> 
+			
+			
+			
+			<div class="ml-15 mr-15">
+				<div class="row">
+					 <div class="col-20">
+					    <span class="f-14 impInfo">联系人</span>
+					 </div>
+					 <div class="col-80">
+					    <ul>
+					        <li><input type="text" placeholder="姓名"  ng-model="formInfo.receiveName"/></li>
+					        <li class="pt-10 pb-5 " style="border-top: 0.1rem solid #D9D9D9; ">
+					        	<span  ng-click="wxClick()" class="pl-10 pr-10 addLabel mr-10"
+					        	 ng-class="{'addLabel txtblue bgSmallBlue':ww,'addLabel ':!ww}">先生</span>
+					        	
+					        	<span  ng-click="wxClick()" class="pl-10 pr-10  addLabel"   
+					        	ng-class="{'addLabel ':ww,'addLabel txtblue bgSmallBlue':!ww}">女士</span>
+					        </li>
+					    </ul>
+					 </div>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			
+			<ul class="newAddInfo">
+				<li class="ml-15 mr-15">
+					<div class="row">
+					      <div class="col-20">
+					        <span class="f-14 impInfo">电话</span>
+					      </div>
+					      <div class=" col-50">
+					         <input type="text" placeholder="手机号码"  ng-model="formInfo.receivePhone"/>
+					      </div>
+					       <div class="col">
+					       <!--  <span class="fr txtblue ">+通讯录</span> -->
+					      </div>
+					 </div>
+				</li>
+				<li class="ml-15 mr-15"  ng-click="choseCity()">
+					<div class="row">
+					      <div class="col-20">
+					        <span class="f-14 impInfo">地址</span>
+					      </div>
+					      <div class=" col-67">
+					         <div class="labelForm txt999" style="line-height: 34px;margin-right: 12rem;" ng-click="choseCity()" >
+								{{arearValue}}
+							</div>	
+					      </div>
+					       <div class="col">
+					        <i class="icon-fanhui-copy fr"></i>
+					      </div>
+					 </div>
+				</li>
+
+
+				<!-- <li class=" pl-15 pr-15" ng-click="choseCity()">
+					<span class="f-14">所在地区</span>
+					<div class="labelForm txt999" style="line-height: 34px;margin-right: 12rem" ng-click="choseCity()">
+						{{arearValue}}
+					</div>	
+				<i class="icon-fanhui-copy ml-15"></i>
+				</li> -->
+
+
+				<li class="ml-15 mr-15">
+					<div class="row">
+					      <div class="col-20">
+					        <span class="f-14 impInfo">门牌号</span>
+					      </div>
+					      <div class="col-80">
+					        	<input type="text" placeholder="例：5号楼203室"  ng-model="formInfo.receiveAddress" style="width:100%"/>
+					      </div>
+					 </div>
+				</li>
+				<li class="ml-15 mr-15">
+					<div class="row">
+					      <div class="col-20">
+					        <span class="f-14 impInfo">标签</span>
+					      </div>
+					      <div class="col">
+					        	<span  ng-click="addressClick()" class="pl-10 pr-10 addLabel mr-10"
+					        	 ng-class="{'addLabel txtblue bgSmallBlue':xx,'addLabel ':!xx}">家</span>
+					        	
+					        	<span  ng-click="addressClick()" class="pl-10 pr-10  addLabel mr-10"
+					        	 ng-class="{'addLabel':xx,'addLabel txtblue bgSmallBlue':!xx}">公司</span>
+					        	
+					        	<!-- <span  ng-click="addressClick()" class="pl-10 pr-10 addLabel"
+					        	 ng-class="{'addLabel txtblue bgSmallBlue':xx,'addLabel ':!xx}">学校</span> -->
+					      </div>
+					 </div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class=" mt-10 okBtn pl-20">
+			<input type="button" value="确定"  class="txtfff f-16"   ng-click="save()"/>
+		</div>
+		
+		<!--<div class="loadingWrap" ng-if="loading">
+            <ion-spinner icon="ios"></ion-spinner>
+    	</div>-->
+		<!--<div class="bgWhite newadds" >	
+		<div>
+			<ul class="">
+				<li class=" pl-15 pr-15">
+					<span class="f-14" >收货人<input type="text" class="pl-25" ng-model="formInfo.receiveName" placeholder="收货人"/></span>
+				</li>
+				<li class=" pl-15 pr-15">
+					<span class="f-14" >联系电话<input type="text"  class="pl-15" ng-model="formInfo.receivePhone" placeholder="联系电话"/></span><i class="icon-tianjia"></i>
+				</li>
+				<li class=" pl-15 pr-15" ng-click="choseCity()">
+					<span class="f-14">所在地区</span><div class="labelForm txt999" style="line-height: 34px;margin-right: 12rem" ng-click="choseCity()">
+						{{arearValue}}
+						<select class="select mr-10" ng-model="selectedProvince" ng-options="item.cateName for item in provinceList" ng-change="selectProvince(selectedProvince)">
+							<option value="">选择省份</option>
+						</select>
+						<select class="select mr-10" ng-model="selectedCity" ng-options="item.cateName for item in cityList" ng-change="selectCity(selectedCity)" ng-if="cityVal">
+							<option value="">选择城市</option>
+						</select> 
+				<i class="icon-fanhui-copy ml-15"></i>
+				</li>
+			</ul>
+		</div>
+		<div class="newaddPut pl-15 pr-10">
+			<input ng-model="formInfo.receiveAddress" type="" placeholder="请填写详细地址，不少于5个字" />
+		</div>
+	</div>-->
+		<!--设为默认按钮-->
+		<!--<div class="mt-5">
+			 <ion-toggle toggle-class="toggle-assertive" ng-model="ifSetdeDefault" ng-checked="ifSetdeDefault" ng-click="setDefault(ifSetdeDefault)"
+                    class="f-14" style="border:none"> 设为默认</ion-toggle>
+		</div>-->
+	</ion-content>
+</ion-view>
+
+
+
+
+
+

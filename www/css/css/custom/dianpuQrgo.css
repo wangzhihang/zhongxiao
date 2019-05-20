@@ -1,0 +1,204 @@
+.productList li {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #e4e4e4;
+}
+.productList li:last-child {
+  border: none;
+}
+.productList li .cardicon {
+  width: 25%;
+}
+.productList li .cardInfo {
+  width: 75%;
+}
+.cardName {
+  font-weight: 800;
+}
+.userCardInfo li {
+  border-bottom: 1px solid #e4e4e4;
+  margin: 0 4%;
+}
+.userCardInfo li:last-child {
+  border: none;
+}
+.userCardInfo .infoType {
+  display: inline-block;
+  width: 36%;
+  line-height: 4.4rem;
+}
+.userCardInfo .infodel {
+  display: inline-block;
+  float: right;
+  line-height: 4.4rem;
+}
+.userCardInfo .cardAddress {
+  display: inline-block;
+  padding-left: 5%;
+  line-height: 4.4rem;
+  float: right;
+}
+.cardPic {
+  height: 12rem;
+}
+.cardPic img {
+  height: 100%;
+}
+.bussTypeChosed {
+  color: #1E82D2 !important;
+  background-color: #fff !important;
+}
+.choseContent {
+  display: flex;
+  justify-content: space-around;
+}
+.choseType ul {
+  height: 100vh;
+}
+.choseType ul li {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #eaeaea;
+}
+.choseType ul li span {
+  font-weight: 600;
+  display: block;
+  width: 8rem;
+}
+.typePart {
+  padding-top: 10px;
+}
+.typeTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cutline {
+  height: 0.1rem;
+  flex-grow: 1;
+  background-color: #f0f0f0;
+}
+.littleBox {
+  display: inline-block;
+  text-align: center!important;
+  padding: 1rem 0;
+  width: 32%;
+}
+.littleBox p {
+  color: #333;
+}
+.hotProduct {
+  height: 100vh;
+}
+.internetDrainage {
+  height: 100vh;
+}
+.shopDrainage {
+  height: 100vh;
+}
+.stockMaintain {
+  height: 100vh;
+}
+.yiye {
+  height: 100vh;
+}
+.type_card_BSS {
+  background-position: -2vw -1.5vh;
+}
+.type_card_CBSS {
+  background-position: -36.5vw -1.5vh;
+}
+.type_borad_combination {
+  background-position: -2vw -17vh;
+}
+.type_borad_share {
+  background-position: -37vw -17vh;
+}
+.type_borad_BSSsingleWide {
+  background-position: -71vw -17vh;
+}
+.type_borad_suburb {
+  background-position: -2vw -33vh;
+}
+.type_borad_CBSSsingleWide {
+  background-position: -37vw -33vh;
+}
+.type_affairs_landLine {
+  background-position: -2vw -49vh;
+}
+.type_affairs_makeUp {
+  background-position: -36.5vw -49vh;
+}
+.type_jiKe_BSSPick {
+  background-position: -2vw -64.5vh;
+}
+.type_jiKe_CBSSproper {
+  background-position: -2vw -80.2vh;
+}
+.type_tool_checkIdentity {
+  background-position: -2vw -95.5vh;
+}
+.type_tool_reWasteCard {
+  background-position: -36vw -96vh;
+}
+.type_code_scanCode {
+  background-position: -2vw -111.5vh;
+}
+.type_internet_share {
+  background-position: -1.5vw -41.4vh;
+}
+.type_internet_order {
+  background-position: -33vw -41.4vh;
+}
+.type_stock_23to4 {
+  background-position: -140vw -17vh;
+}
+.type_stock_afee {
+  background-position: -71vw -127vh;
+}
+.type_stock_lessConsume {
+  background-position: -105vw -33vh;
+}
+.type_stock_bussTransfer {
+  background-position: -140vw -33vh;
+}
+.type_share_weShop {
+  background-position: -72vw -143vh;
+}
+.type_share_unBuss {
+  background-position: -141.5vw -48.8vh;
+}
+.type_ord_numberOrder {
+  background-position: -37vw -127.5vh;
+}
+.type_ord_lanOrder {
+  background-position: -106.5vw -64.5vh;
+}
+.type_ord_lanCharge {
+  background-position: -141vw -64.5vh;
+}
+.type_shop_send {
+  background-position: -105.5vw -1.5vh;
+}
+.type_shop_install {
+  background-position: -139.5vw -1.5vh;
+}
+.type_shop_unicomSend {
+  background-position: -1.5vw -143vh;
+}
+.type_shop_unicomInstall {
+  background-position: -105.5vw -17vh;
+}
+.type_borad_CBSSwangCardWide {
+  background-position: -71vw -159vh;
+}
+.type_share_iceCream {
+  background-position: -2.6vw -174.5vh;
+}
+.type_share_newBroadband {
+  background-position: -141vw -158.5vh;
+}
+.type_share_giveBroadband {
+  background-position: -107vw -96vh;
+}

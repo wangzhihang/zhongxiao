@@ -1,0 +1,22 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="user-menu-list mt-0">
+			<ul>
+				<li ng-repeat="item in infoList" ng-click="answerContent('{{item.id}}','{{item.name}}')">
+					<a class="pl-0 f-bolder">
+						<em class="inlinebk width-90" style="line-height: normal;">{{item.name}}</em>
+						<span class="icon-xiala2"></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</ion-content>
+
+</ion-view>

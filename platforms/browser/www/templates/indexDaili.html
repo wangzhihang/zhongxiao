@@ -1,0 +1,348 @@
+<ion-view view-title="{{title}}">
+    <!-- <ion-nav-buttons side="right">
+		<div ui-sref="user-set" style="font-size:2rem;padding:.3rem 1rem;" ng-show="developIsHide">
+			<i class="icon-xitongpeizhiguanli"></i>
+		</div>
+	</ion-nav-buttons> -->
+
+    <ion-content class="has-tabs">
+        <ion-refresher pulling-text="下拉刷新" pulling-icon="icon-jiazaixia" refreshing-icon="" refreshing-text="正在获取服务器信息..." on-refresh="doRefresh()"></ion-refresher>
+        <div class="cen padding" ng-class='{"hide":loading}'>
+            <ion-spinner icon="ios-small"></ion-spinner>
+        </div>
+        <!-- <section class="userPanel userPanelIndex pt-20">
+			<h1 class="userPanelTitle omit" style="width:80vw;padding-left:0;">
+				<span class="logoIco" ng-show="isNoShowPig"><img src="{{headImgUrl}}" alt="dianpu"/></span>
+				<span class="logoIco" ng-hide="isNoShowPig"><img src="img/logo.png" alt="dianpu"/></span>
+				<em class="f-17 logoOrgName">{{orgName | cut:true:14:' ...'}}</em>
+			</h1>
+			<div ng-hide="developIsHide" style="padding:0rem .5rem 2rem;">
+				<p><strong>{{amount | currency : ''}}</strong><span>(元)</span></p>
+				<p class="rel" style="margin-top:0;"><span>总金额</span><span class="aboutAccountFlow abs" ui-sref="aboutAccountFlow">?</span> </p>
+			</div>
+			<a class="rtTopBtn rtTopBtnIndex" style="top:30px" ui-sref="user-set"><i class="icon-xitongpeizhiguanli"></i></a>
+			<a class="rtBtmBtn"  ng-click="withdrawCash()"  ng-hide="developIsHide">{{agencyValue}}</a>
+		</section> -->
+        <section class="userPanelSec bd-b">
+            <!-- <div class="inlineBlock" style="width:23vw;height:23vw;vertical-align: middle;">
+				<span class="logoIco logoIcoSpan" ng-show="isNoShowPig"><img src="{{headImgUrl}}" alt="dianpu"/></span>
+				<span class="logoIco logoIcoSpan" ng-hide="isNoShowPig"><img src="img/logo.png" alt="dianpu"/></span>
+			</div> -->
+            <div class="pl-10 mt-0 flexWrap pt-10" ng-hide="developIsHide">
+                <!-- <em class="f-15 logoOrgName">{{orgName | cut:true:14:' ...'}}</em> -->
+                <div class="inlineBlock saleamanIndexPic txtCenter">
+                    <!-- <div class="inlineBlock saleamanIndexPic txtCenter"
+				ng-click="photograph()"> -->
+                    <img src="{{headImgUrl}}" ng-show="isNoShowPig">
+                    <img src="img/logo1_03.png" ng-hide="isNoShowPig">
+                </div>
+                <div class="inlineBlock txt000 pl-10" style="width:74vw;">
+                    <p ng-click="transactionLog()" class="mt-5">
+                        <strong class="f-22">{{amount | currency : ''}}</strong><span class="f-10 ml-5">(元)</span>
+                    </p>
+                    <p class="rel mt-3">
+                        <span class="f-15">{{totleAmount}}</span>
+                        <span class="aboutAccountFlow abs" style="margin-top:-1rem;" ui-sref="aboutAccountFlow"><i class="icon-tiwen abs" style="top:.8rem;left:.1rem;"></i></span>
+                    </p>
+                    <p class="rel" style="height:2rem;" ng-hide="showWithdrawRed">
+                        <a class="rtBtmBtn abs txtBlue" ng-click="withdrawCash()" style="bottom:0;right:2%;border:1px #057EF5 solid!important;padding: .1rem 0.2rem;border-radius:5px;">{{agencyValue}}</a>
+                    </p>
+                </div>
+            </div>
+            <div class="pl-10 mt-0" ng-show="developIsHide">
+                <div class="inlineBlock saleamanIndexPic txtCenter">
+                    <!-- <div class="inlineBlock saleamanIndexPic txtCenter"
+				ng-click="photograph()"> -->
+                    <img src="{{headImgUrl}}" ng-show="headImg">
+                    <img src="img/logo1_03.png" ng-hide="headImg">
+                </div>
+                <div class="inlineBlock txt000" ui-sref="user-info" style="width:60vw;">
+                    <p class="ml-10 f-16 txt000">{{orgName | cut:true:12:' ...'}}</p>
+                    <span class="inlineBlock abs f-10 icon-fanhui transformX pt-5" style="right:1rem;top:2rem;">
+					</span>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="dataInfo mb-10">
+            <ul class="flexWrap">
+                <li class="flex text-center btnBg pt-10 pb-10" ng-click="todayOrderJump()">
+                    <p class="f-16 ordrerNumHeight">
+                        <strong>{{orderCntToday}}</strong>
+                        <span class="shangsheng"><i class="icon-shangsheng1" style="color:#E61A28;"></i></span>
+                    </p>
+                    <p class="f-14 txt999"><em>当日订单</em></p>
+                </li>
+                <li class="flex text-center btnBg pt-10 pb-10" ng-click="currentMonth()">
+                    <p class="f-16 ordrerNumHeight">
+                        <strong>{{orderCntThisMon}}</strong>
+                        <span class="shangsheng"><i class="icon-shangsheng1 transformY" style="color:#6DD17D;"></i></span>
+                    </p>
+                    <p class="f-14 txt999"><em>当月订单</em></p>
+                </li>
+                <li class="flex text-center btnBg pt-10 pb-10" ng-click="shopCountJump()">
+                    <p class="f-16 ordrerNumHeight"><strong>{{shopCount}}</strong></p>
+                    <p class="f-14 txt999"><em>店铺数</em></p>
+                </li>
+                <li class="flex text-center btnBg pt-10 pb-10" ng-click="loginShopCntJump()">
+                    <p class="f-16 ordrerNumHeight">
+                        <strong>{{loginShopCnt}}</strong>
+                        <span class="shangsheng"><i class="icon-shangsheng1 transformY" style="color:#6DD17D;"></i></span>
+                    </p>
+                    <p class="f-14 txt999"><em>当日登录</em></p>
+                </li>
+            </ul>
+        </div>
+
+        <section class="menuList bd-t bd-b mt-10 mb-5">
+            <ul class="grid">
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref="kk-order-list">
+                    <img src="img/order-01.png" alt="订单管理" class="menuIco" />
+                    <em class="itemName txt666">号码订单</em>
+                </li>
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref="kd-order-list">
+                    <img src="img/order-02.png" alt="业务员管理" class="menuIco" />
+                    <em class="itemName txt666">宽带订单</em>
+                </li>
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref="fixPhoneDaili">
+                    <img src="img/ghdd.png" alt="店铺管理" class="menuIco" />
+                    <em class="itemName txt666">固话订单</em>
+                </li>
+                <!-- <li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref="hf-order-list">
+					<img src="img/czdd.png" alt="充值订单" class="menuIco"/>
+					<em class="itemName txt666">充值订单</em>
+				</li> -->
+                <!-- <li class="itemCol itemCol4 text-center pt-10 pb-10" ng-click="salesmanManage()" ng-hide="isBCount">
+					<img src="img/order-03.png" alt="业务员管理" class="menuIco"/>
+					<em class="itemName txt666">业务员管理</em>
+				</li>
+				<li class="itemCol itemCol4 text-center pt-10 pb-10" ng-click="dianpuManage()">
+					<img src="img/dpgl.png" alt="店铺管理" class="menuIco"/>
+					<em class="itemName txt666">店铺管理</em>
+				</li> -->
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ng-click="jobnumConfig()" ng-hide="isBCount">
+                    <img src="img/order-04.png" alt="工号配置" class="menuIco" />
+                    <em class="itemName txt666">工号配置</em>
+                </li>
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref="daili-avatar-check">
+                    <img src="img/order-11.png" alt="照片审核" class="menuIco" />
+                    <em class="itemName txt666">照片审核</em>
+                </li>
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref="withdraws-cash-log" ng-hide="showWithdrawRed">
+                    <img src="img/tx.png" alt="提现记录表" class="menuIco" />
+                    <em class="itemName txt666">提现记录表</em>
+                </li>
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref="shop-inspection">
+                    <img src="img/xd.png" alt="巡店" class="menuIco" />
+                    <em class="itemName txt666">巡店</em>
+                </li>
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref="salesman-existing-card">
+                    <!--  ng-show="showSendCard" -->
+                    <img src="img/faka.png" alt="发卡" class="menuIco" />
+                    <em class="itemName txt666">派发SIM卡</em>
+                </li>
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref="daili-virtual-account" ng-show="showSendCommision">
+                    <img src="img/xnzz.png" alt="虚拟走账" class="menuIco" />
+                    <em class="itemName txt666">虚拟走账</em>
+                </li>
+                <!-- <li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref='daili-org-index-list'>
+					<img src="img/org.png" alt="机构管理" class="menuIco"/>
+					<em class="itemName txt666">机构管理</em>
+				</li> -->
+                <!-- <li class="itemCol itemCol4 text-center pt-10 pb-10" ng-show="showSendCommision" ui-sref='daili-saleman-send-commission'>
+					<img src="img/org.png" alt="派发佣金" class="menuIco"/>
+					<em class="itemName txt666">派发佣金</em>
+				</li> -->
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ng-show="agencyManagement" ng-click="dailiMangage()">
+                    <img src="img/org.png" alt="代理商管理" class="menuIco" />
+                    <em class="itemName txt666">代理商管理</em>
+                </li>
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ng-show="salesmanManagement" ng-click="salemanManage()">
+                    <img src="img/ywyjg.png" alt="业务员管理" class="menuIco" />
+                    <em class="itemName txt666">业务员管理</em>
+                </li>
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ng-show="shopManagement" ng-click="shopManage()">
+                    <img src="img/dpjg.png" alt="店铺管理" class="menuIco" />
+                    <em class="itemName txt666">店铺管理</em>
+                </li>
+                <!-- <li class="itemCol itemCol4 text-center pt-10 pb-10" ng-click="goOrgManage()">
+					<img src="img/org.png" alt="机构管理" class="menuIco"/>
+					<em class="itemName txt666">机构管理</em>
+				</li> -->
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref="daili-cbss-smscode-login">
+                    <img src="img/scbss.png" alt="CBSS验证码" class="menuIco" />
+                    <em class="itemName txt666">CBSS验证码</em>
+                </li>
+                <li class="itemCol itemCol4 text-center pt-10 pb-10" ng-click="cbssLoginOut()">
+                    <img src="img/cbsstc.png" alt="CBSS验证码" class="menuIco" />
+                    <em class="itemName txt666">CBSS退出</em>
+                </li>
+                <!-- <li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref='daili-financial-statistics'>
+					<img src="img/scbss.png" alt="财务统计" class="menuIco"/>
+					<em class="itemName txt666">财务统计</em>
+				</li>
+				<li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref='daili-product-statistics'>
+					<img src="img/scbss.png" alt="产品统计" class="menuIco"/>
+					<em class="itemName txt666">产品统计</em>
+				</li>
+				<li class="itemCol itemCol4 text-center pt-10 pb-10" ng-show="salesmanManagement" ui-sref='daili-saleman-statistics'>
+					<img src="img/scbss.png" alt="业务员统计" class="menuIco"/>
+					<em class="itemName txt666">业务员统计</em>
+				</li>
+				<li class="itemCol itemCol4 text-center pt-10 pb-10" ui-sref='daili-shop-statistics'>
+					<img src="img/scbss.png" alt="店面统计" class="menuIco" ng-show="shopManagement"/>
+					<em class="itemName txt666">店面统计</em>
+				</li> -->
+            </ul>
+        </section>
+        <!--		
+		<section class="menuList bd-t bd-b mt-10">
+			<h2 class="hdTitle hd bd-b pl-15">个性化配置</h2>
+			<ul class="flexWrap">
+				<li class="text-center pt-15 pb-15">
+					<img src="img/order-17.png" alt="预存列表设置" class="menuIco"/>
+					<em class="itemName">预存设置</em>
+				</li>
+				<li class="text-center pt-15 pb-15">
+					<img src="img/order-11.png" alt="个性化套餐" class="menuIco"/>
+					<em class="itemName">套餐设置</em>
+				</li>
+				<li class="text-center pt-15 pb-15">
+					<img src="img/order-12.png" alt="活动设置" class="menuIco"/>
+					<em class="itemName">活动设置</em>
+				</li>
+				<li class="text-center pt-15 pb-15" ui-sref="commission-set">
+					<img src="img/order-13.png" alt="激励佣金" class="menuIco"/>
+					<em class="itemName">激励佣金</em>
+				</li>
+			</ul>
+		</section>-->
+
+        <!--
+		<section class="menuList bd-t bd-b mt-10">
+			<h2 class="hdTitle hd bd-b pl-15">人员管理</h2>
+			<ul class="flexWrap">
+				<li class="text-center pt-15 pb-15" ui-sref="daili-shop-index">
+					<img src="img/order-10.png" alt="店铺管理" class="menuIco"/>
+					<em class="itemName">店铺管理</em>
+				</li>
+				<li class="text-center pt-15 pb-15" ui-sref="daili-salesman-index">
+					<img src="img/order-16.png" alt="业务员管理" class="menuIco"/>
+					<em class="itemName">业务员管理</em>
+				</li>
+			</ul>
+		</section>
+-->
+        <section>
+            <div class="tapStyle informationList">
+                <ul>
+                    <li class="bgWhite mb-5" ng-repeat="item in allDataSortDownByTime | limitTo: 5" ng-click="numberOrderDetail('{{item.orderCode}}','{{item.type}}',$index)" ng-show="item.showTag == '000001'||item.showTag == null">
+                        <div class="btnBg pl-10 pr-10">
+                            <div class="complexHdTitle1 rel">
+                                <div class="contrainIcon">
+                                    <i><img src="img/zpbl.png"></i>
+                                </div>
+                                <div class="topMiddle txt999">
+                                    <p class="omit">{{item.type}}</p>
+                                    <p><small>{{item.time | date:"dd/MM HH:mm"}}</small></p>
+                                </div>
+                                <div class="cancel abs" ng-click="cancel('{{item.id}}','{{item.showTag}}',$index);$event.stopPropagation();">
+                                    <img src="img/gb.png">
+                                </div>
+                            </div>
+                            <div class="flexWrap bottomInformation">
+                                <div class="flex">
+                                    <p class="txt333"><span style="color:#589DDB;">{{item.name}}</span>{{item.remark}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!--
+		<section class="menuList bd-t bd-b mt-10">
+			<h2 class="hdTitle hd bd-b pl-15">财务统计</h2>
+			<ul class="flexWrap">
+				<li class="text-center pt-15 pb-15" ui-sref="commission-log">
+					<img src="img/order-05.png" alt="佣金记录" class="menuIco"/>
+					<em class="itemName">佣金记录</em>
+				</li>
+				<li class="text-center pt-15 pb-15" ui-sref="withdraws-cash">
+					<img src="img/order-06.png" alt="提现申请" class="menuIco"/>
+					<em class="itemName">提现申请</em>
+				</li>
+				<li class="text-center pt-15 pb-15" ui-sref="withdraws-cash-log">
+					<img src="img/order-07.png" alt="提现记录" class="menuIco"/>
+					<em class="itemName">提现记录</em>
+				</li>
+				<li class="text-center pt-15 pb-15" ui-sref="shop-recharge-log">
+					<img src="img/order-08.png" alt="店铺充值记录" class="menuIco"/>
+					<em class="itemName">店铺充值</em>
+				</li>
+				<li class="text-center pt-15 pb-15" ui-sref="shop-recharge-log">
+					<img src="img/order-09.png" alt="财务统计" class="menuIco"/>
+					<em class="itemName">财务统计</em>
+				</li>
+			</ul>
+		</section>
+-->
+        <!--暂时链接查看-->
+        <!--
+		<div class="wrap mt-15 mb-15">
+			<div class="hdTitle bd-b">新增页面</div>
+			<ul class="flexWrap">
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="daili-shop-index">店铺管理</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="daili-shop-list">店铺列表</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="daili-shop">店铺详情</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="daili-shop-set">店铺设置</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="daili-add-shop">添加店铺表单</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="daili-shop-login-log">店铺用户登录记录</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="daili-shop-login-state">店铺用户登录状态记录</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="daili-salesman-index">业务员管理</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="daili-salesman">业务员详情</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="daili-add-salesman">添加业务员表单</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="daili-address-book-list">通讯录</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="daili-address-book-detail">通讯录详情</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="order-list">订单管理（列表）</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="kd-order-list">宽带订单（列表）</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="kd-order-detail">宽带订单（详情）</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="kk-order-list">开卡订单（列表）</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="kk-order-detail">开卡订单（详情）</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="hf-order-list">话费订单（列表）</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="hf-order-detail">话费订单（详情）</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="commission-log">佣金记录表</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="commission-set">佣金设置</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="user-info">用户信息</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="sign-in">登录</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="sign-up">注册</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="change-password">修改密码</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="uc">用户中心</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="user-account">账户余额</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="bind-bank-card">绑定银行卡</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="shop-recharge-log">店铺充值记录</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="transaction-log">交易流水</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="user-set">用户设置</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="cbss-shop-list">CBSS店铺列表</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="change-cbss-pwd">CBSS密码修改</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="add-cbss-account">添加CBSS工号</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="change-bss-pwd">BSS密码修改</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="bss-shop-list">BSS店铺列表</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="withdraws-cash">提现申请</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="withdraws-cash-log">提现记录表</li>
+				
+				
+				
+				
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="add-bss-account">添加BSS工号</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="cbss-account-list">CBSS工号列表</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="bss-account-list">BSS工号列表</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="cbss-developers-list">CBSS发展人列表</li>
+				<li class="flex mt-10 mb-10 mr-5 ml-5" ui-sref="bss-developers-list">BSS发展人列表</li>
+			</ul>
+		</div>
+-->
+    </ion-content>
+</ion-view>

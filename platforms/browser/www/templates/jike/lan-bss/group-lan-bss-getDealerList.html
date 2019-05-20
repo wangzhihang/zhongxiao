@@ -1,0 +1,58 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+<ion-nav-buttons side="left">
+	<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
+	<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+</ion-nav-buttons>
+<ion-content>
+
+	<div class="userInfoForm">
+		<ul>
+			<li>
+				<label>输入关键字：</label>
+				<input type="text" class="input-text" ng-model="input.delearkeyword" placeholder="请输入渠道相关关键词..."/>
+			</li>
+		</ul>
+	</div>
+
+
+	<div class="btn-wrap">
+		<button class="btn btn-primary" ng-click="getList()" ng-disabled="resState">获取渠道列表</button>
+	</div>
+	
+	<div class="search-show-list" ng-class='{"hide":list}' ng-repeat="item in dealerList">
+		<p ng-click="getUserList($index)" style="color:#333;">{{item.name}}</p>
+		<ul class="item-val" ng-class='{"hide":item.selected}'>
+			<li ng-repeat="user in userList" ng-click="order($index)" class="calm">{{user.name}}<i class="icon-xiala2 rt-transform-arrow fr"></i></li>
+		</ul>
+	</div>
+
+
+	<!--历史记录-->
+	<div ng-class='{"hide":historyLi}'>
+		<div class="search-show-list">
+			<h2>搜索历史：<a class="fr calm" ng-click="editHistory()">　 {{editHistoryText}}</a></h2>	
+			<p class="cen" ng-class='{"hide":historyTips}'>搜索记录为空</p>
+			<ul class="item-val">
+				<li ng-repeat="row in areaHistoryList" ng-click="queryHistory({{row}})">
+					<span class="icon-sousuo1" style="color:#999"></span>
+					{{row.key}}
+					<span class="rt-btn fr icon-shanchu" ng-class='{"hide":editHistoryBtn}'></span>
+				</li>
+			</ul>
+		</div>
+		<div class="padding cen" style="margin-top:1rem;">
+			<a ng-click="clearHistory()" style="color:#999;">清除搜索记录</a>
+		</div>
+	</div>
+	
+	<div class="cen padding" ng-class='{"hide":loading}'>
+		<ion-spinner icon="ios-small"></ion-spinner>
+	</div>
+	
+	
+</ion-content>
+
+</ion-view>

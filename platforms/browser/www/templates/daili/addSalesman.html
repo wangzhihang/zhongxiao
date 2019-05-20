@@ -1,0 +1,64 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index_dl"><i class="icon-shouyehui-shouye"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="formList">
+			<ul>
+				<li class="rowItem">
+					<div class="label">用户名：</div>
+					<div class="labelForm">
+						<input type="text" class="textBox" placeholder="如：b13288888888" ng-model="data.userName" ng-change="userName()"/>
+						<span class="vertical abs txtWarn" style="right:0;">{{userNameErrorTips}}</span>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">真实姓名：</div>
+					<div class="labelForm">
+						<input type="text" class="textBox" placeholder="联系人姓名" ng-model="data.realName" ng-change="realName()"/>
+						<span class="vertical abs txtWarn" style="right:0;">{{realNameErrorTips}}</span>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">联系电话：</div>
+					<div class="labelForm">
+						<input type="tel" class="textBox" placeholder="联系人手机号码" ng-model="data.contractNumber" ng-change="contractNumber()"/>
+						<span class="vertical abs txtWarn" style="right:0;">{{contractNumberErrorTips}}</span>
+					</div>
+				</li>
+			</ul>
+			<ul class="mt-10">
+				<li class="rowItem ">
+					<div class="label">设置密码：</div>
+					<div class="labelForm">
+						<input type="password" class="textBox" placeholder="设置密码" ng-model="data.password" ng-change="password()"/>
+						<span class="vertical abs txtWarn" style="right:0;">{{passwordErrorTips}}</span>
+					</div>
+				</li>
+				<li class="rowItem">
+					<div class="label">确认密码：</div>
+					<div class="labelForm">
+						<input type="password" class="textBox" placeholder="再次确认密码" ng-model="data.password1" ng-change="password()"/>
+						<span class="vertical abs txtWarn" style="right:0;">{{rePasswordErrorTips}}</span>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+
+		<div class="btn-wrap">
+			<!-- <ion-spinner icon="ios" class="spinner-light" ng-if="loading"></ion-spinner> -->
+			<button class="btn btn-primary" ng-click="submitForm()" ng-disabled="resState">{{stateTxt}}</button>
+		</div>
+
+		<!-- <div class="mt-15 pl-15 pr-15">
+			<button class="btn" ng-click="submitForm()" ng-disabled="resState">
+				<ion-spinner icon="ios" class="spinner-light" ng-if="loading"></ion-spinner>
+				<span>{{stateTxt}}</span>
+			</button>
+		</div> -->
+	</ion-content>
+</ion-view>

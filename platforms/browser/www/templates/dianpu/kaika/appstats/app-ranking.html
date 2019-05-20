@@ -1,0 +1,54 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>	
+	<ion-content>
+		<div class="app-ranking-menu">
+			<ul>
+				<li ng-class="{ 'active' : Tab.current == 1 }" ng-click="actions.setCurrent(1)">日榜</li>
+				<li ng-class="{ 'active' : Tab.current == 2 }" ng-click="actions.setCurrent(2)">月榜</li>
+			</ul>
+		</div>
+		<div class="app-ranking-hd-mark">
+			<span class="hd-item" style="text-align:left;">排名</span>
+			<span class="hd-item" style="text-align:center;">姓名</span>
+			<span class="hd-item" style="text-align:right;">开卡数量</span>
+		</div>
+		<div class="app-ranking-cont" ng-show="Tab.current == 1">
+			<div class="ranking-list">
+				<ul>
+					<li ng-repeat="item in shopTopDay">
+						<div class="ranking-item">
+							<h2>{{item.realName | cut:true:10:' ...'}}</h2>
+							<p>{{item.cateName}}</p>
+						</div>
+						<div class="ranking-item">
+							<em>{{item.numberOrderNum}}张</em>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="app-ranking-cont" ng-show="Tab.current == 2">
+			<div class="ranking-list">
+				<ul>
+					<li ng-repeat="item in shopTopMonth">
+						<div class="ranking-item">
+							<h2>{{item.realName | cut:true:10:' ...'}}</h2>
+							<p>{{item.cateName}}</p>
+						</div>
+						<div class="ranking-item">
+							<em>{{item.numberOrderNum}}张</em>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="cen padding" ng-show="loading">
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,60 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+
+	<div class="maskLayer" ng-hide="maskLayer">数据加载中...</div>
+	
+	<ion-content>
+
+
+	<div class="city-location">
+		<div class="selectArea">
+			<div class="regionInCity">
+			<select ng-model="area.CITY_CODE" ng-options="area.productName for area in dataAreas"></select>
+			</div>
+		</div>
+		<div class="search-box">
+			<input type="text" placeholder="输入小区名" class="s-input" ng-model="area.INSTALL_ADDRESS" />
+			<input type="button" value="查找" ng-click="queryaddress()" class="s-button" ng-class='{"disabled":butType}'/>
+		</div>
+	</div>
+
+	<!--历史记录-->
+	<div ng-class='{"hide":historyLi}'>
+		<div class="search-show-list">
+			<h2>搜索历史：<a class="fr calm" ng-click="editHistory()">　 {{editHistoryText}}</a></h2>	
+			<p class="cen" ng-class='{"hide":historyTips}'>搜索记录为空</p>
+			<ul class="item-val">
+				<li ng-repeat="row in areaHistoryList" ng-click="queryHistory({{row}})">
+					<span class="icon-sousuo1" style="color:#999"></span>
+					{{row.area.productName}}-{{row.key}}
+					<span class="rt-btn fr icon-shanchu" ng-class='{"hide":editHistoryBtn}'></span>
+				</li>
+			</ul>
+		</div>
+		<div class="padding cen" style="margin-top:1rem;">
+			<a ng-click="clearHistory()" style="color:#999;">清除搜索记录</a>
+		</div>
+	</div>
+
+	<!--检索结果-->
+	<div class="search-show-list" ng-class='{"hide":addrLi}'>
+		<h2>已覆盖地址：</h2>	
+		<p ng-class='{"hide":nocity}'>您好，您输入的小区暂时不在服务范围内或您输入的小区名错误，请重新输入！</p>
+		<div class="cen padding" ng-class='{"hide":loading}'><ion-spinner icon="ios-small"></ion-spinner></div>
+		<ul class="item-val" id="adderssList">
+			<li ng-click="order($index)" ng-repeat="row in addressList">{{row.addressName}}</li>
+		</ul>
+	</div>
+
+	</ion-content>
+
+</ion-view>

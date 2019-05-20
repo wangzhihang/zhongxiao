@@ -1,0 +1,241 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+
+
+    <ion-content class='has-tabs'>
+
+        <div class="cardTypePanel" ng-repeat="item in telList">
+            <div class="item-row rel">
+                <div class="item-row-span">
+                    <span class="kahao" style="color:#333;position: inherit;">{{item.handleNumber | telFormat}}</span>
+                    <span class="kahao" style="color:#333;position: inherit;" ng-if="!item.handleNumber">{{item.origNumber | telFormat}}</span>
+                </div>
+                <div ng-show='showBtnByStatus' class="abs" style="right:2%;top:25%;">
+                    <div ng-if="!item.showManage">
+                        <button class="min-btn" ng-click="order($index, true)" ng-if="(!$index) && showFukaBtn">按照副卡办理</button>
+                        <button class="min-btn" ng-click="order($index)">办理</button>
+                    </div>
+                    <div ng-if="item.showManage">
+                        <button class="min-btn" ng-disabled="true">已办理成功</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="number-order-list bgWhite number-order-list1">
+            <ul>
+                <li class="orderUserInfo">
+                    <dl class="rel">
+                        <dd>
+                            <span class="f-bolder f-15">产品信息</span>
+                            <span class="f-10 orderTimer abs {{status.class}}">{{status.txt}}</span>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="orderDetailInfo1">
+                    <dl class="f-14">
+                        <dd class="number-order-num" style="padding:0;border:0;">
+                            <div class="num-order-money mt-10">
+                                <span class="order-detail-num grap-detail-num" style="font-size:1.8rem">{{orderDetail.wechatOrder.number | telFormat}}</span>
+                            </div>
+                        </dd>
+                        <dd class="order-detail-name hm-detail-name">
+                            <div class="txt999 f-15 num-order-name num-order-name1">{{orderDetail.wechatOrder.productName}}</div>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">订单金额</span>
+                            <span class="flexFix pl-20 txt999" style="color:red;">{{orderDetail.wechatOrder.cardPrice | currency : '￥'}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">首次预存</span>
+                            <span class="flexFix pl-20 txt999" style="color:red;">{{orderDetail.ylProduct.prePrice | currency : '￥'}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">活动预存</span>
+                            <span class="flexFix pl-20 txt999" style="color:red;">{{orderDetail.ylProduct.activityPrice | currency : '￥'}}</span>
+                        </dd>
+                        <!-- <dd class="flexWrap">
+					<span class="detailLeftTopList">联通金额</span>
+					<span class="flexFix pl-20 txt999" style="color:red;">{{orderDetail.wechatOrder.amount | currency : '￥'}}</span>
+				</dd> -->
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">卡类型</span>
+                            <span class="flexFix pl-20 txt999">白卡</span>
+                        </dd>
+                        <dd class="flexWrap" ng-hide="orderDetail.wechatOrder.status=='000100'||orderDetail.wechatOrder.status=='000199'">
+                            <span class="detailLeftTopList">下单时间</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.wechatOrder.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </dd>
+                        <dd class="flexWrap" ng-show="orderDetail.wechatOrder.status=='000100'||orderDetail.wechatOrder.status=='000199'">
+                            <span class="detailLeftTopList">完成时间</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.wechatOrder.finishDate | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </dd>
+                        <dd class="flexWrap" ng-show="status.cancelValue">
+                            <span class="detailLeftTopList">取消原因</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.wechatOrder.cancelValue }}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">备注信息</span>
+                            <span class="flexFix pl-20 txt999" style="max-width:80%">{{orderDetail.wechatOrder.remark }}</span>
+                        </dd>
+                        <dd class="flexWrap" ng-click="updateNumber()">
+                            <span class="txtBlue">更改号码</span>
+                        </dd>
+                        <dd class="flexWrap" ng-if="status.btn.giveUp" ng-click="replaceMeal()">
+                            <span class="txtBlue">更换套餐</span>
+                        </dd>
+                        <dd class="flexWrap" ng-click="updatePrestored()">
+                            <span class="txtBlue">更改预存</span>
+                        </dd>
+                        <dd class="flexWrap" ng-click="lookVideo()" ng-show="showLookVideo">
+                            <span class="txtBlue">查看视频</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <select ng-model="select.sourceNow" ng-options="fB.name for fB in sourceList" class="input-text"></select>
+                        </dd>
+                    </dl>
+                </li>
+
+                <li class="liNo"></li>
+
+                <li class="orderUserInfo">
+                    <dl>
+                        <dd class="f-bolder f-15">
+                            <span class="txtRight" style="width: 84px;">用户信息</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">客户姓名</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.wechatOrder.customer === null ? '--' : orderDetail.wechatOrder.customer}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">联系方式</span>
+                            <a class="flexFix pl-20 txt999" href="tel:{{orderDetail.wechatOrder.contactNumber}}">
+						{{orderDetail.wechatOrder.contactNumber === null ? '--' : orderDetail.wechatOrder.contactNumber}}
+					</a>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">客户地址</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.wechatOrder.disName}} {{orderDetail.wechatOrder.location}} {{orderDetail.wechatOrder.contactAddress}}</span>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="liNo"></li>
+
+                <li class="orderUserInfo" ng-show="showCustomInfo">
+                    <dl>
+                        <dd class="f-bolder f-15 bd-0">
+                            <span class="txtRight" style="width: 84px;">身份证信息</span>
+                        </dd>
+                        <dd class="flexWrap bd-0">
+                            <div class="flex col-img">
+                                <img ng-src="http://z.haoma.cn/photo/{{orderDetail.customer.idCardImageBackUrl}}" ng-click="changePic('1')">
+                            </div>
+                            <div class="flex col-img">
+                                <img ng-src="http://z.haoma.cn/photo/{{orderDetail.customer.idCardImageUrl}}" ng-click="changePic('2')">
+                            </div>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">姓名</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.customer.name}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">性别</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.customer.sex}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">民族</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.customer.nation}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">住址</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.customer.address}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">出生日期</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.customer.birthday}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">身份证号</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.customer.cardId}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">签发机关</span>
+                            <span class="flexFix pl-20 txt999">{{orderDetail.customer.police}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">有效日期</span>
+                            <span class="flexFix pl-20 txt999">{{validStart}}—{{validEnd}}</span>
+                        </dd>
+                    </dl>
+                </li>
+
+            </ul>
+
+            <div class="img-wrap" ng-if="orderDetail.customer" style="margin-bottom:10px">
+                <div class="col-img"><img ng-style='imgProp' ng-src="http://z.haoma.cn/photo/{{orderDetail.customer.idCardHeadUrl}}" /></div>
+                <div class="col-img" ng-click="changePic('3')"><img ng-style='imgProp' ng-src="http://z.haoma.cn/photo/{{orderDetail.customer.customerImageUrl}}" /></div>
+                <div class="col-img">
+                    <img ng-style='imgProp' ng-src="http://z.haoma.cn/photo/{{orderDetail.shopOrder.signName}}" ng-hide="showBtn" />
+                    <div class="rel" style="height: 100%;" ng-show="showBtn">
+                        <div class="reSignBtn bgPrimary txtfff pt-10 pb-10 f-15 border-radiu-5 abs" style="left: 5%;top: 25%;width: 25vw;" ng-click="supplySignature()">补签名</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </ion-content>
+
+
+
+
+    <div class="bgWhite fixed bottomBtn bd-t" ng-show="!status.cancelValue">
+        <ul class="flexWrap">
+            <li class="flex bd-r" ng-click="goCancelOrder()" ng-if="status.btn.giveUp">
+                <span>取消订单</span>
+            </li>
+            <li class="flex bd-r" ng-click="addRemark()">
+                <span>添加备注</span>
+            </li>
+            <li class="flex active" ng-click="offLineManage()" ng-if="status.btn.manage">
+                <span>线下受理</span>
+            </li>
+            <li class="flex active" ng-click='fukaGo({"origNumber":"16666666666"})' ' ng-if="status.btn.fuka">
+                <span>加装副卡</span>
+            </li>
+            <li class="flex active" ng-click="send()" ng-if="status.ifShowSend">
+                <span>发货</span>
+            </li>
+            <li class="flex active" ng-click="orderFinish()" ng-if="status.ifShowfFinish">
+                <span>订单完成</span>
+            </li>
+            <li class="flex active" ng-click="manage()" ng-if="false">
+                <span>返销</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="bigPic flexWrap" ng-show="isShowBigPic">
+        <img ng-src="{{bigSizePic}}" ng-style="bigPic">
+        <div class="abs" style="top:1.5rem;right:1.5rem" ng-click="closeBigPic()">
+            <span><i class="icon-guanbi1 f-30" style="color:black;"></i></span>
+        </div>
+    </div>
+    <!-- 视频 -->
+    <div ng-show="showView" class="bigPic flexWrap rel">
+        <div class="abs" style="top:5.5rem;right:1.5rem;z-index: 1000;" ng-click="closeVideo();$event.preventDefault()">
+            <span><i class="icon-guanbi1 f-30" style="color:black;"></i></span>
+        </div>
+        <video class="flex" controls ng-src='{{customerVideoUrl}} '></video>
+    </div>
+
+
+</ion-view>

@@ -1,0 +1,91 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="commission-wrap">
+			<div class="commission">
+				<p>计算结果（单位：元）</p>
+				<p>
+					<strong ng-bind-template="{{commission | currency : ''}}"></strong>
+				</p>
+				<ul class="btm-menu">
+					<li ng-class="{ 'active' : data.current == 1 }" ng-click="actions.setCurrent(1)">佣金返还项</li>
+					<li ng-class="{ 'active' : data.current == 2 }" ng-click="actions.setCurrent(2)">佣金规则</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div ng-show="data.current == 1">
+			<div class="info-list" style="border-top:none;margin-top:0;">
+				<ul>
+					<li>
+						<div class="info-label">
+							<span>店铺奖励佣金</span>
+						</div>
+						<div class="info-cont">
+							<p style="text-align:right;margin-right:-1.8rem;" ng-model="extraCommission" ng-bind-template="{{extraCommission | currency : '￥'}}"></p>
+						</div>
+					</li>
+					<li>
+						<div class="info-label">
+							<span>请选择套餐</span>
+						</div>
+						<div class="info-cont" style="padding-right:0">
+							<label>
+								<select class="select" ng-model="selectProductName" ng-options="item.productName for item in productList" ng-change="selectedChange(selectProductName)" style="color:#999;">
+									<option value="">-- 请选择 --</option>
+								</select>
+								<button class="rt-btn rt-btn1">
+									<i class="icon-xiala2"></i>
+								</button>
+							</label>
+						</div>
+					</li>
+					<li>
+						<div class="info-label">
+							<span>选择参加活动</span>
+						</div>
+						<div class="info-cont" style="padding-right:0">
+							<select class="select" ng-model="selectActivityVal" ng-options="item.productName for item in activityList" ng-change="selectActivity(selectActivityVal)" style="color:#999;">
+								<option value="">-- 请选择 --</option>
+							</select>
+							<button class="rt-btn rt-btn1">
+								<i class="icon-xiala2"></i>
+							</button>
+						</div>
+					</li>
+					<li>
+						<div class="info-label">
+							<span>选择预存金额</span>
+						</div>
+						<div class="info-cont" style="padding-right:0">
+							<select class="select" style="color:#999;" ng-model="preChargeCommission" ng-change="selectRecharge(preChargeCommission)" ng-options="item.preCharge for item in preChargeList">
+								<option value="">-- 请选择 --</option>
+							</select>
+							<button class="rt-btn rt-btn1">
+								<i class="icon-xiala2"></i>
+							</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="btn-wrap">
+				<button class="btn btn-primary" ng-click="countCommission()" ng-disabled="resState">佣金模拟查询</button>
+			</div>
+		</div>
+		<div class="commission-tips" ng-show="data.current == 2">
+			<p>提示信息：</p>
+			<p>1.店铺佣金结算时最终总佣金为套餐佣金+所选活动佣金+预存话费佣金+店铺激励佣金</p>
+			<p>2.套餐佣金：店铺办理该套餐时可获得相应佣金</p>
+			<p>3.活动佣金：店铺办理该活动时可获得相应佣金</p>
+			<p>4.预存佣金：店铺预存话费的返还佣金</p>
+			<p>5.激励佣金：代理商根据店铺的发展量而设置的不同的奖励佣金</p>
+		</div>
+	</ion-content>
+
+</ion-view>

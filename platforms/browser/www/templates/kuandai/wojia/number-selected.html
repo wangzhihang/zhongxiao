@@ -1,0 +1,32 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+
+		<div class="getIdDeviceType" style="margin-bottom:1rem;">
+			<ul>
+				<li ng-if="newShow"><button class="device" ng-click="addNewNumber()">新装</button></li>
+				<li ng-if="intoShow"><button class="device" ng-click="intoOldNumber()">纳入</button></li>
+			</ul>
+		</div>
+		<div class="cardTypePanel" ng-repeat="item in numberLi">
+			<div class="item-row">
+				<div class="item-row-span fl">
+					<span class="kahao" style="color:#333;">{{item.number | telFormat}}</span>
+				</div>
+				<div class="item-row-span fr" style="text-align: right;">
+					<button class="min-btn" ng-click="delNumber(item.number)">放弃</button>
+					<button class="min-btn" ng-click="writeSim(item.number)" ng-disabled="item.numberWrite">写卡</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="btn-wrap" ng-show="nextBtn">
+			<button class="btn btn-primary" ng-click="order()">下一步</button>
+		</div>
+	</ion-content>
+</ion-view>

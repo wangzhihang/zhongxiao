@@ -1,0 +1,72 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="right">
+		<div ui-sref="number-filter" ng-if="filter">筛选</div>
+	</ion-nav-buttons>
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+
+	<div class="bar bar-subheader">
+		<div class="top-search-wrap">
+			<div class="search-wrap">
+				<div class="colwrap">
+					<input type="tel" maxlength="11" ng-model="input.bufenhaoma" class="textBox mt-5" placeholder="您喜欢的数字"/>
+					<label class="select-box">
+						<select ng-model="input.hm" ng-options="hmRow.name for hmRow in hmList" ng-change="switchTv(tvLi)"></select>
+					</label>
+				</div>
+				<div class="btnWrap">
+					<button class="s-go" ng-click="searchUnicommTel()">搜索</button>
+				</div>
+			</div>
+			<div class="topNumber" ng-if="occupyShow">
+				<ul class="bgWhite pl-5 pr-5">
+					<li class="flexWrap flexCen pt-10 pb-10" ng-repeat="row in occupyNumber">
+						<div class="flex">
+							<strong class="assertive">{{row.tel | stringFormat}}</strong>
+						</div>
+						<div>
+							<a class="btn ml-5 btnPrimary" ng-click="continueOrder($index)">继续办理</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<ion-content style="padding-top:{{occupyHeight+1}}rem;">
+		<div id="number-list" class="number-list" style="padding-top:{{occupyShow ? '.4' : 0}}rem;">
+			<ul>
+				<li  ng-repeat="row in numberList" ng-class='{"num-sold":row.isOrdered,"num-selected":row.select}' ng-click="liSelect($index)">
+					<div class="tel"><span>{{row.numCutOne}}</span><span>{{row.numCutTwo}}</span><span>{{row.numCutThree}}</span></div>
+					<div class="lanum">{{row.cityStr}} 联通</div>
+					<div class="price">
+						<span ng-class='{assertive:(row.preCharge > disPreCharge)}'>预存:</span><span class="rmb_icon" ng-class='{assertive:(row.preCharge > disPreCharge)}'>{{row.preCharge | telPreCharge:row.goodType}}</span>
+						<span ng-class='{assertive:(row.lowCost > 0)}'>(最低消费:<i>{{row.lowCost}}</i>)</span>
+					</div>
+					<div class="pop-operate">
+						<div class="operate-wrap">
+							<div class="btn order" ng-click='order($index)'>预 约</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<ion-infinite-scroll ng-if="domore" on-infinite="loadOlderStories()" immediate-check="false" distance="2%"></ion-infinite-scroll>
+		<div class="cen padding" ng-hide="loading[0]"><ion-spinner icon="ios-small"></ion-spinner></div>
+		<div class="noMore" ng-hide="loading[1]"><span>没有更多了</span></div>
+		<div class="noMore" ng-hide="loading[2]"><span>没有符合要求的号码</span></div>
+	</ion-content>
+
+
+	<div class="btn-search">
+		<ul>
+			<li class="active" ng-click="inputTel()" style="border-radius:15%;">
+				<span>定制</span>
+				<span>号码</span>
+			</li>
+		</ul>
+	</div>
+</ion-view>

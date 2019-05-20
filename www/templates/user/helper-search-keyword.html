@@ -1,0 +1,32 @@
+<ion-view view-title="{{title}}" hide-nav-bar="isNoShowHeader" hide-tabs="isNoShowHeader">
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+        <p class="rel">
+            <input type="text" placeholder="搜索" style="width:70vw;border-radius:5px;" class="pl-10 pr-10 bd" ng-model="keyword" ng-disabled="isNoShowHeader">
+            <span class="vertical text-999 pl-15 abs pt-10 pb-10" ng-click="lookKeywords(keyword)" style="right:0;"><i class="icon-sousuoic txt999"></i></span>
+        </p>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="bgWhite" ng-hide="showMaskLayer">
+            <div class='txt666 f-17 pl-15 pt-10 pb-10'>热门搜索</div>
+            <div class="hotSearchKeyword">
+                <span class="txt666 inlinebk" ng-repeat="item in keyWords" ng-click="search('{{item}}')">{{item}}</span>
+            </div>
+        </div>
+        <!-- 搜索遮罩层 -->
+        <div class="user-menu-list mt-0" ng-show="showMaskLayer">
+            <ul>
+                <li ng-repeat="item in infoList" ng-click="answerContent('{{item.id}}','{{item.name}}')">
+                    <a class="pl-0 f-bolder">
+                        <em>{{item.name}}</em>
+                        <span class="icon-xiala2"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </ion-content>
+
+</ion-view>

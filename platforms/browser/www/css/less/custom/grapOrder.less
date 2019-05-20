@@ -1,0 +1,166 @@
+.grapOrderArea,.grapOrderState{
+      position: fixed;
+      top: 4.3rem;
+      left: 0rem;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 200;
+}
+.grapOrderArea .grapAreaInfo,.grapOrderState .grapStateInfo{
+    width:100%;
+    max-height:23rem;
+    overflow: auto;
+}
+.grapOrderArea .grapAreaInfo i,.grapOrderState .grapStateInfo i{
+    color:red;
+    font-size: 1.4rem;
+}
+.gragOrderChange{
+    position: fixed;
+    top: 0rem;
+    left: 0rem;
+    width:100vw;
+    height:100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index:200;
+    .gragChangeInfo{
+        position: absolute!important;
+        left: 50%;
+        top: 50%;
+        width:90%;
+        height:75vh;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        min-height: 22rem;
+        max-height: 100vh;
+        overflow-y: scroll;
+        background-color: #fff;
+        position: relative;
+        .gragOrderSetTop{
+            ul{
+                li:first-of-type,li:last-of-type{
+                    width:100%;
+                    height:1px;
+                    background-color:#eaeaed;
+                    margin-top: 1rem;
+                }
+            }
+            
+        }
+        .gragOrderModel{
+            margin-top: 1rem;
+            padding: 1rem;
+            .bgGray;
+        }
+        .gragChangeList li span{
+            padding:1.3rem .2rem;
+            border-radius: 3px;
+            background-color: #eaeaed;
+            font-size: 1.2rem;
+            width:68%;
+            display: inline-block;
+            text-align: center;
+            &.active1{
+                border-color: #6fbe76;
+                color:#6fbe76;
+            }
+        }
+        .gragChangeBtn{
+            position: absolute;
+            bottom: 0;
+            left:0;
+            width:100%;
+        }
+    }
+    
+}
+
+.wxOrderNav{
+    position: fixed;
+    left:0;
+    top:0;
+    right:0;
+    padding: 0.2rem 3%;
+    background: #fff;
+    border-bottom: 1px solid #eaeaed;
+    width:100%;
+}
+.wxOrderNav li{
+    padding: 1rem 0;
+}
+.wxOrderNav li.chosed{
+    color:#1e82d2;
+    /*border-bottom: 1px solid #6fbe76;*/
+}
+.waitColor{color:#0085cf!important;border: 1px solid #0085cf;border-radius: 3px;}
+.successColor{color:#6fbe76!important;border: 1px solid #6fbe76;border-radius: 3px;}
+.failureColor{color:#999!important;border: 1px solid #999;border-radius: 3px;}
+.dealColor{color:#FD7400!important;border: 1px solid #FD7400;border-radius: 3px;}
+.signatureColor{color:#0085cf!important;border: 1px solid #0085cf;border-radius: 3px;}
+.verifyColor{color:#c29c5e!important;border: 1px solid #c29c5e;border-radius: 3px;}
+.cancelColor{color:@colorWarn!important;border: 1px solid @colorWarn;border-radius: 3px;}
+.submitColor{color:#5AA250!important;border: 1px solid #5AA250;border-radius: 3px;}
+.approveSucColor{color:@colorSuccess!important;border: 1px solid @colorSuccess;border-radius: 3px;}
+.approveFailColor{color:#999!important;border: 1px solid #999;border-radius: 3px;}
+
+.grapOrderBot{
+    width:100vw;
+    position: fixed;
+    left: 0;
+    right:0;
+    bottom: 0;
+    z-index: 100;
+    box-shadow: 0 5px 10px 10px rgba(124,128,150,.6);
+    background-color: #fff;
+    .grapOrderBotPic{
+        width:30px;
+        height: 30px;
+        margin:0 auto 0px;
+        img{
+            width:100%;
+            height:100%;
+            overflow:hidden; 
+        }
+    }
+    .grapOrderBotCen{
+        background: #fff;
+        width:75px;
+        height:75px;
+        position: absolute;
+        left: 50%;
+        top: 2%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 101;
+        img{
+            width:90%;
+            height:90%;
+            overflow:hidden; 
+        }
+    }
+    .grapOrderBotVal{
+        // width:45px;
+        position: absolute;
+        left: 50%;
+        top: -4%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        z-index: 102;
+        color: #999;
+    }
+}
+@-webkit-keyframes rotation{
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+    }
+
+.Rotation{
+    -webkit-transform: rotate(360deg);
+    animation: rotation 3s linear infinite;
+    -moz-animation: rotation 3s linear infinite;
+    -webkit-animation: rotation 3s linear infinite;
+    -o-animation: rotation 3s linear infinite;
+    transform-origin:center;
+}

@@ -1,0 +1,227 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons><br />
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<!--<div class="payPosition">
+		<div class="payFooter">
+			<div class="payPay">
+				<span class="f-14 txtRed pr-10" >微信支付:￥{{totalPrice | number:2}}</span>
+				<div class="triangle-left"></div>
+			</div>
+			<input type="button" value="支付订单" class="pl-25 pr-25 f-16 fr"  ng-click="toPay()"/>
+		</div>
+	</div>-->
+	
+	<div class="indexAddBags clear">
+		<div class="fl pl-15 indexCar">
+			<span class="txtfff f-16 " style="line-height: 4rem;">待支付￥{{ amountPayment | number:2}}<span class="txt999 f-12 pl-3"><!--   ng-show="($scope.active)!=null"  -->| 已优惠￥{{discount}}</span></span>
+		</div>
+		<div class="fr "  ng-click="upOrd()">
+			<span class="txtfff f-16 ordPay pl-15 pr-15" style="background-color: #38ca73;line-height:48px;">提交订单</span>
+		</div>
+	</div>
+	
+	<ion-content>
+		<!--缓冲圈-->  
+		<!--<div class="loadingWrap" ng-if="loading">
+            <ion-spinner icon="ios"></ion-spinner>
+        </div>-->
+		
+		
+		<div class="scrollOk"   ui-sref="market-adds" >	
+			<div  class="newAddress">
+			<div class="row" >
+		       <div class="col col-10">
+		         <div class="col-demo"><i class="icon-dizhi1" style="color:#0097fc;line-height: 4.8rem;"></i></div>
+		       </div>
+		       <div class="col" ><!--  ng-hide="noDefaultAdd" -->
+			         <div class="col-demo" >
+			         	<span class="txt000 f-14" style="font-weight: 600;">{{defaultAdd.receiveName}}
+			         		<!-- <span class="txt000 f-14 pl-10">女士</span> -->
+			         	</span>
+			         		<span class="txt000 f-14 pl-10">{{defaultAdd.receivePhone}}</span>
+			         	<p >
+			         	{{defaultAdd.province}}{{defaultAdd.city}}{{defaultAdd.receiveAddress}}</p>
+
+			         </div>
+				</div>
+
+
+
+		        <!--  <div class="col" ng-show="noDefaultAdd" style="text-align: center;line-height: 50px;">
+		         	<span class="f-18 txt999">+&nbsp&nbsp&nbsp新建地址</span>
+		        </div> -->
+
+
+		       <div class="col col-10">
+		         <div class="col-demo"><i class="icon-fanhui-copy" style="line-height: 4.8rem;"></i></div>
+			</div>
+		</div>		
+		</div>	
+			
+			<!--<div class="newAddress" ng-show="ifShowChoose">
+					<span class="f-18 txt999">+选择收货地址</span>
+			    </div>
+			<div class="" ng-show="!ifShowChoose" style="background-color: #fff;position: absolute;width: 98%;height: 95%; top: 2%;left: 1%;">
+				<div style="padding-top: 10%;line-height: 2.5rem">
+					<span class="txt999 f-16 pl-20">收货人：{{receive.receiveName}}</span><span class="pl-15 txt999 f-16 fr pr-20">{{receive.receivePhone}}</span>
+					<p class="f-14  txt999 "><i class="icon-dizhi1" style="font-size: 1.5rem;"></i>收货地址：{{receive.province}}{{receive.city}}{{receive.receiveAddress}}</p>
+				</div>
+			</div>-->
+		
+		</div>	
+	
+	
+	
+	<div class="payWay mt-10">
+		
+		<ul class="payCheck">
+			
+			<li class="longLine pl-10" ng-click="chosePayType(1)">
+				<i class="icon-weixinzhifu" style="font-size:2rem;color:#59b64c"></i><!--  -->
+				<span class="txt000 f-14">微信支付</span>
+				<i  ng-class="{'icon-xuanzedui txtblue':tag.current == 1,'icon-xuanze ':tag.current != 1} "  class="fr pr-10" style="line-height: 4rem; font-size: 2rem;"></i>
+			</li>
+			<!-- <li class=" ml-10" ng-click="wxClick()">
+				 <i class="icon-zhifubao" style="font-size:2rem;color:#009fe8"></i>
+				 <span class="txt000 f-14">支付宝</span>
+				 <i  ng-class="{'icon-xuanze':ww,'icon-xuanzedui  txtblue':!ww} " class="fr pr-10" style="line-height: 4rem; font-size: 2rem;"> </i>
+			</li> -->
+			<li class="longLine pl-10" ng-click="chosePayType(2)">
+				<i class="icon-weixinzhifu" style="font-size:2rem;color:#59b64c"></i>
+				<span class="txt000 f-14">沃支付</span>
+				<i  ng-class="{'icon-xuanzedui txtblue':tag.current == 2,'icon-xuanze ':tag.current != 2} "  class="fr pr-10" style="line-height: 4rem; font-size: 2rem;"></i>
+			</li>
+			<li class="longLine pl-10" ng-click="chosePayType(3)">
+				<i class="icon-weixinzhifu" style="font-size:2rem;color:#59b64c"></i><!--  -->
+				<span class="txt000 f-14">花呗分期</span>
+				<i  ng-class="{'icon-xuanzedui txtblue':tag.current == 3,'icon-xuanze ':tag.current != 3} "  class="fr pr-10" style="line-height: 4rem; font-size: 2rem;"></i>
+			</li>
+		</ul>
+	 </div>
+	 <div class="bgWhite" ng-show="HuabeiStag">
+	 	<ul>
+	 		<li class="flexWrap pt-10 pb-10 pl-10 pr-10 bd-b" style="align-items: center;" ng-click="switchPer(1)">
+				<div class="flex pl-10">
+					<div class="flexWrap" style="flex-direction: column;">
+						<p class="flex">{{boa.eachToal | currency : '￥'}}*{{boa.qishu}}期</p>
+						<p class="flex txt999">手续费{{boa.serviceCharge | currency : '￥'}}/期</p>
+					</div>
+				</div>
+				<div class="flex txtRight">
+					<label class="inlinebk" style="width: 12vw;">
+						<input type="radio" name="withdrawsList" ng-model="tag1.current1" class="hide"/>
+						<span class="vertical pl-10 pr-10 f-18">
+							<i ng-class="tag1.current1 == true ? 'icon-xuanzedui txtSuccess' : 'icon-xuanze txt999'"></i>
+						</span>
+					</label>
+				</div>
+			</li>
+			<li class="flexWrap pt-10 pb-10 pl-10 pr-10 bd-b" style="align-items: center;" ng-click="switchPer(2)">
+				<div class="flex pl-10">
+					<div class="flexWrap" style="flex-direction: column;">
+						<p class="flex">{{bob.eachToal | currency : '￥'}}*{{bob.qishu}}期</p>
+						<p class="flex txt999">手续费{{bob.serviceCharge | currency : '￥'}}/期</p>
+					</div>
+				</div>
+				<div class="flex txtRight">
+					<label class="inlinebk" style="width: 12vw;">
+						<input type="radio" name="withdrawsList" ng-model="tag1.current2" class="hide"/>
+						<span class="vertical pl-10 pr-10 f-18">
+							<i ng-class="tag1.current2 == true ? 'icon-xuanzedui txtSuccess' : 'icon-xuanze txt999'"></i>
+						</span>
+					</label>
+				</div>
+			</li>
+	 	</ul>
+	 </div>
+        
+        
+	
+	
+
+	<!--<div class="ordInfo mt-10">
+		<div class="pt-10 pb-10 pl-15 pr-15">
+			<img src="../../img/logo1_03.png" />
+			<span class="pl-5 f-14">号码之家</span>
+		</div>
+		<ul>
+			<li class="infOrd haveLine" ng-repeat="item in productList">
+				<div>
+					<img src="{{item.imgUrl}}"/>
+				</div>
+				<div class=" pr-15 pb-10 pt-15" style="width:100%;">
+				    <div style="display: flex;justify-content: space-between;align-items: center;">
+						<span class="txt000 f-15  fl">{{item.productName}}{{item.keywords}}</span>
+						<span class="f-14 txt999 fr" style="display: inline-block;">x {{item.nums}}</span>
+					</div>
+					<p class="txtRed f-18 infoPrice fr mt-5" style="display:block">￥{{item.price}}</p>
+				</div>
+			</li>
+			
+		</ul>
+	</div>-->
+
+	
+	<div class="payInfo  mt-10 bgWhite">
+		
+		<div class="pt-10 pb-10 pl-15 pr-15 ordword ">
+			<img src="../../img/logo1_03.png" />
+			<span class="pl-5 f-14">号码之家</span>
+		</div>
+		
+
+
+		<ul class="shotLine">
+			<li class=" pt-10 pb-10 "  ng-repeat="item in carList track by $index">
+				<div class="row">
+				    <div class="col col-67">
+				      	<span class="txt000 f-14 pr-10 pl-10">{{item.productName}}{{item.keyword}}</span>
+				    </div>
+				    <div class="col">
+				     	<span class="txt000 f-14 pr-10"><span class="txt999 f-14 pr-15 pl-10">x {{item.orderNum}}</span>￥{{item.soldPrice}}</span>
+				    </div>
+				</div>
+			</li>
+		</ul>
+		
+
+
+		
+
+		<div class=" pl-15  pr-15 shotLine clear" ><!-- ng-show="($scope.activeBos)!=null"  -->
+			<span class="pt-10 pb-10 fl"><span class="mr-5 txtfff f-10 pl-3 pr-3" style="background-color: #f5520f;line-height: 1.6rem;border-radius: 0.3rem;" >减</span>在线支付立减优惠</span>
+			<span class="pt-10 pb-10 fr txtBigOrange" >-￥{{discount}}</span><!-- ng-show="($scope.activeBos)!=null"   -->
+		</div>
+		
+
+
+
+		<div class=" shotLine clear pl-15 pr-15"> 
+			<span class="fr pt-10 pb-10">订单￥{{totalPrice | number:2}}&nbsp&nbsp
+				<span>优惠￥{{discount}}</span>
+				<!-- ng-show="($scope.activeBos)!=null" -->
+				<span class=" pl-15" style="font-weight: 600;">待支付￥{{ amountPayment | number:2}}</span>
+			</span>
+		</div>
+	
+
+	</div>
+
+	<!-- <div ng-bind-html="comboPage"></div> -->
+	<div class="ComInfo" id="ComInfo">
+		<!-- <iframe class="iframComInfo" id="addOther" srcdoc="{{comboPage}}" style="margin-bottom: 10vh;"></iframe> -->
+	</div>
+
+	
+
+			       
+	</ion-content>
+</ion-view>
+
+
+
+

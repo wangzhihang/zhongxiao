@@ -1,0 +1,47 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="pl-10 pr-10 bgWhite">
+            <div class="pt-10 pb-10 clear bd-b">
+                <span class="fl txt000 f-16">订单信息</span>
+                <span class="fr {{orderItem.status | orderColor : 'color'}}">{{orderItem.status | orderColor : 'name'}}</span>
+            </div>
+            <div class="pt-10 pb-10 clear  bd-b">
+                <span class="fl txt000">套餐</span>
+                <span class="fr txt999">{{orderItem.productName}}</span>
+            </div>
+            <div class="pt-10 pb-10 clear  bd-b">
+                <span class="fl txt000">预约时间</span>
+                <span class="fr txt999">{{orderItem.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+            </div>
+            <div class="pt-10 pb-10 clear  bd-b">
+                <span class="fl txt000">完成时间</span>
+                <span class="fr txt999">{{orderItem.updateTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+            </div>
+        </div>
+
+        <div class="pl-10 pr-10 bgWhite mt-5">
+            <div class="pt-10 pb-10 clear bd-b">
+                <span class="fl txt000 f-16">用户信息</span>
+            </div>
+            <div class="pt-10 pb-10 clear  bd-b">
+                <span class="fl txt000">用户姓名</span>
+                <span class="fr txt999">{{orderItem.name}}</span>
+            </div>
+            <div class="pt-10 pb-10 clear  bd-b">
+                <span class="fl txt000">联系方式</span>
+                <span class="fr txt999">{{orderItem.contactNumber}}</span>
+            </div>
+        </div>
+
+        <div class="btn-wrap">
+            <button class="btn btn-white" ng-click="openCard()">{{btnVal}}</button>
+            <button class="btn btn-white" ng-click="groupCard()" ng-show="orderItem.orderType==2">{{groupVal}}</button>
+        </div>
+    </ion-content>
+
+</ion-view>

@@ -1,0 +1,71 @@
+.allCity {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.7);
+}
+.allCity .sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 1002;
+  -webkit-box-shadow: 0 0 0.3125rem 0.0625rem rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 0.3125rem 0.0625rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0.3125rem 0.0625rem rgba(0, 0, 0, 0.2);
+}
+.allCity .sidebar.location {
+  width: 85vw;
+  line-height: 3.825rem;
+  font-size: 1.8rem;
+  -webkit-transition: right .3s;
+  -o-transition: right .3s;
+  -moz-transition: right .3s;
+  transition: right .3s;
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
+.allCity .sidebar.location .first-list {
+  -webkit-overflow-scrolling: touch;
+  padding: 0 1rem 0 1rem;
+  height: 100%;
+  overflow-y: auto;
+}
+.allCity .sidebar.location .first-list li {
+  font-size: 1.6375rem;
+  display: block;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  color: #666;
+  border-bottom: 1px solid #f4f4f4;
+  overflow: hidden;
+}
+.allCity .sidebar.location .other-list {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  padding-left: 1rem;
+  -webkit-box-shadow: 2rem 0 0.3125rem -1.8375rem rgba(0, 0, 0, 0.2) inset;
+  -moz-box-shadow: 2rem 0 0.3125rem -1.8375rem rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 2rem 0 0.3125rem -1.8375rem rgba(0, 0, 0, 0.2) inset;
+}
+.allCity .sidebar.location .other-list li {
+  font-size: 1.6375rem;
+  display: block;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  color: #666;
+  border-bottom: 1px solid #f4f4f4;
+  overflow: hidden;
+}
+.allCity .sidebar.slip {
+  right: 0!important;
+}
+.allCity .selected {
+  color: #ec6e18!important;
+}

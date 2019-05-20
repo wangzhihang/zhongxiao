@@ -1,0 +1,113 @@
+<ion-view view-title="{{title}}">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="mt-5 bgWhite">
+            <div class="pt-15 pb-15 pl-15 pr-15 bd-b flexWrap" ui-sref="lock">
+                <span class="icon-guhuakuandai f-18"></span>
+                <p class="flex pl-15">设置手势解锁</p>
+                <p class="flex txtRight txt999">
+                    <span class="icon-fanhui-copy"></span>
+                </p>
+            </div>
+            <div class="pt-15 pb-15 pl-15 pr-15 bd-b flexWrap" ui-sref="userProfile">
+                <span class="icon-guhuakuandai f-18"></span>
+                <p class="flex pl-15">个人信息</p>
+                <p class="flex txtRight txt999">
+                    <span class="icon-fanhui-copy"></span>
+                </p>
+            </div>
+            <div class="pt-15 pb-15 pl-15 pr-15 bd-b flexWrap" ui-sref="securityCenter">
+                <span class="icon-guhuakuandai f-18"></span>
+                <p class="flex pl-15">账户安全</p>
+                <p class="flex txtRight txt999">
+                    <span class="icon-fanhui-copy"></span>
+                </p>
+            </div>
+            <div class="pt-15 pb-15 pl-15 pr-15 bd-b flexWrap" ui-sref="market-adds">
+                <span class="icon-guhuakuandai f-18"></span>
+                <p class="flex pl-15">地址管理</p>
+                <p class="flex txtRight txt999">
+                    <span class="icon-fanhui-copy"></span>
+                </p>
+            </div>
+            <div class="pt-15 pb-15 pl-15 pr-15 bd-b flexWrap">
+                <span class="icon-guhuakuandai f-18"></span>
+                <p class="flex pl-15">微信绑定</p>
+                <p class="flex txtRight txt999">
+                    <span class="f-12">王小航</span>
+                    <span class="icon-fanhui-copy"></span>
+                </p>
+            </div>
+            <div class="pt-15 pb-15 pl-15 pr-15 bd-b flexWrap" ui-sref="commission">
+                <span class="icon-guhuakuandai f-18"></span>
+                <p class="flex pl-15">佣金返还规则</p>
+                <p class="flex txtRight txt999">
+                    <span class="icon-fanhui-copy"></span>
+                </p>
+            </div>
+            <!-- <div class="pt-15 pb-15 pl-15 pr-15 bd-b flexWrap rel">
+                <span class="icon-guhuakuandai f-18"></span>
+                <span class="abs bgRed border-radiu-30" style="width: 6px;height: 6px;top:17px;left:40px;background-color: #F10D3B;"></span>
+                <p class="flex pl-15">消息推送设置</p>
+                <p class="flex txtRight txt999">
+                    <span class="icon-fanhui-copy"></span>
+                </p>
+            </div> -->
+            <div class="pt-15 pb-15 pl-15 pr-15 bd-b flexWrap">
+                <span class="icon-guhuakuandai f-18"></span>
+                <p class="flex pl-15">版本更新</p>
+                <label class="flex toggle  toggle-positive col-20" style="margin-right: -10px;">
+						<input type="checkbox" ng-model="item.checked" ng-checked='item.checked' ng-change="needVertifyCode('{{item.id}}',$index)">
+						<div class="track" style="height: 24px;width: 43px;">
+							<div class="handle" style="width: 20px;height: 20px;"></div>
+						</div>
+					</label>
+            </div>
+            <!-- <div class="bd-b flexWrap">
+                <ion-toggle toggle-class="toggle toggle-positive" class="bd-0 flexFix f-14" ng-model="item.checked" ng-true-value="'开启'" ng-false-value="'关闭'">
+                    <span class="icon-guhuakuandai f-18 pl-5"></span>
+                    <span class="pl-10">广告拦截已开启</span>
+                </ion-toggle>
+            </div> -->
+        </div>
+        <!-- <div class="user-menu-list mt-0">
+			<ul>
+				<li>
+					<a ui-sref="userProfile">
+						<em>个人信息</em>
+						<span class="icon-xiala2"></span>
+					</a>
+				</li>
+				<li>
+					<a ui-sref="zxdianpu-info">
+						<em>店铺信息</em>
+						<span class="icon-xiala2"></span>
+					</a>
+				</li>
+				<li>
+					<a ui-sref="securityCenter">
+						<em>账户安全</em>
+						<span class="icon-xiala2"></span>
+					</a>
+				</li>
+				<li>
+					<a ui-sref="changePassWord">
+						<em>修改登录密码</em>
+						<span class="icon-xiala2"></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="btn-wrap">
+			<button class="btn btn-white" ng-click="loginOut()">安全退出</button>
+		</div> -->
+    </ion-content>
+
+</ion-view>

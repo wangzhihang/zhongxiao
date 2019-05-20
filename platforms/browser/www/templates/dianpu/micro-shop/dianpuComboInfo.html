@@ -1,0 +1,69 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content  overflow-scroll="true">
+
+	<div style="width: 100vw;" ng-show="ylPage">
+		<ul class="ml-5 mr-5" style="width: 100vw;">
+			<li ng-repeat="item in imgPath">
+				<img src="{{item.url}}" style="width: 96vw;" />
+			</li>
+		</ul>
+	</div>
+
+
+	<div style="width: 100vw;position: relative; text-align:center; margin:0 auto;"  ng-show="wxPage">
+		<div style="text-align:center;position:absolute; top:50%; left:24%;">
+			<input type="text"   ng-repeat="row in inputsList"  placeholder="{{row.inputTipText}}" style="width: 50vw;height:5.5vh;margin-bottom: 20px;border-radius: 2vw;border:1px solid {{row.inputBorderColor}}" class="pl-10" name="{{row.inputName}}"/>
+		</div>
+
+		<div style="text-align:center;position:absolute; bottom:20%; left:32%;">
+			<p  style="width:34vw;line-height:5vh;font-size: 20px;border-radius: 2vw;color: {{btnTextColor}};background-color: {{btnBgColor}};border: 1px solid;" >{{btnText}}</p>
+		</div>
+
+		<img src="{{imgPath}}" style="width: 100vw;"  style="position:absolute; top:0; left:0;"/>
+	</div>
+
+
+	</ion-content>
+	
+<!-- taocanInfoBtn -->
+	<div class=" monthBtn" style="height:8vh;"><!-- class=" " -->
+        <ul class="flexWrap f-16 txtCenter" style="width:100%;box-shadow: -23px 27px 4px 28px #eaeaed;">
+           
+        	 <li class="col-50 bd-r erweiCodeBtn" ng-click="showQrbox()" style="background-color:#ffffff;">
+	           	<span class="icon-qrcode f-20" style="color:#6b6b6b"></span>
+	    		<span style="color:#6b6b6b">二维码</span>
+           	</li>
+           <li class="col-50 shareBtn" ng-click="share()" style="background-color:#e77812">
+           		<span class="icon-fenxiang2 f-20" style="color:#FFF"></span>
+    			<span class="txtfff">分享</span>
+           </li>
+           
+        </ul>
+    </div>
+
+   
+	<div class="fatherMyCode" ng-show="isShowQrbox" style="background: rgba(0,0,0,.6);z-index: 1000;height:85vh;position: fixed;bottom: 9vh;" ng-click="closeQrbox();$event.stopPropagation()">
+		<div class="childMyCode" style="top:50%;" ng-click="$event.stopPropagation()">
+			<div class="myCode">
+				<div class="myCodeInfo">
+					<div class="myCodeBody text-center">
+						
+						 <div  id="qrbox"></div>
+						
+						<span class="f-12">分享二维码获得礼品</span>
+						<p class="mt-5">
+							<button class="button button-saveQrcode txtfff"   ng-click="saveImageQrcode()">保存到手机</button>  
+						</p>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>
+
+</ion-view>

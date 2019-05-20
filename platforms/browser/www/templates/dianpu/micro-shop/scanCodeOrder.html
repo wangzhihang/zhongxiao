@@ -1,0 +1,55 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	</ion-nav-buttons>
+	<div class="bar bar-subheader">
+		<div class="wrap" style="width:100%;">
+			 <ul class="bgWhite flexWrap" style="height:100%;">
+			 	<!-- <li class="flex text-center rel subLineHeight"  ng-class="{ 'activeBorderBtm' : tag.current == 1 }" ng-click="actions.setCurrent(1)">全部</li> -->
+			 	<li class="flex text-center rel subLineHeight"  ng-class="{ 'activeBorderBtm' : tag.current == 2 }" ng-click="actions.setCurrent(2)">待处理</li>
+			 	<li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 3 }" ng-click="actions.setCurrent(3)">已完成</li>
+			 	<li class="flex text-center rel subLineHeight" ng-class="{ 'activeBorderBtm' : tag.current == 4 }" ng-click="actions.setCurrent(4)">已取消</li>
+			 </ul>
+		</div>
+	</div>
+	<ion-content class="has-subheader">
+		
+		<div class="pl-10 pr-10 bgWhite mt-5" ng-repeat="item in orderList">
+			<div class="pt-10 pb-10 bd-b" ng-click="goDetail($index)">
+				<div class="pb-10 flexWrap">
+					<span class="width-80 omit f-16 txt000">{{item.orgName}}</span>
+					<span class="width-20 omit text-right ">
+						<i class="{{item.orderType | orderTypeColor : 'color'}}">{{item.orderType | orderTypeColor : 'name'}}</i>
+					</span>
+				</div>
+				<div class="flexWrap">
+					<span class="width-50 omit">
+						<span class="pr-10 txt999">{{item.name}}</span><span>{{itemcontactNumber}}</span>
+					</span>
+					<span class="width-50 txt999 text-right">{{item.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+				</div>
+			</div>
+			<div class="pt-5 pb-5 flexWrap" ng-show="item.status == '000001'">
+				<span class="flex txt999 f-16 text-center bd-r pt-5 pb-5" ng-click="cancelOrder($index)">取消订单</span>
+				<span class="flex txtBlue f-16 text-center pt-5 pb-5" ng-click="manage($index)">办理</span>
+			</div>
+			<div class="pt-10 pb-10 text-center"  ng-hide="item.status == '000001'">
+				<span class="f-16 txtBlue" ng-click="goDetail($index)">查看详情</span>
+			</div>
+		</div>
+		
+
+		<ion-infinite-scroll ng-if="hasmore" on-infinite="loadMore()" icon="ion-loading-c" distance="1%" immediate-check="false"></ion-infinite-scroll>
+            
+        <div class="loadingWrap" ng-if="loading">
+            <ion-spinner icon="ios"></ion-spinner>
+        </div>
+       <div class="noMore" ng-if="noMore"><span class="txt">没有更多</span></div>
+	</ion-content>
+
+</ion-view>

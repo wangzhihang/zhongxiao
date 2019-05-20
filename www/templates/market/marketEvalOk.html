@@ -1,0 +1,51 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons><br />
+	<ion-nav-buttons side="right">
+		<div ng-click=""><i class="icon-more"></i></div>
+	</ion-nav-buttons><br />
+	<ion-content>
+		
+		<div class="bgWhite" style="height: 20vh;width:100vw;"> 
+		
+			<span style="display:block;text-align: center;line-height: 20vh;font-weight: 600;padding-left: 10%;" class="f-18 pl-30">	<i class="icon-xuanzedui" style="color:#65c07a;font-size: 2.6rem;position: fixed;top:0%;left: 30%;"></i>感谢您的点评</span>
+		</div>
+
+
+
+		<div ng-show="">
+			<div class="pt-5 pb-5 pl-15">
+				<p class="f-14" style="color:#8a8a8a">你可能还想点评
+				</p>
+			</div>
+			<div class=" bgWhite  pl-10 pr-10">
+				<ul class="">
+					<li class=" evalList pt-5 pb-5" ng-repeat="item in noEval">
+						<div class="row">
+     						<div class="col-20 evalOkImg">
+       						 	<img src="{{item.imgMain}}"/>
+      						</div>
+     						<div class="col evalOkLis pl-15">
+       							<ul>
+       								<li class="pt-5 pb-5"><p style="font-weight:bold;" class="f-16">{{item.productName}}</p></li>
+       								<li><p style="color: #999" class="f-12">{{item.createTime | date:"yyyy-MM-dd HH:mm:ss"}} 买单</p></li>
+       							</ul>
+      						</div>
+      						<div class="col-20 evalOKBtn">
+       							<span class="f-14 txtfff pt-3 pb-3" ng-click="evalBtn($index)">评一下</span>
+      						</div>
+    					</div>
+					</li>
+			    </ul>
+			</div>
+		</div>
+	
+
+
+
+
+		
+
+	</ion-content>
+</ion-view>

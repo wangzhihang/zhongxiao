@@ -1,0 +1,107 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons><br />
+	<ion-nav-buttons side="right">
+		<div ng-click=""><i class="icon-more"></i></div>
+	</ion-nav-buttons><br />
+	<ion-content>
+	
+	<div ng-show="evalStars">
+		<div class="bgWhite clear pt-10 pb-10 pl-5 pr-15">
+			<div class="fl"><span class=" f-16"><i class="icon-kuaidiyunshu" style="font-size: 2.4rem;color: #999"></i>订单评价<span></div>
+			<div class="fr"><span class=" f-14 txt999">满意请给5星哦</span></div>
+		</div> 
+
+		<div class="bgWhite pl-15 pr-15 clear">
+			
+			<div class="ordEvlStar pt-5 pb-5">
+			<div class="row clear">
+  				<div class="col fl">
+    				<span class="f-14">商家服务</span>
+  				</div>
+  				<div class="col-75 flexWrap txtRight" style="display: inline-block;" >
+  					<span><span class="evalBussniss" ng-repeat="item in evalBussniss" ng-click=
+  						"starEval($index)">
+    					<i class="icon-pingjia starEval" ng-class="{'txtBigOrange':item.status}" ></i>
+    					
+    				</span>	</span>
+    				
+  				</div>
+			</div>
+
+			<div class="row clear">
+  				<div class="col fl">
+    				<span class="f-14 ">物流服务</span>
+  				</div>
+  				<div class="col-75 flexWrap txtRight" style="display: inline-block;" >
+  					<span><span class="evalLogiistics" ng-repeat="item in evalLogiistics" ng-click="starLogics($index)">
+    					<i class="icon-pingjia starEval" ng-class="{'txtBigOrange':item.status}" ></i>
+    					
+    				</span>	</span>
+    				
+  				</div>
+			</div>
+			</div>
+			<div class="pt-10 pb-10 fr"  ng-click="evalOrder()">
+				<span class="ordEvalBtn txtRed f-14 pr-3 pt-3 pb-3" ><i class="icon-icon--" style="color: red"></i>发表评价</span>
+			</div>
+		</div>
+		</div>
+
+		<div ng-show="evalStarsOk">
+			<div class="bgWhite" style="height: 20vh;width:100vw;"> 
+		
+			<span style="display:block;text-align: center;line-height: 20vh;font-weight: 600;padding-left: 10%;" class="f-18 pl-30">	<i class="icon-xuanzedui" style="color:#65c07a;font-size: 2.6rem;position: fixed;top:0%;left: 30%;"></i>感谢您的点评</span>
+		</div>
+		</div>
+
+		
+		<div class="bgWhite mt-5 pl-10 pr-10 mb-5">
+			<ul>
+				<li ng-repeat="item in orderItemList">
+					<div class="row evalGoogs pt-10 ">
+      					<div class="col-25 evalGoogsImg">
+        					<img src="{{item.imgMain}}"/>
+      		    		</div>
+      					<div class="col clear pl-5">
+      						<p class="f-14 omitRow">{{item.productName}}{{item.keywords}}</p>
+      						<span class="f-14 txtRed ordEvalBtn  pr-3 fr  mt-5"  ng-click="goodsEval($index)"><i class="icon-duanxin1" style="color: red" ></i>评价晒单</span>
+      					</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+
+		<!-- <div  ng-show="evalStarsOk">
+			<div class="pt-5 pb-5 pl-15">
+				<p class="f-14" style="color:#8a8a8a">你可能还想点评</p>
+			</div>
+			<div class=" bgWhite  pl-10 pr-10">
+				<ul class="">
+					<li class=" evalList pt-5 pb-5">
+						<div class="row">
+     						<div class="col-20 evalOkImg">
+       						 	<img src="../../img/logo1_03.png"/>
+      						</div>
+     						<div class="col evalOkLis pl-15">
+       							<ul>
+       								<li class="pt-5 pb-5"><p style="font-weight:bold;" class="f-16">一加手机5T 8GB</p></li>
+       								<li><p style="color: #999" class="f-12">2017-11-18 买单</p></li>
+       							</ul>
+      						</div>
+      						<div class="col-20 evalOKBtn">
+       							<span class="f-14 txtfff pt-3 pb-3">评一下</span>
+      						</div>
+    					</div>
+					</li>
+			    </ul>
+			</div>
+		</div>
+	 -->
+
+
+
+	</ion-content>
+</ion-view>

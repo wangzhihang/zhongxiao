@@ -1,0 +1,67 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+<ion-nav-buttons side="left">
+	<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
+	<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+</ion-nav-buttons>
+<ion-content>
+
+<div class="info-list">
+	<ul>
+		<li>
+			<div class="info-label">
+				<span>用户姓名：</span>
+			</div>
+			<div class="info-cont right-font-middle" style="margin-left:7rem;">
+				<p ng-bind-template="{{simInput.name}}"></p>
+			</div>
+		</li>
+		<li>
+			<div class="info-label">
+				<span>身份证号码：</span>
+			</div>
+			<div class="info-cont right-font-middle" style="margin-left:7rem;">
+				<p ng-bind-template="{{simInput.cardId}}"></p>
+			</div>
+		</li>
+		<li>
+			<div class="info-label">
+				<span>手机号码：</span>
+			</div>
+			<div class="info-cont right-font-middle" style="margin-left:7rem;">
+				<p ng-bind-template="{{simInput.number}}"></p>
+			</div>
+		</li>
+		<li>
+			<div class="info-label">
+				<span>最低消费：</span>
+			</div>
+			<div class="info-cont right-font-middle" style="margin-left:7rem;">
+				<p>￥<em ng-bind-template="{{simInput.preNumberCharge}}"></em>.00</p>
+			</div>
+		</li>
+		<li ng-click="editPreFee()">
+			<div class="info-label" style="width:12rem;color:red">
+				<span>预存话费：</span>
+			</div>
+			<div class="info-cont right-font-middle" style="margin-left:9.5rem;">
+				<p style="color:red">￥<em ng-bind-template="{{simInput.preFee}}"></em>.00</p>
+				<button class="rt-btn rt-btn1"><i class="icon-beizhu"></i></button>
+			</div>
+		</li>
+	</ul>
+</div>
+
+
+<div class="getIdDeviceType">
+	<ul>
+		<li><button class="device" ng-click="order()">订单已确认！我要签名，提交订单</button></li>
+	</ul>
+</div>
+
+
+
+
+</ion-content></ion-view>

@@ -1,0 +1,31 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="number-order">
+			<ul>
+				<li ng-repeat="row in orderList" ng-click="order($index)" class="pt-5 pb-5 message-list">
+					<div class="number-order-num">
+						<div class="number-order-num-top pt-10 rel">
+							<span class="txt333" style="font-size:1.6rem;">{{row.number | telFormat}}</span>
+							<span class="txt666 block pt-5 f-14">{{row.productName}}</span>
+						</div>
+					</div>
+					<div class="rel clear message-list-bottom pt-5 pb-5 bd-b f-14">
+						<span class="txt666">{{row.customer}}</span>
+						<span class="haomaColor">{{row.contactNumber}}</span>
+					</div>
+					<div class="rel pt-5 pb-5 txt999 f-14">
+						<span>下单时间：</span>
+						<span ng-hide="row.status == '000003'">{{row.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+						<span style="right:-.3rem;" class="f-13 abs produceProgress {{row.status | statusColor:'color'}}">{{row.status | statusColor:'name'}}</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</ion-content>
+</ion-view>

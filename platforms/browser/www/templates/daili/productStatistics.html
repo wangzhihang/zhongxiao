@@ -1,0 +1,83 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index_dl"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="dataInfo mb-10 pt-10 pb-10">
+			<ul class="flexWrap">
+				<li class="flex txtCenter">
+					<p class="txtRed">
+						<span class="f-bolder">200.00</span>
+						<span class="f-10" style="transform: scale(0.90)">(元)</span>
+					</p>
+					<p class="txt999">支出</p>
+				</li>
+				<li class="flex txtCenter">
+					<p>
+						<span class="f-bolder">20%</span>
+					</p>
+					<p class="txt999">支出占比</p>
+				</li>
+				<li class="flex txtCenter">
+					<p class="txtGreen">
+						<span class="f-bolder">500.00</span>
+						<span class="f-10" style="transform: scale(0.90)">(元)</span>
+					</p>
+					<p class="txt999">收入</p>
+				</li>
+				<li class="flex txtCenter">
+					<p>
+						<span class="f-bolder">60%</span>
+					</p>
+					<p class="txt999">收入占比</p>
+				</li>
+			</ul>
+		</div>
+		<div class="bgWhite">
+			<div class="flexWrap pl-15 pt-15 pr-15 pb-15">
+				<span class="f-15 f-bolder">表名称</span>
+				<p class="flexFix txtRight">
+					<p class="bgGray txtCenter f-10" style="width: 43vw;transform: scale(0.8);" ng-click="openSelect()">
+						<span>8月1日——8月31日</span>
+						<i class="icon-paixushengxujiangxu"></i>
+					</p>
+				</p>
+			</div>
+			<div id="container" style="height:21rem;padding-top:.5rem;"></div>
+		</div>
+		<div class="bgGray pt-10 pb-10 txtCenter flexWrap">
+			<span class="flex txt000">日期</span>
+			<span class="flex txt000">套餐名称</span>
+			<span class="flex txt000">业务量</span>
+			<span class="flex txt000">占比</span>
+		</div>
+		<div class="bgWhite">
+			<ul class="flexWrap">
+				<li class="flexFix pt-20 pb-20 txtCenter">
+					<div class="flexWrap">
+						<span class="flex txt666">2018-07-12</span>
+						<span class="flex txt666">99不限量套餐</span>
+						<span class="flex txt666">298</span>
+						<span class="flex txt666">20%</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</ion-content>
+	<!-- 上级筛选层 -->
+	<div class="popup-container popup-showing active chosePop" ng-show='showSuperiorSelect' ng-click="closeSuperiorSelect()">
+		<div class="popup" ng-click="$event.stopPropagation();">
+			<ul class="rel" style="height: 35vh;overflow-y: auto;" >
+				<li class="pl-10 pt-10 pr-10 pb-10 txtCenter txt000" ng-repeat="item in salemanList">
+					<p class="rel">{{item.deptName}}
+						<i class="radio-icon ion-checkmark f-14 abs" style="right: 14px;color: #1E82D2;"></i>
+					</p>
+				</li>
+				<div class="popup-buttons abs" style="width: 100%;bottom: 0;"><button class="button ng-binding button-calm" ng-click="switchSelect()" >确定</button></div>
+			</ul>
+		</div>
+	</div>
+</ion-view>

@@ -1,0 +1,20 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content class='bgWhite'>
+		<div class="lockPatternTipsWrap">
+			<span class="lockPatternTips" ng-class='{"error":errorTips}'>
+				<i class="icon-zhuyi" ng-show="lockPatternTipsSwitch"></i>
+				<span ng-bind-template="{{lockPatternTips}}" ng-show="lockPatternTipsSwitch"></span>
+			</span>
+		</div>
+	  	<div id='lockPattern' class='pattern-holder patt-holder'></div>
+	</ion-content>
+  	<div class="padding" style="position:fixed;left:0;right:0;bottom:0">
+  		<div class="noMore"  ng-click="delLock()"><span><i class="icon-shanchu"></i>确认删除手势密码？</span></div>
+  	</div>
+</ion-view>

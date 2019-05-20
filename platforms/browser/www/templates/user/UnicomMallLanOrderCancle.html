@@ -1,0 +1,43 @@
+<ion-view view-title="{{title}}" hide-tabs="true" >
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    
+    <div class="popup-container popup-showing active chosePop" ng-show='showContentBlueTooth' ng-click="closeContentBlueTooth()">
+        <div class="popup" ng-click="$event.stopPropagation();" style="border-radius: 10px;width:70vw;">
+            <div class="bgPrimary txtCenter pt-15 pb-15 popTitle f-16 rel">选择取消原因</div>
+            <ion-list class="rel" style="margin:0 auto;height: 35vh;overflow-y: auto;width: 100%" >
+                <ion-radio ng-repeat="item in list" ng-change="getCancleVal(item)"  ng-model="input.value" ng-value="item" >{{item}}</ion-radio>
+                <div class="" ng-show="ifShowOther">
+                    <input type="text" placeholder="请输入其他原因" style="width: 100vw; border-radius: 5px;" class="pl-10 pr-10 mt-5 pt-20 pb-20" ng-model="input.keyword">
+                </div>
+            </ion-list>
+            <div class="popup-buttons" style="width: 100%;bottom: 0;"><button class="button ng-binding button-calm border-radiu-25" ng-click="reSearch()">确定</button></div>
+        </div>
+    </div>
+    <div class="popup-container popup-showing active chosePop" ng-show='showTextContent' ng-click="closeContentBlueTooth()">
+        <div class="popup" ng-click="$event.stopPropagation();" style="border-radius: 10px;width:70vw;">
+            <div class="bgPrimary txtCenter pt-15 pb-15 popTitle f-16 rel">输入取消原因</div>
+            <textarea class="pt-15 pb-15 pl-15 pr-15 bd" placeholder="请输入取消原因" ng-model='input.cancelText'></textarea>
+            <div class="popup-buttons" style="width: 100%;bottom: 0;"><button class="button ng-binding button-calm border-radiu-25" ng-click="reSearch()">确定</button></div>
+        </div>
+    </div>
+	<ion-content>
+		<ion-list>
+                <ion-radio ng-repeat="item in cancleList"  ng-model="input.cancel" ng-value="item" >{{item.name}}</ion-radio>
+        </ion-list>
+        <div class="mt-20">
+            <button class="button button-full button-positive" ng-click="entrue()">确定</button>
+        </div>
+		
+
+	</ion-content>
+	
+	<style type="text/css">
+		.item-radio .item-content{padding:16px 49px 16px 16px;}
+		.item-radio input:checked + .radio-content .radio-icon {
+		    color: red;
+		}
+	</style>
+</ion-view>

@@ -1,0 +1,63 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="right">
+		<div ui-sref="sign-up">注册</div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div ng-show="tag.current == 1">
+			<div class="formList">
+				<ul>
+					<li class="rowItem">
+						<div class="label txt999"><i class="icon-yewuyuan mr-5"></i>账号：</div>
+						<div class="labelForm">
+							<input type="text" class="textBox" ng-change="changeBtn()" ng-model="data.userName" placeholder="登录 a 账户"/>
+						</div>
+					</li>
+					<li class="rowItem">
+						<div class="label txt999"><i class="icon-mima mr-5"></i>密码：</div>
+						<div class="labelForm">
+							<input type="password" class="textBox" ng-change="changeBtn()" ng-model="data.password" placeholder="登录密码"/>
+						</div>
+					</li>
+				</ul>
+				
+			</div>
+			<div class="wrapTransparent mt-15">
+				<button class="blueBtn" ng-disabled="resState" ng-click="signIn()">
+					<ion-spinner icon="ios-small" class="spinner-light" ng-if="loading"></ion-spinner>
+					<span>{{signInTxt}}</span>
+				</button>
+<!--
+				 <p class="clear pt-15 pb-15 pl-15 pr-15">
+					<a class="fl">忘记密码</a>
+					<a ui-sref="sign-up" class="fr">立即注册</a>
+				</p> 
+-->
+			</div>
+<!--
+			<div class="wrapTransparent pt-15 pb-15 text-center" style="margin-top:4rem;">
+				<mark class="signInTips"><i class="icon-zhuyi"></i>便捷登录：用户中心设置手势解锁</mark>
+			</div>
+-->
+		</div>
+		<div ng-show="tag.current == 2">
+			<div class="wrapTransparent pt-15 pb-15 text-center" style="margin-top:4rem;">
+				<mark class="signInTips" ng-class='{"error":errorTips}'>
+					<i class="icon-zhuyi"></i>{{lockPatternTips}}
+				</mark>
+			</div>
+			<div id='lockPattern_login' class='pattern-holder patt-holder'></div>
+		</div>	
+	</ion-content>
+	<div class="signInBottom text-center txt999">
+		<ul class="flexWrap pt-15 pb-15" ng-if="noSetLockPattern">
+			<li class="flex bd-r" ng-class="{ 'active' : tag.current == 1 }" ng-click="actions.setCurrent(1)">账号登录</li>
+			<li class="flex" ng-class="{ 'active' : tag.current == 2 }" ng-click="actions.setCurrent(2)">手势登录</li>
+		</ul>
+		<p class="bd-t pt-10 pb-10" ng-show="tag.current == 1">当前版本 v{{version}}<br/><span class="f-12">技术支持联系：(029) 8626 2222</span></p>
+	</div>
+	<style>
+		.loading-container.active{background: rgba(0,0,0,.25);}
+		.loading-container .loading{background:rgba(0,0,0,0);}
+		.backdrop{background:rgba(0,0,0,.5)}
+	</style>
+</ion-view>

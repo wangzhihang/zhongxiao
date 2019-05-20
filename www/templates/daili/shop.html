@@ -1,0 +1,110 @@
+<ion-view hide-tabs="true" view-title="{{shopName}}"  hide-nav-bar="isNoShowHeader">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="daili-shop-set"><i class="icon-xitongpeizhiguanli f-20"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<section class="userPanel" style="padding: 0px 1rem 1rem 1rem;margin-top: -20px;">
+			<!-- <h1 ng-click="$ionicGoBack()" class="userPanelTitle" style="margin-top:0;">
+				<span style="vertical-align: baseline;"><i class="icon-fanhui"></i></span>
+				<span class="logoIco">
+					<img src="{{imgUrl}}" alt="dianpu" ng-show="isImgUrl"/>
+					<img src="img/logo.png" alt="dianpu" ng-hide="isImgUrl"/>
+				</span>
+				<em style="padding-left: 32vw;" class="f-18">{{shopName}}</em>
+				<a class="rtTopBtn" ui-sref="daili-shop-set" style="top:2.2rem"><i class="icon-xitongpeizhiguanli"></i></a>
+			</h1> -->
+			<div>
+				<div id="container" style="height:21rem;padding-top:1rem;"></div>
+			</div>
+			
+		</section>
+		<div class="dataInfo pt-15 pb-15 pl-10 pr-10 rel">
+			<ul class="flexWrap">
+				<li class="flex text-center" ng-click="showRechargeBtn()">
+					<p class="f-16 txtTips"><strong>{{shopBalance | currency : ''}}</strong></p>
+					<p class="f-14 txt999"><em>店铺余额（元）</em></p>
+				</li>
+				<li class="flex text-center abs rechargeBtn" ng-click="closeRegBtn()" ng-show="rechatgeBtn" style="left:0;top:0;background:rgba(0, 0, 0, 0.3);display:flex;">
+					<button class="blueBtn" ng-click="dianpuRecharge();$event.stopPropagation();" style="margin:auto;">
+						<span class="ng-binding">充值</span>
+					</button>
+				</li>
+				<li class="flex text-center" ng-click="todayHmOrder()">
+					<p class="f-16"><strong>{{numOrderCntToday}}</strong></p>
+					<p class="f-14 txt999"><em>当日号码订单</em></p>
+				</li>
+				<li class="flex text-center" ng-click="todayLanOrder()">
+					<p class="f-16"><strong>{{lanOrderCntToday}}</strong></p>
+					<p class="f-14 txt999"><em>当日宽带订单</em></p>
+				</li>
+			</ul>
+		</div>
+		<div class="bgWhite hdTitle bd-t bd-b txt999 pl-10 pr-10 f-14">
+			<i class="icon-shangcidenglushijian txtTips mr-5"></i>上次登录时间<time class="ml-5">{{loginTime | date:"yyyy-MM-dd HH:mm:ss"}}</time>
+		</div>
+		
+		<div class="txtInfoList mt-10 pl-10 pr-10">
+			<div class="rowItem">
+				<div class="label f-14 text-right">负责人</div>
+				<div class="labelForm">{{realName}}</div>
+			</div>
+			<div class="rowItem">
+				<div class="label f-14 text-right">联系方式</div>
+				<div class="labelForm">{{shopTel | telFormat}}</div>
+			</div>
+			<div class="rowItem">
+				<div class="label f-14 text-right">店铺工号</div>
+				<div class="labelForm">{{cuserName}}</div>
+			</div>
+			<div class="rowItem">
+				<div class="label f-14 text-right">店铺地址</div>
+				<div class="labelForm">{{address}}</div>
+			</div>
+		</div>
+		<div ng-show="isShowMapContainer">
+			<div id="mapContainer" class="mb-10 bgWhite txtCenter mapContainer bd"></div>
+			<!-- <span class="abs mapConExplain">客户开卡地址</span> -->
+		</div>
+	</ion-content>
+	<div class="loadingPage" ng-if="hideLoadingPage">
+		<div class="loadingAction text-center">
+			<ion-spinner icon="spiral" class="spinner-light"></ion-spinner>
+			<p class="txt999">页面载入中...</p>
+		</div>
+	</div>
+	<div class="hdSwitchPanelKd" ng-show="rachargeTip" ng-click="closeTip()">
+		<div class="bgWhite fixed ranchargeTip f-17"  ng-click="$event.stopPropagation();">
+			<div class="txt666 bd-b pt-10 pb-10 txtCenter rechargeTitle">充值</div>
+			<div style="width:80%;margin:0 auto;" >
+				<div class="rechargeTop txt999">
+					<span>输入金额：</span>
+					<input type="number"  ng-model="money" style="width:7rem;height:4rem;" class="bd inlinebk"/>
+					<!-- <div class="inlinebk bd "></div> -->
+					<span>元</span>
+				</div>
+				<!-- <div class="pt-10 uploading txt999">
+					<span>上传凭证：</span>
+					<div class="rel uploadingPic inlinebk"  ng-click="photograph()">
+						<img ng-src="{{avatar}}" id="userPic" alt="logo"/>
+						<input type="file" class="uploadingInput">
+						<div class="uploadingAdd">
+							<i class="icon-shangchuantupian"></i>
+						</div>
+					</div>
+				</div> -->
+				<div class="pt-20 pb-20 txtCenter">
+					<button class="blueBtn confirmBtn" ng-click="closeTip()">
+						<span class="ng-binding">取消</span>
+					</button>
+					<button class="blueBtn confirmBtn" ng-click="uploading()">
+						<span class="ng-binding">充值</span>
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</ion-view>

@@ -1,0 +1,146 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ng-click="queryClick()">查询</div>
+    </ion-nav-buttons>
+    <div class="bar bar-subheader" ng-if="isNoShowAssignPop">
+        <!-- 未分配弹出框 -->
+        <div class="noAssignPopup"  ng-click="closeAssignPop()">
+            <div class="noAssignBody" ng-click="$event.stopPropagation();">
+                <div class="pl-15 pr-15 pt-15 pb-15">
+                    <p class="pb-10 f-18 text-center bd-b">分配订单列表</p>
+                     <div class="bd-b flexWrap" style="align-items:center;-webkit-align-items:center">
+                        <input type="text" name="" class="input-text" placeholder="输入关键词" ng-model="searchVal">
+                        <span class="pl-10 pr-10 pt-5 pb-5 txtfff text-center" style="flex: auto;-webkit-flex:auto;background: #999"  ng-click="search(searchVal)">搜索</span>
+                    </div>
+                    <ul class="noAssignList">
+                        <li class="pt-10 pb-10 bd-b bd-b" ng-repeat="item in userList" ng-class="{ 'activeBorderBtm' : tag1.current == '{{item.num}}'}" ng-click="actions1.setCurrent('{{item.num}}')">
+                            <p>{{item.realName}}</p>
+                            <p class="phoneCol">{{item.contractNumber}}</p>
+                        </li>
+                        <!-- <li class="pt-10 pb-10 bd-b" ng-class="{ 'activeBorderBtm' : tag1.current == 2}" ng-click="actions1.setCurrent(2)">
+                            <p>张宇</p>
+                            <p class="phoneCol">18602912635</p>
+                        </li> -->
+                    </ul>
+
+                    <div class="noAssignBtn">
+                        <button ng-click="AssignEnSure()">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 状态弹出框 -->
+     <!-- <div class="bar bar-subheader" ng-if="isNoShowStatePop">
+        
+    </div> -->
+    <div class="bar bar-subheader" ng-if="isNoShowChosePop">
+        <!-- 查询 -->
+        <div class="chosePop" ng-click="closeChosePop()">
+            <div class="rel" style="height:100vh">
+                <div class="chosePopBody" ng-click="$event.stopPropagation();">
+                    <div style="height:75vh;overflow-y:auto;">
+                         <div class="pt-10 pb-10 bd-b">
+                            <input type="text" placeholder="请输入关键字" style="width: 75vw; border-radius: 5px;" class="pl-10 pr-10 mt-5" ng-change="lookKeywords(keyword)" ng-model="keyword">
+                        </div>
+                        <div class="pt-10 pb-10 bd-b">
+                             <h4 class="mt-0 ml-10 mb-0" ng-click="channelClick()">网格经理<span class="icon-xiala2 fr pr-15" ng-class="{'transformY':isNoShowChannelList}"></span></h4>
+                            <ul class="flexWrap  bodyReview mt-10" ng-if="isNoShowChannelList">
+                                <li class="reviewItem" ng-repeat="item in userList"  ng-class="{ 'active1' : tag2.current == '{{item.num}}' }" ng-click="actions2.setCurrent('{{item.num}}')">{{item.realName}}</li>
+                            </ul>
+                        </div>
+                        <div class="pb-10 pt-10 bd-b">
+                             <h4 class="mt-0 ml-10 mb-0" ng-click="stateClick()">状态<span class="icon-xiala2 fr pr-15" ng-class="{'transformY':isNoShowStateList}"></span></h4>
+                            <ul class="flexWrap  bodyReview mt-15"  ng-if="isNoShowStateList">
+                                <li class="reviewItem" ng-repeat="item in stateList"  ng-class="{ 'active1' : tag3.current == '{{item.num}}' }" ng-click="actions3.setCurrent('{{item.num}}')">{{item.name}}</li>
+                            </ul>
+                        </div>
+                        <div class="pb-10 pt-10">
+                            <h4 class="mt-0 ml-10 mb-0">日期区间</h4>  
+                            <div class="dateList flexWrap mt-15">
+                                <div class="rowItem">
+                                    <input  type="date" class="dateChange" placeholder="开始日期"  ng-model="startTime" ng-value='getStartTime' ng-change="setStartTime(startTime)" placeholder="请选择起始日期">
+                                </div>
+                                <div  style="width:5%;text-align:center">-</div>
+                                <div class="rowItem">
+                                    <input type="date" class="dateChange"  placeholder="结束日期" ng-model="endTime" ng-value='getEndTime' ng-change="setEndTime(endTime)" placeholder="请选择结束日期">
+                                </div>
+                            </div> 
+                        </div>
+
+                    </div>
+                   
+                     
+                    
+                     <div class="flexWrap chosePopBtn">
+                        <div class="flex text-center bd-t  pt-15 pb-15" ng-click="resetting()">
+                            重置
+                        </div>
+                        <div class="flex text-center  pt-15 pb-15" style="color:#fff;background:#1E82D2" ng-click="ensure()">
+                            确定
+                        </div>
+                     </div>
+                </div>  
+            </div>
+            
+        </div>  
+    </div>
+    
+    <ion-content >
+        <div class="unicomMallp" ng-repeat="item in orderList" ng-click="allClick($index)">
+            <div class="unicomMallTop clear">
+                <div class="fl">
+                    <p class="f-16 f-bolder mb-0">{{item.bespeakId}}</p>
+                    <!-- <span  class="block txt999 f-12">{{item.time}}</span> -->
+                </div>
+                <div class="fr txtGreen f-16" ng-click="orderDetail($index)">详情</div>
+            </div>
+            <div class="unicomMallBody clear rel">
+                <div class="bd-b pb-10">
+                    <p class="mb-0">
+                        <span class="f-16 pr-5">{{item.userName}}</span>
+                        <span class="f-16 txt999">{{item.userPhone | telFormat}}</span>
+                    </p>
+                    <p class="f-14 txt999 mb-0">{{item.userAddress}}</p>
+                </div>
+                <div class="pt-10 clear">
+                    <div class="fl">
+                        <p class="block txt999 f-12 mb-0">{{item.time}}</p>
+                    </div>
+                    <div class="fr f-12" ng-class="{'successColor':item.successColor,'verifyColor':item.verifyColor,'failColor':item.failColor,'dealColor':item.dealColor,'signatureColor':item.signatureColor,'cancelColor':item.cancelColor}">
+                        {{item.statusVal}}
+                    </div>   
+                </div>
+                <!-- 提示 -->
+                <div class="reminder abs" ng-if="item.isNoShowReminser">
+                    <span class="transform-45">{{item.reminderVal}}</span>
+                </div>
+            </div>
+            <div class="unicomMallBot rel" ng-show='{{item.isNoShowUnicomMallBot}}' ng-click="$event.stopPropagation();">
+                <ul class="flexWrap">
+                    <!-- <li class="flex text-center bd-r pt-10 pb-10" ng-show="{{item.isNoShowStateChange}}"  ng-click="stateChange($index);">状态<span class="icon-xiala2"></span>
+                    </li> -->
+                     <li class="flex text-center bd-r pt-10 pb-10" ng-show="{{item.isNoShowStateChange}}" ng-click="stateChange($index);">{{item.stateVal}}</span>
+                    </li>
+                    <li class="flex text-center pt-10 pb-10" ng-click="assignChange($index)">{{item.assignVal}}</li>
+                   
+                </ul>
+               <!--  <div class="statePopup abs" ng-show="tag.current == '{{item.id}}' " ng-click="actions.setCurrent('{{item.id}}')">
+                    <ul class="pt-10 pl-10 pb-10 pr-10">
+                        <li ng-class="{ 'activeBorderBtm' : tag4.current == 1}" ng-click="actions4.setCurrent(1)">有效订单</li>
+                        <li ng-class="{ 'activeBorderBtm' : tag4.current == 2}" ng-click="actions4.setCurrent(2)">无效订单</li>
+                    </ul>
+                </div> -->
+
+            </div>
+        </div>
+       <ion-infinite-scroll ng-if="hasmore" on-infinite="loadMore()" icon="ion-loading-c" distance="1%" immediate-check="false"></ion-infinite-scroll>
+        <div class="loadingWrap" ng-if="loading">
+            <ion-spinner icon="ios"></ion-spinner>
+        </div>
+        <div class="noMore" ng-if="noMore"><span class="txt">没有更多</span></div>
+    </ion-content>
+</ion-view>

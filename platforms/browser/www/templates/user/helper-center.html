@@ -1,0 +1,137 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref='user-helper-search-keyword'><i class="icon-sousuoic" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="newsbody width-100" ng-hide='newsNotice' style="background:#FEFCEC;padding: 0;">
+            <div class="flexWrap" style="color:#F77430;">
+                <span class="icon-xiaoxitongzhi1 f-16 verticalMiddle"></span>
+                <marquee class="f-12 pl-5 omit flexFix" style="color:#F77430;">双十二单宽上线双十二单宽上线双十二单宽上线双十二单宽上线双十二单宽上线双十二单宽上线双十二单宽上线</marquee>
+                <span class="icon-guanbi1" ng-click='closeNews()'></span>
+            </div>
+        </div>
+        <div class="bgWhite">
+            <p class="pt-5 pb-5 pl-15 f-15"><strong>自助工具</strong></p>
+            <div class="flexWrap f-12" delegate-handle="netArea">
+                <div class="littleBox col-25">
+                    <p class="icon-add f-30 pt-5 pb-5 "></p>
+                    <p>我的售后</p>
+                </div>
+                <div class="littleBox btnBg col-25">
+                    <p class="icon-add f-30 pt-5 pb-5 "></p>
+                    <p>我要提现</p>
+                </div>
+                <div class="littleBox btnBg col-25">
+                    <p class="icon-add f-30 pt-5 pb-5 "></p>
+                    <p>换绑手机</p>
+                </div>
+                <div class="littleBox btnBg col-25">
+                    <p class="icon-add f-30 pt-5 pb-5 "></p>
+                    <p>设置支付密码</p>
+                </div>
+                <div class="littleBox btnBg col-25">
+                    <p class="icon-add f-30 pt-5 pb-5 "></p>
+                    <p>换绑微信</p>
+                </div>
+                <div class="littleBox btnBg col-25">
+                    <p class="icon-add f-30 pt-5 pb-5 "></p>
+                    <p>地址管理</p>
+                </div>
+                <div class="littleBox btnBg col-25">
+                    <p class="icon-add f-30 pt-5 pb-5 "></p>
+                    <p>实名认证</p>
+                </div>
+            </div>
+            <div class="pt-5 pb-5 pl-15 pr-15 rel txt999">
+                <input type='text' class="bgGray width-100 border-radiu-5">
+                <span class="icon-sousuoic abs" style="top:12px;"></span>
+                <span class="abs" style="top:12px;left: 45px;">搜索</span>
+            </div>
+            <div>
+                <p class="pt-10 pb-10 pl-15 txt999 bd-b">常见问题</p>
+                <div class="directory-list">
+                    <ul>
+                        <li class="br-0">
+                            <div class="txt-info item02" ui-sref="dianpu-guide-network-flow-order" href="#/dianpu-guide-network-flow-order">
+                                <span class="ico icon-dingdan4" style="color:#45c45d;"></span>
+                                <p><em>新店主宝典</em></p>
+                                <p><small>新手入门涨知识</small></p>
+                            </div>
+                        </li>
+                        <li class="br-0">
+                            <div class="txt-info item02" ng-click="lanOrderList()">
+                                <span class="ico icon-kuandaidingdan" style="color:#45c45d;"></span>
+                                <p><em>活动新资讯</em></p>
+                                <p><small>大促活动先知道</small></p>
+                            </div>
+                        </li>
+
+                        <li class="br-0">
+                            <div class="txt-info item02" ui-sref="dianpu-microshop-lan-order-search-hz" href="#dianpu-microshop-lan-order-search-hz">
+                                <span class="ico icon-kuandaidingdan" style="color:#45c45d;"></span>
+                                <p><em>物流日日新</em></p>
+                                <p><small>物流情况在更新</small></p>
+                            </div>
+                        </li>
+                        <li class="br-0">
+                            <div class="txt-info item02" ui-sref="dianpu-microshop-work-order-list" href="#/dianpu-microshop-work-order-list">
+                                <span class="ico icon-fandanguanli" style="color:#45c45d;"></span>
+                                <p><em>售后大帮手</em></p>
+                                <p><small>云集售后享无忧</small></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5 bgWhite">
+            <p class="pt-10 pb-10 txt999 bd-b pl-15">热门问题</p>
+            <div class="ml-15 pl-5 pr-5 pt-10 pb-10 bd-b">
+                【红印黑糖】什么时候发货？
+            </div>
+            <div class="ml-15 pl-5 pr-5 pt-10 pb-10 bd-b">
+                【红印黑糖】什么时候发货？
+            </div>
+        </div>
+        <div class="btn-wrap txtCenter" style="padding:0;">
+            <button class="btn btn-primary" style="height:4rem;">
+                <span class="icon-kefu f-20"></span>联系客服
+            </button>
+        </div>
+
+
+        <!-- <div class="pl-15 pt-10 pb-10">常见问题</div>
+		<div class="user-menu-list mt-0">
+			<ul>
+				<li ng-repeat="item in problemList" ng-click="goProblemList('{{item.id}}','{{item.name}}','{{item.description}}')">
+					<a class="pl-0">						<em><i class="icon-bangzhuzhongxin" style="color:#FF9601;font-size: 1.8rem;"></i>{{item.name}}({{item.description}})</em>
+						<span class="icon-xiala2"></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="pl-15 pt-10 pb-10">更多问题分类</div>
+		<div class="directory-list">
+			<ul>
+				<li ng-repeat="item in moreProblemList track by $index" ng-click="goProblemList('{{item.id}}','{{item.name}}','{{item.description}}')">
+					<div class="txt-info pl-0 txtCenter">
+						<p><em>{{item.name}}</em></p>
+						<p><small>{{item.description}}</small></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="mt-10 flexWrap bgWhite pl-15 pt-10 pb-10 pr-25" ui-sref='user-helper-advice-feedback'>
+			<p class="flex">意见反馈</p>
+			<p class="flex txt999 txtCenter rel">
+				<span>让我们更好</span>
+				<span class="icon-xiala2 nextPage"></span>
+			</p>
+		</div> -->
+    </ion-content>
+
+</ion-view>

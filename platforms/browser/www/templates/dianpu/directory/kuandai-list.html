@@ -1,0 +1,63 @@
+<ion-view view-title="宽带业务">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="mt-10 mb-10 pl-10 f-10 txt999  ml-5" style="border-left:3px solid #1E82D2">宽带业务</div>
+		<div class="directory-list">
+			<ul>
+				<li ng-click="combination()"  ng-show="appFuncListShow['000020']" style="width:100%">
+					<div class="txt-info item01">
+						<span class="ico icon-M" style="color:#f39520;"></span>
+						<p><em>组合套餐</em></p>
+						<p><small>冰融组合\分摊优化\天地融合统一入口</small></p>
+					</div>
+				</li>
+
+				<!-- <li ng-click="bssLan()" ng-show="appFuncListShow['000022']">
+					<div class="txt-info item02">
+						<span class="ico icon-kd" style="color:#f39520;"></span>
+						<p><em>BSS单宽</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li> -->
+				<li ng-click="cbssLan()" ng-show="appFuncListShow['000022']">
+					<div class="txt-info item02">
+						<span class="ico icon-kd" style="color:#f39520;"></span>
+						<p><em>CBSS单宽</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+
+				<li ng-click="cbssLan(true)" ng-show="appFuncListShow['000022']">
+					<div class="txt-info item02">
+						<span class="ico icon-kuaizhuangkuandai" style="color:#f39520;"></span>
+						<p><em>王卡宽带日租版</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+
+				<!-- <li ng-click="wojiaShareSuburb()" ng-show="appFuncListShow['000030']">
+					<div class="txt-info item02">
+						<span class="ico icon-a881" style="color:#f39520;"></span>
+						<p><em>渭南县乡版</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li> -->
+
+				<li ui-sref='dianpu-kd-share-list'>
+					<div class="txt-info item02">
+						<span class="ico icon-a881" style="color:#f39520;"></span>
+						<p><em>共享套餐</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+
+	</ion-content>
+</ion-view>

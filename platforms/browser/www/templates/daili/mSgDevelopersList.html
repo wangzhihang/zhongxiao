@@ -1,0 +1,28 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index_dl"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content class='has-tabs'>
+		<div class="cen padding" ng-class='{"hide":loading}'>
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+		<ul class="list">
+			<li class="item f-14 item-icon-right" ng-class="{selected: item.id == devId}"
+			 ng-repeat="item in developersList" ng-click="_select($index)">
+				 <p class="txt000">{{item.departName}}</p>
+				 <p>{{item.name}}</p>
+				<i class="icon ion-checkmark-circled f-18 txtBlue" ng-if="item.id === devId ? true : false"></i>
+			</li>
+		</ul>
+		<!-- <div class="btn-wrap">
+			<button class="btn btn-primary" ng-disabled="resState" ng-click="_ok()">修改发展人</button>
+		</div>	 -->
+	</ion-content>
+	<div class="btn-wrap fixed bottom-fixed-btn" style="bottom: 0;width:100vw;">
+		<button class="btn btn-primary"  ng-disabled="resState" ng-click="_ok()">修改发展人</button>
+	</div>
+	<style>.selected{background:#f5f5f5;}</style>
+</ion-view>

@@ -1,0 +1,50 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+
+
+
+	<ion-content>
+
+
+<div class="accessMode">
+	<ion-radio ng-repeat="row in addresslanlist"
+				ng-value="row"
+				ng-model="data.clientSide">
+		<h2>{{ row.proAccessTypeName }}</h2>
+		<p><small>支持速率：{{row.maxRate}}；局向编码：{{row.exchCode}}；局向名称:{{row.exchName}}</small></p>
+	</ion-radio>
+</div>
+
+<div class="userInfoForm" style="height:240px;">
+	<ul>
+		<li>
+			<p style="margin:1.5rem 0;font-size:1.6rem;padding-bottom:1.5rem;border-bottom:1px solid #eaeaed">装机地址:</p>
+			<textarea ng-model="text.addressName" rows="5" style="width:100%" autofocus></textarea>
+		</li>
+	</ul>
+</div>
+
+<div class="btn-wrap">
+	<button class="btn btn-primary" ng-click="order()">下一步</button>
+</div>
+
+	</ion-content>
+	<style>
+		/*接入方式重置*/
+		.accessMode h2{font-size:1.6rem;}
+		.accessMode .ion-checkmark:before{content: "\e625";font-family:'iconfont';visibility:visible;color:gray;}
+		.accessMode .item-radio input:checked + .radio-content .radio-icon:before{content:"\e626";color:#42abef;}
+		.accessMode .item-radio .radio-icon{left:0;}
+		.accessMode .item-complex .item-content, .item-radio .item-content{padding:16px 16px 16px 60px;}
+		.accessMode .item-content{padding: 1.5rem 1rem 1rem 4rem!important;}
+		.accessMode .item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p{white-space: normal;}
+	</style>
+</ion-view>

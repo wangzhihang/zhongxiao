@@ -1,0 +1,12 @@
+.spiritPic {
+	background: url(../img/bussFont.png) no-repeat;
+	background-size: 170vw 185vh;
+}
+
+.dianpu_qrgo_open {
+    background-position: -7vw -159.5vh;
+}
+
+.dianpu_qrgo_wait {
+    background-position: -42vw -159.5vh;
+}

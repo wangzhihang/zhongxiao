@@ -1,0 +1,40 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="number-order-list">
+            <ul>
+                <li ng-repeat="item in orderList">
+                    <div class="pt-15 pb-15 bd-b">
+                        <p class="clear mb-5">
+                            <span class="fl txtBlue f-16"><span class="pr-10">{{item.customer}}</span><a href="tel:{{item.number}}">{{item.number | telFormat}}</a></span>
+                            <a class="fr txtRed f-16">{{item.amount | currency : '￥'}}</a>
+                        </p>
+                        <p class="f-15 bgWarn inlinebk txtWarn mb-5">{{item.productName}}</p>
+                        <p class="clear mb-0 txt999 rel">
+                            <span>{{item.status | statusColor:'timeStatus'}}</span>
+                            <span ng-hide="item.status == '000003'">{{item.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                            <span ng-show="item.status == '000003'">{{item.finishDate | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                            <span class="f-13 abs produceProgress orderTimer {{item.status | statusColor:'color'}}" style="right: -4px;">{{item.status | statusColor:'name'}}</span>
+                        </p>
+                    </div>
+                    <div class="pt-15 pb-15" ng-show="{{item.status}}==000007" style="text-align: center;color: #0085cf;" ng-click="lookDetail($index)">
+                        <span>查看详情</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ion-infinite-scroll ng-if="hasmore" on-infinite="loadMore()" icon="ion-loading-c" distance="1%" immediate-check="false"></ion-infinite-scroll>
+
+        <div class="loadingWrap" ng-if="loading">
+            <ion-spinner icon="ios"></ion-spinner>
+        </div>
+        <div class="noMore" ng-if="noMore"><span class="txt">没有更多</span></div>
+
+
+    </ion-content>
+
+</ion-view>

@@ -1,0 +1,77 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ng-click="toggleSearchBox()"><i class="icon-sousuo1" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<div class="bar bar-subheader" ng-hide="searchBox">
+		<div style="position:fixed;top:0;left:0;right:0;z-index:1986;background:white;">
+			<div class="info-list">
+				<ul>
+					<li>
+						<div class="info-label">
+							<span>起始日期：</span>
+						</div>
+						<div class="info-cont">
+							<input type="date" class="date-box" ng-model="startTime"  min="2016-01-01" ng-change="setStartTime(startTime)" placeholder="请选择起始日期"/>
+							<button class="rt-btn" style="top:-5px;">
+								<span class="icon-xiaoyuanxuanhao"></span>
+							</button>
+						</div>
+					</li>
+					<li>
+						<div class="info-label">
+							<span>结束日期：</span>
+						</div>
+						<div class="info-cont">
+							<input type="date" class="date-box" ng-model="endTime" min="2016-01-01" ng-change="setEndTime(endTime)" placeholder="请选择结束日期"/>
+							<button class="rt-btn" style="top:-5px;">
+								<span class="icon-xiaoyuanxuanhao"></span>
+							</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="btn-wrap">
+				<button class="btn btn-primary" ng-click="queryOrder()">查询订单</button>
+			</div>
+		</div>
+	</div>
+	<ion-content>
+		<div class="list" style="margin-bottom:5px;">
+	        <div class="item item-input-inset">
+	          <label class="item-input-wrapper">
+	            <input type="tel" placeholder="请输入订购号码" ng-model="input.tel" style="width:100%;"/>
+	          </label>
+	          <button class="button button-small" ng-click="searchOrder()">查询订单</button>
+	        </div>
+     	</div>
+		<div class="number-order-list">
+			<ul>
+				<li ng-repeat="row in orderList">
+					<dl>
+						<dt>
+							<span class="fl">订购号码：{{row.number | telFormat}}</span>
+							<a class="fr" ng-click="orderedOrderDetail('{{row.orderCode}}')">详情</a>
+						</dt>
+						<dd>所选套餐：{{row.productName}}</dd>
+						<dd>订购时间：{{row.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</dd>
+						<dd>订单金额：<em>{{row.amount | currency : '￥'}}</em></dd>
+					</dl>
+				</li>
+			</ul>
+		</div>
+		<div class="cen padding" ng-class='{"hide":loading}'>
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+		<div class="cen padding" ng-click="loadMoreData($index)" ng-hide="readMore">
+			<button ng-bind-template="{{infoState}}" class="loadingMore"></button>
+		</div>
+		<div class="noMore" ng-hide="noMoreTips">
+			<span>已经到底了</span>
+		</div>
+	</ion-content>
+	<div class="mask" style="display:block;z-index:0;background:rgba(0,0,0,.25)" ng-show="mask" ng-click="cancelDateSearch()"></div>
+</ion-view>

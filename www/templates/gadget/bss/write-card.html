@@ -1,0 +1,47 @@
+<ion-view view-title="{{title}}">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="info-list">
+			<ul>
+				<li>
+					<div class="info-label">
+						<span>手机号码：</span>
+					</div>
+					<div class="info-cont">
+						<input type="tel" ng-model="data.tel" ng-keyup="telChange()" placeholder="正确输入手机号码" class="txt-box"/>
+					</div>
+				</li>
+				<!-- <li>
+					<div class="info-label">
+						<span>交易编码：</span>
+					</div>
+					<div class="info-cont">
+						<input type="tel" ng-model="data.promptid" ng-keyup="promptidChange()" placeholder="请输入19位的交易编码" maxlength="19" class="txt-box"/>
+					</div>
+				</li> -->
+				<li>
+					<div class="info-label">
+						<span>sim卡号：</span>
+					</div>
+					<div class="info-cont">
+						<input type="text" ng-model="data.sim" placeholder="" class="txt-box" readonly="readonly"/>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="btn-wrap" ng-hide="readCardBtn">
+			<button class="btn btn-primary" ng-disabled="resState" ng-click="readCard()">开始读卡</button>
+		</div>
+		<div class="btn-wrap" ng-hide="writeCardBtn">
+			<button class="btn btn-primary" ng-disabled="resState" ng-click="writeCard()">开始写卡</button>
+		</div>
+		<div class="cen padding" ng-hide="loading">
+			<ion-spinner icon="ios-small"></ion-spinner>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,28 @@
+<ion-view view-title="{{title}}" hide-tabs="true">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+
+	<ion-content>
+
+
+<!--检索结果-->
+<div class="search-show-list">
+	<h2>发展渠道选择：</h2>
+	<div class="cen padding" ng-class='{"hide":loading[0]}'>
+		<ion-spinner icon="ios-small"></ion-spinner>
+	</div>
+	<ul class="item-val" id="adderssList">
+		<li ng-click="order({{row}})" ng-repeat="row in querydealerList">{{row.name}}</li>
+	</ul>
+</div>
+
+<div class="blank-bg-img"></div>
+
+	</ion-content>
+
+</ion-view>

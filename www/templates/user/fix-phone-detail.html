@@ -1,0 +1,295 @@
+<ion-view view-title="{{title}}" hide-tabs="true" hide-nav-bar="isNoShowHeader">
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="cen padding" ng-class='{"hide":loading}'>
+            <ion-spinner icon="ios-small"></ion-spinner>
+        </div>
+        <div class="number-order-list bgWhite number-order-list1">
+            <ul>
+                <li class="orderUserInfo">
+                    <dl class="rel">
+                        <dd>
+                            <span class="f-bolder f-15">产品信息</span>
+                            <span class="orderTimer abs f-10 {{status | statusColor:'color'}}">{{status | statusColor:'name'}}</span>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="orderDetailInfo1">
+                    <dl class="f-14">
+                        <!-- <dd class="number-order-num" style="border:0;padding:0;">
+							<div class="num-order-money mt-10">
+								<span class="order-detail-num grap-detail-num" style="font-size:1.5rem;">{{mainProductName}}</span>
+								<span></span>
+								<span class="order-detail-num" style="font-size:1.4rem;">
+									<em class="txt999">订单总额</em>
+									<em style="color:#e36426" class="grap-detail-num">{{orderAmount | currency : '￥'}}</em>
+								</span>
+							</div>
+						</dd>
+						<dd class="order-detail-name">
+							<div class="txt999 f-14 num-order-name num-order-name1">
+								<span  ng-repeat="item in lanNumberList">{{item.number}}（号码）</span>
+								<span>{{kdNumber}}（宽带号码）</span>
+							</div>
+						</dd>
+						<dd style="margin-top:-1rem;">
+							<div class="bgApricot order-name-detail txt666" ng-show="numberActive">
+								<p class="mb-5 f-10">
+									<span class="txtfff" style="background:#1E82D2;padding:0 .2rem;">号</span>
+									<span>{{activityName}}</span>
+								</p>
+								<p class="mb-0 txtfff f-10">
+									<span class="txtfff" style="background:#2A8623;padding:0 .2rem;">宽</span>
+									<span>{{lanActivityName}}</span>
+								</p>
+							</div>
+						</dd> -->
+                        <!-- <dd>
+							<span>机顶盒串码</span>
+							<span class="orderTimer lanOrderAddress">{{macAddress}}</span>
+						</dd> -->
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">订购时间</span>
+                            <span class="flexFix pl-20 txt999">{{orderInfo.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </dd>
+                        <dd class="flexWrap" ng-if="status=='000003'">
+                            <span class="detailLeftTopList">完成时间</span>
+                            <span class="flexFix pl-20 txt999">{{orderInfo.finishDate | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="liNo"></li>
+                <!-- <li class="order-detail-btn">
+					<dl style="text-align:center;">
+						<dd>
+							<div><span>补写卡</span></div>
+							<div><span>补照片</span></div>
+							<div><span>补缴费</span></div>
+							<div><span>补签名</span></div>
+						</dd>
+					</dl>
+				</li> -->
+                <li class="orderUserInfo">
+                    <dl>
+                        <dd class="f-bolder f-15">
+                            <span class="txtRight" style="width: 84px;">短号信息</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">短号号码</span>
+                            <span class="flexFix pl-20 txt999">{{orderInfo.telphoneNumber}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">短号套餐</span>
+                            <span class="flexFix pl-20 txt999">{{orderInfo.mainProductName}}</span>
+                        </dd>
+                        <!-- <dd class="errorInfoDetail flexWrap">
+							<span class="detailLeftTopList">短号活动</span>
+							<span class="orderTimer lanOrderAddress txtLeft">{{userAddress}}</span>
+						</dd> -->
+                    </dl>
+                </li>
+                <li class="liNo"></li>
+                <li class="orderUserInfo">
+                    <dl>
+                        <dd class="f-bolder f-15">
+                            <span class="txtRight" style="width: 84px;">长号信息</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">长号号码</span>
+                            <span class="flexFix pl-20 txt999">{{orderInfo.number}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">长号套餐</span>
+                            <span class="flexFix pl-20 txt999">{{orderInfo.contractName}}</span>
+                        </dd>
+                        <!-- <dd class="errorInfoDetail flexWrap">
+							<span class="detailLeftTopList">长号活动</span>
+							<span class="orderTimer lanOrderAddress txtLeft">{{userAddress}}</span>
+						</dd> -->
+                    </dl>
+                </li>
+                <li class="liNo"></li>
+                <li class="orderUserInfo">
+                    <dl>
+                        <dd class="f-bolder f-15">
+                            <span class="txtRight" style="width: 84px;">用户信息</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">客户姓名</span>
+                            <span class="flexFix pl-20 txt999">{{orderInfo.customer}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">联系方式</span>
+                            <span class="flexFix pl-20 txt999">{{orderInfo.contactNumber}}</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">装机地址</span>
+                            <span class="flexFix pl-20 txt999">{{orderInfo.address}}</span>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="liNo"></li>
+                <li class="orderUserInfo">
+                    <dl>
+                        <dd class="f-bolder f-15">
+                            <span class="txtRight" style="width: 84px;">店铺信息</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">店铺名称</span>
+                            <div class="flexFix pl-20 txt999">
+                                <p class="txt666">{{shop.shopName}}</p>
+                                <p>
+                                    <span class="txt999 pr-20">{{shop.realName}}</span>
+                                    <span style="color:#74A9DF;">{{shop.shopTel}}</span>
+                                </p>
+                                <p class="txt999">{{shop.cuserName}}</p>
+                            </div>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">业务员</span>
+                            <div class="flexFix pl-20 txt999">
+                                <p class="txt666">{{shop.deveName}}</p>
+                                <p class="txt999">{{shop.buserName}}</p>
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="liNo"></li>
+                <li class="orderUserInfo">
+                    <dl>
+                        <dd class="f-bolder f-15">
+                            <span class="txtRight" style="width: 84px;">渠道信息</span>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">渠道</span>
+                            <div class="flexFix pl-20 txt999">
+                                <p>{{bssInfo.channelName}}</p>
+                                <p class="txt999">{{orderInfo.channelCode}}</p>
+                            </div>
+                        </dd>
+                        <dd class="flexWrap">
+                            <span class="detailLeftTopList">发展人</span>
+                            <div class="flexFix pl-20 txt999">
+                                <p>{{bssInfo.developName}}</p>
+                                <p class="txt999">{{bssInfo.developCode}}</p>
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="liNo"></li>
+                <!-- <li class="orderUserInfo">
+					<dl>
+						<dd class="errorInfoDetail flexWrap">
+							<span class="orderTimerTitle">备注
+							</span>
+							<span class="orderTimer lanOrderAddress txtLeft">{{comment}}</span>
+						</dd>
+					</dl>
+				</li>
+				<li class="liNo"></li> -->
+                <!-- <li>
+					<dl>
+						<dt>报错信息</dt>
+						<dd class="rel">
+							<span class="orderTimerTitle">时间</span>
+							<span class="orderTimer abs">{{orderTime | hideCode:'1,2'}}</span>
+						</dd>
+						<dd class="rel">
+							<span class="orderTimerTitle">节点</span>
+							<span class="orderTimer abs">{{mainProductName}}</span>
+						</dd>
+						<dd class="errorInfoDetail flexWrap">
+							<span class="orderTimerTitle">错误信息</span>
+							<div class="f-14 txt999">联通开卡失败，失败原因：未将对象引用设置到对象的实例。在dhfdhfdsghh vjhr3rgjhghhfgjjrtghjrhgh</div>
+						</dd>
+					</dl>
+				</li>
+				<li class="liNo"></li> -->
+            </ul>
+            <div class="img-wrap">
+                <div class="col-img"><img ng-style='imgProp' ng-src="{{shopOrderInfo.idCardHeadUrl}}" /></div>
+                <div class="col-img" ng-click="changePic()"><img ng-style='imgProp' ng-src="{{shopOrderInfo.customerImageUrl}}" /></div>
+                <div class="col-img">
+                    <img ng-style='imgProp' ng-src="{{shopOrderInfo.signUrl}}" ng-hide="showBtn"/>
+                    <div class="rel" style="height: 100%;" ng-show="showBtn">
+                        <div class="reSignBtn bgPrimary txtfff pt-10 pb-10 f-15 border-radiu-5 abs" style="left: 5%;top: 25%;width: 25vw;" ng-click="supplySignature()">补签名</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- <div class="number-order-list" ng-class='{"hide":showList}'>
+			<h2 class="top-hd-title">订单编号：{{orderCode}}</h2>
+			<ul>
+				<li>
+					<dl>
+						<dt>联系人信息</dt>
+						<dd>联系人：{{userName | hideCode:'1,2'}}</dd>
+						<dd>联系方式：{{userTel}}</dd>
+						<dd>装机地址：{{userAddress}}</dd>
+						<dd>下单时间：{{orderTime | date:"yyyy-MM-dd HH:mm:ss"}}</dd>
+						<dd>订单总额：<strong class="assertive">{{orderAmount | currency : '￥'}}</strong></dd>
+						<dd>订单备注：<em style="color:#999;">{{comment}}</em></dd>
+					</dl>
+				</li>
+				<li>
+					<dl>
+						<dt>宽带信息</dt>
+						<dd>宽带套餐：{{comboType}}</dd>
+						<dd>宽带号码：{{kdNumber}}</dd>
+						<dd>宽带金额：<em class="assertive">{{lanAmount | currency : '￥'}}</em></dd>
+						<dd>套餐活动：{{lanActivityName}}</dd>
+						<dd>活动价格：<em class="assertive">{{lanActivityPrice | currency : '￥'}}</em></dd>
+						<dd>光猫价格：<em class="assertive">{{ftthAmount | currency : '￥'}}</em></dd>
+					</dl>
+				</li>
+			</ul>
+			<ul>
+				<li ng-repeat="item in lanNumberList">
+					<dl>
+						<dt>手机信息</dt>
+						<dd>手机号码：{{item.number | telFormat}}</dd>
+						<dd>手机套餐：{{item.contractName}}</dd>
+						<dd>预存金额：{{item.numAmount | currency : '￥'}}</dd>
+						<dd>号码类型：<em>{{item.isNewNumber}}</em></dd>
+					</dl>
+				</li>
+			</ul>
+			<ul>
+				<li ng-repeat="item in tvList">
+					<dl>
+						<dt>TV信息</dt>
+						<dd>IPTV账号：{{item.account}}</dd>
+						<dd>MAC地址：{{item.macAddress}}</dd>
+					</dl>
+				</li>
+			</ul>
+			<div class="img-wrap">
+			 			<div class="col-img"><img ng-src="{{idCardHeadUrl}}"/></div>
+			 			<div class="col-img"><img ng-src="{{customerImgUrl}}"/></div>
+			 		</div>	
+		</div> -->
+        <div class="cen padding" ng-class='{"hide":loading}'>
+            <ion-spinner icon="ios-small"></ion-spinner>
+        </div>
+        <div class="btn-wrap" ng-show="hasElectronicWorksheets">
+            <button class="btn btn-white" ng-click="viewElectronicWorksheets('{{eleOrder}}')"><i class="icon-dingdan"></i>查看长号电子工单</button>
+        </div>
+        <div class="btn-wrap" ng-show="hasElectronicWorksheets">
+            <button class="btn btn-white" ng-click="viewElectronicWorksheets('{{telphoneEleOrder}}')"><i class="icon-dingdan"></i>查看短号电子工单</button>
+        </div>
+    </ion-content>
+    <div class="bigPic flexWrap" ng-show="isShowBigPic">
+        <img ng-src="{{shopOrderInfo.customerImageUrl}}" ng-style="bigPic>
+        <div class="abs" style="top:1.5rem;right:1.5rem" ng-click="closeBigPic()">
+            <span><i class="icon-guanbi1 f-30" style="color:black;"></i></span>
+        </div>
+    </div>
+</ion-view>

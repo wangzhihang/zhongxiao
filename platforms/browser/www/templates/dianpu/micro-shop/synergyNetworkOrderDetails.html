@@ -1,0 +1,100 @@
+<ion-view view-title="{{title}}" hide-tabs="true"  hide-nav-bar="isNoShowHeader">
+
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>
+	
+	<ion-content>
+
+		<!--签名完成的订单显示内容-->
+		<div  class="number-order-list bgWhite number-order-list1">
+			<!-- <div class="top-hd-title1">
+				<h2 class="top-hd-title txt333 f-16">订单信息</h2>
+				<div class="wanchengStatus detailBtn ">
+						<span ng-bind-html="translateStatus(orderDetail.shopOrder.status)"></span>
+						<span ng-show="orderDetail.payStatus == 000001">,付款成功</span>
+				</div>
+			</div> -->
+			<ul>
+				<li class="orderUserInfo">
+					<dl >
+						<dd>
+							<span class="f-bolder f-15">产品信息</span>
+							<div class="wanchengStatus detailBtn ">
+								<span ng-bind-html="translateStatus(orderDetail.shopOrder.status)"></span>
+								<span ng-show="orderDetail.payStatus == 000001">付款成功</span>
+						</div>
+						</dd>
+					</dl>
+				</li>
+				<li class="orderDetailInfo1">
+					<dl  class="f-14">
+						<dd class="number-order-num" style="padding:0;border:0;">
+							<div class="num-order-money mt-10">
+								<span class="order-detail-num grap-detail-num" style="font-size:1.8rem">{{orderDetail.shopOrder.number | telFormat}}</span>
+								<span></span>
+								<span class="order-detail-num f-14 abs">
+									<em class="txt999">首次预存</em>
+									<em style="color:#e36426" class="grap-detail-num">{{orderDetail.shopOrder.amount | currency : '￥'}}</em>
+								</span>
+							</div>
+						</dd>
+						<dd class="order-detail-name hm-detail-name">
+							<div class="txt999 f-15 num-order-name num-order-name1">{{orderDetail.shopOrder.productName}}</div>
+						</dd>
+						<dd class="flexWrap">
+							<span class="detailLeftTopList">卡类型</span>
+							<span class="flexFix pl-20 txt999" ng-bind-html="translateCardType(orderDetail.shopOrder.source)"></span>
+						</dd>
+						<dd class="flexWrap">
+							<span class="detailLeftTopList">下单时间</span>
+							<span class="flexFix pl-20 txt999">{{orderDetail.shopOrder.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+						</dd>
+					</dl>
+				</li>
+				<li class="liNo"></li>
+				<li class="orderUserInfo">
+					<dl>
+						<dd class="f-bolder f-15">
+							<span class="txtRight" style="width: 84px;">用户信息</span>
+						</dd>
+						<dd class="flexWrap">
+							<span class="detailLeftTopList">客户姓名</span>
+							<span class="flexFix pl-20 txt999">{{orderDetail.shopOrder.customer === null ? '--' : orderDetail.shopOrder.customer}}</span>
+						</dd>
+						<dd class="flexWrap">
+							<span class="detailLeftTopList">联系方式</span>
+							<a class="flexFix pl-20 txt999" href="tel:{{orderDetail.shopOrder.contactNumber}}">{{orderDetail.shopOrder.contactNumber === null ? '--' : orderDetail.shopOrder.contactNumber}}</a>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+
+			<div class="img-wrap">
+				<div class="col-img"><img ng-src="http://z.haoma.cn/upload/{{orderDetail.customer.idCardHeadUrl}}"/></div>
+				<div class="col-img" ng-click="changePic()"><img ng-src="{{orderDetail.customer.customerImageUrl}}"/></div>
+				<div class="col-img"><img ng-src="http://z.haoma.cn/upload/{{orderDetail.shopOrder.signName}}"/></div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="bgWhite fixed bottomBtn" ng-if="orderDetail.shopOrder.status === '000003' || orderDetail.shopOrder.status === '000004' ? false : true">
+		<ul class="flexWrap">
+			<li class="flex bd-r" ng-click="giveUp()">					
+				<span>放弃订单</span>
+			</li>
+			<li class="flex active" ng-click="manage()"
+			 ng-if="orderDetail.shopOrder.status === '000007' || orderDetail.shopOrder.status === '000013' ? true : false">	
+				<span>激活</span>
+			</li>
+		</ul>
+	</div>
+	<div class="bigPic" ng-show="isShowBigPic">
+		<img ng-src="{{orderDetail.customer.customerImageUrl}}">
+		<div class="abs" style="top:1.5rem;right:1.5rem" ng-click="closeBigPic()">
+			<span><i class="icon-guanbi1 f-30" style="color:black;"></i></span>
+		</div>
+	</div>
+</ion-view>

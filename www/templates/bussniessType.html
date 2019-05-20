@@ -1,0 +1,378 @@
+<ion-view view-title="{{title}}">
+
+
+    <ion-nav-buttons side="left">
+        <div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+    </ion-nav-buttons>
+
+
+
+
+
+    <ion-content scroll="false">
+        <!--  style="border-top: 1px solid #eaeaed;" -->
+
+
+        <div class="choseContent flexWrap" style="border-top: 1px solid #eaeaed;">
+            <!-- -->
+            <div class="choseType" style="width: 25vw;background-color: #f0f0f0;">
+                <ion-scroll scrollbar-y="false" direction="y">
+                    <ul style="border-top: 1px solid #eaeaed;">
+                        <li class="" ng-class="{ 'bussTypeChosed' : current == 1 }" ng-click="setCurrent(1);"><span class="f-14 pl-10 pr-10 pt-20 pb-20">业务</br>受理</span></li>
+                        <li class="" ng-class="{ 'bussTypeChosed' : current == 2 }" ng-click="setCurrent(2);"><span class="f-14 pl-10 pr-10 pt-20 pb-20">热门</br>产品</span></li>
+                        <li class="" ng-class="{ 'bussTypeChosed' : current == 3 }" ng-click="setCurrent(3);"><span class="f-14 pl-10 pr-10 pt-20 pb-20">互联网</br>引流</span></li>
+                        <li class="" ng-class="{ 'bussTypeChosed' : current == 4 }" ng-click="setCurrent(4);" ng-show="appFuncListShow['000115']"><span class="f-14 pl-10 pr-10 pt-20 pb-20">商城</br>引流</span></li>
+                        <!-- <li class="" ng-class="{ 'bussTypeChosed' : current == 5 }" ng-click="setCurrent(5);" ng-show="appFuncListShow['000116']"><span class="f-14 pl-10 pr-10 pt-20 pb-20">客户</br>维系</span></li> -->
+                        <!--<li class="" ng-class="{ 'bussTypeChosed' : current == 6 }" ng-click="setCurrent(6);"><span class="f-14 pl-10 pr-10 pt-20 pb-20">异业</br>合作</span></li> -->
+                    </ul>
+
+                </ion-scroll>
+            </div>
+            <!--  -->
+            <div style="width:75vw;padding-bottom:20vh;border-top: 1px solid #eaeaed;" class="bgWhite" ng-show="current == 1">
+                <!-- -->
+                <ion-scroll scrollbar-y="false" direction="y">
+                    <div class="bgWhite  bussAcceptance" style="height: 85vh;">
+
+                        <div class="typePart pl-10 pr-10 pt-15" ng-show="appFuncListShow['000204']">
+                            <div class="typeTitle">
+                                <span class="cutline"></span>
+                                <span class="txt999 f-14 pl-20 pr-20">移网业务</span>
+                                <span class="cutline"></span>
+                            </div>
+
+                            <div>
+                                <!-- <div class="littleBox btnBg col-33" ng-click="dianpuBssList()">
+                          <div class="spiritPic type_card_BSS"></div>
+                              <p>BSS</p>
+                      </div> -->
+                                <div class="littleBox btnBg col-33" ng-click="dianpuCbssList()">
+                                    <!-- ng-show="appFuncListShow['000204']" -->
+                                    <div class="spiritPic type_card_CBSS"></div>
+                                    <p>CBSS</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="typePart pl-10 pr-10 pt-15" ng-show="appFuncListShow['000205']">
+                            <!-- ng-show="appFuncListShow['000205']" -->
+                            <div class="typeTitle">
+                                <span class="cutline"></span>
+                                <span class="txt999 f-14 pl-20 pr-20">宽带业务</span>
+                                <span class="cutline"></span>
+                            </div>
+
+                            <div>
+                                <div class="littleBox btnBg col-33" ng-click="combination('89706086')" ng-show="appFuncListShow['000020']">
+                                    <div class="spiritPic type_borad_combination"></div>
+                                    <p>组合套餐</p>
+                                </div>
+                                <!-- <div class="littleBox btnBg col-33" ui-sref='dianpu-kd-share-list'>
+                              <div class="spiritPic type_borad_share"></div>
+                              <p>共享套餐</p>
+                            </div> -->
+                                <!-- <div class="littleBox btnBg col-33" ng-click="bssLan()">
+                              <div class="spiritPic type_borad_BSSsingleWide"></div>
+                              <p>BSS单宽</p>
+                            </div> -->
+                                <!--  <div class="littleBox btnBg col-33" ng-click="wojiaShareSuburb()">
+                              <div class="spiritPic type_borad_suburb"></div>
+                              <p>郊县共享</p>
+                            </div> -->
+                                <div class="littleBox btnBg col-33" ng-click="cbssLan()" ng-show="appFuncListShow['000022']">
+                                    <div class="spiritPic type_borad_CBSSsingleWide"></div>
+                                    <p>CBSS单宽</p>
+                                </div>
+                                <div class="littleBox btnBg col-33" ng-click="cbssLan(true)" ng-show="appFuncListShow['000022']">
+                                    <div class="spiritPic type_borad_CBSSwangCardWide"></div>
+                                    <p>王卡宽带</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="typePart pl-10 pr-10 pt-15" ng-show="appFuncListShow['000025']">
+                            <!--   ng-show="appFuncListShow['000025']" -->
+                            <div class="typeTitle">
+                                <span class="cutline"></span>
+                                <span class="txt999 f-14 pl-20 pr-20">商务座机</span>
+                                <span class="cutline"></span>
+                            </div>
+                            <div>
+                                <div class="littleBox btnBg col-33" ng-click="bssPstnReturn()">
+                                    <div class="spiritPic type_affairs_landLine"></div>
+                                    <p>商务座机</p>
+                                </div>
+                                <div class="littleBox btnBg col-33" ng-click="bssPstnReturn8()">
+                                    <div class="spiritPic type_affairs_makeUp"></div>
+                                    <p>补录短号</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="typePart pl-10 pr-10 pt-15" ng-show="appFuncListShow['000206']">
+                            <!--    ng-show="appFuncListShow['000206']" -->
+                            <div class="typeTitle">
+                                <span class="cutline"></span>
+                                <span class="txt999 f-14 pl-20 pr-20">集客</span>
+                                <span class="cutline"></span>
+                            </div>
+
+                            <div>
+                                <div class="littleBox btnBg col-33" ui-sref="dianpu-jike-bssList">
+                                    <div class="spiritPic type_jiKe_BSSPick"></div>
+                                    <p>集客BSS</p>
+                                </div>
+                                <div class="littleBox btnBg col-33" ui-sref="dianpu-jike-cbssList">
+                                    <div class="spiritPic type_jiKe_CBSSproper"></div>
+                                    <p>集客CBSS</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="typePart pl-10 pr-10 pt-15" ng-show="appFuncListShow['000101']">
+                            <div class="typeTitle">
+                                <span class="cutline"></span>
+                                <span class="txt999 f-14 pl-20 pr-20">小工具</span>
+                                <span class="cutline"></span>
+                            </div>
+
+                            <div>
+                                <div class="littleBox btnBg col-33" ng-click="cbss_id_check()">
+                                    <div class="spiritPic type_tool_checkIdentity"></div>
+                                    <p>身份证核验</p>
+                                </div>
+                                <div class="littleBox btnBg col-33" ui-sref='gadget-cbss-reset-card'>
+                                    <div class="spiritPic type_tool_reWasteCard"></div>
+                                    <p>废卡重置</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="typePart pl-10 pr-10 pt-15">
+                            <div class="typeTitle">
+                                <span class="cutline"></span>
+                                <span class="txt999 f-14 pl-20 pr-20">扫码</span>
+                                <span class="cutline"></span>
+                            </div>
+                            <div>
+                                <div class="littleBox btnBg col-33" ui-sref="scan-code-order">
+                                    <div class="spiritPic type_code_scanCode"></div>
+                                    <p>扫码订单</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </ion-scroll>
+            </div>
+
+            <div style="width:75vw" ng-show="current == 2">
+                <div class="bgWhite  hotProduct pt-15">
+                    <div class="typeTitle pl-10 pr-10">
+                        <span class="cutline"></span>
+                        <span class="txt999 f-14 pl-20 pr-20">热门产品</span>
+                        <span class="cutline"></span>
+                    </div>
+                    <div>
+                        <!-- <div class="littleBox btnBg col-33"  ng-click='hotComboInfo({"name":"大王卡","icon":"icon-huangguan","icon-color":"#FD9D21","fun":"cbssJumpPackage","productId":"90063345","productName":"","liangHao":false})'>
+                      <div class="taocanPic type_taocan_dwk"></div>
+                      <p>大王卡</p>
+                    </div> -->
+                        <!-- <div class="littleBox btnBg col-33" ng-click='hotComboInfo({"name":"99不限量","icon":"icon-icon-test5","icon-color":"#D62121","fun":"cbssJumpHalfPackage","productId":"90311029","productName":"畅爽省内流量不限量99元套餐（陕西）","liangHao":true})'>
+                      <div class="taocanPic type_taocan_99wholeCountry"></div>
+                      <p>99不限量</p>
+                    </div> -->
+
+                        <div class="littleBox btnBg col-33" ng-click='hotComboInfo({"name":"99不限量","icon":"icon-icon-test5","icon-color":"#D62121","fun":"cbssJumpHalfPackage","productId":"90381159","productName":"畅爽省内全国不限量99元套餐","liangHao":true})' style="max-width:30%;">
+                            <div class="spiritPic type_taocan_99wholeCountry"></div>
+                            <p>全国99</p>
+                        </div>
+                        <div class="littleBox btnBg col-33" ng-click='hotComboInfo({"name":"CBSS副卡","icon":"icon-fuqia","icon-color":"#d82a2a","fun":"cbsszFuka"})'>
+                            <div class="spiritPic type_taocan_4G"></div>
+                            <p>4G套餐-副卡</p>
+                        </div>
+                        <!-- <div class="littleBox btnBg col-33" ui-sref="dianpu-qrgoV2-package({qrgoType:1})">
+                            <div class="spiritPic type_taocan_dwk"></div>
+                            <p>大王卡(码上购)</p>
+                        </div>
+                        <div class="littleBox btnBg col-33" ui-sref="dianpu-qrgoV2-package({qrgoType:2})">
+                            <div class="spiritPic type_taocan_xbk"></div>
+                            <p>小宝卡(码上购)</p>
+                        </div> -->
+
+                        <!--  <div class="littleBox btnBg col-33" ng-click='hotComboInfo({"name":"99不限量","icon":"icon-icon-test5","icon-color":"#D62121","fun":"cbssJumpHalfPackage","productId":"90311029","productName":"畅爽省内流量不限量99元套餐（陕西）","liangHao":true})'>
+                      <div class="taocanPic type_taocan_99province"></div>
+                      <p>99省内不限量</p>
+                    </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div style="width:75vw" ng-show="current == 3">
+                <div class="bgWhite  internetDrainage">
+                    <div class="typePart pl-10 pr-10 pt-15" ng-show="appFuncListShow['000114']">
+                        <div>
+                            <div class="typeTitle">
+                                <span class="cutline"></span>
+                                <span class="txt999 f-14 pl-20 pr-20">微店</span>
+                                <span class="cutline"></span>
+                            </div>
+
+                            <div>
+                                <div class="littleBox btnBg col-33" ng-click="weiDian()">
+                                    <div class="spiritPic type_share_weShop"></div>
+                                    <p>微店</p>
+                                </div>
+
+                                <div class="littleBox btnBg col-33" ng-click="ComboInfoUrl($index)" ng-repeat="item in smallProgramImgList">
+                                    <div class="spiritPic {{item.icon}}"></div>
+                                    <p>{{item.shortName}}</p>
+                                </div>
+
+                                <!-- <div class="littleBox btnBg col-33" ng-click="newBroadband()">
+                        <div class="spiritPic type_share_newBroadband"></div>
+                        <p>新装宽带</p>
+                      </div>
+                
+                      <div class="littleBox btnBg col-33" ng-click="giveBroadband()">
+                        <div class="spiritPic type_share_giveBroadband"></div>
+                        <p>送宽带</p>
+                      </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="typePart pl-10 pr-10 pt-15" ng-show="appFuncListShow['000114']">
+                        <div>
+                            <div class="typeTitle">
+                                <span class="cutline"></span>
+                                <span class="txt999 f-14 pl-20 pr-20">引流订单</span>
+                                <span class="cutline"></span>
+                            </div>
+
+                            <div>
+                                <div class="littleBox btnBg col-33" ui-sref="dianpu-guide-network-flow-order">
+                                    <div class="spiritPic type_ord_numberOrder"></div>
+                                    <p>引流订单</p>
+                                </div>
+                                <div class="littleBox btnBg col-33" ui-sref="dianpu-synergy-network-order">
+                                    <div class="spiritPic type_ord_otherOrder"></div>
+                                    <p>异业订单</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="typePart pl-10 pr-10 pt-15">
+                        <div>
+                            <div class="typeTitle">
+                                <span class="cutline"></span>
+                                <span class="txt999 f-14 pl-20 pr-20">宽带引流订单</span>
+                                <span class="cutline"></span>
+                            </div>
+
+                            <div>
+                                <div class="littleBox btnBg col-33" ui-sref="dianpu-microshop-lan-order-list">
+                                    <div class="spiritPic type_ord_lanOrder"></div>
+                                    <p>宽带订单</p>
+                                </div>
+                                <div class="littleBox btnBg col-33" ui-sref="dianpu-microshop-lan-order-search">
+                                    <div class="spiritPic type_ord_lanCharge"></div>
+                                    <p>宽带收费</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="width:75vw" ng-show="current == 4" ng-show="appFuncListShow['000115']">
+                <div class="bgWhite  shopDrainage" style="width:100%;">
+                    <div>
+
+                        <div class="typeTitle pl-10 pr-10 pt-15">
+                            <span class="cutline"></span>
+                            <span class="txt999 f-14 pl-20 pr-20">商城引流</span>
+                            <span class="cutline"></span>
+                        </div>
+
+                        <div>
+                            <div class="littleBox btnBg col-33" ui-sref="unicom-order">
+                                <div class="spiritPic type_shop_send"></div>
+                                <p>商城派单</p>
+                            </div>
+
+                            <div class="littleBox btnBg col-33" ui-sref="unicom-order-user">
+                                <div class="spiritPic type_shop_install"></div>
+                                <p>商城装机</p>
+                            </div>
+
+                            <div class="littleBox btnBg col-33" ui-sref="unicom-lan-order">
+                                <div class="spiritPic type_shop_unicomSend"></div>
+                                <p>联通派单</p>
+                            </div>
+
+                            <div class="littleBox btnBg col-33" ui-sref="unicom-lan-order-user">
+                                <div class="spiritPic type_shop_unicomInstall"></div>
+                                <p>联通装机</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="width:75vw" ng-show="current == 5" ng-show="appFuncListShow['000116']">
+                <div class="bgWhite  stockMaintain" style="width:100%; ">
+                    <div>
+                        <div class="typeTitle pl-10 pr-10 pt-15">
+                            <span class="cutline"></span>
+                            <span class="txt999 f-14 pl-20 pr-20">客户维系</span>
+                            <span class="cutline"></span>
+                        </div>
+                        <div>
+                            <div class="littleBox btnBg col-33" ng-click="assertUserType('000001')">
+                                <div class="spiritPic type_stock_23to4"></div>
+                                <p>23转4</p>
+                            </div>
+
+                            <!-- <div class="littleBox btnBg col-33" ui-sref="dianpu-oldUser-change_order()">
+                  <div class="spiritPic type_stock_afee"></div>
+                  <p>存费赠费</p>
+              </div> -->
+
+                            <div class="littleBox btnBg col-33" ng-click="assertUserType('000003')">
+                                <div class="spiritPic type_stock_lessConsume"></div>
+                                <p>承诺低消</p>
+                            </div>
+
+                            <div class="littleBox btnBg col-33" ng-click="assertUserType('000004')">
+                                <div class="spiritPic type_stock_bussTransfer"></div>
+                                <p>套餐迁转</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div style="width:75vw" ng-show="current == 6">
+                <div class="bgWhite  yiye" style="width:100%;padding-top: 14px; ">
+                    <span>待定</span>
+                </div>
+            </div>
+
+
+    </ion-content>
+</ion-view>

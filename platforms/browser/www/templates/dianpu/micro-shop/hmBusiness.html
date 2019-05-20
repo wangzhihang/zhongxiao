@@ -1,0 +1,29 @@
+<ion-view view-title="{{title}}">
+	<ion-nav-buttons side="left">
+		<div ng-click="$ionicGoBack()"><i class="resetBackBtn"></i></div>
+	</ion-nav-buttons>
+	<!--<ion-nav-buttons side="right">
+		<div ui-sref="index"><i class="icon-shouyehui" style="font-size:16px;"></i></div>
+	</ion-nav-buttons>-->
+	<ion-content>
+		<div class="directory-list">
+			<ul>
+				<li ng-click='mybssList()' ng-show="bssIsNoShow">
+					<div class="txt-info item01">
+						<span class="ico icon-liantongxuanhao" style="color:#6fbe76;"></span>
+						<p><em>BSS业务</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				<li ng-click='mycbssList()' ng-show="cbssIsNoShow">
+					<div class="txt-info item02">
+						<span class="ico icon-banlixinzhuang-" style="color:#6fbe76;"></span>
+						<p><em>CBSS业务</em></p>
+						<p><small>立即操作</small></p>
+					</div>
+				</li>
+				</li>
+			</ul>
+		</div>
+	</ion-content>
+</ion-view>
